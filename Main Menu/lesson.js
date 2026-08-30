@@ -587,7 +587,7 @@ function openBook1(){
 
 
     window.location.href =
-        "lesson1.html";
+        "/Book1/characters/character.html";
 
 }
 
