@@ -4,66 +4,66 @@
 
 var characters = {
 
-    noe: {
+    GiTei: {
 
         name: "Logic Witch",
 
-        displayName: "Logic Witch — Noe",
+        displayName: "Logic Witch — GiTei",
 
         role: "The Problem Solver",
 
         description:
         "Learn C# through logic, reasoning, and problem-solving.",
 
-        image: "images/noe.png"
+        image: "images/GiTei.png"
 
     },
 
 
-    raynan: {
+    Achi: {
 
         name: "Data Witch",
 
-        displayName: "Data Witch — Raynan",
+        displayName: "Data Witch — Achi",
 
         role: "The Keeper of Knowledge",
 
         description:
         "Learn C# through variables, data, and information.",
 
-        image: "images/raynan.png"
+        image: "images/Achi.png"
 
     },
 
 
-    precy: {
+    LeeSerin: {
 
         name: "Codeweaver Witch",
 
-        displayName: "Codeweaver Witch — Precy",
+        displayName: "Codeweaver Witch — LeeSerin",
 
         role: "The Master of Syntax",
 
         description:
         "Learn C# through syntax and programming structure.",
 
-        image: "images/precy.png"
+        image: "images/LeeSerin.png"
 
     },
 
 
-    bea: {
+    Cythera: {
 
         name: "Ember Witch",
 
-        displayName: "Ember Witch — Bea",
+        displayName: "Ember Witch — Cythera",
 
         role: "The Challenge Master",
 
         description:
         "Learn C# through practice, challenges, and competition.",
 
-        image: "images/bea.png"
+        image: "images/Cythera.png"
 
     },
 

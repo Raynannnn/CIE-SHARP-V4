@@ -716,18 +716,24 @@ body{
 
     display:flex;
 
-    gap:6px;
+    flex-wrap:nowrap;
+
+    justify-content:center;
+
+    gap:5px;
 
     margin-top:6px;
+
+    max-width:100%;
 
 }
 
 
 .power-up{
 
-    width:62px;
+    width:52px;
 
-    height:62px;
+    height:58px;
 
     display:flex;
 
@@ -787,9 +793,11 @@ body{
 
 .power-up > span:not(.power-icon){
 
-    font-size:9px;
+    font-size:8px;
 
     letter-spacing:.5px;
+
+    text-align:center;
 
 }
 
@@ -816,15 +824,15 @@ body{
 
 .battle-bottom{
 
-    height:245px;
+    height:200px;
 
-    min-height:245px;
+    min-height:200px;
 
     display:grid;
 
     grid-template-columns:1fr 1.35fr;
 
-    gap:12px;
+    gap:10px;
 
 }
 
@@ -843,7 +851,7 @@ body{
 
     border-radius:8px;
 
-    padding:15px;
+    padding:12px;
 
     box-shadow:
 
@@ -877,16 +885,16 @@ body{
 
     grid-template-columns:1fr 1fr;
 
-    gap:8px;
+    gap:6px;
 
 }
 
 
 .answer-button{
 
-    min-height:55px;
+    min-height:44px;
 
-    padding:9px 12px;
+    padding:7px 10px;
 
     background:#111827;
 
@@ -896,7 +904,7 @@ body{
 
     font-family:inherit;
 
-    font-size:15px;
+    font-size:14px;
 
     text-align:left;
 
@@ -1001,20 +1009,20 @@ body{
 
 .question-panel h2{
 
-    font-size:22px;
+    font-size:18px;
 
-    margin-bottom:9px;
+    margin-bottom:7px;
 
 }
 
 
 .code-display{
 
-    height:100px;
+    height:72px;
 
     overflow:auto;
 
-    padding:12px;
+    padding:10px;
 
     background:#020617;
 
@@ -1024,7 +1032,7 @@ body{
 
     font-family:monospace;
 
-    font-size:14px;
+    font-size:13px;
 
     white-space:pre-wrap;
 
@@ -1100,7 +1108,11 @@ body{
 
     inset:0;
 
-    z-index:1000;
+    width:100vw;
+
+    height:100vh;
+
+    z-index:9999;
 
     display:none;
 
@@ -1108,32 +1120,90 @@ body{
 
     justify-content:center;
 
-    background:rgba(0,0,0,.55);
+    background:#000;
 
     pointer-events:none;
 
+    opacity:0;
+
 }
 
+
+/* SHOW ATTACK */
 
 .attack-animation.show{
 
     display:flex;
 
+    animation:attackFadeIn .5s ease forwards;
+
 }
 
+
+/* VIDEO */
 
 .attack-animation video{
 
-    width:65%;
+    position:absolute;
 
-    max-width:750px;
+    inset:0;
 
-    max-height:70vh;
+    width:100vw;
 
-    object-fit:contain;
+    height:100vh;
+
+    object-fit:cover;
+
+    display:block;
 
 }
 
+
+/* =========================
+   FADE IN
+========================= */
+
+@keyframes attackFadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+
+/* FADE OUT */
+
+.attack-animation.fade-out{
+
+    animation:attackFadeOut .7s ease forwards;
+
+}
+
+
+@keyframes attackFadeOut{
+
+    from{
+
+        opacity:1;
+
+    }
+
+    to{
+
+        opacity:0;
+
+    }
+
+}
 
 
 /* =========================
@@ -1622,5 +1692,603 @@ body{
         grid-template-columns:1fr;
 
     }
+
+}
+
+/* =========================
+   DAMAGE EFFECTS
+========================= */
+
+
+/* RED FLASH */
+
+.damage-flash{
+
+    animation:
+        damageFlash .35s ease;
+
+}
+
+
+/* SHAKE */
+
+.damage-shake{
+
+    animation:
+        damageShake .4s ease;
+
+}
+
+
+/* RED FLASH EFFECT */
+
+@keyframes damageFlash{
+
+    0%{
+
+        filter:
+            brightness(1)
+            saturate(1);
+
+    }
+
+    25%{
+
+        filter:
+            brightness(1.8)
+            saturate(2)
+            drop-shadow(
+                0 0 18px
+                rgba(239,68,68,.9)
+            );
+
+    }
+
+    100%{
+
+        filter:
+            brightness(1)
+            saturate(1);
+
+    }
+
+}
+
+
+/* SHAKE EFFECT */
+
+@keyframes damageShake{
+
+    0%{
+
+        transform:translateX(0);
+
+    }
+
+    15%{
+
+        transform:translateX(-10px);
+
+    }
+
+    30%{
+
+        transform:translateX(10px);
+
+    }
+
+    45%{
+
+        transform:translateX(-8px);
+
+    }
+
+    60%{
+
+        transform:translateX(8px);
+
+    }
+
+    75%{
+
+        transform:translateX(-5px);
+
+    }
+
+    90%{
+
+        transform:translateX(5px);
+
+    }
+
+    100%{
+
+        transform:translateX(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   NEW ADDITIONS BELOW — nothing above this line was removed
+========================================================= */
+
+
+/* =========================
+   CUSTOM DUNGEON FONT
+   Upload your font file into a "fonts" folder next to this
+   CSS file (fonts/dungeon-font.woff2 / .ttf). Rename the
+   paths below if your uploaded filename is different.
+========================= */
+
+@font-face{
+
+    font-family:'DungeonFont';
+
+    src:
+        url('fonts/dungeon-font.woff2') format('woff2'),
+        url('fonts/dungeon-font.ttf') format('truetype');
+
+    font-display:swap;
+
+}
+
+
+.book-title h1,
+.start-box h1,
+.result-box h1,
+.lose-box h1{
+
+    font-family:'DungeonFont','VT323',monospace;
+
+    letter-spacing:3px;
+
+}
+
+
+
+/* =========================
+   FLOATING DAMAGE / HEAL NUMBERS
+========================= */
+
+.floating-number{
+
+    position:absolute;
+
+    left:50%;
+
+    top:38%;
+
+    transform:translate(-50%,0);
+
+    font-family:'VT323',monospace;
+
+    font-size:30px;
+
+    font-weight:bold;
+
+    pointer-events:none;
+
+    z-index:60;
+
+    animation:floatUpNumber 1s ease-out forwards;
+
+}
+
+
+.floating-number.dmg{
+
+    color:#f87171;
+
+    text-shadow:
+
+        0 0 10px rgba(239,68,68,.9),
+        0 0 3px #000;
+
+}
+
+
+.floating-number.heal{
+
+    color:#4ade80;
+
+    text-shadow:
+
+        0 0 10px rgba(34,197,94,.9),
+        0 0 3px #000;
+
+}
+
+
+@keyframes floatUpNumber{
+
+    0%{
+
+        transform:translate(-50%,0);
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:translate(-50%,-55px);
+
+        opacity:0;
+
+    }
+
+}
+
+
+
+/* =========================
+   HEAL FLASH EFFECT (GREEN)
+========================= */
+
+.heal-flash{
+
+    animation:healFlash .5s ease;
+
+}
+
+
+@keyframes healFlash{
+
+    0%{
+
+        filter:
+            brightness(1)
+            saturate(1);
+
+    }
+
+    25%{
+
+        filter:
+            brightness(1.7)
+            saturate(1.8)
+            drop-shadow(
+                0 0 18px
+                rgba(34,197,94,.9)
+            );
+
+    }
+
+    100%{
+
+        filter:
+            brightness(1)
+            saturate(1);
+
+    }
+
+}
+
+
+
+/* =========================
+   MYSTIC SIGHT HIGHLIGHT
+========================= */
+
+.mystic-highlight{
+
+    background:rgba(250,204,21,.35);
+
+    outline:2px solid #facc15;
+
+    border-radius:3px;
+
+    animation:mysticPulse 1s ease-in-out infinite;
+
+}
+
+
+.mystic-highlight-box{
+
+    outline:2px solid #facc15;
+
+    box-shadow:0 0 15px rgba(250,204,21,.5);
+
+    animation:mysticPulse 1s ease-in-out infinite;
+
+}
+
+
+@keyframes mysticPulse{
+
+    0%,100%{
+
+        opacity:1;
+
+    }
+
+    50%{
+
+        opacity:.5;
+
+    }
+
+}
+
+
+
+/* =========================
+   MINDCRAFT HIGHLIGHT
+========================= */
+
+.mindcraft-highlight{
+
+    color:#facc15;
+
+    text-shadow:0 0 10px rgba(250,204,21,.7);
+
+}
+
+
+
+/* =========================
+   RATIONALE BOX (WRONG ANSWER EXPLANATION)
+========================= */
+
+.rationale-box{
+
+    position:fixed;
+
+    left:50%;
+
+    top:50%;
+
+    transform:translate(-50%,-50%) scale(.85);
+
+    width:420px;
+
+    max-width:88%;
+
+    padding:18px 22px;
+
+    background:rgba(6,11,24,.98);
+
+    border:2px solid #ef4444;
+
+    border-radius:8px;
+
+    box-shadow:0 0 40px rgba(239,68,68,.4);
+
+    z-index:5000;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:opacity .25s ease, transform .25s ease;
+
+}
+
+
+.rationale-box.show{
+
+    opacity:1;
+
+    transform:translate(-50%,-50%) scale(1);
+
+    pointer-events:auto;
+
+}
+
+
+.rationale-close{
+
+    position:absolute;
+
+    top:8px;
+
+    right:10px;
+
+    width:24px;
+
+    height:24px;
+
+    background:#111827;
+
+    border:1px solid #ef4444;
+
+    color:#fca5a5;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    font-family:inherit;
+
+    font-size:13px;
+
+    line-height:1;
+
+}
+
+
+.rationale-close:hover{
+
+    background:#7f1d1d;
+
+    color:white;
+
+}
+
+
+.rationale-title{
+
+    color:#fca5a5;
+
+    font-size:13px;
+
+    letter-spacing:2px;
+
+    margin-bottom:6px;
+
+}
+
+
+.rationale-text{
+
+    color:#e2e8f0;
+
+    font-size:15px;
+
+    line-height:1.4;
+
+}
+
+
+
+/* =========================
+   LOSE SCREEN
+========================= */
+
+.lose-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:3000;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:rgba(2,6,23,.97);
+
+}
+
+
+.lose-screen.show{
+
+    display:flex;
+
+}
+
+
+.lose-box{
+
+    width:600px;
+
+    max-width:90%;
+
+    padding:40px;
+
+    text-align:center;
+
+    background:#0b1222;
+
+    border:2px solid #ef4444;
+
+}
+
+
+.lose-box .result-icon{
+
+    font-size:50px;
+
+}
+
+
+.lose-box > span{
+
+    color:#f87171;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+
+}
+
+
+.lose-box h1{
+
+    font-size:30px;
+
+    margin:10px 0;
+
+    color:#fca5a5;
+
+}
+
+
+.lose-box p{
+
+    color:#94a3b8;
+
+    line-height:1.6;
+
+    margin-bottom:20px;
+
+}
+
+
+.lose-actions{
+
+    display:flex;
+
+    gap:15px;
+
+    justify-content:center;
+
+}
+
+
+.lose-actions button{
+
+    padding:12px 22px;
+
+    border:none;
+
+    font-family:inherit;
+
+    font-size:15px;
+
+    cursor:pointer;
+
+    border-radius:5px;
+
+}
+
+
+#retryTrialButton{
+
+    background:#4f46e5;
+
+    color:white;
+
+}
+
+
+#retryTrialButton:hover{
+
+    background:#6366f1;
+
+}
+
+
+#loseMenuButton{
+
+    background:#111827;
+
+    border:1px solid #ef4444;
+
+    color:#fca5a5;
+
+}
+
+
+#loseMenuButton:hover{
+
+    background:#7f1d1d;
+
+    color:white;
 
 }

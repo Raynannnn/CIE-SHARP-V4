@@ -2,9 +2,9 @@
 
 var characters = {
 
-    noe: {
+    GiTei: {
 
-        name: "Noe",
+        name: "GiTei",
 
         fullName: "Logic Witch",
 
@@ -19,16 +19,16 @@ var characters = {
 
         colorClass: "logic",
 
-        image: "images/characters/noe.png",
+        image: "images/GiTei.png",
 
-        video: "videos/noe.mp4"
+        video: "videos/GiTei.mp4"
 
     },
 
 
-    raynan: {
+    Achi: {
 
-        name: "Raynan",
+        name: "Achi",
 
         fullName: "Data Witch",
 
@@ -43,16 +43,16 @@ var characters = {
 
         colorClass: "data",
 
-        image: "images/characters/raynan.png",
+        image: "images/Achi.png",
 
-        video: "videos/raynan.mp4"
+        video: "videos/Achi.mp4"
 
     },
 
 
-    precy: {
+    LeeSerin: {
 
-        name: "Precy",
+        name: "LeeSerin",
 
         fullName: "Codeweaver Witch",
 
@@ -67,16 +67,16 @@ var characters = {
 
         colorClass: "codeweaver",
 
-        image: "images/characters/precy.png",
+        image: "images/LeeSerin.png",
 
-        video: "videos/precy.mp4"
+        video: "videos/LeeSerin.mp4"
 
     },
 
 
-    bea: {
+    Cythera: {
 
-        name: "Bea",
+        name: "Cythera",
 
         fullName: "Ember Witch",
 
@@ -91,16 +91,16 @@ var characters = {
 
         colorClass: "ember",
 
-        image: "images/characters/bea.png",
+        image: "images/Cythera.png",
 
-        video: "videos/bea.mp4"
+        video: "videos/Cythera.mp4"
 
     },
 
 
-    joses: {
+    Zari: {
 
-        name: "Joses",
+        name: "Zari",
 
         fullName: "Logiccraft Witch",
 
@@ -115,9 +115,9 @@ var characters = {
 
         colorClass: "logiccraft",
 
-        image: "images/characters/joses.png",
+        image: "images/Zari.png",
 
-        video: "videos/joses.mp4"
+        video: "videos/Zari.mp4"
 
     }
 
@@ -592,6 +592,96 @@ function openBook1(){
 }
 
 
+/* =========================================================
+   BOOK UNLOCKING (added)
+   Reads the progress flags saved by each book (e.g.
+   "book2Unlocked" saved by Book I once it's completed) and
+   turns the matching locked-book card into a clickable one.
+========================================================= */
+
+function unlockBook(bookNumber, path){
+
+    var bookEl =
+        document.querySelector(
+            '[data-book="' + bookNumber + '"]'
+        );
+
+
+    if(!bookEl){
+
+        return;
+
+    }
+
+
+    if(!bookEl.classList.contains("locked-book")){
+
+        /* ALREADY UNLOCKED */
+
+        return;
+
+    }
+
+
+    bookEl.classList.remove(
+        "locked-book"
+    );
+
+    bookEl.classList.add(
+        "active-book"
+    );
+
+
+    var lockLabel =
+        bookEl.querySelector(".lock-label");
+
+
+    if(lockLabel){
+
+        lockLabel.outerHTML =
+            '<span class="play-label">▶ START CHAPTER</span>';
+
+    }
+
+
+    bookEl.addEventListener(
+        "click",
+        function(){
+
+            window.location.href = path;
+
+        }
+    );
+
+}
+
+
+function checkBookUnlocks(){
+
+    if(localStorage.getItem("book2Unlocked") === "true"){
+
+        unlockBook(
+            2,
+            "/Book2/characters/character.html"
+        );
+
+    }
+
+
+    /*
+    When Book II starts saving its own "book3Unlocked" flag,
+    add the same pattern here, e.g.:
+
+    if(localStorage.getItem("book3Unlocked") === "true"){
+
+        unlockBook(3, "/Book3/characters/character.html");
+
+    }
+    */
+
+}
+
+
 /* CLICK OUTSIDE MODAL */
 
 characterModal.addEventListener(
@@ -613,6 +703,8 @@ characterModal.addEventListener(
 /* LOAD ON START */
 
 loadSavedCharacter();
+
+checkBookUnlocks();
 
 
 /* BACKGROUND MUSIC */

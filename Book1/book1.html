@@ -197,7 +197,6 @@
                 Choose your answer...
             </div>
 
-
             <!-- POWER UPS -->
 
             <div class="power-ups-title">
@@ -265,6 +264,113 @@
                     </span>
 
                     <small id="doubleCount">
+                        1
+                    </small>
+
+                </button>
+
+
+                <!-- ===== NEW POWER UPS BELOW (added, nothing removed) ===== -->
+
+                <button
+                    class="power-up"
+                    id="mysticSightPower"
+                    title="Detects the mistake hidden in the code"
+                >
+
+                    <span class="power-icon">
+                        🔍
+                    </span>
+
+                    <span>
+                        MYSTIC SIGHT
+                    </span>
+
+                    <small id="mysticSightCount">
+                        1
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="power-up"
+                    id="omnidataPower"
+                    title="Reveals a major clue about the challenge"
+                >
+
+                    <span class="power-icon">
+                        📊
+                    </span>
+
+                    <span>
+                        OMNIDATA
+                    </span>
+
+                    <small id="omnidataCount">
+                        1
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="power-up"
+                    id="syntaxSorceryPower"
+                    title="Shows the correct syntax needed"
+                >
+
+                    <span class="power-icon">
+                        ✨
+                    </span>
+
+                    <span>
+                        SYNTAX SORCERY
+                    </span>
+
+                    <small id="syntaxSorceryCount">
+                        1
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="power-up"
+                    id="flameburstPower"
+                    title="Clears all wrong options at once"
+                >
+
+                    <span class="power-icon">
+                        🔥
+                    </span>
+
+                    <span>
+                        FLAMEBURST
+                    </span>
+
+                    <small id="flameburstCount">
+                        1
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="power-up"
+                    id="mindcraftPower"
+                    title="Highlights the key problem and shields you from one wrong answer"
+                >
+
+                    <span class="power-icon">
+                        🧠
+                    </span>
+
+                    <span>
+                        MINDCRAFT
+                    </span>
+
+                    <small id="mindcraftCount">
                         1
                     </small>
 
@@ -479,6 +585,48 @@
 </div>
 
 
+<!-- =========================
+     SOUND EFFECTS (added)
+     Upload your audio files into an "audio" folder next to
+     this HTML file, matching the filenames below (or update
+     the src paths to match whatever you upload).
+========================= -->
+
+<audio id="damageSound" src="audio/damage-hit.mp3" preload="auto"></audio>
+
+<audio id="healSound" src="audio/heal-chime.mp3" preload="auto"></audio>
+
+
+
+<!-- =========================
+     RATIONALE BOX (WRONG ANSWER EXPLANATION) — added
+========================= -->
+
+<div
+    class="rationale-box"
+    id="rationaleBox"
+>
+
+    <button
+        class="rationale-close"
+        id="rationaleClose"
+        title="Close"
+    >
+        ✕
+    </button>
+
+    <div class="rationale-title">
+        💡 WHY IT'S WRONG
+    </div>
+
+    <div
+        class="rationale-text"
+        id="rationaleText"
+    ></div>
+
+</div>
+
+
 
 <!-- =========================
      START TRIAL SCREEN
@@ -565,7 +713,7 @@
         <p>
             The Syntax Imp has been defeated.
             The first fragment of the Great C# Spellbook
-            has been recovered.
+            has been recovered. Book II is now unlocked.
         </p>
 
 
@@ -604,6 +752,53 @@
         >
             RETURN TO JOURNEY
         </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     DEFEAT — added
+========================= -->
+
+<section
+    class="lose-screen"
+    id="loseScreen"
+>
+
+    <div class="lose-box">
+
+        <div class="result-icon">
+            💀
+        </div>
+
+        <span>
+            TRIAL FAILED
+        </span>
+
+        <h1>
+            THE SYNTAX IMP OVERPOWERED YOU
+        </h1>
+
+        <p>
+            Your essence has run out. Regroup and retry the
+            trial, or head back to the Academy grounds.
+        </p>
+
+
+        <div class="lose-actions">
+
+            <button id="retryTrialButton">
+                ⟲ RETRY TRIAL
+            </button>
+
+            <button id="loseMenuButton">
+                🏠 RETURN TO MAIN MENU
+            </button>
+
+        </div>
 
     </div>
 
