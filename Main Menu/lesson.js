@@ -587,7 +587,7 @@ function openBook1(){
 
 
     window.location.href =
-        "/Book1/characters/character.html";
+        "../Book1/characters/character.html";
 
 }
 
@@ -662,7 +662,7 @@ function checkBookUnlocks(){
 
         unlockBook(
             2,
-            "/Book2/characters/character2.html"
+            "../Book2/characters/character2.html"
         );
 
     }
