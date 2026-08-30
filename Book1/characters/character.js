@@ -208,7 +208,7 @@ storyVideo.addEventListener(
     "timeupdate",
     function(){
 
-        if(storyVideo.currentTime >= 40){
+        if(storyVideo.currentTime >= 15){
 
             skipStoryButton.classList.add(
                 "show"
