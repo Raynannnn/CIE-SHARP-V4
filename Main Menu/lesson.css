@@ -1126,59 +1126,32 @@ body{
 }
 
 
+/*BOOK COVER (small) — now shows a cover image instead of text (changed)*/
+
 .book-cover-small{
 
     min-height:125px;
 
     border-radius:5px;
 
-    background:
-
-        linear-gradient(
-            135deg,
-            #1e3a8a,
-            #172554
-        );
-
     border:2px solid #334155;
 
-    padding:14px 10px;
+    background:#1e293b;
 
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-    text-align:center;
+    overflow:hidden;
 
 }
 
 
-.book-cover-small span{
+.book-cover-small img{
 
-    color:#93c5fd;
+    width:100%;
 
-    font-size:14px;
+    height:100%;
 
-    font-weight:bold;
+    object-fit:cover;
 
-    letter-spacing:1px;
-
-    margin-bottom:12px;
-
-}
-
-
-.book-cover-small strong{
-
-    color:white;
-
-    font-size:18px;
-
-    line-height:1.4;
+    display:block;
 
 }
 
@@ -1262,13 +1235,6 @@ body{
     border-color:#263451;
 
     box-shadow:none;
-
-}
-
-
-.locked-book .book-cover-small{
-
-    background:#1e293b;
 
 }
 
@@ -2585,12 +2551,6 @@ footer p{
 }
 
 .final-book .book-cover-small{
-    background:linear-gradient(
-        135deg,
-        #3b0764,
-        #1e1b4b
-    );
-
     border-color:#7c3aed;
 }
 
@@ -2599,14 +2559,6 @@ footer p{
     box-shadow:
         0 15px 30px rgba(0,0,0,.3),
         0 0 25px rgba(168,85,247,.15);
-}
-
-.final-book .book-cover-small span{
-    color:#c084fc;
-}
-
-.final-book .book-cover-small strong{
-    color:#f5f3ff;
 }
 
 .final-book .book-info h3{

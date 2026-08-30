@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Book II | Data Vault</title>
+
+    <link rel="stylesheet" href="book2.css">
+
+</head>
+
+<body>
+
+
+<!-- =========================
+     BACKGROUND
+========================= -->
+
+<video
+    class="battle-background"
+    autoplay
+    muted
+    loop
+    playsinline
+>
+
+    <source
+        src="videos/book2-dungeon-bg.mp4"
+        type="video/mp4"
+    >
+
+</video>
+
+<div class="background-overlay"></div>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="battle-header">
+
+    <a
+        href="/Main Menu/lesson.html"
+        class="back-button"
+    >
+        ← EXIT
+    </a>
+
+
+    <div class="book-title">
+
+        <span>BOOK II</span>
+
+        <h1>DATA VAULT</h1>
+
+    </div>
+
+
+    <div class="question-counter">
+
+        <span>TRIAL</span>
+
+        <strong id="questionNumber">
+            1 / 9
+        </strong>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     MAIN GAME
+========================= -->
+
+<main class="game-screen">
+
+
+    <!-- =========================
+         TOP BATTLE AREA
+    ========================= -->
+
+    <section class="battle-stage">
+
+
+        <!-- PLAYER -->
+
+        <div class="fighter player-fighter">
+
+
+            <div class="fighter-info">
+
+                <div
+                    class="fighter-name"
+                    id="playerName"
+                >
+                    Logic Witch
+                </div>
+
+                <div
+                    class="fighter-role"
+                    id="playerRole"
+                >
+                    The Problem Solver
+                </div>
+
+            </div>
+
+
+            <!-- HP -->
+
+            <div class="hp-wrapper">
+
+                <div class="hp-top">
+
+                    <span>HP</span>
+
+                    <strong id="playerHpText">
+                        100 / 100
+                    </strong>
+
+                </div>
+
+
+                <div class="hp-bar">
+
+                    <div
+                        class="hp-fill player-hp"
+                        id="playerHp"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- WITCH IMAGE -->
+
+            <div class="witch-display">
+
+                <div class="magic-aura"></div>
+
+                <img
+                    id="playerCharacter"
+                    src=""
+                    alt="Selected Witch"
+                >
+
+            </div>
+
+
+            <!-- SPELL NAME -->
+
+            <div
+                class="spell-name"
+                id="spellName"
+            >
+                C# SPELL
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             CENTER
+        ========================= -->
+
+        <div class="battle-center">
+
+
+            <div class="chapter-badge">
+                THE DATA VAULT
+            </div>
+
+
+            <div class="vs">
+
+                <span>VS</span>
+
+            </div>
+
+
+            <div
+                class="battle-message"
+                id="battleMessage"
+            >
+                Choose your answer...
+            </div>
+
+            <!-- POWER UPS -->
+
+            <div class="power-ups-title">
+                POWER UPS
+            </div>
+
+
+            <div class="power-ups">
+
+
+                <button
+                    class="power-up"
+                    id="hintPower"
+                    title="Remove one wrong answer"
+                >
+
+                    <span class="power-icon">
+                        💡
+                    </span>
+
+                    <span>
+                        HINT
+                    </span>
+
+                    <small id="hintCount">
+                        2
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="power-up"
+                    id="healPower"
+                    title="Restore 25 HP"
+                >
+
+                    <span class="power-icon">
+                        ❤️
+                    </span>
+
+                    <span>
+                        HEAL
+                    </span>
+
+                    <small id="healCount">
+                        1
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="power-up"
+                    id="doublePower"
+                    title="Double your next correct attack"
+                >
+
+                    <span class="power-icon">
+                        ⚡
+                    </span>
+
+                    <span>
+                        2X POWER
+                    </span>
+
+                    <small id="doubleCount">
+                        1
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="power-up"
+                    id="mysticSightPower"
+                    title="Detects the mistake hidden in the code"
+                >
+
+                    <span class="power-icon">
+                        🔍
+                    </span>
+
+                    <span>
+                        MYSTIC SIGHT
+                    </span>
+
+                    <small id="mysticSightCount">
+                        1
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="power-up"
+                    id="omnidataPower"
+                    title="Reveals a major clue about the challenge"
+                >
+
+                    <span class="power-icon">
+                        📊
+                    </span>
+
+                    <span>
+                        OMNIDATA
+                    </span>
+
+                    <small id="omnidataCount">
+                        1
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="power-up"
+                    id="syntaxSorceryPower"
+                    title="Shows the correct syntax needed"
+                >
+
+                    <span class="power-icon">
+                        ✨
+                    </span>
+
+                    <span>
+                        SYNTAX SORCERY
+                    </span>
+
+                    <small id="syntaxSorceryCount">
+                        1
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="power-up"
+                    id="flameburstPower"
+                    title="Clears all wrong options at once"
+                >
+
+                    <span class="power-icon">
+                        🔥
+                    </span>
+
+                    <span>
+                        FLAMEBURST
+                    </span>
+
+                    <small id="flameburstCount">
+                        1
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="power-up"
+                    id="mindcraftPower"
+                    title="Highlights the key problem and shields you from one wrong answer"
+                >
+
+                    <span class="power-icon">
+                        🧠
+                    </span>
+
+                    <span>
+                        MINDCRAFT
+                    </span>
+
+                    <small id="mindcraftCount">
+                        1
+                    </small>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             ENEMY
+        ========================= -->
+
+        <div class="fighter enemy-fighter">
+
+
+            <div class="fighter-info">
+
+                <div class="fighter-name">
+                    The Data Mimic
+                </div>
+
+                <div class="fighter-role">
+                    Shapeshifter
+                </div>
+
+            </div>
+
+
+            <!-- HP -->
+
+            <div class="hp-wrapper">
+
+                <div class="hp-top">
+
+                    <span>MIMIC HP</span>
+
+                    <strong id="enemyHpText">
+                        100 / 100
+                    </strong>
+
+                </div>
+
+
+                <div class="hp-bar">
+
+                    <div
+                        class="hp-fill enemy-hp"
+                        id="enemyHp"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ENEMY IMAGE -->
+
+            <div class="character-frame imp-frame">
+
+            <img
+                id="enemyCharacter"
+                src="images/data-mimic.png"
+                 alt="The Data Mimic"
+             >
+
+            </div>
+
+
+            <div class="spell-name enemy-spell">
+                DATA CORRUPTION
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         BOTTOM GAME AREA
+    ========================= -->
+
+    <section class="battle-bottom">
+
+
+        <!-- =========================
+             LEFT: ANSWERS
+        ========================= -->
+
+        <div class="answer-panel">
+
+            <div class="panel-title">
+
+                <span>
+                    ✦ SPELL OPTIONS
+                </span>
+
+            </div>
+
+
+            <div
+                class="answers"
+                id="answers"
+            ></div>
+
+
+            <div
+                class="feedback"
+                id="feedback"
+            ></div>
+
+        </div>
+
+
+
+        <!-- =========================
+             RIGHT: QUESTION
+        ========================= -->
+
+        <div class="question-panel">
+
+
+            <div
+                class="question-type"
+                id="questionType"
+            >
+                POTION INVENTORY
+            </div>
+
+
+            <h2 id="questionText">
+                What data type is missing?
+            </h2>
+
+
+            <div
+                class="code-display"
+                id="codeDisplay"
+            ></div>
+
+
+            <div class="battle-stats">
+
+
+                <div>
+
+                    <span>POWER</span>
+
+                    <strong id="score">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>ESSENCE</span>
+
+                    <strong id="essence">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>TRIAL</span>
+
+                    <strong id="trialStatus">
+                        0 / 9
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================
+     ATTACK VIDEO
+========================= -->
+
+<div
+    class="attack-animation"
+    id="attackAnimation"
+>
+
+    <video
+        id="attackVideo" 
+        playsinline
+    >
+
+        <source
+            id="attackVideoSource"
+            src=""
+            type="video/mp4"
+        >
+
+    </video>
+
+</div>
+
+
+<!-- =========================
+     SOUND EFFECTS
+========================= -->
+
+<audio id="damageSound" src="audio/damage-hit.mp3" preload="auto"></audio>
+
+<audio id="healSound" src="audio/heal-chime.mp3" preload="auto"></audio>
+
+
+
+<!-- =========================
+     RATIONALE BOX (WRONG ANSWER EXPLANATION)
+========================= -->
+
+<div
+    class="rationale-box"
+    id="rationaleBox"
+>
+
+    <button
+        class="rationale-close"
+        id="rationaleClose"
+        title="Close"
+    >
+        ✕
+    </button>
+
+    <div class="rationale-title">
+        💡 WHY IT'S WRONG
+    </div>
+
+    <div
+        class="rationale-text"
+        id="rationaleText"
+    ></div>
+
+</div>
+
+
+
+<!-- =========================
+     START TRIAL SCREEN
+========================= -->
+
+<section
+    class="start-screen"
+    id="startScreen"
+>
+
+    <div class="start-box">
+
+        <span>
+            BOOK II • THE DATA VAULT
+        </span>
+
+        <h1>
+            THE DATA MIMIC
+        </h1>
+
+        <p>
+            A Shapeshifter known as the Data Mimic has infiltrated
+            the Vault, corrupting every variable it touches — swapping
+            data types, twisting values, and rewriting what each
+            variable was meant to store. Restore each one before
+            the Vault's memory is lost for good.
+        </p>
+
+
+        <div class="selected-witch-preview">
+
+            <img
+                id="startWitchImage"
+                src=""
+                alt="Selected Witch"
+            >
+
+            <div>
+
+                <small>
+                    YOUR WITCH GUIDE
+                </small>
+
+                <strong id="startWitchName">
+                    Logic Witch
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <button id="startBattleButton">
+            ⚔ ENTER THE TRIAL
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     DATA MIMIC INTRO / TAUNT
+     Shown once, right after "ENTER THE TRIAL" and before
+     the first question appears.
+========================= -->
+
+<section
+    class="mimic-intro-screen"
+    id="mimicIntroScreen"
+>
+
+    <div class="mimic-intro-box">
+
+        <div class="mimic-intro-portrait">
+
+            <div class="mimic-intro-aura"></div>
+
+            <img
+                src="images/data-mimic.png"
+                alt="The Data Mimic"
+            >
+
+        </div>
+
+
+        <div class="mimic-intro-name">
+            THE DATA MIMIC
+        </div>
+
+
+        <div
+            class="mimic-dialogue"
+            id="mimicDialogueText"
+        >
+            ...
+        </div>
+
+
+        <button id="mimicContinueButton">
+            CONTINUE ▶
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     VICTORY
+========================= -->
+
+<section
+    class="result-screen"
+    id="resultScreen"
+>
+
+    <div class="result-box">
+
+        <div class="result-icon">
+            🔮
+        </div>
+
+        <span>
+            TRIAL COMPLETE
+        </span>
+
+        <h1>
+            THE VAULT IS RESTORED
+        </h1>
+
+        <p>
+            The Data Mimic has been defeated. The second fragment
+            of the Great C# Spellbook has been recovered.
+            Book III is now unlocked.
+        </p>
+
+
+        <div class="final-stats">
+
+            <div>
+
+                <strong id="finalScore">
+                    0
+                </strong>
+
+                <span>
+                    POWER
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong id="finalEssence">
+                    0
+                </strong>
+
+                <span>
+                    ESSENCE
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <button
+            onclick="location.href='/Main Menu/lesson.html'"
+        >
+            RETURN TO JOURNEY
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     DEFEAT
+========================= -->
+
+<section
+    class="lose-screen"
+    id="loseScreen"
+>
+
+    <div class="lose-box">
+
+        <div class="result-icon">
+            💀
+        </div>
+
+        <span>
+            TRIAL FAILED
+        </span>
+
+        <h1>
+            THE DATA MIMIC OVERPOWERED YOU
+        </h1>
+
+        <p>
+            Your essence has run out. Regroup and retry the
+            trial, or head back to the Academy grounds.
+        </p>
+
+
+        <div class="lose-actions">
+
+            <button id="retryTrialButton">
+                ⟲ RETRY TRIAL
+            </button>
+
+            <button id="loseMenuButton">
+                🏠 RETURN TO MAIN MENU
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<script src="book2.js"></script>
+
+</body>
+
+</html>
