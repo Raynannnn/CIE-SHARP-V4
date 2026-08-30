@@ -662,7 +662,7 @@ function checkBookUnlocks(){
 
         unlockBook(
             2,
-            "/Book2/characters/character.html"
+            "/Book2/characters/character2.html"
         );
 
     }
