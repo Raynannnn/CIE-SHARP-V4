@@ -375,9 +375,9 @@ body{
 
 .witch-display{
 
-    width:250px;
+    width:190px;
 
-    height:250px;
+    height:190px;
 
     position:relative;
 
@@ -396,9 +396,9 @@ body{
 
     z-index:2;
 
-    width:240px;
+    width:190px;
 
-    height:250px;
+    height:190px;
 
     object-fit:contain;
 
@@ -508,24 +508,60 @@ body{
 }
 
 
-.imp-placeholder{
+/* =========================
+   ENEMY CHARACTER IMAGE
+========================= */
 
-    position:relative;
+.imp-frame{
 
-    z-index:2;
+    width:210px;
 
-    font-size:130px;
+    height:210px;
 
-    animation:enemyFloat 2s ease-in-out infinite;
+    max-width:90%;
 
-    filter:
+    margin:auto;
 
-        drop-shadow(
-            0 0 18px
-            rgba(239,68,68,.5)
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-end;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(239,68,68,.18),
+            transparent 65%
         );
 
+
+    overflow:visible;
+
 }
+
+
+/* ACTUAL ENEMY IMAGE */
+
+.imp-frame img{
+
+    width:190px;
+    height:190px;
+
+    max-width:none;
+
+    object-fit:contain;
+
+    display:block;
+
+    animation:
+        enemyFloat 1.8s ease-in-out infinite;
+
+}
+
+
+/* FLOATING EFFECT */
 
 
 @keyframes enemyFloat{
