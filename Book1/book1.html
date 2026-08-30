@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Book I | C# Beginnings</title>
+
+    <link rel="stylesheet" href="book1.css">
+
+</head>
+
+<body>
+
+
+<!-- =========================
+     BACKGROUND
+========================= -->
+
+<video
+    class="battle-background"
+    autoplay
+    muted
+    loop
+    playsinline
+>
+
+    <source
+        src="videos/book1-dungeon-bg.mp4"
+        type="video/mp4"
+    >
+
+</video>
+
+<div class="background-overlay"></div>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="battle-header">
+
+    <a
+        href="/Main Menu/lesson.html"
+        class="back-button"
+    >
+        ← EXIT
+    </a>
+
+
+    <div class="book-title">
+
+        <span>BOOK I</span>
+
+        <h1>C# BEGINNINGS</h1>
+
+    </div>
+
+
+    <div class="question-counter">
+
+        <span>TRIAL</span>
+
+        <strong id="questionNumber">
+            1 / 9
+        </strong>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     MAIN GAME
+========================= -->
+
+<main class="game-screen">
+
+
+    <!-- =========================
+         TOP BATTLE AREA
+    ========================= -->
+
+    <section class="battle-stage">
+
+
+        <!-- PLAYER -->
+
+        <div class="fighter player-fighter">
+
+
+            <div class="fighter-info">
+
+                <div
+                    class="fighter-name"
+                    id="playerName"
+                >
+                    Logic Witch
+                </div>
+
+                <div
+                    class="fighter-role"
+                    id="playerRole"
+                >
+                    The Problem Solver
+                </div>
+
+            </div>
+
+
+            <!-- HP -->
+
+            <div class="hp-wrapper">
+
+                <div class="hp-top">
+
+                    <span>HP</span>
+
+                    <strong id="playerHpText">
+                        100 / 100
+                    </strong>
+
+                </div>
+
+
+                <div class="hp-bar">
+
+                    <div
+                        class="hp-fill player-hp"
+                        id="playerHp"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- WITCH IMAGE -->
+
+            <div class="witch-display">
+
+                <div class="magic-aura"></div>
+
+                <img
+                    id="playerCharacter"
+                    src=""
+                    alt="Selected Witch"
+                >
+
+            </div>
+
+
+            <!-- SPELL NAME -->
+
+            <div
+                class="spell-name"
+                id="spellName"
+            >
+                C# SPELL
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             CENTER
+        ========================= -->
+
+        <div class="battle-center">
+
+
+            <div class="chapter-badge">
+                THE FORGOTTEN ACADEMY
+            </div>
+
+
+            <div class="vs">
+
+                <span>VS</span>
+
+            </div>
+
+
+            <div
+                class="battle-message"
+                id="battleMessage"
+            >
+                Choose your answer...
+            </div>
+
+
+            <!-- POWER UPS -->
+
+            <div class="power-ups-title">
+                POWER UPS
+            </div>
+
+
+            <div class="power-ups">
+
+
+                <button
+                    class="power-up"
+                    id="hintPower"
+                    title="Remove one wrong answer"
+                >
+
+                    <span class="power-icon">
+                        💡
+                    </span>
+
+                    <span>
+                        HINT
+                    </span>
+
+                    <small id="hintCount">
+                        2
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="power-up"
+                    id="healPower"
+                    title="Restore 25 HP"
+                >
+
+                    <span class="power-icon">
+                        ❤️
+                    </span>
+
+                    <span>
+                        HEAL
+                    </span>
+
+                    <small id="healCount">
+                        1
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="power-up"
+                    id="doublePower"
+                    title="Double your next correct attack"
+                >
+
+                    <span class="power-icon">
+                        ⚡
+                    </span>
+
+                    <span>
+                        2X POWER
+                    </span>
+
+                    <small id="doubleCount">
+                        1
+                    </small>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             ENEMY
+        ========================= -->
+
+        <div class="fighter enemy-fighter">
+
+
+            <div class="fighter-info">
+
+                <div class="fighter-name">
+                    Syntax Imp
+                </div>
+
+                <div class="fighter-role">
+                    Corruptor of Symbols
+                </div>
+
+            </div>
+
+
+            <!-- HP -->
+
+            <div class="hp-wrapper">
+
+                <div class="hp-top">
+
+                    <span>IMP HP</span>
+
+                    <strong id="enemyHpText">
+                        100 / 100
+                    </strong>
+
+                </div>
+
+
+                <div class="hp-bar">
+
+                    <div
+                        class="hp-fill enemy-hp"
+                        id="enemyHp"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ENEMY IMAGE -->
+
+            <div class="enemy-display">
+
+                <div class="enemy-aura"></div>
+
+                <div class="imp-placeholder">
+                    👹
+                </div>
+
+            </div>
+
+
+            <div class="spell-name enemy-spell">
+                SYNTAX CORRUPTION
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         BOTTOM GAME AREA
+    ========================= -->
+
+    <section class="battle-bottom">
+
+
+        <!-- =========================
+             LEFT: ANSWERS
+        ========================= -->
+
+        <div class="answer-panel">
+
+            <div class="panel-title">
+
+                <span>
+                    ✦ SPELL OPTIONS
+                </span>
+
+            </div>
+
+
+            <div
+                class="answers"
+                id="answers"
+            ></div>
+
+
+            <div
+                class="feedback"
+                id="feedback"
+            ></div>
+
+        </div>
+
+
+
+        <!-- =========================
+             RIGHT: QUESTION
+        ========================= -->
+
+        <div class="question-panel">
+
+
+            <div
+                class="question-type"
+                id="questionType"
+            >
+                SYNTAX REPAIR
+            </div>
+
+
+            <h2 id="questionText">
+                What symbol is missing?
+            </h2>
+
+
+            <div
+                class="code-display"
+                id="codeDisplay"
+            ></div>
+
+
+            <div class="battle-stats">
+
+
+                <div>
+
+                    <span>POWER</span>
+
+                    <strong id="score">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>ESSENCE</span>
+
+                    <strong id="essence">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>TRIAL</span>
+
+                    <strong id="trialStatus">
+                        0 / 9
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================
+     ATTACK VIDEO
+========================= -->
+
+<div
+    class="attack-animation"
+    id="attackAnimation"
+>
+
+    <video
+        id="attackVideo"
+        muted
+        playsinline
+    >
+
+        <source
+            id="attackVideoSource"
+            src=""
+            type="video/mp4"
+        >
+
+    </video>
+
+</div>
+
+
+
+<!-- =========================
+     START TRIAL SCREEN
+========================= -->
+
+<section
+    class="start-screen"
+    id="startScreen"
+>
+
+    <div class="start-box">
+
+        <span>
+            BOOK I • THE FORGOTTEN ACADEMY
+        </span>
+
+        <h1>
+            THE SYNTAX IMP
+        </h1>
+
+        <p>
+            The Great C# Spellbook has been corrupted.
+            Defeat the Syntax Imp by repairing the broken
+            code and restoring its lost essence.
+        </p>
+
+
+        <div class="selected-witch-preview">
+
+            <img
+                id="startWitchImage"
+                src=""
+                alt="Selected Witch"
+            >
+
+            <div>
+
+                <small>
+                    YOUR WITCH GUIDE
+                </small>
+
+                <strong id="startWitchName">
+                    Logic Witch
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <button id="startBattleButton">
+            ⚔ ENTER THE TRIAL
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     VICTORY
+========================= -->
+
+<section
+    class="result-screen"
+    id="resultScreen"
+>
+
+    <div class="result-box">
+
+        <div class="result-icon">
+            🔮
+        </div>
+
+        <span>
+            TRIAL COMPLETE
+        </span>
+
+        <h1>
+            CODE ESSENCE RESTORED
+        </h1>
+
+        <p>
+            The Syntax Imp has been defeated.
+            The first fragment of the Great C# Spellbook
+            has been recovered.
+        </p>
+
+
+        <div class="final-stats">
+
+            <div>
+
+                <strong id="finalScore">
+                    0
+                </strong>
+
+                <span>
+                    POWER
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong id="finalEssence">
+                    0
+                </strong>
+
+                <span>
+                    ESSENCE
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <button
+            onclick="location.href='/Main Menu/lesson.html'"
+        >
+            RETURN TO JOURNEY
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<script src="book1.js"></script>
+
+</body>
+
+</html>

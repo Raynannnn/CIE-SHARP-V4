@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CIE-Sharp | Choose Your Character</title>
+
+    <link rel="stylesheet" href="lesson.css">
+
+</head>
+
+<body>
+
+    <audio
+    id="bgMusic"
+    src="audio/Title Theme.mp3"
+    loop>
+</audio>
+
+<!-- GAME HEADER -->
+ 
+ <div class="music-control">
+
+    <button
+        id="musicButton"
+        type="button"
+        aria-label="Toggle background music">
+        🔇
+    </button>
+
+</div>
+
+<header class="game-header">
+
+    <a href="/index.html" class="back-button">
+        ← Exit
+    </a>
+
+
+    <div class="game-logo">
+
+        <img
+            src="/images/cie-sharp-logo.png"
+            alt="CIE-Sharp Logo"
+        >
+
+        <div>
+            <h2>CIE-Sharp</h2>
+            <span>C# Adventure</span>
+        </div>
+
+    </div>
+
+
+    <div class="player-info">
+
+        <div class="level-info">
+
+            <span>LEVEL</span>
+            <strong>01</strong>
+
+        </div>
+
+        <div class="xp-info">
+
+            <span>XP</span>
+
+            <strong>0 / 100</strong>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- GAME WORLD -->
+
+<main class="game-world">
+
+
+
+
+    <div class="dungeon-glow"></div>
+
+    <div class="book-decoration book-one">📖</div>
+
+    <div class="book-decoration book-two">📚</div>
+
+    <div class="book-decoration book-three">📕</div>
+
+
+
+    <!--INTRO -->
+
+    <section class="game-intro">
+
+        <span class="chapter-label">
+            THE CIE-SHARP ADVENTURE
+        </span>
+
+        <h1>
+            The Library of C#
+        </h1>
+
+        <p>
+            Before your journey begins, choose the witch
+            who will accompany you through the Arcane Library.
+        </p>
+
+        <button
+            id="openCharacterSelect"
+            class="choose-character-main"
+            type="button"
+        >
+            ✦ CHOOSE YOUR CHARACTER
+        </button>
+
+    </section>
+
+
+
+    <!-- CURRENT CHARACTER + BOOK -->
+
+    <section class="adventure-area">
+
+
+        <!-- CHARACTER BOX -->
+
+        <div class="character-area">
+
+            <div
+                id="selectedCharacterCard"
+                class="selected-character-card"
+            >
+
+               <div class="selected-character-image">
+
+                <img
+                        id="selectedCharacterImage"
+                        class="character-float"
+                        src="images/characters/noe.png"
+                        alt="Selected Character"
+    >
+
+                </div>
+
+                <div class="character-name">
+
+                    <strong id="selectedCharacterName">
+                        NO CHARACTER
+                    </strong>
+
+                    <small id="selectedCharacterRole">
+                        Choose your witch
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="changeCharacterButton"
+                class="change-character-button"
+                type="button"
+            >
+                Change Character
+            </button>
+
+        </div>
+
+
+
+        <!-- MAIN BOOK -->
+
+        <div class="main-book">
+
+
+            <div class="book-cover">
+
+                <div class="book-symbol">
+                    C#
+                </div>
+
+                <span class="book-small-title">
+                    THE ADVENTURES OF
+                </span>
+
+                <h2>
+                    C# SYNTAX
+                </h2>
+
+                <div class="book-line"></div>
+
+                <p>
+                    CIE-SHARP
+                </p>
+
+            </div>
+
+
+            <div class="book-pages">
+
+                <span class="page-label">
+                    YOUR JOURNEY
+                </span>
+
+                <h2>
+                    Book I
+                </h2>
+
+                <p>
+                    The first chapter of your adventure begins
+                    here. Choose your character before entering
+                    the Arcane Library.
+                </p>
+
+
+                <button
+                    class="enter-book-button"
+                    onclick="location.href='/Book1/characters/character.html'"
+                >
+                    OPEN BOOK I →
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- QUEST INFO -->
+
+        <div class="quest-panel">
+
+            <div class="quest-title">
+
+                <span>✦</span>
+                CURRENT QUEST
+
+            </div>
+
+            <h3>
+                THE FIRST SPELL
+            </h3>
+
+            <p>
+                Choose your witch and prepare to enter
+                the first book of the CIE-Sharp journey.
+            </p>
+
+            <div class="quest-progress">
+
+                <div class="quest-progress-bar">
+
+                    <div></div>
+
+                </div>
+
+                <span>
+                    0% Complete
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!--BOOK MAP -->
+
+    <section class="book-map">
+
+
+        <div class="map-title">
+
+            <span>
+                CHAPTER SELECT
+            </span>
+
+            <h2>
+                The C# Learning Books
+            </h2>
+
+            <p>
+                Complete each chapter to continue your adventure.
+            </p>
+
+        </div>
+
+
+
+        <div class="books-container">
+
+
+            <!-- BOOK 1 -->
+
+            <button
+                class="story-book active-book"
+                onclick="openBook1()"
+                type="button"
+            >
+
+                <div class="book-number">
+                    I
+                </div>
+
+                <div class="book-cover-small">
+
+                    <span>BOOK I</span>
+
+                    <strong>
+                        C#
+                        <br>
+                        BEGINNINGS
+                    </strong>
+
+                </div>
+
+                <div class="book-info">
+
+                    <h3>
+                        The First Spell
+                    </h3>
+
+                    <p>
+                        Begin your journey and discover
+                        the foundations of C# programming.
+                    </p>
+
+                    <span class="play-label">
+                        ▶ START CHAPTER
+                    </span>
+
+                </div>
+
+            </button>
+
+
+
+            <!-- BOOK 2 -->
+
+            <div class="story-book locked-book">
+
+                <div class="book-number">
+                    II
+                </div>
+
+                <div class="book-cover-small">
+
+                    <span>BOOK II</span>
+
+                    <strong>
+                        DATA
+                        <br>
+                        VAULT
+                    </strong>
+
+                </div>
+
+                <div class="book-info">
+
+                    <h3>
+                        Variables & Data Types
+                    </h3>
+
+                    <p>
+                        Learn how C# stores and manages
+                        different kinds of information.
+                    </p>
+
+                    <span class="lock-label">
+                        🔒 LOCKED
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BOOK 3 -->
+
+            <div class="story-book locked-book">
+
+                <div class="book-number">
+                    III
+                </div>
+
+                <div class="book-cover-small">
+
+                    <span>BOOK III</span>
+
+                    <strong>
+                        OPERATOR
+                        <br>
+                        FORGE
+                    </strong>
+
+                </div>
+
+                <div class="book-info">
+
+                    <h3>
+                        Operators
+                    </h3>
+
+                    <p>
+                        Master arithmetic, comparison,
+                        and logical operators.
+                    </p>
+
+                    <span class="lock-label">
+                        🔒 LOCKED
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BOOK 4 -->
+
+            <div class="story-book locked-book">
+
+                <div class="book-number">
+                    IV
+                </div>
+
+                <div class="book-cover-small">
+
+                    <span>BOOK IV</span>
+
+                    <strong>
+                        LOGIC
+                        <br>
+                        GATE
+                    </strong>
+
+                </div>
+
+                <div class="book-info">
+
+                    <h3>
+                        Conditional Statements
+                    </h3>
+
+                    <p>
+                        Learn how programs make decisions
+                        using conditions.
+                    </p>
+
+                    <span class="lock-label">
+                        🔒 LOCKED
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BOOK 5 -->
+
+            <div class="story-book locked-book">
+
+                <div class="book-number">
+                    V
+                </div>
+
+                <div class="book-cover-small">
+
+                    <span>BOOK V</span>
+
+                    <strong>
+                        LOOP
+                        <br>
+                        DUNGEON
+                    </strong>
+
+                </div>
+
+                <div class="book-info">
+
+                    <h3>
+                        Loops
+                    </h3>
+
+                    <p>
+                        Explore repetition using
+                        for, while, and do-while loops.
+                    </p>
+
+                    <span class="lock-label">
+                        🔒 LOCKED
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BOOK 6 -->
+
+            <div class="story-book locked-book">
+
+                <div class="book-number">
+                    VI
+                </div>
+
+                <div class="book-cover-small">
+
+                    <span>BOOK VI</span>
+
+                    <strong>
+                        METHOD
+                        <br>
+                        HALL
+                    </strong>
+
+                </div>
+
+                <div class="book-info">
+
+                    <h3>
+                        Methods
+                    </h3>
+
+                    <p>
+                        Learn how reusable blocks of
+                        code organize your programs.
+                    </p>
+
+                    <span class="lock-label">
+                        🔒 LOCKED
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BOOK 7 -->
+
+            <div class="story-book locked-book">
+
+                <div class="book-number">
+                    VII
+                </div>
+
+                <div class="book-cover-small">
+
+                    <span>BOOK VII</span>
+
+                    <strong>
+                        ARRAY
+                        <br>
+                        CHAMBER
+                    </strong>
+
+                </div>
+
+                <div class="book-info">
+
+                    <h3>
+                        Arrays
+                    </h3>
+
+                    <p>
+                        Store multiple values using
+                        arrays.
+                    </p>
+
+                    <span class="lock-label">
+                        🔒 LOCKED
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BOOK 8 -->
+
+            <div class="story-book locked-book">
+
+                <div class="book-number">
+                    VIII
+                </div>
+
+                <div class="book-cover-small">
+
+                    <span>BOOK VIII</span>
+
+                    <strong>
+                        OBJECT
+                        <br>
+                        CASTLE
+                    </strong>
+
+                </div>
+
+                <div class="book-info">
+
+                    <h3>
+                        Classes & Objects
+                    </h3>
+
+                    <p>
+                        Enter the world of object-oriented
+                        programming.
+                    </p>
+
+                    <span class="lock-label">
+                        🔒 LOCKED
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- BOOK 9 -->
+
+<div class="story-book locked-book final-book">
+
+    <div class="book-number">
+        IX
+    </div>
+
+    <div class="book-cover-small">
+
+        <span>BOOK IX</span>
+
+        <strong>
+            THE FINAL
+            <br>
+            TRIAL
+        </strong>
+
+    </div>
+
+    <div class="book-info">
+
+        <h3>
+            The Null Witch
+        </h3>
+
+        <p>
+            Face the final corruption and prove
+            everything you have learned throughout
+            the CIE-Sharp journey.
+        </p>
+
+        <span class="lock-label">
+            🔒 FINAL BOSS
+        </span>
+
+    </div>
+
+</div>
+
+
+
+    <!-- TIP -->
+
+    <section class="game-tip">
+
+        <div class="tip-icon">
+            💡
+        </div>
+
+        <div>
+
+            <strong>
+                ADVENTURER'S TIP
+            </strong>
+
+            <p>
+                Your chosen witch will accompany you
+                throughout your CIE-Sharp journey.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================
+     CHARACTER SELECT MODAL
+========================= -->
+
+<div
+    id="characterModal"
+    class="character-modal"
+>
+
+    <div class="character-modal-content">
+
+
+        <!-- CLOSE -->
+
+        <button
+            id="closeCharacterSelect"
+            class="character-close"
+            type="button"
+        >
+            ×
+        </button>
+
+
+        <!-- TITLE -->
+
+        <div class="character-modal-header">
+
+            <span>
+                CHARACTER SELECTION
+            </span>
+
+            <h2>
+                Choose Your Witch
+            </h2>
+
+            <p>
+                Each witch specializes in a different
+                part of the C# learning journey.
+            </p>
+
+        </div>
+
+
+
+        <!--CHARACTER ROW -->
+
+        <div class="character-row">
+
+
+            <!-- NOE -->
+
+            <button
+                class="character-option logic"
+                data-character="noe"
+                type="button"
+            >
+
+                <div class="character-option-image">
+
+                    <img
+                        src="images/characters/noe.png"
+                        alt="Logic Witch Noe"
+                        class="character-float"
+                    >
+
+                </div>
+
+                <span class="character-class">
+                    LOGIC WITCH
+                </span>
+
+                <h3>
+                    Gi Tei
+                </h3>
+
+                <small>
+                    Logic & Problem-Solving
+                </small>
+
+            </button>
+
+
+
+            <!-- RAYNAN -->
+
+            <button
+                class="character-option data"
+                data-character="raynan"
+                type="button"
+            >
+
+                <div class="character-option-image">
+
+                    <img
+                        src="images/characters/raynan.png"
+                        alt="Data Witch Raynan"
+                        class="character-float"
+                    >
+
+                </div>
+
+                <span class="character-class">
+                    DATA WITCH
+                </span>
+
+                <h3>
+                    Achi
+                </h3>
+
+                <small>
+                    C# Fundamentals & Data
+                </small>
+
+            </button>
+
+
+
+            <!-- PRECY -->
+
+            <button
+                class="character-option codeweaver"
+                data-character="precy"
+                type="button"
+            >
+
+                <div class="character-option-image">
+
+                    <img
+                        src="images/characters/precy.png"
+                        alt="Codeweaver Witch Precy"
+                        class="character-float"
+                    >
+
+                </div>
+
+                <span class="character-class">
+                    CODEWEAVER WITCH
+                </span>
+
+                <h3>
+                    Lee Serin
+                </h3>
+
+                <small>
+                    C# Syntax & Structure
+                </small>
+
+            </button>
+
+
+
+            <!-- BEA -->
+
+            <button
+                class="character-option ember"
+                data-character="bea"
+                type="button"
+            >
+
+                <div class="character-option-image">
+
+                    <img
+                        src="images/characters/bea.png"
+                        alt="Ember Witch Bea"
+                        class="character-float"
+                    >
+
+                </div>
+
+                <span class="character-class">
+                    EMBER WITCH
+                </span>
+
+                <h3>
+                   Cythera
+                </h3>
+
+                <small>
+                    Practice & Challenges
+                </small>
+
+            </button>
+
+
+
+            <!-- JOSES -->
+
+            <button
+                class="character-option logiccraft"
+                data-character="joses"
+                type="button"
+            >
+
+                <div class="character-option-image">
+
+                    <img
+                        src="images/characters/joses.png"
+                        alt="Logiccraft Witch Joses"
+                        class="character-float"
+                    >
+
+                </div>
+
+                <span class="character-class">
+                    LOGICCRAFT WITCH
+                </span>
+
+                <h3>
+                    Zari
+                </h3>
+
+                <small>
+                    Applications & Solutions
+                </small>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =========================
+             CHARACTER DETAILS
+        ========================= -->
+
+        <div
+            id="characterDetails"
+            class="character-details hidden"
+        >
+
+            <div class="character-description">
+
+                <span id="detailClass">
+                    LOGIC WITCH
+                </span>
+
+                <h2 id="detailName">
+                    Gi Tei
+                </h2>
+
+                <h3 id="detailSpecialty">
+                    Programming Logic & Problem-Solving
+                </h3>
+
+                <p id="detailDescription">
+                    The Logic Witch specializes in understanding
+                    programming logic and solving problems through
+                    structured thinking.
+                </p>
+
+
+                <div class="character-stat">
+
+                    <span>
+                        SPECIALTY
+                    </span>
+
+                    <strong id="detailStat">
+                        LOGIC
+                    </strong>
+
+                </div>
+
+
+                <button
+                    id="confirmCharacter"
+                    class="confirm-character"
+                    type="button"
+                >
+                    CHOOSE THIS CHARACTER
+                </button>
+
+            </div>
+
+
+
+            <!-- VIDEO -->
+
+            <div class="character-video-box">
+
+                <div class="video-label">
+                    CHARACTER INTRO
+                </div>
+
+                <video
+                    id="characterVideo"
+                    autoplay
+                    loop
+                    playsinline
+                    preload="auto"
+>
+                    <source
+                         id="characterVideoSource"
+                         src=""
+                        type="video/mp4"
+                    >
+
+                Your browser does not support video playback.
+            </video>
+
+                <p id="videoPlaceholder">
+                    Character animation preview will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- FOOTER-->
+
+<footer>
+
+    <p>
+        © 2026 CIE-Sharp |
+        Web-Based Microgame Learning Material |
+        BSIE-ICT Research Project
+    </p>
+
+</footer>
+
+
+<script src="lesson.js"></script>
+
+</body>
+
+</html>

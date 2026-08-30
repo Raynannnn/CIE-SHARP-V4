@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>CIE-Sharp | Choose Your Witch</title>
+
+    <link rel="stylesheet" href="character.css">
+
+</head>
+
+<body>
+
+<!-- =========================
+     STORY START SCREEN
+========================= -->
+
+<div
+    class="intro-start-screen"
+    id="introStartScreen"
+>
+
+    <div class="intro-start-content">
+
+        <span>THE WITCH WORLD AWAITS</span>
+
+        <h1>CIE-SHARP</h1>
+
+        <p>
+            The Great C# Spellbook has been corrupted.
+        </p>
+
+        <button id="startStoryButton">
+            ✦ BEGIN THE JOURNEY
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     STORY VIDEO
+========================= -->
+
+<div
+    class="intro-video-screen"
+    id="introVideoScreen"
+>
+
+    <video
+        id="storyVideo"
+        playsinline
+        preload="auto"
+    >
+
+        <source
+            src="videos/book1-intro.mp4"
+            type="video/mp4"
+        >
+
+    </video>
+
+
+    <!-- SKIP BUTTON -->
+
+    <button
+        id="skipStoryButton"
+        class="skip-story-button"
+    >
+        SKIP STORY →
+    </button>
+
+</div>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="game-header">
+
+    <div class="logo">
+
+        <span>✦</span>
+
+        <h2>CIE-SHARP</h2>
+
+    </div>
+
+
+    <a
+        href="/Main Menu/lesson.html"
+        class="back-button"
+    >
+        ← Back
+    </a>
+
+</header>
+
+
+<!-- =========================
+     CHARACTER SELECTION
+========================= -->
+
+<section
+    class="character-screen"
+    id="characterScreen"
+>
+
+    <div class="character-header">
+
+        <span class="chapter-label">
+            THE FIVE WITCH PATHS
+        </span>
+
+        <h1>
+            Choose Your Witch Guide
+        </h1>
+
+        <p>
+            Every apprentice has a different way of learning magic.
+            Choose your Witch Guide carefully.
+            Your choice will determine your journey.
+        </p>
+
+    </div>
+
+
+    <!-- =========================
+         CHARACTERS
+    ========================= -->
+
+    <div class="characters-container">
+
+
+        <!-- NOE -->
+
+        <div
+            class="character-card"
+            data-character="noe"
+        >
+
+            <div class="character-image black">
+
+                <img
+                    src="images/noe.png"
+                    alt="Logic Witch Noe"
+                >
+
+            </div>
+
+            <div class="character-info">
+
+                <span class="character-title">
+                    LOGIC WITCH
+                </span>
+
+                <h2>
+                    Noe
+                </h2>
+
+                <p>
+                    The Problem Solver
+                </p>
+
+                <small>
+                    🧠 Programming Logic &
+                    Problem-Solving
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- RAYNAN -->
+
+        <div
+            class="character-card"
+            data-character="raynan"
+        >
+
+            <div class="character-image green">
+
+                <img
+                    src="images/raynan.png"
+                    alt="Data Witch Raynan"
+                >
+
+            </div>
+
+            <div class="character-info">
+
+                <span class="character-title">
+                    DATA WITCH
+                </span>
+
+                <h2>
+                    Raynan
+                </h2>
+
+                <p>
+                    The Keeper of Knowledge
+                </p>
+
+                <small>
+                    📊 C# Fundamentals &
+                    Data
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRECY -->
+
+        <div
+            class="character-card"
+            data-character="precy"
+        >
+
+            <div class="character-image red">
+
+                <img
+                    src="images/precy.png"
+                    alt="Codeweaver Witch Precy"
+                >
+
+            </div>
+
+            <div class="character-info">
+
+                <span class="character-title">
+                    CODEWEAVER WITCH
+                </span>
+
+                <h2>
+                    Precy
+                </h2>
+
+                <p>
+                    The Master of Syntax
+                </p>
+
+                <small>
+                    ⚙️ C# Syntax &
+                    Programming Structure
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- BEA -->
+
+        <div
+            class="character-card"
+            data-character="bea"
+        >
+
+            <div class="character-image pink">
+
+                <img
+                    src="images/bea.png"
+                    alt="Ember Witch Bea"
+                >
+
+            </div>
+
+            <div class="character-info">
+
+                <span class="character-title">
+                    EMBER WITCH
+                </span>
+
+                <h2>
+                    Bea
+                </h2>
+
+                <p>
+                    The Challenge Master
+                </p>
+
+                <small>
+                    🧩 C# Practice &
+                    Challenges
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- JOSES -->
+
+        <div
+            class="character-card"
+            data-character="joses"
+        >
+
+            <div class="character-image blue">
+
+                <img
+                    src="images/joses.png"
+                    alt="Logicraft Witch Joses"
+                >
+
+            </div>
+
+            <div class="character-info">
+
+                <span class="character-title">
+                    LOGICRAFT WITCH
+                </span>
+
+                <h2>
+                    Joses
+                </h2>
+
+                <p>
+                    The Creative Builder
+                </p>
+
+                <small>
+                    ✨ C# Applications &
+                    Creative Solutions
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         SELECTED PANEL
+    ========================= -->
+
+    <div
+        class="selected-panel"
+        id="selectedPanel"
+    >
+
+        <span>
+            SELECTED WITCH
+        </span>
+
+        <h2 id="selectedName">
+            No Witch Selected
+        </h2>
+
+        <p id="selectedDescription">
+            Choose a Witch Guide to begin your journey.
+        </p>
+
+        <button
+            id="continueButton"
+            disabled
+        >
+            Continue to Book I →
+        </button>
+
+    </div>
+
+</section>
+
+
+<script src="character.js"></script>
+
+</body>
+
+</html>
