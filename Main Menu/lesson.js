@@ -587,13 +587,13 @@ function openBook1(){
 
 
     window.location.href =
-        "../Book1/characters/character.html";
+        "/Book1/characters/character.html";
 
 }
 
 
 /* =========================================================
-   BOOK UNLOCKING (added)
+   BOOK UNLOCKING
    Reads the progress flags saved by each book (e.g.
    "book2Unlocked" saved by Book I once it's completed) and
    turns the matching locked-book card into a clickable one.
@@ -662,19 +662,34 @@ function checkBookUnlocks(){
 
         unlockBook(
             2,
-            "../Book2/characters/character2.html"
+            "/Book2/characters/character2.html"
+        );
+
+    }
+
+
+    /* BOOK III — unlocked once Book II is completed
+       (book2.js sets "book3Unlocked" to "true" in its
+       saveBookProgress() function) */
+
+    if(localStorage.getItem("book3Unlocked") === "true"){
+
+        unlockBook(
+            3,
+            "../Book3/characters/character3.html"
         );
 
     }
 
 
     /*
-    When Book II starts saving its own "book3Unlocked" flag,
-    add the same pattern here, e.g.:
+    When Book III starts saving its own "book4Unlocked" flag
+    (it already does, in book3.js), add the same pattern here
+    once Book IV exists, e.g.:
 
-    if(localStorage.getItem("book3Unlocked") === "true"){
+    if(localStorage.getItem("book4Unlocked") === "true"){
 
-        unlockBook(3, "/Book3/characters/character.html");
+        unlockBook(4, "/Book4/characters/character.html");
 
     }
     */

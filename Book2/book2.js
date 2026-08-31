@@ -660,6 +660,10 @@ if(mimicContinueButton){
    START BATTLE
 ========================= */
 
+var bgMusic =
+    document.getElementById("bgMusic");
+
+
 document
     .getElementById("startBattleButton")
     .addEventListener(
@@ -671,12 +675,31 @@ document
                 .style.display = "none";
 
 
+            /* START BACKGROUND MUSIC
+               (tied to this click so the browser's
+               autoplay-with-sound policy allows it) */
+
+            if(bgMusic){
+
+                bgMusic.currentTime = 0;
+
+                bgMusic.play().catch(function(){
+
+                    console.log(
+                        "Background music could not start."
+                    );
+
+                });
+
+            }
+
+
             startMimicIntro();
 
         }
     );
 
-
+    
 
 /* =========================
    POWER AVAILABILITY PER QUESTION
@@ -2289,3 +2312,99 @@ rationaleClose.addEventListener(
     "click",
     hideRationale
 );
+
+/* =========================
+   BACKGROUND MUSIC
+========================= */
+
+var bgMusic =
+    document.getElementById("bgMusic");
+
+var musicButton =
+    document.getElementById("musicButton");
+
+
+if(bgMusic && musicButton){
+
+    /* VOLUME */
+
+    bgMusic.volume = 1.00;
+
+
+    /* REMEMBER MUSIC SETTING (separate key from other pages) */
+
+    var book2MusicEnabled =
+        localStorage.getItem(
+            "cieSharpBook2Music"
+        );
+
+
+    /* MUSIC BUTTON */
+
+    musicButton.addEventListener(
+        "click",
+        function(){
+
+            if(bgMusic.paused){
+
+                bgMusic.play()
+                    .then(function(){
+
+                        musicButton.innerText =
+                            "🔊";
+
+                        localStorage.setItem(
+                            "cieSharpBook2Music",
+                            "on"
+                        );
+
+                    })
+                    .catch(function(){
+
+                        alert(
+                            "Click the music button again to start the music."
+                        );
+
+                    });
+
+            }
+
+            else{
+
+                bgMusic.pause();
+
+                musicButton.innerText =
+                    "🔇";
+
+                localStorage.setItem(
+                    "cieSharpBook2Music",
+                    "off"
+                );
+
+            }
+
+        }
+    );
+
+
+    /* START MUSIC IF PREVIOUSLY ENABLED */
+
+    if(book2MusicEnabled === "on"){
+
+        bgMusic.play()
+            .then(function(){
+
+                musicButton.innerText =
+                    "🔊";
+
+            })
+            .catch(function(){
+
+                musicButton.innerText =
+                    "🔇";
+
+            });
+
+    }
+
+}

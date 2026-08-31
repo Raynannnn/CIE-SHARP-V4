@@ -68,18 +68,21 @@ var characters = {
     },
 
 
-    joses: {
+    /* FIXED: key changed from "joses" to "Zari" so it matches
+       the data-character="Zari" attribute used in character2.html */
+
+    Zari: {
 
         name: "Logicraft Witch",
 
-        displayName: "Logicraft Witch — Joses",
+        displayName: "Logicraft Witch — Zari",
 
         role: "The Creative Builder",
 
         description:
         "Learn C# through applications and creative solutions.",
 
-        image: "images/joses.png"
+        image: "images/Zari.png"
 
     }
 
@@ -89,7 +92,6 @@ var characters = {
 /* =========================
    ELEMENTS
 ========================= */
-
 
 
 var characterScreen =
@@ -121,6 +123,21 @@ var continueButton =
         "continueButton"
     );
 
+
+/* =========================
+   FIXED: SHOW THE CHARACTER SCREEN
+   Book II has no intro video screen like Book I's
+   character.html, so nothing was ever removing the
+   "display:none" that .character-screen starts with
+   in character2.css. Show it immediately on load.
+========================= */
+
+if(characterScreen){
+
+    characterScreen.style.display =
+        "block";
+
+}
 
 
 
@@ -192,6 +209,13 @@ characterCards.forEach(
 
                 /* =========================
                    SAVE CHARACTER
+
+                   FIXED: also save under "cieSharpCharacter",
+                   since that is the key book2.js actually
+                   reads from. The old code only saved
+                   "selectedCharacter", which book2.js never
+                   looks at, so the witch chosen here never
+                   carried over into Book II.
                 ========================= */
 
                 localStorage.setItem(
@@ -202,6 +226,12 @@ characterCards.forEach(
 
                 localStorage.setItem(
                     "selectedCharacter",
+                    characterID
+                );
+
+
+                localStorage.setItem(
+                    "cieSharpCharacter",
                     characterID
                 );
 
@@ -231,7 +261,10 @@ characterCards.forEach(
 
 
 /* =========================
-   CONTINUE TO BOOK 1
+   CONTINUE TO BOOK 2
+
+   FIXED: this screen is Book II's character select, so it
+   should send the player into book2.html, not book1.html.
 ========================= */
 
 continueButton.addEventListener(
@@ -256,13 +289,13 @@ continueButton.addEventListener(
 
 
         console.log(
-            "Entering Book I as:",
+            "Entering Book II as:",
             selectedWitch
         );
 
 
         window.location.href =
-            "../book1.html";
+            "../book2.html";
 
     }
 );
