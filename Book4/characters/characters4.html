@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>CIE-Sharp | Choose Your Witch</title>
+
+    <link rel="stylesheet" href="characters4.css">
+
+</head>
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="game-header">
+
+    <div class="logo">
+
+        <span>✦</span>
+
+        <h2>CIE-SHARP</h2>
+
+    </div>
+
+
+    <a
+        href="/Main%20Menu/lesson.html"
+        class="back-button"
+    >
+        ← Back
+    </a>
+
+</header>
+
+
+<!-- =========================
+     CHARACTER SELECTION
+========================= -->
+
+<section
+    class="character-screen"
+    id="characterScreen"
+>
+
+    <div class="character-header">
+
+        <span class="chapter-label">
+            THE FIVE WITCH PATHS
+        </span>
+
+        <h1>
+            Choose Your Witch Guide
+        </h1>
+
+        <p>
+            Every apprentice has a different way of learning magic.
+            Choose your Witch Guide carefully.
+            Your choice will determine your journey.
+        </p>
+
+    </div>
+
+
+    <!-- =========================
+         CHARACTERS
+    ========================= -->
+
+    <div class="characters-container">
+
+
+        <!-- GiTei -->
+
+        <div
+            class="character-card"
+            data-character="GiTei"
+        >
+
+            <div class="character-image black">
+
+                <img
+                    src="images/GiTei.png"
+                    alt="Logic Witch GiTei"
+                >
+
+            </div>
+
+            <div class="character-info">
+
+                <span class="character-title">
+                    LOGIC WITCH
+                </span>
+
+                <h2>
+                    GiTei
+                </h2>
+
+                <p>
+                    The Problem Solver
+                </p>
+
+                <small>
+                    🧠 Programming Logic &
+                    Problem-Solving
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- Achi -->
+
+        <div
+            class="character-card"
+            data-character="Achi"
+        >
+
+            <div class="character-image green">
+
+                <img
+                    src="images/Achi.png"
+                    alt="Data Witch Achi"
+                >
+
+            </div>
+
+            <div class="character-info">
+
+                <span class="character-title">
+                    DATA WITCH
+                </span>
+
+                <h2>
+                    Achi
+                </h2>
+
+                <p>
+                    The Keeper of Knowledge
+                </p>
+
+                <small>
+                    📊 C# Fundamentals &
+                    Data
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- LEESERIN -->
+
+        <div
+            class="character-card"
+            data-character="LeeSerin"
+        >
+
+            <div class="character-image red">
+
+                <img
+                    src="images/LeeSerin.png"
+                    alt="Codeweaver Witch LeeSerin"
+                >
+
+            </div>
+
+            <div class="character-info">
+
+                <span class="character-title">
+                    CODEWEAVER WITCH
+                </span>
+
+                <h2>
+                    LeeSerin
+                </h2>
+
+                <p>
+                    The Master of Syntax
+                </p>
+
+                <small>
+                    ⚙️ C# Syntax &
+                    Programming Structure
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- CYTHERA -->
+
+        <div
+            class="character-card"
+            data-character="Cythera"
+        >
+
+            <div class="character-image pink">
+
+                <img
+                    src="images/Cythera.png"
+                    alt="Ember Witch Cythera"
+                >
+
+            </div>
+
+            <div class="character-info">
+
+                <span class="character-title">
+                    EMBER WITCH
+                </span>
+
+                <h2>
+                    Cythera
+                </h2>
+
+                <p>
+                    The Challenge Master
+                </p>
+
+                <small>
+                    🧩 C# Practice &
+                    Challenges
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- ZARI -->
+
+        <div
+            class="character-card"
+            data-character="Zari"
+        >
+
+            <div class="character-image blue">
+
+                <img
+                    src="images/Zari.png"
+                    alt="Logicraft Witch Zari"
+                >
+
+            </div>
+
+            <div class="character-info">
+
+                <span class="character-title">
+                    LOGICRAFT WITCH
+                </span>
+
+                <h2>
+                    Zari
+                </h2>
+
+                <p>
+                    The Creative Builder
+                </p>
+
+                <small>
+                    ✨ C# Applications &
+                    Creative Solutions
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         SELECTED PANEL
+    ========================= -->
+
+    <div
+        class="selected-panel"
+        id="selectedPanel"
+    >
+
+        <span>
+            SELECTED WITCH
+        </span>
+
+        <h2 id="selectedName">
+            No Witch Selected
+        </h2>
+
+        <p id="selectedDescription">
+            Choose a Witch Guide to begin your journey.
+        </p>
+
+        <button
+            id="continueButton"
+            disabled
+        >
+            Continue to Book IV →
+        </button>
+
+    </div>
+
+</section>
+
+
+<script src="characters4.js"></script>
+
+</body>
+
+</html>

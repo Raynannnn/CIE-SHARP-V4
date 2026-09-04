@@ -318,7 +318,7 @@ Console.WriteLine(x * y);`,
     {
         type: "MEMORY VAULT",
 
-        mode: "choice",
+        mode: "type",
 
         question: "What value is now stored in mana?",
 
@@ -326,14 +326,9 @@ Console.WriteLine(x * y);`,
 `int mana = 50;
 mana += 20;`,
 
-        answers: [
-            "70",
-            "30",
-            "1050",
-            "20"
-        ],
+        expectedAnswer: "70",
 
-        correct: 0,
+        placeholder: "70",
 
         mistakeSpot: "+= 20",
 
@@ -348,7 +343,7 @@ mana += 20;`,
     {
         type: "MEMORY VAULT",
 
-        mode: "choice",
+        mode: "type",
 
         question: "What value is now stored in score?",
 
@@ -356,14 +351,9 @@ mana += 20;`,
 `int score = 100;
 score -= 25;`,
 
-        answers: [
-            "75",
-            "125",
-            "25",
-            "100"
-        ],
+        expectedAnswer: "75",
 
-        correct: 0,
+        placeholder: "75",
 
         mistakeSpot: "-= 25",
 
@@ -378,7 +368,7 @@ score -= 25;`,
     {
         type: "MEMORY VAULT",
 
-        mode: "choice",
+        mode: "type",
 
         question: "What value is now stored in damage?",
 
@@ -386,14 +376,9 @@ score -= 25;`,
 `int damage = 10;
 damage *= 3;`,
 
-        answers: [
-            "30",
-            "13",
-            "7",
-            "10"
-        ],
+        expectedAnswer: "30",
 
-        correct: 0,
+        placeholder: "30",
 
         mistakeSpot: "*= 3",
 

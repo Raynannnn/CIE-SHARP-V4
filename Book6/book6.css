@@ -1,0 +1,3757 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+
+}
+
+
+body{
+
+    font-family:'VT323', monospace;
+
+    background:#050811;
+
+    color:white;
+
+}
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.battle-background{
+
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    z-index:-5;
+
+}
+
+
+.background-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(
+            rgba(3,7,18,.60),
+            rgba(3,7,18,.88)
+        );
+
+    z-index:-4;
+
+}
+
+
+
+/* =========================
+   HEADER
+========================= */
+
+.battle-header{
+
+    height:68px;
+
+    display:grid;
+
+    grid-template-columns:1fr auto 1fr;
+
+    align-items:center;
+
+    padding:8px 30px;
+
+    background:rgba(5,9,20,.95);
+
+    border-bottom:2px solid #334155;
+
+    position:relative;
+
+    z-index:10;
+
+}
+
+
+.back-button{
+
+    width:max-content;
+
+    padding:8px 15px;
+
+    color:#cbd5e1;
+
+    text-decoration:none;
+
+    background:#111827;
+
+    border:1px solid #334155;
+
+    border-radius:5px;
+
+    font-size:15px;
+
+}
+
+
+.back-button:hover{
+
+    background:#263451;
+
+    color:white;
+
+}
+
+
+.book-title{
+
+    text-align:center;
+
+}
+
+
+.book-title span{
+
+    display:block;
+
+    color:#94a3b8;
+
+    font-size:11px;
+
+    letter-spacing:3px;
+
+}
+
+
+.book-title h1{
+
+    font-size:22px;
+
+    letter-spacing:2px;
+
+}
+
+
+.question-counter{
+
+    text-align:right;
+
+}
+
+
+.question-counter span{
+
+    display:block;
+
+    color:#64748b;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+}
+
+
+.question-counter strong{
+
+    color:#94a3b8;
+
+    font-size:18px;
+
+}
+
+
+
+/* =========================
+   MAIN
+========================= */
+
+.game-screen{
+
+    width:100%;
+
+    height:calc(100vh - 68px);
+
+    padding:15px 25px 20px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+
+
+/* =========================
+   BATTLE STAGE
+========================= */
+
+.battle-stage{
+
+    flex:1;
+
+    min-height:0;
+
+    display:grid;
+
+    grid-template-columns:1fr 230px 1fr;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+
+
+/* =========================
+   FIGHTER
+========================= */
+
+.fighter{
+
+    height:100%;
+
+    min-height:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    position:relative;
+
+}
+
+
+.fighter-info{
+
+    text-align:center;
+
+    margin-bottom:7px;
+
+}
+
+
+.fighter-name{
+
+    font-size:25px;
+
+    letter-spacing:1px;
+
+}
+
+
+.fighter-role{
+
+    color:#94a3b8;
+
+    font-size:12px;
+
+}
+
+
+.player-fighter .fighter-name{
+
+    color:#a78bfa;
+
+}
+
+
+.enemy-fighter .fighter-name{
+
+    color:#f87171;
+
+}
+
+
+
+/* =========================
+   HP
+========================= */
+
+.hp-wrapper{
+
+    width:220px;
+
+    max-width:90%;
+
+    margin-bottom:8px;
+
+}
+
+
+.hp-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    color:#94a3b8;
+
+    font-size:11px;
+
+    margin-bottom:3px;
+
+}
+
+
+.hp-top strong{
+
+    color:#e2e8f0;
+
+}
+
+
+.hp-bar{
+
+    width:100%;
+
+    height:13px;
+
+    padding:2px;
+
+    background:#111827;
+
+    border:1px solid #475569;
+
+}
+
+
+.hp-fill{
+
+    height:100%;
+
+    width:100%;
+
+    transition:width .5s ease;
+
+}
+
+
+.player-hp{
+
+    background:#22c55e;
+
+}
+
+
+.enemy-hp{
+
+    background:#ef4444;
+
+}
+
+
+
+/* =========================
+   WITCH DISPLAY
+========================= */
+
+.witch-display{
+
+    width:190px;
+
+    height:190px;
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-end;
+
+}
+
+
+.witch-display img{
+
+    position:relative;
+
+    z-index:2;
+
+    width:190px;
+
+    height:190px;
+
+    object-fit:contain;
+
+    animation:floatWitch 3s ease-in-out infinite;
+
+    filter:
+
+        drop-shadow(
+            0 0 15px
+            rgba(167,139,250,.55)
+        );
+
+}
+
+
+.magic-aura{
+
+    position:absolute;
+
+    width:210px;
+
+    height:210px;
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(139,92,246,.35),
+            transparent 68%
+        );
+
+    animation:pulseAura 2s infinite;
+
+}
+
+
+@keyframes floatWitch{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-9px);
+    }
+
+}
+
+
+@keyframes pulseAura{
+
+    0%,100%{
+        transform:scale(.9);
+        opacity:.5;
+    }
+
+    50%{
+        transform:scale(1.1);
+        opacity:1;
+    }
+
+}
+
+
+
+/* =========================
+   ENEMY
+========================= */
+
+.enemy-display{
+
+    width:250px;
+
+    height:250px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    position:relative;
+
+}
+
+
+.enemy-aura{
+
+    position:absolute;
+
+    width:200px;
+
+    height:200px;
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(239,68,68,.25),
+            transparent 68%
+        );
+
+}
+
+
+/* =========================
+   ENEMY CHARACTER IMAGE
+========================= */
+
+.imp-frame{
+
+    width:210px;
+
+    height:210px;
+
+    max-width:90%;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-end;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(239,68,68,.18),
+            transparent 65%
+        );
+
+
+    overflow:visible;
+
+}
+
+
+/* ACTUAL ENEMY IMAGE */
+
+.imp-frame img{
+
+    width:190px;
+    height:190px;
+
+    max-width:none;
+
+    object-fit:contain;
+
+    display:block;
+
+    animation:
+        enemyFloat 1.8s ease-in-out infinite;
+
+}
+
+
+/* FLOATING EFFECT */
+
+
+@keyframes enemyFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+}
+
+
+.spell-name{
+
+    padding:4px 13px;
+
+    border-radius:20px;
+
+    background:rgba(76,29,149,.35);
+
+    border:1px solid #6d28d9;
+
+    color:#c4b5fd;
+
+    font-size:11px;
+
+}
+
+
+.enemy-spell{
+
+    background:rgba(127,29,29,.35);
+
+    border-color:#991b1b;
+
+    color:#fca5a5;
+
+}
+
+
+
+/* =========================
+   CENTER
+========================= */
+
+.battle-center{
+
+    height:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+}
+
+
+.chapter-badge{
+
+    color:#facc15;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    margin-bottom:12px;
+
+}
+
+
+.vs{
+
+    width:90px;
+
+    height:90px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(239,68,68,.25),
+            transparent 70%
+        );
+
+    border:2px solid rgba(239,68,68,.5);
+
+    box-shadow:
+
+        0 0 30px
+        rgba(239,68,68,.18);
+
+}
+
+
+.vs span{
+
+    font-size:35px;
+
+    color:#facc15;
+
+}
+
+
+.battle-message{
+
+    min-height:35px;
+
+    margin-top:10px;
+
+    color:#cbd5e1;
+
+    font-size:13px;
+
+}
+
+
+
+/* =========================
+   POWER UPS
+========================= */
+
+.power-ups-title{
+
+    margin-top:15px;
+
+    color:#64748b;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+}
+
+
+.power-ups{
+
+    display:flex;
+
+    flex-wrap:nowrap;
+
+    justify-content:center;
+
+    gap:5px;
+
+    margin-top:6px;
+
+    max-width:100%;
+
+}
+
+
+.power-up{
+
+    width:52px;
+
+    height:58px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    position:relative;
+
+    background:#111827;
+
+    border:1px solid #334155;
+
+    border-radius:7px;
+
+    color:#cbd5e1;
+
+    font-family:inherit;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+
+.power-up:hover{
+
+    transform:translateY(-3px);
+
+    border-color:#818cf8;
+
+    background:#1e293b;
+
+}
+
+
+.power-up.used{
+
+    opacity:.35;
+
+    cursor:not-allowed;
+
+    transform:none;
+
+}
+
+
+.power-icon{
+
+    font-size:19px;
+
+}
+
+
+.power-up > span:not(.power-icon){
+
+    font-size:8px;
+
+    letter-spacing:.5px;
+
+    text-align:center;
+
+}
+
+
+.power-up small{
+
+    position:absolute;
+
+    top:2px;
+
+    right:4px;
+
+    color:#facc15;
+
+    font-size:10px;
+
+}
+
+
+
+/* =========================
+   BOTTOM
+========================= */
+
+.battle-bottom{
+
+    height:200px;
+
+    min-height:200px;
+
+    display:grid;
+
+    grid-template-columns:1fr 1.35fr;
+
+    gap:10px;
+
+}
+
+
+
+/* =========================
+   PANELS
+========================= */
+
+.answer-panel,
+.question-panel{
+
+    background:rgba(6,11,24,.94);
+
+    border:1px solid #334155;
+
+    border-radius:8px;
+
+    padding:12px;
+
+    box-shadow:
+
+        0 10px 30px
+        rgba(0,0,0,.35);
+
+}
+
+
+.panel-title{
+
+    color:#a78bfa;
+
+    font-size:11px;
+
+    letter-spacing:2px;
+
+    margin-bottom:10px;
+
+}
+
+
+
+/* =========================
+   ANSWERS
+========================= */
+
+.answers{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:6px;
+
+}
+
+
+.answer-button{
+
+    min-height:44px;
+
+    padding:7px 10px;
+
+    background:#111827;
+
+    border:1px solid #334155;
+
+    color:#e2e8f0;
+
+    font-family:inherit;
+
+    font-size:14px;
+
+    text-align:left;
+
+    border-radius:5px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+
+.answer-button:hover{
+
+    background:#1e293b;
+
+    border-color:#818cf8;
+
+    transform:translateY(-2px);
+
+}
+
+
+.answer-button.correct{
+
+    background:#14532d;
+
+    border-color:#22c55e;
+
+    color:#bbf7d0;
+
+}
+
+
+.answer-button.wrong{
+
+    background:#7f1d1d;
+
+    border-color:#ef4444;
+
+    color:#fecaca;
+
+}
+
+
+.answer-button:disabled{
+
+    cursor:not-allowed;
+
+}
+
+
+
+/* =========================
+   FEEDBACK
+========================= */
+
+.feedback{
+
+    height:25px;
+
+    margin-top:7px;
+
+    text-align:center;
+
+    font-size:13px;
+
+}
+
+
+.feedback.correct{
+
+    color:#4ade80;
+
+}
+
+
+.feedback.wrong{
+
+    color:#f87171;
+
+}
+
+
+
+/* =========================
+   QUESTION
+========================= */
+
+.question-type{
+
+    color:#94a3b8;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    margin-bottom:4px;
+
+}
+
+
+.question-panel h2{
+
+    font-size:18px;
+
+    margin-bottom:7px;
+
+}
+
+
+.code-display{
+
+    height:72px;
+
+    overflow:auto;
+
+    padding:10px;
+
+    background:#020617;
+
+    border:1px solid #334155;
+
+    color:#93c5fd;
+
+    font-family:monospace;
+
+    font-size:13px;
+
+    white-space:pre-wrap;
+
+}
+
+
+
+/* =========================
+   STATS
+========================= */
+
+.battle-stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    margin-top:8px;
+
+    border:1px solid #29364f;
+
+}
+
+
+.battle-stats div{
+
+    text-align:center;
+
+    padding:5px;
+
+    border-right:1px solid #29364f;
+
+}
+
+
+.battle-stats div:last-child{
+
+    border-right:none;
+
+}
+
+
+.battle-stats span{
+
+    display:block;
+
+    color:#64748b;
+
+    font-size:8px;
+
+    letter-spacing:1px;
+
+}
+
+
+.battle-stats strong{
+
+    color:#94a3b8;
+
+    font-size:16px;
+
+}
+
+
+
+/* =========================
+   ATTACK VIDEO
+========================= */
+
+.attack-animation{
+
+    position:fixed;
+
+    inset:0;
+
+    width:100vw;
+
+    height:100vh;
+
+    z-index:9999;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#000;
+
+    pointer-events:none;
+
+    opacity:0;
+
+}
+
+
+/* SHOW ATTACK */
+
+.attack-animation.show{
+
+    display:flex;
+
+    animation:attackFadeIn .5s ease forwards;
+
+}
+
+
+/* VIDEO */
+
+.attack-animation video{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100vw;
+
+    height:100vh;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+
+/* =========================
+   FADE IN
+========================= */
+
+@keyframes attackFadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+
+/* FADE OUT */
+
+.attack-animation.fade-out{
+
+    animation:attackFadeOut .7s ease forwards;
+
+}
+
+
+@keyframes attackFadeOut{
+
+    from{
+
+        opacity:1;
+
+    }
+
+    to{
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* =========================
+   START SCREEN
+========================= */
+
+.start-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:2000;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(30,41,59,.96),
+            rgba(2,6,23,.98)
+        );
+
+}
+
+
+.start-box{
+
+    width:580px;
+
+    max-width:90%;
+
+    padding:35px;
+
+    text-align:center;
+
+    background:#0b1222;
+
+    border:2px solid #475569;
+
+    box-shadow:
+
+        0 0 60px
+        rgba(99,102,241,.15);
+
+}
+
+
+.start-box > span{
+
+    color:#94a3b8;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+
+}
+
+
+.start-box h1{
+
+    margin:12px 0;
+
+    font-size:40px;
+
+    color:#f8fafc;
+
+}
+
+
+.start-box p{
+
+    color:#94a3b8;
+
+    line-height:1.6;
+
+    font-size:15px;
+
+}
+
+
+.selected-witch-preview{
+
+    width:280px;
+
+    margin:20px auto;
+
+    padding:8px 15px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    text-align:left;
+
+    background:#111827;
+
+    border:1px solid #334155;
+
+}
+
+
+.selected-witch-preview img{
+
+    width:60px;
+
+    height:65px;
+
+    object-fit:contain;
+
+}
+
+
+.selected-witch-preview small{
+
+    display:block;
+
+    color:#64748b;
+
+    font-size:9px;
+
+}
+
+
+.selected-witch-preview strong{
+
+    color:#c4b5fd;
+
+    font-size:18px;
+
+}
+
+
+#startBattleButton{
+
+    padding:13px 28px;
+
+    background:#0b0b0d;
+
+    border:1px solid #818cf8;
+
+    border-radius:5px;
+
+    color:white;
+
+    font-family:inherit;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+
+#startBattleButton:hover{
+
+    background:#111827;
+
+    transform:translateY(-2px);
+
+}
+
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:3000;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:rgba(2,6,23,.97);
+
+}
+
+
+.result-screen.show{
+
+    display:flex;
+
+}
+
+
+.result-box{
+
+    width:600px;
+
+    max-width:90%;
+
+    padding:40px;
+
+    text-align:center;
+
+    background:#0b1222;
+
+    border:2px solid #111827;
+
+}
+
+
+.result-icon{
+
+    font-size:50px;
+
+}
+
+
+.result-box > span{
+
+    color:#94a3b8;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+
+}
+
+
+.result-box h1{
+
+    font-size:30px;
+
+    margin:10px 0;
+
+}
+
+
+.result-box p{
+
+    color:#94a3b8;
+
+    line-height:1.6;
+
+}
+
+
+.final-stats{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:60px;
+
+    margin:20px 0;
+
+}
+
+
+.final-stats strong{
+
+    display:block;
+
+    color:#facc15;
+
+    font-size:30px;
+
+}
+
+
+.final-stats span{
+
+    color:#64748b;
+
+    font-size:10px;
+
+}
+
+
+.result-box button{
+
+    padding:12px 25px;
+
+    border:none;
+
+    background:#0b0b0d;
+
+    color:white;
+
+    font-family:inherit;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+}
+
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:900px){
+
+    html,
+    body{
+
+        overflow:auto;
+
+    }
+
+
+    .battle-stage{
+
+        grid-template-columns:1fr 180px 1fr;
+
+    }
+
+
+    .witch-display,
+    .enemy-display{
+
+        width:190px;
+
+        height:190px;
+
+    }
+
+
+    .witch-display img{
+
+        width:190px;
+
+        height:200px;
+
+    }
+
+
+    .imp-placeholder{
+
+        font-size:100px;
+
+    }
+
+
+    .battle-bottom{
+
+        height:auto;
+
+        min-height:220px;
+
+    }
+
+}
+
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:650px){
+
+    html,
+    body{
+
+        overflow:auto;
+
+    }
+
+
+    .battle-header{
+
+        height:auto;
+
+        grid-template-columns:1fr;
+
+        gap:7px;
+
+        padding:10px;
+
+        text-align:center;
+
+    }
+
+
+    .back-button{
+
+        margin:auto;
+
+    }
+
+
+    .question-counter{
+
+        text-align:center;
+
+    }
+
+
+    .game-screen{
+
+        height:auto;
+
+        padding:15px;
+
+    }
+
+
+    .battle-stage{
+
+        grid-template-columns:1fr;
+
+        gap:15px;
+
+    }
+
+
+    .battle-center{
+
+        order:2;
+
+    }
+
+
+    .player-fighter{
+
+        order:1;
+
+    }
+
+
+    .enemy-fighter{
+
+        order:3;
+
+    }
+
+
+    .battle-bottom{
+
+        grid-template-columns:1fr;
+
+        height:auto;
+
+        min-height:0;
+
+    }
+
+
+    .battle-center{
+
+        min-height:180px;
+
+    }
+
+
+    .witch-display,
+    .enemy-display{
+
+        height:180px;
+
+    }
+
+
+    .witch-display img{
+
+        height:190px;
+
+    }
+
+
+    .answers{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+/* =========================
+   DAMAGE EFFECTS
+========================= */
+
+
+/* RED FLASH */
+
+.damage-flash{
+
+    animation:
+        damageFlash .35s ease;
+
+}
+
+
+/* SHAKE */
+
+.damage-shake{
+
+    animation:
+        damageShake .4s ease;
+
+}
+
+
+/* RED FLASH EFFECT */
+
+@keyframes damageFlash{
+
+    0%{
+
+        filter:
+            brightness(1)
+            saturate(1);
+
+    }
+
+    25%{
+
+        filter:
+            brightness(1.8)
+            saturate(2)
+            drop-shadow(
+                0 0 18px
+                rgba(239,68,68,.9)
+            );
+
+    }
+
+    100%{
+
+        filter:
+            brightness(1)
+            saturate(1);
+
+    }
+
+}
+
+
+/* SHAKE EFFECT */
+
+@keyframes damageShake{
+
+    0%{
+
+        transform:translateX(0);
+
+    }
+
+    15%{
+
+        transform:translateX(-10px);
+
+    }
+
+    30%{
+
+        transform:translateX(10px);
+
+    }
+
+    45%{
+
+        transform:translateX(-8px);
+
+    }
+
+    60%{
+
+        transform:translateX(8px);
+
+    }
+
+    75%{
+
+        transform:translateX(-5px);
+
+    }
+
+    90%{
+
+        transform:translateX(5px);
+
+    }
+
+    100%{
+
+        transform:translateX(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   NEW ADDITIONS BELOW — nothing above this line was removed
+========================================================= */
+
+
+/* =========================
+   CUSTOM DUNGEON FONT
+   Upload your font file into a "fonts" folder next to this
+   CSS file (fonts/dungeon-font.woff2 / .ttf). Rename the
+   paths below if your uploaded filename is different.
+========================= */
+
+@font-face{
+
+    font-family:'DungeonFont';
+
+    src:
+        url('fonts/dungeon-font.woff2') format('woff2'),
+        url('fonts/dungeon-font.ttf') format('truetype');
+
+    font-display:swap;
+
+}
+
+
+.book-title h1,
+.start-box h1,
+.result-box h1,
+.lose-box h1{
+
+    font-family:'DungeonFont','VT323',monospace;
+
+    letter-spacing:3px;
+
+}
+
+
+
+/* =========================
+   FLOATING DAMAGE / HEAL NUMBERS
+========================= */
+
+.floating-number{
+
+    position:absolute;
+
+    left:50%;
+
+    top:38%;
+
+    transform:translate(-50%,0);
+
+    font-family:'VT323',monospace;
+
+    font-size:30px;
+
+    font-weight:bold;
+
+    pointer-events:none;
+
+    z-index:60;
+
+    animation:floatUpNumber 1s ease-out forwards;
+
+}
+
+
+.floating-number.dmg{
+
+    color:#f87171;
+
+    text-shadow:
+
+        0 0 10px rgba(239,68,68,.9),
+        0 0 3px #000;
+
+}
+
+
+.floating-number.heal{
+
+    color:#4ade80;
+
+    text-shadow:
+
+        0 0 10px rgba(34,197,94,.9),
+        0 0 3px #000;
+
+}
+
+
+@keyframes floatUpNumber{
+
+    0%{
+
+        transform:translate(-50%,0);
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:translate(-50%,-55px);
+
+        opacity:0;
+
+    }
+
+}
+
+
+
+/* =========================
+   HEAL FLASH EFFECT (GREEN)
+========================= */
+
+.heal-flash{
+
+    animation:healFlash .5s ease;
+
+}
+
+
+@keyframes healFlash{
+
+    0%{
+
+        filter:
+            brightness(1)
+            saturate(1);
+
+    }
+
+    25%{
+
+        filter:
+            brightness(1.7)
+            saturate(1.8)
+            drop-shadow(
+                0 0 18px
+                rgba(34,197,94,.9)
+            );
+
+    }
+
+    100%{
+
+        filter:
+            brightness(1)
+            saturate(1);
+
+    }
+
+}
+
+
+
+/* =========================
+   MYSTIC SIGHT HIGHLIGHT
+========================= */
+
+.mystic-highlight{
+
+    background:rgba(250,204,21,.35);
+
+    outline:2px solid #facc15;
+
+    border-radius:3px;
+
+    animation:mysticPulse 1s ease-in-out infinite;
+
+}
+
+
+.mystic-highlight-box{
+
+    outline:2px solid #facc15;
+
+    box-shadow:0 0 15px rgba(250,204,21,.5);
+
+    animation:mysticPulse 1s ease-in-out infinite;
+
+}
+
+
+@keyframes mysticPulse{
+
+    0%,100%{
+
+        opacity:1;
+
+    }
+
+    50%{
+
+        opacity:.5;
+
+    }
+
+}
+
+
+
+/* =========================
+   MINDCRAFT HIGHLIGHT
+========================= */
+
+.mindcraft-highlight{
+
+    color:#facc15;
+
+    text-shadow:0 0 10px rgba(250,204,21,.7);
+
+}
+
+
+
+/* =========================
+   RATIONALE BOX (WRONG ANSWER EXPLANATION)
+========================= */
+
+.rationale-box{
+
+    position:fixed;
+
+    left:50%;
+
+    top:50%;
+
+    transform:translate(-50%,-50%) scale(.85);
+
+    width:420px;
+
+    max-width:88%;
+
+    padding:18px 22px;
+
+    background:rgba(6,11,24,.98);
+
+    border:2px solid #ef4444;
+
+    border-radius:8px;
+
+    box-shadow:0 0 40px rgba(239,68,68,.4);
+
+    z-index:5000;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:opacity .25s ease, transform .25s ease;
+
+}
+
+
+.rationale-box.show{
+
+    opacity:1;
+
+    transform:translate(-50%,-50%) scale(1);
+
+    pointer-events:auto;
+
+}
+
+
+.rationale-close{
+
+    position:absolute;
+
+    top:8px;
+
+    right:10px;
+
+    width:24px;
+
+    height:24px;
+
+    background:#111827;
+
+    border:1px solid #ef4444;
+
+    color:#fca5a5;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    font-family:inherit;
+
+    font-size:13px;
+
+    line-height:1;
+
+}
+
+
+.rationale-close:hover{
+
+    background:#7f1d1d;
+
+    color:white;
+
+}
+
+
+.rationale-title{
+
+    color:#fca5a5;
+
+    font-size:13px;
+
+    letter-spacing:2px;
+
+    margin-bottom:6px;
+
+}
+
+
+.rationale-text{
+
+    color:#e2e8f0;
+
+    font-size:15px;
+
+    line-height:1.4;
+
+}
+
+
+
+/* =========================
+   LOSE SCREEN
+========================= */
+
+.lose-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:3000;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:rgba(2,6,23,.97);
+
+}
+
+
+.lose-screen.show{
+
+    display:flex;
+
+}
+
+
+.lose-box{
+
+    width:600px;
+
+    max-width:90%;
+
+    padding:40px;
+
+    text-align:center;
+
+    background:#0b1222;
+
+    border:2px solid #ef4444;
+
+}
+
+
+.lose-box .result-icon{
+
+    font-size:50px;
+
+}
+
+
+.lose-box > span{
+
+    color:#f87171;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+
+}
+
+
+.lose-box h1{
+
+    font-size:30px;
+
+    margin:10px 0;
+
+    color:#fca5a5;
+
+}
+
+
+.lose-box p{
+
+    color:#94a3b8;
+
+    line-height:1.6;
+
+    margin-bottom:20px;
+
+}
+
+
+.lose-actions{
+
+    display:flex;
+
+    gap:15px;
+
+    justify-content:center;
+
+}
+
+
+.lose-actions button{
+
+    padding:12px 22px;
+
+    border:none;
+
+    font-family:inherit;
+
+    font-size:15px;
+
+    cursor:pointer;
+
+    border-radius:5px;
+
+}
+
+
+#retryTrialButton{
+
+    background:#0b0b0d;
+
+    color:white;
+
+}
+
+
+#retryTrialButton:hover{
+
+    background:#111827;
+
+}
+
+
+#loseMenuButton{
+
+    background:#111827;
+
+    border:1px solid #ef4444;
+
+    color:#fca5a5;
+
+}
+
+
+#loseMenuButton:hover{
+
+    background:#7f1d1d;
+
+    color:white;
+
+}
+
+
+/* =========================================================
+   BOOK VI — ROUND 3 ADDITIONS
+   (typed-answer input, disabled power-ups, alchemist intro
+   dialogue, and the Book III character-select screen —
+   kept identical to Book II's structure for consistency,
+   even where currently unused)
+========================================================= */
+
+
+/* =========================
+   TYPED ANSWER INPUT
+========================= */
+
+.type-answer-row{
+
+    grid-column:1 / -1;
+
+    display:flex;
+
+    gap:8px;
+
+}
+
+
+.type-answer-input{
+
+    flex:1;
+
+    min-height:44px;
+
+    padding:8px 12px;
+
+    background:#020617;
+
+    border:1px solid #475569;
+
+    border-radius:5px;
+
+    color:#93c5fd;
+
+    font-family:monospace;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.2s;
+
+}
+
+
+.type-answer-input::placeholder{
+
+    color:#475569;
+
+}
+
+
+.type-answer-input:focus{
+
+    border-color:#818cf8;
+
+    box-shadow:0 0 0 2px rgba(129,140,248,.25);
+
+}
+
+
+.type-answer-input.correct{
+
+    background:#14532d;
+
+    border-color:#22c55e;
+
+    color:#bbf7d0;
+
+}
+
+
+.type-answer-input.wrong{
+
+    background:#7f1d1d;
+
+    border-color:#ef4444;
+
+    color:#fecaca;
+
+    text-decoration:line-through;
+
+}
+
+
+.type-answer-input:disabled{
+
+    cursor:not-allowed;
+
+    opacity:.9;
+
+}
+
+
+.submit-answer-button{
+
+    padding:0 18px;
+
+    min-height:44px;
+
+    background:#0b0b0d;
+
+    border:1px solid #818cf8;
+
+    border-radius:5px;
+
+    color:white;
+
+    font-family:inherit;
+
+    font-size:15px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+
+.submit-answer-button:hover{
+
+    background:#111827;
+
+    transform:translateY(-2px);
+
+}
+
+
+.submit-answer-button:disabled{
+
+    cursor:not-allowed;
+
+    opacity:.6;
+
+    transform:none;
+
+}
+
+
+
+/* =========================
+   POWER-UP TEMPORARILY DISABLED
+========================= */
+
+.power-up.power-disabled{
+
+    opacity:.3;
+
+    filter:grayscale(1);
+
+    cursor:not-allowed;
+
+}
+
+
+.power-up.power-disabled:hover{
+
+    transform:none;
+
+    border-color:#334155;
+
+    background:#111827;
+
+}
+
+
+
+/* =========================
+   ENEMY INTRO / TAUNT SCREEN
+   (reused class names from Book II's "mimic intro" —
+   now shows the Iron Alchemist's dialogue instead)
+========================= */
+
+.mimic-intro-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:2500;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(59,10,10,.94),
+            rgba(2,6,23,.98)
+        );
+
+}
+
+
+.mimic-intro-screen.show{
+
+    display:flex;
+
+}
+
+
+.mimic-intro-box{
+
+    width:560px;
+
+    max-width:90%;
+
+    padding:30px 35px;
+
+    text-align:center;
+
+    background:#0b1222;
+
+    border:2px solid #991b1b;
+
+    box-shadow:
+
+        0 0 60px
+        rgba(239,68,68,.2);
+
+}
+
+
+.mimic-intro-portrait{
+
+    width:140px;
+
+    height:140px;
+
+    margin:0 auto 10px;
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+
+.mimic-intro-aura{
+
+    position:absolute;
+
+    width:150px;
+
+    height:150px;
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(239,68,68,.35),
+            transparent 68%
+        );
+
+    animation:pulseAura 2s infinite;
+
+}
+
+
+.mimic-intro-portrait img{
+
+    position:relative;
+
+    z-index:2;
+
+    width:130px;
+
+    height:130px;
+
+    object-fit:contain;
+
+    animation:enemyFloat 1.8s ease-in-out infinite;
+
+    filter:
+
+        drop-shadow(
+            0 0 15px
+            rgba(239,68,68,.55)
+        );
+
+}
+
+
+.mimic-intro-name{
+
+    color:#f87171;
+
+    font-size:12px;
+
+    letter-spacing:3px;
+
+    margin-bottom:14px;
+
+}
+
+
+.mimic-dialogue{
+
+    min-height:70px;
+
+    color:#e2e8f0;
+
+    font-size:19px;
+
+    line-height:1.5;
+
+    margin-bottom:20px;
+
+}
+
+
+#mimicContinueButton{
+
+    padding:12px 26px;
+
+    background:#7f1d1d;
+
+    border:1px solid #ef4444;
+
+    border-radius:5px;
+
+    color:#fecaca;
+
+    font-family:inherit;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+
+#mimicContinueButton:hover{
+
+    background:#991b1b;
+
+    color:white;
+
+    transform:translateY(-2px);
+
+}
+
+
+
+/* =========================
+   BOOK VI — CHARACTER SELECT SCREEN
+   (character3.html)
+========================= */
+
+.select-screen{
+
+    width:100%;
+
+    min-height:100vh;
+
+    padding:30px 20px 50px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+
+.select-header{
+
+    text-align:center;
+
+    margin-bottom:10px;
+
+}
+
+
+.select-header span{
+
+    display:block;
+
+    color:#94a3b8;
+
+    font-size:11px;
+
+    letter-spacing:3px;
+
+}
+
+
+.select-header h1{
+
+    font-family:'DungeonFont','VT323',monospace;
+
+    font-size:36px;
+
+    letter-spacing:3px;
+
+    margin:8px 0;
+
+}
+
+
+.select-header p{
+
+    color:#94a3b8;
+
+    font-size:15px;
+
+    max-width:520px;
+
+    margin:0 auto;
+
+    line-height:1.5;
+
+}
+
+
+.witch-grid{
+
+    width:100%;
+
+    max-width:1000px;
+
+    margin-top:30px;
+
+    display:grid;
+
+    grid-template-columns:repeat(5,1fr);
+
+    gap:16px;
+
+}
+
+
+.witch-card{
+
+    padding:16px 10px 20px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    text-align:center;
+
+    background:#0b1222;
+
+    border:2px solid #334155;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+
+.witch-card:hover{
+
+    border-color:#818cf8;
+
+    transform:translateY(-4px);
+
+}
+
+
+.witch-card.selected{
+
+    border-color:#a78bfa;
+
+    background:#171233;
+
+    box-shadow:0 0 25px rgba(167,139,250,.35);
+
+}
+
+
+.witch-card-portrait{
+
+    width:100px;
+
+    height:100px;
+
+    margin-bottom:10px;
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+
+.witch-card-aura{
+
+    position:absolute;
+
+    width:100px;
+
+    height:100px;
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(139,92,246,.3),
+            transparent 68%
+        );
+
+}
+
+
+.witch-card-portrait img{
+
+    position:relative;
+
+    z-index:2;
+
+    width:90px;
+
+    height:90px;
+
+    object-fit:contain;
+
+    filter:
+
+        drop-shadow(
+            0 0 10px
+            rgba(167,139,250,.5)
+        );
+
+}
+
+
+.witch-card-name{
+
+    color:#c4b5fd;
+
+    font-size:19px;
+
+    letter-spacing:.5px;
+
+}
+
+
+.witch-card-role{
+
+    color:#94a3b8;
+
+    font-size:12px;
+
+    margin-bottom:8px;
+
+}
+
+
+.witch-card-power{
+
+    padding:3px 10px;
+
+    border-radius:20px;
+
+    background:rgba(76,29,149,.35);
+
+    border:1px solid #6d28d9;
+
+    color:#c4b5fd;
+
+    font-size:10px;
+
+    letter-spacing:1px;
+
+}
+
+
+.select-footer{
+
+    margin-top:35px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+
+.select-footer p{
+
+    color:#64748b;
+
+    font-size:13px;
+
+}
+
+
+#confirmWitchButton{
+
+    padding:13px 32px;
+
+    background:#0b0b0d;
+
+    border:1px solid #818cf8;
+
+    border-radius:5px;
+
+    color:white;
+
+    font-family:inherit;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+
+#confirmWitchButton:hover:not(:disabled){
+
+    background:#111827;
+
+    transform:translateY(-2px);
+
+}
+
+
+#confirmWitchButton:disabled{
+
+    opacity:.4;
+
+    cursor:not-allowed;
+
+}
+
+
+@media(max-width:900px){
+
+    .witch-grid{
+
+        grid-template-columns:repeat(3,1fr);
+
+    }
+
+}
+
+
+@media(max-width:650px){
+
+    html,
+    body{
+
+        overflow:auto;
+
+    }
+
+
+    .witch-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+
+    .mimic-intro-box{
+
+        padding:22px;
+
+    }
+
+
+    .mimic-dialogue{
+
+        font-size:16px;
+
+    }
+
+}
+
+/* =========================
+   MUSIC CONTROL
+========================= */
+
+.music-control{
+    position:fixed;
+
+    right:20px;
+    bottom:20px;
+
+    z-index:500;
+}
+
+.music-control button{
+
+    width:48px;
+    height:48px;
+
+    border:2px solid #334155;
+
+    border-radius:50%;
+
+    background:#111827;
+
+    color:#cbd5e1;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.35);
+
+    transition:.25s;
+
+}
+
+.music-control button:hover{
+
+    background:#1e293b;
+
+    border-color:#94a3b8;
+
+    transform:translateY(-3px);
+
+}
+
+/* =========================================================
+   BOOK VI — METHOD HALL DARK THEME
+   Same Book III structure, darker atmosphere.
+========================================================= */
+
+body.book6-dark{
+
+    background:#020203;
+
+    color:#e5e7eb;
+
+}
+
+
+body.book6-dark .background-overlay{
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0,0,0,.35),
+            rgba(0,0,0,.94)
+        ),
+        linear-gradient(
+            rgba(0,0,0,.68),
+            rgba(0,0,0,.96)
+        );
+
+}
+
+
+body.book6-dark .battle-header{
+
+    background:rgba(0,0,0,.96);
+
+    border-bottom:2px solid #171717;
+
+    box-shadow:
+        0 4px 25px rgba(0,0,0,.8);
+
+}
+
+
+body.book6-dark .book-title span,
+body.book6-dark .question-counter strong{
+
+    color:#9ca3af;
+
+}
+
+
+body.book6-dark .chapter-badge{
+
+    color:#d1d5db;
+
+    border-color:#374151;
+
+    background:#080808;
+
+}
+
+
+body.book6-dark .battle-message{
+
+    color:#d1d5db;
+
+}
+
+
+body.book6-dark .power-up{
+
+    background:#070708;
+
+    border-color:#27272a;
+
+    color:#d4d4d8;
+
+}
+
+
+body.book6-dark .power-up:hover{
+
+    background:#111113;
+
+    border-color:#52525b;
+
+    box-shadow:
+        0 0 15px rgba(255,255,255,.08);
+
+}
+
+
+body.book6-dark .answer-panel,
+body.book6-dark .question-panel{
+
+    background:rgba(3,3,4,.92);
+
+    border-color:#202024;
+
+}
+
+
+body.book6-dark .panel-title{
+
+    color:#d4d4d8;
+
+}
+
+
+body.book6-dark .question-type{
+
+    color:#a1a1aa;
+
+}
+
+
+body.book6-dark .code-display{
+
+    background:#000;
+
+    border-color:#27272a;
+
+    color:#d4d4d8;
+
+    box-shadow:
+        inset 0 0 25px rgba(255,255,255,.025);
+
+}
+
+
+body.book6-dark .answer-button{
+
+    background:#080809;
+
+    border-color:#2a2a2e;
+
+    color:#e4e4e7;
+
+}
+
+
+body.book6-dark .answer-button:hover{
+
+    background:#151518;
+
+    border-color:#71717a;
+
+}
+
+
+body.book6-dark .answer-button.correct{
+
+    background:#101814;
+
+    border-color:#4ade80;
+
+}
+
+
+body.book6-dark .answer-button.wrong{
+
+    background:#160707;
+
+    border-color:#991b1b;
+
+}
+
+
+body.book6-dark .type-answer-input{
+
+    background:#000;
+
+    color:#e4e4e7;
+
+    border-color:#333338;
+
+}
+
+
+body.book6-dark .feedback.wrong{
+
+    color:#fca5a5;
+
+}
+
+
+body.book6-dark .feedback.correct{
+
+    color:#86efac;
+
+}
+
+
+/* =========================================================
+   COPY WARLOCK — BLACK VISUAL
+========================================================= */
+
+.enemy-fighter .character-frame{
+
+    filter:
+        grayscale(1)
+        brightness(.18)
+        contrast(1.55);
+
+    border-color:#171717;
+
+    box-shadow:
+        0 0 35px rgba(0,0,0,.95),
+        inset 0 0 30px rgba(0,0,0,.9);
+
+}
+
+
+.enemy-fighter .character-frame img{
+
+    filter:
+        grayscale(1)
+        brightness(.18)
+        contrast(1.7)
+        drop-shadow(0 0 18px rgba(0,0,0,.95));
+
+}
+
+
+.enemy-fighter .spell-name{
+
+    color:#a1a1aa;
+
+}
+
+
+/* =========================================================
+   DARK WARLOCK INTRO
+========================================================= */
+
+.mimic-intro-screen{
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(10,10,12,.86),
+            rgba(0,0,0,.985) 72%
+        );
+
+    overflow:hidden;
+
+}
+
+
+.mimic-intro-screen::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0px,
+            transparent 3px,
+            rgba(255,255,255,.018) 4px
+        );
+
+    animation:
+        warlockScan 1.2s linear infinite;
+
+}
+
+
+.mimic-intro-screen::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:70vw;
+
+    height:70vw;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.035),
+            transparent 65%
+        );
+
+    animation:
+        warlockPulse 3s ease-in-out infinite;
+
+    pointer-events:none;
+
+}
+
+
+.mimic-intro-box{
+
+    position:relative;
+
+    z-index:2;
+
+    background:
+        linear-gradient(
+            145deg,
+            #050505,
+            #0b0b0d
+        );
+
+    border:1px solid #3f3f46;
+
+    box-shadow:
+        0 0 80px rgba(0,0,0,1),
+        0 0 25px rgba(255,255,255,.04);
+
+}
+
+
+.mimic-intro-portrait{
+
+    filter:
+        grayscale(1)
+        brightness(.12)
+        contrast(1.8);
+
+}
+
+
+.mimic-intro-portrait img{
+
+    filter:
+        grayscale(1)
+        brightness(.14)
+        contrast(1.8)
+        drop-shadow(
+            0 0 25px rgba(0,0,0,1)
+        );
+
+    animation:
+        warlockFloat 2.4s ease-in-out infinite,
+        warlockFlicker 3.5s steps(2,end) infinite;
+
+}
+
+
+.mimic-intro-aura{
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.08),
+            rgba(0,0,0,.55) 45%,
+            transparent 70%
+        );
+
+    animation:
+        warlockAura 1.7s infinite;
+
+}
+
+
+.mimic-intro-name{
+
+    color:#e4e4e7;
+
+    text-shadow:
+        0 0 12px rgba(255,255,255,.15);
+
+}
+
+
+.mimic-dialogue{
+
+    color:#a1a1aa;
+
+    text-shadow:
+        0 0 8px rgba(255,255,255,.08);
+
+}
+
+
+#mimicContinueButton{
+
+    background:#09090b;
+
+    border-color:#52525b;
+
+    color:#e4e4e7;
+
+    box-shadow:
+        0 0 15px rgba(0,0,0,.8);
+
+}
+
+
+#mimicContinueButton:hover{
+
+    background:#18181b;
+
+    border-color:#a1a1aa;
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,.08);
+
+}
+
+
+/* =========================================================
+   DARK WRONG ANSWER — BLACKOUT
+========================================================= */
+
+body.warlock-dark-hit::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:2400;
+
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            circle,
+            transparent 10%,
+            rgba(0,0,0,.82) 70%,
+            #000 100%
+        );
+
+    animation:
+        warlockBlackout .7s ease;
+
+}
+
+
+body.warlock-dark-hit .battle-stage{
+
+    animation:
+        warlockShake .45s steps(5,end);
+
+}
+
+
+/* =========================================================
+   ENEMY ATTACK VIDEO
+========================================================= */
+
+.enemy-attack-animation{
+
+    z-index:4100;
+
+}
+
+
+.enemy-attack-animation video{
+
+    filter:
+        grayscale(1)
+        brightness(.35)
+        contrast(1.5);
+
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes warlockScan{
+
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(8px);
+    }
+
+}
+
+
+@keyframes warlockPulse{
+
+    0%,100%{
+        opacity:.25;
+        transform:scale(.9);
+    }
+
+    50%{
+        opacity:.65;
+        transform:scale(1.08);
+    }
+
+}
+
+
+@keyframes warlockFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-7px);
+    }
+
+}
+
+
+@keyframes warlockFlicker{
+
+    0%,92%,100%{
+        opacity:1;
+    }
+
+    93%{
+        opacity:.45;
+    }
+
+    95%{
+        opacity:.8;
+    }
+
+    97%{
+        opacity:.25;
+    }
+
+}
+
+
+@keyframes warlockAura{
+
+    0%,100%{
+        transform:scale(.92);
+        opacity:.45;
+    }
+
+    50%{
+        transform:scale(1.08);
+        opacity:.85;
+    }
+
+}
+
+
+@keyframes warlockBlackout{
+
+    0%{
+        opacity:0;
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    35%{
+        opacity:.55;
+    }
+
+    55%{
+        opacity:.95;
+    }
+
+    100%{
+        opacity:0;
+    }
+
+}
+
+
+@keyframes warlockShake{
+
+    0%{
+        transform:translate(0);
+    }
+
+    20%{
+        transform:translate(-5px,2px);
+    }
+
+    40%{
+        transform:translate(5px,-2px);
+    }
+
+    60%{
+        transform:translate(-3px,-1px);
+    }
+
+    80%{
+        transform:translate(3px,2px);
+    }
+
+    100%{
+        transform:translate(0);
+    }
+
+}
+
+
+/* =========================================================
+   BOOK VI RESULT / DEFEAT
+========================================================= */
+
+body.book6-dark .result-screen,
+body.book6-dark .lose-screen{
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(10,10,12,.96),
+            rgba(0,0,0,.99)
+        );
+
+}
+
+
+body.book6-dark .result-box,
+body.book6-dark .lose-box{
+
+    background:#050506;
+
+    border-color:#3f3f46;
+
+    box-shadow:
+        0 0 80px rgba(0,0,0,.95);
+
+}
+
+
+body.book6-dark .result-box button,
+body.book6-dark .lose-actions button{
+
+    background:#111113;
+
+    border:1px solid #52525b;
+
+    color:#e4e4e7;
+
+}
+
+
+body.book6-dark .result-box button:hover,
+body.book6-dark .lose-actions button:hover{
+
+    background:#27272a;
+
+}
+
+
+/* =========================================================
+   TYPED ANSWER BUTTON — BOOK VI
+========================================================= */
+
+body.book6-dark .type-answer-row{
+
+    display:flex;
+
+    gap:8px;
+
+}
+
+
+body.book6-dark .type-answer-input{
+
+    flex:1;
+
+}
+
+
+body.book6-dark .submit-answer-button{
+
+    background:#09090b;
+
+    border:1px solid #52525b;
+
+    color:#e4e4e7;
+
+}
+
+
+body.book6-dark .submit-answer-button:hover{
+
+    background:#18181b;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+    .mimic-intro-box{
+
+        max-height:90vh;
+
+        overflow:auto;
+
+    }
+
+}

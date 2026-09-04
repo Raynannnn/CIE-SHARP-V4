@@ -124,13 +124,7 @@ var continueButton =
     );
 
 
-/* =========================
-   FIXED: SHOW THE CHARACTER SCREEN
-   Book II has no intro video screen like Book I's
-   character.html, so nothing was ever removing the
-   "display:none" that .character-screen starts with
-   in character2.css. Show it immediately on load.
-========================= */
+
 
 if(characterScreen){
 
