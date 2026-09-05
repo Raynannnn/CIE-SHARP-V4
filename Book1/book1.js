@@ -635,6 +635,47 @@ var rationaleTimer = null;
    START BATTLE
 ========================= */
 
+var bgMusic =
+    document.getElementById("bgMusic");
+
+
+document
+    .getElementById("startBattleButton")
+    .addEventListener(
+        "click",
+        function(){
+
+            document
+                .getElementById("startScreen")
+                .style.display = "none";
+
+
+            /* START BACKGROUND MUSIC
+               (tied to this click so the browser's
+               autoplay-with-sound policy allows it) */
+
+            if(bgMusic){
+
+                bgMusic.currentTime = 0;
+
+                bgMusic.play().catch(function(){
+
+                    console.log(
+                        "Background music could not start."
+                    );
+
+                });
+
+            }
+
+
+            startMimicIntro();
+
+        }
+    );
+
+    
+
 document
     .getElementById("startBattleButton")
     .addEventListener(

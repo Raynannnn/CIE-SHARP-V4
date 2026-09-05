@@ -34,6 +34,21 @@ var chooseWitchButton =
     document.getElementById("chooseWitchButton");
 
 
+/* SKIP ALL ELEMENTS */
+
+var skipAllButton =
+    document.getElementById("skipAllButton");
+
+var skipConfirmModal =
+    document.getElementById("skipConfirmModal");
+
+var skipConfirmYes =
+    document.getElementById("skipConfirmYes");
+
+var skipConfirmNo =
+    document.getElementById("skipConfirmNo");
+
+
 var currentPage = 0;
 
 var totalPages = pages.length;
@@ -43,6 +58,8 @@ var isNextLocked = false;
 var countdown = 5;
 
 var timerInterval;
+
+var scrollHintTimer;
 
 
 /* =========================================================
@@ -63,18 +80,7 @@ function showPage(){
 
     });
 
-setTimeout(function(){
-
-    if(
-        document.documentElement.scrollHeight >
-        window.innerHeight
-    ){
-
-        scrollReminder.style.display="block";
-
-    }
-
-},2000);
+    updateScrollHint();
 
     pageCounter.textContent =
         "PAGE " +
@@ -291,19 +297,193 @@ if(chooseWitchButton){
 
 
 /* =========================================================
+   SKIP ALL
+   Opens a confirm popup instead of jumping right away.
+   YES  -> goes straight to the Witch Guide / Book I entry
+   NO   -> closes the popup, learner stays on the current page
+========================================================= */
+
+if(skipAllButton){
+
+    skipAllButton.addEventListener(
+        "click",
+        function(){
+
+            skipConfirmModal.classList.add("show");
+
+        }
+    );
+
+}
+
+
+if(skipConfirmYes){
+
+    skipConfirmYes.addEventListener(
+        "click",
+        function(){
+
+            window.location.href =
+                "character.html";
+
+        }
+    );
+
+}
+
+
+if(skipConfirmNo){
+
+    skipConfirmNo.addEventListener(
+        "click",
+        function(){
+
+            skipConfirmModal.classList.remove(
+                "show"
+            );
+
+        }
+    );
+
+}
+
+
+if(skipConfirmModal){
+
+    skipConfirmModal.addEventListener(
+        "click",
+        function(event){
+
+            if(event.target === skipConfirmModal){
+
+                skipConfirmModal.classList.remove(
+                    "show"
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   SCROLL HINT (center-screen arrow)
+   Shows a bouncing arrow + label when the current page's
+   content is taller than the viewport, then fades it out
+   smoothly the more the learner scrolls — instead of a hard
+   cutoff — so it's clearer where the hint went.
+========================================================= */
+
+function updateScrollHint(){
+
+    clearTimeout(scrollHintTimer);
+
+    scrollReminder.classList.remove("show");
+
+    scrollReminder.style.opacity = "";
+
+
+    scrollHintTimer = setTimeout(function(){
+
+        if(
+            document.documentElement.scrollHeight >
+            window.innerHeight + 40
+        ){
+
+            scrollReminder.classList.add("show");
+
+        }
+
+    }, 1800);
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    function(){
+
+        if(
+            !scrollReminder.classList.contains("show")
+        ){
+
+            return;
+
+        }
+
+
+        var fadeDistance = 260;
+
+
+        var progress =
+            Math.min(
+                window.scrollY / fadeDistance,
+                1
+            );
+
+
+        scrollReminder.style.opacity =
+            1 - progress;
+
+
+        if(progress >= 1){
+
+            scrollReminder.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   HIDE SCROLL HINT ON CLICK
+   Any tap/click anywhere on the screen fades the hint out
+   right away, since learners don't know they can just tap
+   to dismiss it otherwise.
+========================================================= */
+
+function hideScrollHint(){
+
+    if(
+        !scrollReminder.classList.contains("show")
+    ){
+
+        return;
+
+    }
+
+
+    scrollReminder.style.opacity = 0;
+
+
+    setTimeout(function(){
+
+        scrollReminder.classList.remove(
+            "show"
+        );
+
+    }, 400);
+
+}
+
+
+document.addEventListener(
+    "click",
+    function(){
+
+        hideScrollHint();
+
+    }
+);
+
+
+/* =========================================================
    INITIALIZE
 ========================================================= */
 
 showPage();
-
-window.addEventListener(
-"scroll",
-function(){
-
-    if(window.scrollY > 200){
-
-        scrollReminder.style.display="none";
-
-    }
-
-});

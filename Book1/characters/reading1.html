@@ -39,6 +39,16 @@
     </header>
 
 
+    <!-- SKIP ALL -->
+    <button
+        id="skipAllButton"
+        class="skip-all-button"
+        type="button"
+    >
+        ⏭ SKIP ALL
+    </button>
+
+
     <!-- READING AREA -->
     <main class="reading-main">
 
@@ -992,9 +1002,44 @@ Console.WriteLine("Begin your C# journey.");</pre>
 
     </div>
 
+
+    <!-- SKIP CONFIRM MODAL -->
+    <div class="skip-confirm-modal" id="skipConfirmModal">
+
+        <div class="skip-confirm-card">
+
+            <h2>
+                WAIT, APPRENTICE!
+            </h2>
+
+            <p>
+                Are you sure you're ready? Skipping will take
+                you straight to choosing your Witch Guide for
+                Book I.
+            </p>
+
+            <div class="skip-confirm-actions">
+
+                <button id="skipConfirmYes" type="button">
+                    YES, I'M READY
+                </button>
+
+                <button id="skipConfirmNo" type="button">
+                    NOT YET
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
     <div class="scroll-reminder" id="scrollReminder">
 
-     Scroll down for more information
+        <span class="scroll-arrow"></span>
+
+        <small>SCROLL FOR MORE</small>
 
     </div>
 

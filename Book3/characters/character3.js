@@ -90,6 +90,16 @@ var characters = {
    ELEMENTS
 ========================= */
 
+var changeCharacterIndicator =
+    document.getElementById(
+        "changeCharacterIndicator"
+    );
+
+
+var charactersContainer =
+    document.querySelector(
+        ".characters-container"
+    );
 
 var characterScreen =
     document.getElementById(
@@ -247,6 +257,38 @@ characterCards.forEach(
                     data.name
                 );
 
+
+                var selectedPanel =
+                    document.getElementById(
+                        "selectedPanel"
+                    );
+
+
+                if(selectedPanel){
+
+                    selectedPanel.scrollIntoView({
+
+                        behavior: "smooth",
+
+                        block: "center"
+
+                    });
+
+                }
+
+
+                /* =========================
+                   SHOW CHANGE CHARACTER INDICATOR
+                ========================= */
+
+                if(changeCharacterIndicator){
+
+                    changeCharacterIndicator.classList.add(
+                        "show"
+                    );
+
+                }
+
             }
         );
 
@@ -260,6 +302,34 @@ characterCards.forEach(
    This screen is Book III's character select, so it
    should send the player into book3.html.
 ========================= */
+
+if(changeCharacterIndicator){
+
+    changeCharacterIndicator.addEventListener(
+        "click",
+        function(){
+
+            if(charactersContainer){
+
+                charactersContainer.scrollIntoView({
+
+                    behavior: "smooth",
+
+                    block: "start"
+
+                });
+
+            }
+
+
+            changeCharacterIndicator.classList.remove(
+                "show"
+            );
+
+        }
+    );
+
+}
 
 continueButton.addEventListener(
     "click",
