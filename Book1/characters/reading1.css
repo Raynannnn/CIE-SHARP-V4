@@ -1,0 +1,278 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    font-family:'VT323', monospace;
+    background:#050811;
+    color:#e2e8f0;
+    line-height:1.6;
+}
+
+.background-overlay{
+    position:fixed;
+    inset:0;
+    z-index:-4;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(37,99,235,.10),
+            transparent 40%
+        ),
+        #050811;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.reading-header{
+    height:68px;
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    padding:8px 30px;
+    background:rgba(5,9,20,.95);
+    border-bottom:2px solid #334155;
+}
+
+.back-button{
+    width:max-content;
+    padding:8px 15px;
+    color:#cbd5e1;
+    text-decoration:none;
+    background:#111827;
+    border:1px solid #334155;
+    border-radius:5px;
+    font-size:15px;
+}
+
+.back-button:hover{
+    background:#263451;
+    color:white;
+}
+
+.book-title{
+    text-align:center;
+}
+
+.book-title span{
+    display:block;
+    color:#60a5fa;
+    font-size:11px;
+    letter-spacing:3px;
+}
+
+.book-title h1{
+    font-size:22px;
+    letter-spacing:2px;
+}
+
+.stage-tag{
+    text-align:right;
+}
+
+.stage-tag span{
+    display:block;
+    color:#64748b;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+.stage-tag strong{
+    color:#facc15;
+    font-size:16px;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.reading-main{
+    max-width:800px;
+    margin:0 auto;
+    padding:40px 20px 90px;
+}
+
+
+/* =========================
+   LIBRARY INTRO
+========================= */
+
+.guide-intro{
+    display:flex;
+    align-items:center;
+    gap:22px;
+    margin-bottom:40px;
+    padding:20px;
+    background:#111827;
+    border:1px solid #334155;
+    border-radius:12px;
+}
+
+.guide-image-box{
+    width:90px;
+    height:90px;
+    flex-shrink:0;
+    border-radius:10px;
+    background:#1e293b;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:40px;
+}
+
+.guide-bubble strong{
+    display:block;
+    color:#93c5fd;
+    font-size:17px;
+    letter-spacing:1px;
+    margin-bottom:6px;
+}
+
+.guide-bubble p{
+    color:#94a3b8;
+    font-size:17px;
+}
+
+
+/* =========================
+   LESSON CARD
+========================= */
+
+.lesson-card{
+    position:relative;
+    margin-bottom:28px;
+    padding:26px 26px 22px;
+    background:#0b1020;
+    border:1px solid #263451;
+    border-radius:12px;
+}
+
+.lesson-number{
+    display:inline-block;
+    color:#60a5fa;
+    font-size:14px;
+    font-weight:bold;
+    letter-spacing:2px;
+    margin-bottom:8px;
+}
+
+.lesson-card h2{
+    color:#f8fafc;
+    font-size:21px;
+    line-height:1.4;
+    margin-bottom:12px;
+}
+
+.lesson-card p{
+    color:#cbd5e1;
+    font-size:17px;
+    margin-bottom:14px;
+}
+
+.lesson-card code{
+    padding:2px 6px;
+    background:#1e293b;
+    border-radius:4px;
+    color:#93c5fd;
+    font-family:monospace;
+}
+
+.lesson-code{
+    padding:14px 16px;
+    background:#020617;
+    border:1px solid #334155;
+    border-radius:8px;
+    color:#93c5fd;
+    font-family:monospace;
+    font-size:15px;
+    line-height:1.7;
+    white-space:pre-wrap;
+    margin-bottom:12px;
+    overflow-x:auto;
+}
+
+.lesson-tip{
+    color:#facc15;
+    font-size:15px;
+    margin-bottom:0;
+}
+
+
+/* =========================
+   CTA
+========================= */
+
+.reading-cta{
+    text-align:center;
+    margin-top:45px;
+}
+
+.reading-cta p{
+    color:#94a3b8;
+    font-size:18px;
+    margin-bottom:16px;
+}
+
+#chooseWitchButton{
+    padding:14px 30px;
+    background:#2563eb;
+    border:1px solid #60a5fa;
+    border-radius:7px;
+    color:white;
+    font-family:inherit;
+    font-size:19px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+#chooseWitchButton:hover{
+    background:#1d4ed8;
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(37,99,235,.25);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:650px){
+
+    .reading-header{
+        height:auto;
+        grid-template-columns:1fr;
+        gap:7px;
+        padding:10px;
+        text-align:center;
+    }
+
+    .back-button{
+        margin:auto;
+    }
+
+    .stage-tag{
+        text-align:center;
+    }
+
+    .guide-intro{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .lesson-card{
+        padding:20px 18px;
+    }
+
+}

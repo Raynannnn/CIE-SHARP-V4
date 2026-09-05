@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Book I | Study Scroll</title>
+
+    <link rel="stylesheet" href="reading1.css">
+
+</head>
+
+<body>
+
+
+<!-- =========================
+     BACKGROUND
+========================= -->
+
+<div class="background-overlay"></div>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="reading-header">
+
+    
+        href="/Main Menu/lesson.html"
+        class="back-button"
+    >
+        ← EXIT
+    </a>
+
+
+    <div class="book-title">
+
+        <span>BOOK I</span>
+
+        <h1>STUDY SCROLL</h1>
+
+    </div>
+
+
+    <div class="stage-tag">
+
+        <span>STAGE</span>
+
+        <strong>READ FIRST</strong>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="reading-main">
+
+
+    <!-- LIBRARY INTRO -->
+
+    <section class="guide-intro">
+
+        <div class="guide-image-box">
+
+            📖
+
+        </div>
+
+
+        <div class="guide-bubble">
+
+            <strong>
+                THE ARCANE LIBRARY
+            </strong>
+
+            <p>
+                Before you choose your Witch Guide and enter the
+                first trial, review the spells below. Every
+                question inside Book I uses exactly what's written
+                on this scroll — read carefully.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- LESSON 1 -->
+
+    <article class="lesson-card">
+
+        <span class="lesson-number">01</span>
+
+        <h2>
+            Every Statement Ends With a Semicolon ( ; )
+        </h2>
+
+        <p>
+            A <strong>statement</strong> is one complete instruction
+            in C#. The semicolon tells the compiler "this instruction
+            is finished." Forgetting it is the most common reason
+            code fails to run.
+        </p>
+
+        <pre class="lesson-code">int age = 20;
+Console.WriteLine("Hello World");
+int score = 100;</pre>
+
+        <p class="lesson-tip">
+            💡 If you see a blank space where code should end —
+            think semicolon first.
+        </p>
+
+    </article>
+
+
+
+    <!-- LESSON 2 -->
+
+    <article class="lesson-card">
+
+        <span class="lesson-number">02</span>
+
+        <h2>
+            Code Has an Order: Declare → Open → Do → Close
+        </h2>
+
+        <p>
+            A method is written in this order: its declaration
+            (like <code>static void Main()</code>), then an opening
+            brace <code>{</code> to start the body, the statements
+            inside, then a closing brace <code>}</code> to end it.
+            A variable must also exist before you can use it.
+        </p>
+
+        <pre class="lesson-code">static void Main()
+{
+    int score = 100;
+    Console.WriteLine(score);
+}</pre>
+
+        <p class="lesson-tip">
+            💡 You can't print a variable before it's created —
+            "score" has to exist first.
+        </p>
+
+    </article>
+
+
+
+    <!-- LESSON 3 -->
+
+    <article class="lesson-card">
+
+        <span class="lesson-number">03</span>
+
+        <h2>
+            Proper Formatting: Indent What's Inside the Braces
+        </h2>
+
+        <p>
+            Anything inside <code>{ }</code> should be indented so
+            it's clear it belongs to that block. An
+            <code>if</code> condition always needs parentheses
+            <code>( )</code>, and its statement still needs a
+            semicolon.
+        </p>
+
+        <pre class="lesson-code">if (age >= 18)
+{
+    Console.WriteLine("Adult");
+}</pre>
+
+        <p class="lesson-tip">
+            💡 Indentation isn't required to run the code — but it
+            IS required in these trials to prove you understand
+            structure.
+        </p>
+
+    </article>
+
+
+
+    <!-- CTA -->
+
+    <section class="reading-cta">
+
+        <p>
+            Studied everything? Choose your Witch Guide next.
+        </p>
+
+        <button id="chooseWitchButton">
+            ✦ CHOOSE YOUR WITCH GUIDE →
+        </button>
+
+    </section>
+
+</main>
+
+
+<script src="reading1.js"></script>
+
+</body>
+
+</html>

@@ -1,421 +1,537 @@
-/*CHARACTER DATA*/
+// CHARACTER DATA
 
-var characters = {
 
-    GiTei: {
 
+
+
+
+
+
+const characters = {
+
+    gitei: {
         name: "GiTei",
-
-        fullName: "Logic Witch",
-
-        className: "LOGIC WITCH",
-
+        role: "The Logic Witch",
         specialty: "Programming Logic & Problem-Solving",
-
         description:
-            "The Logic Witch is a clever problem-solver who helps learners understand programming logic, patterns, and step-by-step problem solving.",
-
+            "A calm and focused witch who helps learners understand programming logic and solve problems step by step.",
         stat: "LOGIC",
-
-        colorClass: "logic",
-
         image: "images/GiTei.png",
-
-        video: "videos/GiTei.mp4"
-
+        video: "videos/gitei.mp4"
     },
 
-
-    Achi: {
-
+    achi: {
         name: "Achi",
-
-        fullName: "Data Witch",
-
-        className: "DATA WITCH",
-
+        role: "The Data Witch",
         specialty: "C# Fundamentals & Data",
-
         description:
-            "The Data Witch specializes in C# fundamentals and understanding how information is represented, stored, and managed inside a program.",
-
+            "A clever witch who guides learners in understanding C# fundamentals, variables, and different types of data.",
         stat: "DATA",
-
-        colorClass: "data",
-
         image: "images/Achi.png",
-
-        video: "videos/Achi.mp4"
-
+        video: "videos/achi.mp4"
     },
 
-
-    LeeSerin: {
-
+    leeserin: {
         name: "LeeSerin",
-
-        fullName: "Codeweaver Witch",
-
-        className: "CODEWEAVER WITCH",
-
-        specialty: "C# Syntax & Programming Structure",
-
+        role: "The Codeweaver Witch",
+        specialty: "C# Syntax & Structure",
         description:
-            "The Codeweaver Witch focuses on C# syntax and programming structure, helping learners understand how different parts of a program fit together.",
-
+            "A knowledgeable witch who helps learners understand proper C# syntax and organize their code correctly.",
         stat: "SYNTAX",
-
-        colorClass: "codeweaver",
-
         image: "images/LeeSerin.png",
-
-        video: "videos/LeeSerin.mp4"
-
+        video: "videos/leeserin.mp4"
     },
 
-
-    Cythera: {
-
+    cythera: {
         name: "Cythera",
-
-        fullName: "Ember Witch",
-
-        className: "EMBER WITCH",
-
-        specialty: "C# Practice & Challenges",
-
+        role: "The Ember Witch",
+        specialty: "Practice & Challenges",
         description:
-            "The Ember Witch is eager to take on challenges and encourages learners to practice, retry, and improve their programming skills.",
-
-        stat: "PRACTICE",
-
-        colorClass: "ember",
-
+            "A determined witch who challenges learners to apply their knowledge through programming activities and coding challenges.",
+        stat: "CHALLENGE",
         image: "images/Cythera.png",
-
-        video: "videos/Cythera.mp4"
-
+        video: "videos/cythera.mp4"
     },
 
-
-    Zari: {
-
+    zari: {
         name: "Zari",
-
-        fullName: "Logiccraft Witch",
-
-        className: "LOGICCRAFT WITCH",
-
-        specialty: "C# Applications & Creative Solutions",
-
+        role: "The Logiccraft Witch",
+        specialty: "Applications & Solutions",
         description:
-            "The Logiccraft Witch focuses on creative problem-solving and applying programming concepts to practical programming situations.",
-
+            "An energetic witch who encourages learners to apply programming concepts and create effective solutions.",
         stat: "APPLICATION",
-
-        colorClass: "logiccraft",
-
         image: "images/Zari.png",
-
-        video: "videos/Zari.mp4"
-
+        video: "videos/zari.mp4"
     }
 
 };
 
 
-/* ELEMENTS */
+// ========================================
+// PAGE ELEMENTS
+// ========================================
 
-var characterModal =
+
+// CHARACTER MODAL
+
+const characterModal =
     document.getElementById("characterModal");
 
-var openCharacterSelect =
+const openCharacterSelect =
     document.getElementById("openCharacterSelect");
 
-var closeCharacterSelect =
-    document.getElementById("closeCharacterSelect");
-
-var changeCharacterButton =
+const changeCharacterButton =
     document.getElementById("changeCharacterButton");
 
-var characterOptions =
+const closeCharacterModalButton =
+    document.getElementById("closeCharacterSelect");
+
+const characterOptions =
     document.querySelectorAll(".character-option");
 
-var characterDetails =
+
+// CHARACTER DETAILS
+
+const characterDetails =
     document.getElementById("characterDetails");
 
-var detailClass =
+const detailClass =
     document.getElementById("detailClass");
 
-var detailName =
+const detailName =
     document.getElementById("detailName");
 
-var detailSpecialty =
+const detailSpecialty =
     document.getElementById("detailSpecialty");
 
-var detailDescription =
+const detailDescription =
     document.getElementById("detailDescription");
 
-var detailStat =
+const detailStat =
     document.getElementById("detailStat");
 
-var confirmCharacter =
-    document.getElementById("confirmCharacter");
 
-var characterVideo =
+// CHARACTER VIDEO
+
+const characterVideo =
     document.getElementById("characterVideo");
 
-var characterVideoSource =
+const characterVideoSource =
     document.getElementById("characterVideoSource");
 
-var selectedCharacterImage =
-    document.getElementById("selectedCharacterImage");
-
-var selectedCharacterName =
-    document.getElementById("selectedCharacterName");
-
-var selectedCharacterRole =
-    document.getElementById("selectedCharacterRole");
-
-var selectedCharacterCard =
-    document.getElementById("selectedCharacterCard");
-
-var videoPlaceholder =
+const videoPlaceholder =
     document.getElementById("videoPlaceholder");
 
 
-/* TEMPORARY SELECTED CHARACTER */
+// SELECTED CHARACTER CARD
 
-var currentSelectedCharacter = null;
+const selectedCharacterCard =
+    document.getElementById("selectedCharacterCard");
+
+const selectedCharacterImage =
+    document.getElementById("selectedCharacterImage");
+
+const selectedCharacterName =
+    document.getElementById("selectedCharacterName");
+
+const selectedCharacterRole =
+    document.getElementById("selectedCharacterRole");
 
 
-/* VIDEO RESET */
+// BOOK PANEL
 
-function resetCharacterVideo(){
+const openBooksButton =
+    document.getElementById("openBooks");
 
-    if(!characterVideo){
+const closeBooksButton =
+    document.getElementById("closeBooks");
 
+const bookPanel =
+    document.getElementById("bookPanel");
+
+const booksUnlockedText =
+    document.getElementById("booksUnlocked");
+
+const questProgressText =
+    document.getElementById("questProgressText");
+
+const questProgressBar =
+    document.querySelector(".quest-progress-bar div");
+
+
+// ========================================
+// CHARACTER MODAL FUNCTIONS
+// ========================================
+
+function openCharacterModal() {
+
+    if (!characterModal) {
         return;
+    }
+
+
+    characterModal.classList.add("show");
+
+    document.body.classList.add("modal-open");
+
+
+    // Hide details when opening
+    if (characterDetails) {
+
+        characterDetails.classList.add("hidden");
 
     }
+
+
+    // Remove previous selection
+    characterOptions.forEach(option => {
+
+        option.classList.remove("selected");
+
+    });
+
+}
+
+
+// ========================================
+// CLOSE CHARACTER MODAL
+// ========================================
+
+function closeCharacterModal() {
+
+    if (!characterModal) {
+        return;
+    }
+
+
+    characterModal.classList.remove("show");
+
+    document.body.classList.remove("modal-open");
+
+
+    resetCharacterVideo();
+
+}
+
+
+// ========================================
+// SHOW CHARACTER
+// ========================================
+
+function showCharacter(characterKey) {
+
+    const key =
+        characterKey.toLowerCase();
+
+
+    const character =
+        characters[key];
+
+
+    if (!character) {
+        return;
+    }
+
+
+    // SHOW DETAILS SECTION
+
+    if (characterDetails) {
+
+        characterDetails.classList.remove("hidden");
+
+    }
+
+
+    // CHARACTER NAME
+
+    if (detailName) {
+
+        detailName.textContent =
+            character.name;
+
+    }
+
+
+    // CHARACTER ROLE / CLASS
+
+    if (detailClass) {
+
+        detailClass.textContent =
+            character.role.toUpperCase();
+
+    }
+
+
+    // CHARACTER SPECIALTY
+
+    if (detailSpecialty) {
+
+        detailSpecialty.textContent =
+            character.specialty;
+
+    }
+
+
+    // CHARACTER DESCRIPTION
+
+    if (detailDescription) {
+
+        detailDescription.textContent =
+            character.description;
+
+    }
+
+
+    // CHARACTER STAT
+
+    if (detailStat) {
+
+        detailStat.textContent =
+            character.stat;
+
+    }
+
+
+    // ========================================
+    // UPDATE SELECTED CHARACTER CARD
+    // ========================================
+
+    if (selectedCharacterImage) {
+
+        selectedCharacterImage.src =
+            character.image;
+
+        selectedCharacterImage.alt =
+            character.name;
+
+    }
+
+
+    if (selectedCharacterName) {
+
+        selectedCharacterName.textContent =
+            character.name;
+
+    }
+
+
+    if (selectedCharacterRole) {
+
+        selectedCharacterRole.textContent =
+            character.role;
+
+    }
+
+
+    // ========================================
+    // CHARACTER SELECTION EFFECT
+    // ========================================
+
+    characterOptions.forEach(option => {
+
+        option.classList.remove("selected");
+
+
+        if (
+            option.dataset.character.toLowerCase()
+            === key
+        ) {
+
+            option.classList.add("selected");
+
+        }
+
+    });
+
+
+    // ========================================
+    // SAVE SELECTED CHARACTER
+    // ========================================
+
+    localStorage.setItem(
+        "cieSharpCharacter",
+        key
+    );
+
+
+    // ========================================
+    // PLAY CHARACTER VIDEO
+    // ========================================
+
+    playCharacterVideo(
+        character.video
+    );
+
+    scrollToCharacterDetails();
+
+}
+
+
+// ========================================
+// PLAY CHARACTER VIDEO
+// ========================================
+
+function playCharacterVideo(videoSource) {
+
+    if (!characterVideo) {
+        return;
+    }
+
+
+    // Set video source
+
+    if (characterVideoSource) {
+
+        characterVideoSource.src =
+            videoSource;
+
+    } else {
+
+        characterVideo.src =
+            videoSource;
+
+    }
+
+
+    characterVideo.load();
+
+
+    // Hide placeholder
+
+    if (videoPlaceholder) {
+
+        videoPlaceholder.style.display =
+            "none";
+
+    }
+
+
+    // Play video
+
+    characterVideo.play().catch(() => {
+
+        // Browser may block autoplay
+
+    });
+
+}
+
+
+// ========================================
+// RESET CHARACTER VIDEO
+// ========================================
+
+function resetCharacterVideo() {
+
+    if (!characterVideo) {
+        return;
+    }
+
 
     characterVideo.pause();
 
     characterVideo.currentTime = 0;
 
-    characterVideoSource.src = "";
+
+    if (characterVideoSource) {
+
+        characterVideoSource.src = "";
+
+    } else {
+
+        characterVideo.src = "";
+
+    }
+
 
     characterVideo.load();
 
-}
 
+    if (videoPlaceholder) {
 
-/* PLAY CHARACTER VIDEO */
-
-function playCharacterVideo(){
-
-    if(!characterVideo){
-
-        return;
-
-    }
-
-    characterVideo.loop = true;
-
-    characterVideo.muted = false;
-
-    var playPromise =
-        characterVideo.play();
-
-    if(playPromise !== undefined){
-
-        playPromise.catch(function(){
-
-            /*
-            Browser autoplay protection may prevent
-            the video from starting automatically.
-            */
-
-            console.log(
-                "Video autoplay was blocked by the browser."
-            );
-
-        });
+        videoPlaceholder.style.display =
+            "block";
 
     }
 
 }
 
 
-/* OPEN CHARACTER MODAL */
+// ========================================
+// OPEN CHARACTER BUTTON
+// ========================================
 
-function openCharacterModal(){
+if (openCharacterSelect) {
 
-    characterModal.classList.add("show");
+    openCharacterSelect.addEventListener(
+        "click",
+        function () {
 
-}
+            openCharacterModal();
 
-
-/* CLOSE CHARACTER MODAL*/
-
-function closeCharacterModal(){
-
-    resetCharacterVideo();
-
-    characterModal.classList.remove("show");
+        }
+    );
 
 }
 
 
-/* OPEN EVENTS */
+// ========================================
+// SECOND VIEW CHARACTER BUTTON
+// ========================================
 
-openCharacterSelect.addEventListener(
-    "click",
-    function(){
+if (changeCharacterButton) {
 
-        openCharacterModal();
+    changeCharacterButton.addEventListener(
+        "click",
+        function () {
 
-    }
-);
+            openCharacterModal();
 
+        }
+    );
 
-closeCharacterSelect.addEventListener(
-    "click",
-    function(){
-
-        closeCharacterModal();
-
-    }
-);
+}
 
 
-changeCharacterButton.addEventListener(
-    "click",
-    function(){
+// ========================================
+// CLOSE BUTTON X
+// ========================================
 
-        openCharacterModal();
+if (closeCharacterModalButton) {
 
-    }
-);
+    closeCharacterModalButton.addEventListener(
+        "click",
+        function () {
+
+            closeCharacterModal();
+
+        }
+    );
+
+}
 
 
-/* CHARACTER SELECTION */
+// ========================================
+// CLICK CHARACTER
+// ========================================
 
-characterOptions.forEach(function(option){
+characterOptions.forEach(option => {
 
     option.addEventListener(
         "click",
-        function(){
+        function () {
 
-            var characterId =
-                option.getAttribute(
-                    "data-character"
+            const characterKey =
+                this.dataset.character;
+
+
+            if (characterKey) {
+
+                showCharacter(
+                    characterKey
                 );
 
-            var character =
-                characters[characterId];
-
-
-            currentSelectedCharacter =
-                characterId;
-
-
-            /* REMOVE PREVIOUS SELECTION */
-
-            characterOptions.forEach(
-                function(item){
-
-                    item.classList.remove(
-                        "selected"
-                    );
-
-                }
-            );
-
-
-            /* SELECT CURRENT CHARACTER */
-
-            option.classList.add(
-                "selected"
-            );
-
-
-            /* CHARACTER DETAILS */
-
-            detailClass.innerText =
-                character.className;
-
-            detailName.innerText =
-                character.name;
-
-            detailSpecialty.innerText =
-                character.specialty;
-
-            detailDescription.innerText =
-                character.description;
-
-            detailStat.innerText =
-                character.stat;
-
-
-            /* RESET OLD VIDEO */
-
-            resetCharacterVideo();
-
-
-            /* LOAD NEW VIDEO */
-
-            characterVideoSource.src =
-                character.video;
-
-            characterVideo.loop = true;
-
-            characterVideo.load();
-
-
-            videoPlaceholder.innerText =
-                "Character animation preview: " +
-                character.name;
-
-
-            /* SHOW DETAILS */
-
-            characterDetails.classList.remove(
-                "hidden"
-            );
-
-
-            /* PLAY VIDEO */
-
-            characterVideo.addEventListener(
-                "loadeddata",
-                function(){
-
-                    playCharacterVideo();
-
-                },
-                {
-                    once: true
-                }
-            );
-
-
-            /* SCROLL TO DETAILS */
-
-            setTimeout(
-                function(){
-
-                    characterDetails.scrollIntoView({
-
-                        behavior: "smooth",
-
-                        block: "nearest"
-
-                    });
-
-                },
-                100
-            );
+            }
 
         }
     );
@@ -423,232 +539,23 @@ characterOptions.forEach(function(option){
 });
 
 
-/* 
-   CONFIRM CHARACTER */
+// ========================================
+// CLOSE WHEN CLICKING OUTSIDE
+// ========================================
 
-confirmCharacter.addEventListener(
-    "click",
-    function(){
+if (characterModal) {
 
-        if(!currentSelectedCharacter){
-
-            alert(
-                "Please choose a character first."
-            );
-
-            return;
-
-        }
-
-
-        var character =
-            characters[
-                currentSelectedCharacter
-            ];
-
-
-        /* SAVE CHARACTER */
-
-        localStorage.setItem(
-            "cieSharpCharacter",
-            currentSelectedCharacter
-        );
-
-
-        /* UPDATE MAIN CHARACTER CARD */
-
-        updateSelectedCharacter(
-            character
-        );
-
-
-        /* STOP VIDEO */
-
-        resetCharacterVideo();
-
-
-        /* CLOSE MODAL */
-
-        closeCharacterModal();
-
-    }
-);
-
-
-/* UPDATE SELECTED CHARACTER */
-
-function updateSelectedCharacter(character){
-
-    selectedCharacterImage.src =
-        character.image;
-
-    selectedCharacterImage.alt =
-        character.fullName;
-
-    selectedCharacterName.innerText =
-        character.name;
-
-    selectedCharacterRole.innerText =
-        character.fullName;
-
-
-    /* REMOVE OLD COLOR */
-
-    selectedCharacterCard.classList.remove(
-
-        "logic",
-
-        "data",
-
-        "codeweaver",
-
-        "ember",
-
-        "logiccraft"
-
-    );
-
-
-    /* ADD NEW COLOR */
-
-    selectedCharacterCard.classList.add(
-        character.colorClass
-    );
-
-}
-
-
-/* LOAD SAVED CHARACTER */
-
-function loadSavedCharacter(){
-
-    var savedCharacter =
-        localStorage.getItem(
-            "cieSharpCharacter"
-        );
-
-
-    if(!savedCharacter){
-
-        selectedCharacterName.innerText =
-            "NO CHARACTER";
-
-        selectedCharacterRole.innerText =
-            "Choose your witch";
-
-        return;
-
-    }
-
-
-    if(!characters[savedCharacter]){
-
-        return;
-
-    }
-
-
-    var character =
-        characters[savedCharacter];
-
-
-    currentSelectedCharacter =
-        savedCharacter;
-
-
-    updateSelectedCharacter(
-        character
-    );
-
-}
-
-
-/* BOOK 1 */
-
-function openBook1(){
-
-    var savedCharacter =
-        localStorage.getItem(
-            "cieSharpCharacter"
-        );
-
-
-    if(!savedCharacter){
-
-        openCharacterModal();
-
-        alert(
-            "Choose your character before entering Book I."
-        );
-
-        return;
-
-    }
-
-
-    window.location.href =
-        "/Book1/characters/character.html";
-
-}
-
-
-/* =========================================================
-   BOOK UNLOCKING
-   Reads the progress flags saved by each book (e.g.
-   "book2Unlocked" saved by Book I once it's completed) and
-   turns the matching locked-book card into a clickable one.
-========================================================= */
-
-function unlockBook(bookNumber, path){
-
-    var bookEl =
-        document.querySelector(
-            '[data-book="' + bookNumber + '"]'
-        );
-
-
-    if(!bookEl){
-
-        return;
-
-    }
-
-
-    if(!bookEl.classList.contains("locked-book")){
-
-        /* ALREADY UNLOCKED */
-
-        return;
-
-    }
-
-
-    bookEl.classList.remove(
-        "locked-book"
-    );
-
-    bookEl.classList.add(
-        "active-book"
-    );
-
-
-    var lockLabel =
-        bookEl.querySelector(".lock-label");
-
-
-    if(lockLabel){
-
-        lockLabel.outerHTML =
-            '<span class="play-label">▶ START CHAPTER</span>';
-
-    }
-
-
-    bookEl.addEventListener(
+    characterModal.addEventListener(
         "click",
-        function(){
+        function (event) {
 
-            window.location.href = path;
+            if (
+                event.target === characterModal
+            ) {
+
+                closeCharacterModal();
+
+            }
 
         }
     );
@@ -656,168 +563,804 @@ function unlockBook(bookNumber, path){
 }
 
 
-function checkBookUnlocks(){
+// ========================================
+// CLOSE WITH ESC KEY
+// ========================================
 
-    if(localStorage.getItem("book2Unlocked") === "true"){
+document.addEventListener(
+    "keydown",
+    function (event) {
 
-        unlockBook(
-            2,
-            "/Book2/characters/character2.html"
-        );
-
-    }
-
-
-    /* BOOK III — unlocked once Book II is completed
-       (book2.js sets "book3Unlocked" to "true" in its
-       saveBookProgress() function) */
-
-    if(localStorage.getItem("book3Unlocked") === "true"){
-
-        unlockBook(
-            3,
-            "../Book3/characters/character3.html"
-        );
-
-    }
-
-
-    /*
-    When Book III starts saving its own "book4Unlocked" flag
-    (it already does, in book3.js), add the same pattern here
-    once Book IV exists, e.g.:
-
-    if(localStorage.getItem("book4Unlocked") === "true"){
-
-        unlockBook(4, "/Book4/characters/character.html");
-
-    }
-    */
-
-}
-
-
-/* CLICK OUTSIDE MODAL */
-
-characterModal.addEventListener(
-    "click",
-    function(event){
-
-        if(
-            event.target === characterModal
-        ){
+        if (event.key === "Escape") {
 
             closeCharacterModal();
 
+            closeBooks();
+
         }
 
     }
 );
 
 
-/* LOAD ON START */
+// ========================================
+// BOOK PANEL
+// ========================================
 
-loadSavedCharacter();
+function openBooks() {
 
-checkBookUnlocks();
-
-
-/* BACKGROUND MUSIC */
-
-var bgMusic =
-    document.getElementById("bgMusic");
-
-var musicButton =
-    document.getElementById("musicButton");
+    if (!bookPanel) {
+        return;
+    }
 
 
-/* VOLUME */
+    bookPanel.classList.add("show");
 
-bgMusic.volume = 1.00;
-
-
-/* REMEMBER MUSIC SETTING */
-
-var musicEnabled =
-    localStorage.getItem(
-        "cieSharpMusic"
+    document.body.classList.add(
+        "books-open"
     );
 
 
-/* MUSIC BUTTON */
+    checkBookUnlocks();
 
-musicButton.addEventListener(
-    "click",
-    function(){
+}
 
-        if(bgMusic.paused){
 
-            bgMusic.play()
-                .then(
-                    function(){
+// ========================================
+// CLOSE BOOK PANEL
+// ========================================
 
-                        musicButton.innerText =
-                            "🔊";
+function closeBooks() {
+
+    if (!bookPanel) {
+        return;
+    }
+
+
+    bookPanel.classList.remove("show");
+
+    document.body.classList.remove(
+        "books-open"
+    );
+
+}
+
+
+// ========================================
+// OPEN BOOK BUTTON
+// ========================================
+
+if (openBooksButton) {
+
+    openBooksButton.addEventListener(
+        "click",
+        function () {
+
+            openBooks();
+
+        }
+    );
+
+}
+
+
+// ========================================
+// CLOSE BOOK BUTTON
+// ========================================
+
+if (closeBooksButton) {
+
+    closeBooksButton.addEventListener(
+        "click",
+        function () {
+
+            closeBooks();
+
+        }
+    );
+
+}
+
+
+// ========================================
+// OPEN BOOK
+// ========================================
+
+function openBook(bookNumber) {
+
+    // BOOK 1
+
+    if (bookNumber === 1) {
+
+        window.location.href =
+            "/Book1/characters/reading1.html";
+
+        return;
+
+    }
+
+
+    // BOOK 2
+
+    if (bookNumber === 2) {
+
+        if (
+            localStorage.getItem(
+                "book2Unlocked"
+            ) === "true"
+        ) {
+
+            window.location.href =
+                "/Book2/characters/character2.html";
+
+        }
+
+        return;
+
+    }
+
+
+    // BOOK 3
+
+    if (bookNumber === 3) {
+
+        if (
+            localStorage.getItem(
+                "book3Unlocked"
+            ) === "true"
+        ) {
+
+            window.location.href =
+                "../Book3/characters/character3.html";
+
+        }
+
+        return;
+
+    }
+
+
+    // BOOK 4
+
+    if (bookNumber === 4) {
+
+        if (
+            localStorage.getItem(
+                "book4Unlocked"
+            ) === "true"
+        ) {
+
+            window.location.href =
+                "../Book4/characters/character.html";
+
+        }
+
+        return;
+
+    }
+
+
+    // BOOK 5
+
+    if (bookNumber === 5) {
+
+        if (
+            localStorage.getItem(
+                "book5Unlocked"
+            ) === "true"
+        ) {
+
+            window.location.href =
+                "../Book5/characters/characters5.html";
+
+        }
+
+        return;
+
+    }
+
+
+    // BOOK 6
+
+    if (bookNumber === 6) {
+
+        if (
+            localStorage.getItem(
+                "book6Unlocked"
+            ) === "true"
+        ) {
+
+            window.location.href =
+                "../Book6/characters/characters6.html";
+
+        }
+
+        return;
+
+    }
+
+
+    // BOOK 7
+
+    if (bookNumber === 7) {
+
+        if (
+            localStorage.getItem(
+                "book7Unlocked"
+            ) === "true"
+        ) {
+
+            window.location.href =
+                "../Book7/characters/characters7.html";
+
+        }
+
+        return;
+
+    }
+
+
+    // BOOK 8
+
+    if (bookNumber === 8) {
+
+        if (
+            localStorage.getItem(
+                "book8Unlocked"
+            ) === "true"
+        ) {
+
+            window.location.href =
+                "../Book8/characters/characters8.html";
+
+        }
+
+        return;
+
+    }
+
+
+    // BOOK 9
+
+    if (bookNumber === 9) {
+
+        if (
+            localStorage.getItem(
+                "book9Unlocked"
+            ) === "true"
+        ) {
+
+            window.location.href =
+                "../Book9/characters/characters9.html";
+
+        }
+
+    }
+
+}
+
+
+// ========================================
+// BOOK CLICK EVENTS
+// ========================================
+
+const bookButtons =
+    document.querySelectorAll(
+        ".story-book"
+    );
+
+
+bookButtons.forEach(book => {
+
+    book.addEventListener(
+        "click",
+        function () {
+
+            const bookNumber =
+                Number(
+                    this.dataset.book
+                );
+
+
+            // BOOK 1
+
+            if (
+                this.classList.contains(
+                    "active-book"
+                )
+            ) {
+
+                openBook(1);
+
+                return;
+
+            }
+
+
+            // OTHER BOOKS
+
+            if (!bookNumber) {
+                return;
+            }
+
+
+            if (
+                this.classList.contains(
+                    "locked-book"
+                )
+            ) {
+
+                return;
+            }
+
+
+            openBook(bookNumber);
+
+        }
+    );
+
+});
+
+
+// ========================================
+// CHECK BOOK UNLOCKS
+// ========================================
+
+function checkBookUnlocks() {
+
+    const bookCards =
+        document.querySelectorAll(
+            ".story-book"
+        );
+
+
+    let unlockedBooks = 1;
+
+
+    bookCards.forEach(card => {
+
+        const bookNumber =
+            Number(
+                card.dataset.book
+            );
+
+
+        // Skip Book 1
+
+        if (!bookNumber) {
+            return;
+        }
+
+
+        const unlocked =
+            localStorage.getItem(
+                `book${bookNumber}Unlocked`
+            ) === "true";
+
+
+        const lockLabel =
+            card.querySelector(
+                ".lock-label"
+            );
+
+
+        if (unlocked) {
+
+            card.classList.remove(
+                "locked-book"
+            );
+
+
+            card.classList.add(
+                "unlocked-book"
+            );
+
+
+            if (lockLabel) {
+
+                lockLabel.textContent =
+                    "UNLOCKED";
+
+            }
+
+
+            unlockedBooks++;
+
+        }
+
+        else {
+
+            card.classList.add(
+                "locked-book"
+            );
+
+
+            card.classList.remove(
+                "unlocked-book"
+            );
+
+
+            if (lockLabel) {
+
+                if (
+                    card.classList.contains(
+                        "final-book"
+                    )
+                ) {
+
+                    lockLabel.textContent =
+                        "FINAL BOSS";
+
+                }
+
+                else {
+
+                    lockLabel.textContent =
+                        "LOCKED";
+
+                }
+
+            }
+
+        }
+
+    });
+
+
+    updateBooksCounter(
+        unlockedBooks
+    );
+
+
+    updateQuestProgress(
+        unlockedBooks
+    );
+
+}
+
+
+// ========================================
+// UPDATE BOOK COUNTER
+// ========================================
+
+function updateBooksCounter(
+    unlockedBooks
+) {
+
+    if (!booksUnlockedText) {
+        return;
+    }
+
+
+    booksUnlockedText.textContent =
+        `${unlockedBooks} / 9`;
+
+}
+
+
+// ========================================
+// UPDATE QUEST PROGRESS
+// ========================================
+
+function updateQuestProgress(
+    unlockedBooks
+) {
+
+    const percentage =
+        Math.round(
+            (unlockedBooks / 9) * 100
+        );
+
+
+    const safePercentage =
+        Math.min(
+            percentage,
+            100
+        );
+
+
+    if (questProgressText) {
+
+        questProgressText.textContent =
+            `${safePercentage}% Complete`;
+
+    }
+
+
+    if (questProgressBar) {
+
+        questProgressBar.style.width =
+            `${safePercentage}%`;
+
+    }
+
+}
+
+
+
+// ========================================
+// AUTO CHARACTER SHOWCASE
+// ========================================
+
+const characterKeys = Object.keys(characters);
+let characterCycleIndex = 0;
+let characterCycleTimer = null;
+
+function updateSelectedCharacterCard(characterKey) {
+    const key = characterKey.toLowerCase();
+    const character = characters[key];
+
+    if (!character) {
+        return;
+    }
+
+    if (selectedCharacterImage) {
+        selectedCharacterImage.classList.remove("character-switch");
+        void selectedCharacterImage.offsetWidth;
+        selectedCharacterImage.classList.add("character-switch");
+        selectedCharacterImage.src = character.image;
+        selectedCharacterImage.alt = character.name;
+    }
+
+    if (selectedCharacterName) {
+        selectedCharacterName.textContent = character.name;
+    }
+
+    if (selectedCharacterRole) {
+        selectedCharacterRole.textContent = character.role;
+    }
+
+    if (selectedCharacterCard) {
+        selectedCharacterCard.classList.remove(
+            "logic", "data", "codeweaver", "ember", "logiccraft"
+        );
+
+        const selectedOption = Array.from(characterOptions).find(option =>
+            option.dataset.character.toLowerCase() === key
+        );
+
+        if (selectedOption) {
+            selectedCharacterCard.classList.add(
+                ...Array.from(selectedOption.classList).filter(className =>
+                    ["logic", "data", "codeweaver", "ember", "logiccraft"].includes(className)
+                )
+            );
+        }
+    }
+}
+
+function startCharacterShowcase() {
+    if (!selectedCharacterCard || characterKeys.length === 0) {
+        return;
+    }
+
+    if (characterCycleTimer) {
+        clearInterval(characterCycleTimer);
+    }
+
+    const savedCharacter = localStorage.getItem("cieSharpCharacter");
+    const savedIndex = characterKeys.indexOf(savedCharacter);
+
+    characterCycleIndex = savedIndex >= 0 ? savedIndex : 0;
+    updateSelectedCharacterCard(characterKeys[characterCycleIndex]);
+
+    characterCycleTimer = setInterval(function () {
+        characterCycleIndex =
+            (characterCycleIndex + 1) % characterKeys.length;
+
+        updateSelectedCharacterCard(
+            characterKeys[characterCycleIndex]
+        );
+    }, 2000);
+}
+
+
+// ========================================
+// AUTO SCROLL TO CHARACTER INFO
+// ========================================
+
+function scrollToCharacterDetails() {
+    if (!characterDetails) {
+        return;
+    }
+
+    requestAnimationFrame(function () {
+        characterDetails.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+        characterDetails.focus({
+            preventScroll: true
+        });
+    });
+}
+
+
+// ========================================
+// LOAD SAVED CHARACTER
+// ========================================
+
+function loadSavedCharacter() {
+
+    const savedCharacter =
+        localStorage.getItem(
+            "cieSharpCharacter"
+        );
+
+
+    if (
+        !savedCharacter ||
+        !characters[savedCharacter]
+    ) {
+        return;
+    }
+
+
+    const character =
+        characters[savedCharacter];
+
+
+    if (selectedCharacterImage) {
+
+        selectedCharacterImage.src =
+            character.image;
+
+        selectedCharacterImage.alt =
+            character.name;
+
+    }
+
+
+    if (selectedCharacterName) {
+
+        selectedCharacterName.textContent =
+            character.name;
+
+    }
+
+
+    if (selectedCharacterRole) {
+
+        selectedCharacterRole.textContent =
+            character.role;
+
+    }
+
+}
+
+
+// ========================================
+// MUSIC
+// ========================================
+
+const musicButton =
+    document.getElementById(
+        "musicButton"
+    );
+
+const backgroundMusic =
+    document.getElementById(
+        "bgMusic"
+    );
+
+
+// ========================================
+// LOAD MUSIC SETTING
+// ========================================
+
+function loadMusicSetting() {
+
+    const musicSetting =
+        localStorage.getItem(
+            "cieSharpMusic"
+        );
+
+
+    if (
+        !musicButton ||
+        !backgroundMusic
+    ) {
+        return;
+    }
+
+
+    if (
+        musicSetting === "on"
+    ) {
+
+        musicButton.textContent =
+            "ON";
+
+    }
+
+    else {
+
+        musicButton.textContent =
+            "OFF";
+
+    }
+
+}
+
+
+// ========================================
+// MUSIC BUTTON
+// ========================================
+
+if (musicButton) {
+
+    musicButton.addEventListener(
+        "click",
+        function () {
+
+            if (!backgroundMusic) {
+                return;
+            }
+
+
+            if (
+                backgroundMusic.paused
+            ) {
+
+                backgroundMusic.play()
+                    .then(() => {
+
+                        musicButton.textContent =
+                            "ON";
 
                         localStorage.setItem(
                             "cieSharpMusic",
                             "on"
                         );
 
-                    }
-                )
-                .catch(
-                    function(){
+                    })
+                    .catch(() => {
 
-                        alert(
-                            "Click the music button again to start the music."
+                        console.log(
+                            "Music could not play."
                         );
 
-                    }
+                    });
+
+            }
+
+            else {
+
+                backgroundMusic.pause();
+
+                musicButton.textContent =
+                    "OFF";
+
+
+                localStorage.setItem(
+                    "cieSharpMusic",
+                    "off"
                 );
 
-        }
-
-        else{
-
-            bgMusic.pause();
-
-            musicButton.innerText =
-                "🔇";
-
-            localStorage.setItem(
-                "cieSharpMusic",
-                "off"
-            );
+            }
 
         }
+    );
+
+}
+
+
+// ========================================
+// INITIALIZE
+// ========================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        loadSavedCharacter();
+
+        startCharacterShowcase();
+
+        loadMusicSetting();
+
+        checkBookUnlocks();
 
     }
 );
-
-
-/* START MUSIC IF PREVIOUSLY ENABLED */
-
-if(
-    musicEnabled === "on"
-){
-
-    bgMusic.play()
-        .then(
-            function(){
-
-                musicButton.innerText =
-                    "🔊";
-
-            }
-        )
-        .catch(
-            function(){
-
-                musicButton.innerText =
-                    "🔇";
-
-            }
-        );
-
-}

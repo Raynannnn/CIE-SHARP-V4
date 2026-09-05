@@ -68,18 +68,18 @@ var characters = {
     },
 
 
-    joses: {
+    Zari: {
 
         name: "Logicraft Witch",
 
-        displayName: "Logicraft Witch — Joses",
+        displayName: "Logicraft Witch — Zari",
 
         role: "The Creative Builder",
 
         description:
         "Learn C# through applications and creative solutions.",
 
-        image: "images/joses.png"
+        image: "images/Zari.png"
 
     }
 
@@ -89,36 +89,6 @@ var characters = {
 /* =========================
    ELEMENTS
 ========================= */
-
-var introStartScreen =
-    document.getElementById(
-        "introStartScreen"
-    );
-
-
-var startStoryButton =
-    document.getElementById(
-        "startStoryButton"
-    );
-
-
-var introVideoScreen =
-    document.getElementById(
-        "introVideoScreen"
-    );
-
-
-var storyVideo =
-    document.getElementById(
-        "storyVideo"
-    );
-
-
-var skipStoryButton =
-    document.getElementById(
-        "skipStoryButton"
-    );
-
 
 var characterScreen =
     document.getElementById(
@@ -151,133 +121,16 @@ var continueButton =
 
 
 /* =========================
-   START STORY
+   SHOW THE CHARACTER SCREEN IMMEDIATELY
+   (No more intro video / story screens — the player already
+   went through reading1.html's Study Scroll before landing
+   here, so we go straight into character picking.)
 ========================= */
 
-startStoryButton.addEventListener(
-    "click",
-    function(){
+if(characterScreen){
 
-        introStartScreen.classList.add(
-            "fade-out"
-        );
-
-
-        setTimeout(function(){
-
-            introStartScreen.style.display =
-                "none";
-
-
-            introVideoScreen.style.display =
-                "flex";
-
-
-            storyVideo.currentTime = 0;
-
-
-            storyVideo.muted = false;
-
-
-            storyVideo.volume = 1;
-
-
-            storyVideo.play().catch(
-                function(error){
-
-                    console.log(
-                        "Video could not start:",
-                        error
-                    );
-
-                }
-            );
-
-
-        },800);
-
-    }
-);
-
-
-/* =========================
-   SHOW SKIP AFTER 40 SEC
-========================= */
-
-storyVideo.addEventListener(
-    "timeupdate",
-    function(){
-
-        if(storyVideo.currentTime >= 15){
-
-            skipStoryButton.classList.add(
-                "show"
-            );
-
-        }
-
-    }
-);
-
-
-/* =========================
-   SKIP STORY
-========================= */
-
-skipStoryButton.addEventListener(
-    "click",
-    function(){
-
-        finishStory();
-
-    }
-);
-
-
-/* =========================
-   VIDEO FINISHED
-========================= */
-
-storyVideo.addEventListener(
-    "ended",
-    function(){
-
-        finishStory();
-
-    }
-);
-
-
-/* =========================
-   FINISH STORY
-========================= */
-
-function finishStory(){
-
-    storyVideo.pause();
-
-    introVideoScreen.classList.add(
-        "fade-out"
-    );
-
-
-    setTimeout(function(){
-
-        introVideoScreen.style.display =
-            "none";
-
-
-        characterScreen.style.display =
-            "block";
-
-
-        window.scrollTo({
-            top:0,
-            behavior:"smooth"
-        });
-
-
-    },800);
+    characterScreen.style.display =
+        "block";
 
 }
 
@@ -365,6 +218,12 @@ characterCards.forEach(
 
 
                 localStorage.setItem(
+                    "cieSharpCharacter",
+                    characterID
+                );
+
+
+                localStorage.setItem(
                     "selectedWitchRole",
                     data.role
                 );
@@ -390,6 +249,8 @@ characterCards.forEach(
 
 /* =========================
    CONTINUE TO BOOK 1
+   Readings already happened on reading1.html, so this
+   button now goes straight into the Book I trial.
 ========================= */
 
 continueButton.addEventListener(

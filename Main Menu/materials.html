@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIE-Sharp | Learning Module</title>
+    <link rel="stylesheet" href="materials.css">
+</head>
+
+<body>
+
+<audio id="bgMusic" src="audio/Title Theme.mp3" loop></audio>
+
+<header class="game-header">
+
+    <a href="lesson.html" class="back-button">BACK</a>
+
+    <div class="game-logo">
+        <img src="../images/cie-sharp-logo.png" alt="CIE-Sharp Logo">
+        <div>
+            <h2>CIE-Sharp</h2>
+            <span>C# Adventure</span>
+        </div>
+    </div>
+
+    <button id="musicButton" class="music-button" type="button">MUSIC</button>
+
+</header>
+
+<main class="module-world">
+
+    <div class="dungeon-glow"></div>
+
+    <section class="module-hero">
+        <span class="chapter-label">THE LIBRARY OF C#</span>
+        <h1>Learning Module</h1>
+        <p>
+            Study the foundations of C# syntax and code structure before entering
+            the interactive trials.
+        </p>
+    </section>
+
+    <div class="module-layout">
+
+        <aside class="module-sidebar">
+
+            <div class="sidebar-title">MODULE MAP</div>
+
+            <button class="topic-button active" data-topic="overview">
+                <span>01</span>
+                Module Overview
+            </button>
+
+            <button class="topic-button" data-topic="structure">
+                <span>02</span>
+                C# Program Structure
+            </button>
+
+            <button class="topic-button" data-topic="syntax">
+                <span>03</span>
+                Basic Syntax Rules
+            </button>
+
+            <button class="topic-button" data-topic="formatting">
+                <span>04</span>
+                Syntax Formatting
+            </button>
+
+            <button class="topic-button" data-topic="examples">
+                <span>05</span>
+                Code Examples
+            </button>
+
+            <button class="topic-button" data-topic="check">
+                <span>06</span>
+                Knowledge Check
+            </button>
+
+            <div class="module-progress-box">
+                <span>MODULE PROGRESS</span>
+                <strong id="progressText">0%</strong>
+                <div class="progress-track">
+                    <div id="progressBar" class="progress-fill"></div>
+                </div>
+            </div>
+
+        </aside>
+
+        <section class="module-content">
+
+            <article class="module-section active-section" data-section="overview">
+
+                <div class="section-heading">
+                    <span>CHAPTER 01</span>
+                    <h2>Welcome to the Library of C#</h2>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>What will you learn?</h3>
+                    <p>
+                        This module introduces the basic rules used when writing and
+                        formatting C# code. The goal is to help you recognize correct
+                        syntax, organize code clearly, and identify common formatting
+                        mistakes.
+                    </p>
+                </div>
+
+                <div class="learning-grid">
+
+                    <div class="mini-card">
+                        <strong>01</strong>
+                        <h3>Structure</h3>
+                        <p>Recognize the common parts of a C# program.</p>
+                    </div>
+
+                    <div class="mini-card">
+                        <strong>02</strong>
+                        <h3>Syntax</h3>
+                        <p>Understand symbols and rules that make statements valid.</p>
+                    </div>
+
+                    <div class="mini-card">
+                        <strong>03</strong>
+                        <h3>Formatting</h3>
+                        <p>Arrange code using indentation, spacing, and braces.</p>
+                    </div>
+
+                    <div class="mini-card">
+                        <strong>04</strong>
+                        <h3>Practice</h3>
+                        <p>Apply the rules through examples and a short check.</p>
+                    </div>
+
+                </div>
+
+                <button class="next-button" data-next="structure">CONTINUE</button>
+
+            </article>
+
+
+            <article class="module-section" data-section="structure">
+
+                <div class="section-heading">
+                    <span>CHAPTER 02</span>
+                    <h2>C# Program Structure</h2>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>A simple C# program</h3>
+
+                    <pre class="code-box"><code>using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Hello, C#");
+    }
+}</code></pre>
+
+                    <p>
+                        A C# program is organized into different parts. The example
+                        above contains a namespace import, a class, a Main method,
+                        braces, and a statement.
+                    </p>
+                </div>
+
+                <div class="rule-list">
+
+                    <div class="rule-item">
+                        <span>1</span>
+                        <div>
+                            <strong>using System;</strong>
+                            <p>Allows the program to use types from the System namespace.</p>
+                        </div>
+                    </div>
+
+                    <div class="rule-item">
+                        <span>2</span>
+                        <div>
+                            <strong>class Program</strong>
+                            <p>Defines a class named Program.</p>
+                        </div>
+                    </div>
+
+                    <div class="rule-item">
+                        <span>3</span>
+                        <div>
+                            <strong>{ }</strong>
+                            <p>Braces group the statements that belong to a class or method.</p>
+                        </div>
+                    </div>
+
+                    <div class="rule-item">
+                        <span>4</span>
+                        <div>
+                            <strong>Console.WriteLine(...);</strong>
+                            <p>Represents a statement that ends with a semicolon.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button class="next-button" data-next="syntax">CONTINUE</button>
+
+            </article>
+
+
+            <article class="module-section" data-section="syntax">
+
+                <div class="section-heading">
+                    <span>CHAPTER 03</span>
+                    <h2>Basic Syntax Rules</h2>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>Rule 01: End statements properly</h3>
+
+                    <div class="comparison">
+
+                        <div class="code-panel correct">
+                            <span>CORRECT</span>
+                            <pre><code>int score = 10;</code></pre>
+                        </div>
+
+                        <div class="code-panel wrong">
+                            <span>INCORRECT</span>
+                            <pre><code>int score = 10</code></pre>
+                        </div>
+
+                    </div>
+
+                    <p>
+                        Many C# statements use a semicolon at the end. Missing the
+                        semicolon can cause a syntax error.
+                    </p>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>Rule 02: Match braces</h3>
+
+                    <pre class="code-box"><code>if (score &gt; 0)
+{
+    Console.WriteLine("Valid score");
+}</code></pre>
+
+                    <p>
+                        An opening brace should have a matching closing brace.
+                        Proper indentation makes the beginning and end of a block
+                        easier to see.
+                    </p>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>Rule 03: Follow C# capitalization</h3>
+
+                    <div class="comparison">
+
+                        <div class="code-panel correct">
+                            <span>CORRECT</span>
+                            <pre><code>Console.WriteLine("Hello");</code></pre>
+                        </div>
+
+                        <div class="code-panel wrong">
+                            <span>INCORRECT</span>
+                            <pre><code>console.writeline("Hello");</code></pre>
+                        </div>
+
+                    </div>
+
+                    <p>
+                        C# is case-sensitive. Capitalization matters when writing
+                        identifiers such as Console and WriteLine.
+                    </p>
+                </div>
+
+                <button class="next-button" data-next="formatting">CONTINUE</button>
+
+            </article>
+
+
+            <article class="module-section" data-section="formatting">
+
+                <div class="section-heading">
+                    <span>CHAPTER 04</span>
+                    <h2>Syntax Formatting</h2>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>Formatting is more than making code look nice</h3>
+                    <p>
+                        Good formatting makes the structure of a program easier to
+                        read and helps learners locate syntax mistakes.
+                    </p>
+                </div>
+
+                <div class="format-grid">
+
+                    <div class="format-card">
+                        <span>01</span>
+                        <h3>Indentation</h3>
+                        <p>
+                            Statements inside a block should be indented consistently.
+                        </p>
+                    </div>
+
+                    <div class="format-card">
+                        <span>02</span>
+                        <h3>Spacing</h3>
+                        <p>
+                            Use readable spaces around operators and between parts of a statement.
+                        </p>
+                    </div>
+
+                    <div class="format-card">
+                        <span>03</span>
+                        <h3>Braces</h3>
+                        <p>
+                            Keep opening and closing braces aligned so blocks are easy to identify.
+                        </p>
+                    </div>
+
+                    <div class="format-card">
+                        <span>04</span>
+                        <h3>Line Breaks</h3>
+                        <p>
+                            Place separate statements on separate lines for clearer code structure.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="lesson-card">
+
+                    <h3>Formatted example</h3>
+
+                    <pre class="code-box"><code>class Program
+{
+    static void Main()
+    {
+        int score = 90;
+
+        if (score &gt;= 75)
+        {
+            Console.WriteLine("Passed");
+        }
+    }
+}</code></pre>
+
+                </div>
+
+                <button class="next-button" data-next="examples">CONTINUE</button>
+
+            </article>
+
+
+            <article class="module-section" data-section="examples">
+
+                <div class="section-heading">
+                    <span>CHAPTER 05</span>
+                    <h2>Code Examples</h2>
+                </div>
+
+                <div class="lesson-card">
+
+                    <h3>Example 01: Variable declaration</h3>
+
+                    <pre class="code-box"><code>int age = 20;
+string name = "Alex";
+double grade = 95.5;</code></pre>
+
+                    <p>
+                        Each declaration is written as a statement and ends with a
+                        semicolon.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card">
+
+                    <h3>Example 02: Conditional statement</h3>
+
+                    <pre class="code-box"><code>int score = 85;
+
+if (score &gt;= 75)
+{
+    Console.WriteLine("Passed");
+}
+else
+{
+    Console.WriteLine("Failed");
+}</code></pre>
+
+                    <p>
+                        The braces clearly separate the statements belonging to each
+                        condition.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card">
+
+                    <h3>Example 03: Spot the formatting problem</h3>
+
+                    <pre class="code-box"><code>if(score&gt;=75){
+Console.WriteLine("Passed");
+}</code></pre>
+
+                    <p>
+                        The code may be difficult to read because spacing and
+                        indentation are missing. Formatting it clearly improves the
+                        visibility of the program structure.
+                    </p>
+
+                    <button id="formatExample" class="action-button" type="button">
+                        SHOW FORMATTED VERSION
+                    </button>
+
+                    <pre id="formattedExample" class="code-box hidden"><code>if (score &gt;= 75)
+{
+    Console.WriteLine("Passed");
+}</code></pre>
+
+                </div>
+
+                <button class="next-button" data-next="check">CONTINUE</button>
+
+            </article>
+
+
+            <article class="module-section" data-section="check">
+
+                <div class="section-heading">
+                    <span>CHAPTER 06</span>
+                    <h2>Knowledge Check</h2>
+                </div>
+
+                <div id="quizArea" class="quiz-area">
+
+                    <div class="quiz-question">
+                        <span id="questionNumber">QUESTION 1 OF 5</span>
+                        <h3 id="questionText">
+                            Which symbol commonly ends a C# statement?
+                        </h3>
+                    </div>
+
+                    <div id="answerChoices" class="answer-choices"></div>
+
+                    <div id="quizFeedback" class="quiz-feedback"></div>
+
+                    <button id="nextQuestion" class="next-button hidden" type="button">
+                        NEXT QUESTION
+                    </button>
+
+                </div>
+
+                <div id="quizResult" class="quiz-result hidden">
+                    <span>MODULE COMPLETE</span>
+                    <h2 id="resultTitle">Learning Module Finished</h2>
+                    <p id="resultText"></p>
+
+                    <div class="result-score">
+                        <strong id="finalScore">0 / 5</strong>
+                        <span>QUIZ SCORE</span>
+                    </div>
+
+                    <button id="restartQuiz" class="action-button" type="button">
+                        RETAKE CHECK
+                    </button>
+
+                    <a href="lesson.html" class="return-button">
+                        RETURN TO LIBRARY
+                    </a>
+                </div>
+
+            </article>
+
+        </section>
+
+    </div>
+
+</main>
+
+<footer>
+    <p>CIE-Sharp | C# Learning Module</p>
+</footer>
+
+<script src="materials.js"></script>
+
+</body>
+</html>
