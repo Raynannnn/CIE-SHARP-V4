@@ -4853,7 +4853,7 @@ if(loseMenuButton){
         function(){
 
             window.location.href =
-                "/Main Menu/lesson.html";
+                "/MainMenu/lesson.html";
 
         };
 
@@ -4876,7 +4876,7 @@ if(resultMenuButton){
         function(){
 
             window.location.href =
-                "/Main Menu/lesson.html";
+                "/MainMenu/lesson.html";
 
         };
 
@@ -4944,7 +4944,7 @@ if(returnHomeButton){
         function(){
 
             window.location.href =
-                "/Main Menu/lesson.html";
+                "/MainMenu/lesson.html";
 
         };
 

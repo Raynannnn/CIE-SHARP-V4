@@ -2209,7 +2209,7 @@ function(){
 
 
         location.href =
-            "/Main Menu/lesson.html";
+            "/MainMenu/lesson.html";
 
     }
 );
