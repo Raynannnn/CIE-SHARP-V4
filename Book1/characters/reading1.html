@@ -4,214 +4,1001 @@
 <head>
 
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>Book I | Study Scroll</title>
+    <title>Spellcraft I | C# Beginnings</title>
 
     <link rel="stylesheet" href="reading1.css">
 
 </head>
 
 <body>
-
-
-<!-- =========================
-     BACKGROUND
-========================= -->
-
-<div class="background-overlay"></div>
-
-
-<!-- =========================
-     HEADER
-========================= -->
-
-<header class="reading-header">
-
     
-        href="/Main Menu/lesson.html"
-        class="back-button"
-    >
-        ← EXIT
-    </a>
+
+    <div class="background-overlay"></div>
+    <div class="stars"></div>
+
+    <!-- HEADER -->
+    <header class="reading-header">
+
+        <a href="/Main Menu/lesson.html" class="back-button">
+            <span>←</span>
+            EXIT
+        </a>
+
+        <div class="book-title">
+            <span>SPELLCRAFT I</span>
+            <h1>C# BEGINNINGS</h1>
+        </div>
+
+        <div class="stage-tag">
+            <span>STAGE</span>
+            <strong>READ & LEARN</strong>
+        </div>
+
+    </header>
 
 
-    <div class="book-title">
+    <!-- READING AREA -->
+    <main class="reading-main">
 
-        <span>BOOK I</span>
+        <!-- TOP STATUS -->
+        <div class="reading-status">
 
-        <h1>STUDY SCROLL</h1>
+            <div class="spell-status">
+                <span class="status-label">ARCANE PROGRESS</span>
 
-    </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
 
-
-    <div class="stage-tag">
-
-        <span>STAGE</span>
-
-        <strong>READ FIRST</strong>
-
-    </div>
-
-</header>
-
-
-
-<!-- =========================
-     MAIN
-========================= -->
-
-<main class="reading-main">
-
-
-    <!-- LIBRARY INTRO -->
-
-    <section class="guide-intro">
-
-        <div class="guide-image-box">
-
-            📖
+            <div class="page-counter" id="pageCounter">
+                PAGE 1 / 11
+            </div>
 
         </div>
 
 
-        <div class="guide-bubble">
+        <!-- READER -->
+        <section class="reader-wrapper">
 
-            <strong>
-                THE ARCANE LIBRARY
-            </strong>
+            <!-- LEFT NAVIGATION -->
+            <button
+                class="side-navigation prev-navigation"
+                id="prevButton"
+                type="button"
+                aria-label="Previous page"
+            >
+                <span>‹</span>
+                <small>PREVIOUS</small>
+            </button>
+
+
+            <!-- BOOK / PAGE -->
+            <div class="spell-book">
+
+                <div class="book-glow"></div>
+
+                <!-- PAGE 1 -->
+                <article class="reading-page active">
+
+                    <div class="page-content intro-page">
+
+                        <div class="witch-library">
+
+                            <div class="moon"></div>
+
+                            <div class="witch">
+
+                                <div class="witch-hat"></div>
+
+                                <div class="witch-head"></div>
+
+                                <div class="witch-body"></div>
+
+                                <div class="witch-arm"></div>
+
+                                <div class="wand"></div>
+
+                            </div>
+
+                            <div class="magic-particles">
+                                ✦ ✧ ✦ ✧
+                            </div>
+
+                        </div>
+
+                        <span class="chapter-label">
+                            WELCOME, APPRENTICE
+                        </span>
+
+                        <h2>
+                            SPELLCRAFT I:
+                            <br>
+                            C# BEGINNINGS
+                        </h2>
+
+                        <p>
+                            Begin your programming adventure by
+                            discovering what programming is and
+                            learning the foundations of C#.
+                        </p>
+
+                        <div class="syllabus-box">
+
+                            <span>SYLLABUS ALIGNMENT</span>
+
+                            <strong>
+                                CLO 1 – Program Planning
+                            </strong>
+
+                            <p>
+                                Programming basics, C# introduction,
+                                program structure, algorithms,
+                                flowcharts, pseudocode, and
+                                sequential flow.
+                            </p>
+
+                        </div>
+
+                        <p class="intro-note">
+                            The pages ahead contain the knowledge
+                            needed before entering the next magical
+                            challenge. Read carefully, Apprentice.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 2 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 01
+                        </span>
+
+                        <h2>
+                            What is Programming?
+                        </h2>
+
+                        <p>
+                            Programming is the process of creating
+                            instructions that tell a computer what
+                            to do. These instructions are written
+                            using a <strong>programming language</strong>
+                            that computers can interpret and execute.
+                        </p>
+
+                        <p>
+                            Before writing code, programmers usually
+                            identify the problem that needs to be
+                            solved and plan the steps needed to
+                            produce the desired result.
+                        </p>
+
+                        <div class="info-box">
+
+                            <h3>
+                                A Program Has Three Basic Components
+                            </h3>
+
+                            <div class="concept-list">
+
+                                <div>
+                                    <span class="concept-number">01</span>
+
+                                    <p>
+                                        <strong>Input</strong>
+                                        The information provided
+                                        to the program.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <span class="concept-number">02</span>
+
+                                    <p>
+                                        <strong>Process</strong>
+                                        The operations performed
+                                        on the information.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <span class="concept-number">03</span>
+
+                                    <p>
+                                        <strong>Output</strong>
+                                        The result produced by
+                                        the program.
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="example-box">
+
+                            <span>EXAMPLE</span>
+
+                            <p>
+                                A program that calculates a student's
+                                average may:
+                            </p>
+
+                            <ol>
+                                <li>
+                                    Receive the student's scores as
+                                    <strong>input</strong>.
+                                </li>
+
+                                <li>
+                                    Calculate the average as the
+                                    <strong>process</strong>.
+                                </li>
+
+                                <li>
+                                    Display the average as the
+                                    <strong>output</strong>.
+                                </li>
+                            </ol>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 3 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 02
+                        </span>
+
+                        <h2>
+                            What is C#?
+                        </h2>
+
+                        <p>
+                            C# (C-Sharp) is a modern,
+                            general-purpose programming language
+                            developed by Microsoft.
+                        </p>
+
+                        <p>
+                            It is commonly used to create different
+                            types of applications, including desktop
+                            applications, web applications, games,
+                            and other software.
+                        </p>
+
+                        <div class="highlight-box">
+
+                            <span>ARCANE FACT</span>
+
+                            <p>
+                                C# works with the .NET platform,
+                                which provides tools and libraries
+                                that help developers build and run
+                                applications.
+                            </p>
+
+                        </div>
+
+                        <p>
+                            In this course, C# will be used to
+                            introduce fundamental programming
+                            concepts such as:
+                        </p>
+
+                        <div class="skill-grid">
+
+                            <span>VARIABLES</span>
+                            <span>OPERATORS</span>
+                            <span>DECISION-MAKING</span>
+                            <span>LOOPS</span>
+                            <span>METHODS</span>
+                            <span>ARRAYS</span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 4 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 03
+                        </span>
+
+                        <h2>
+                            Getting Started with C#
+                        </h2>
+
+                        <p>
+                            To write and execute a C# program, a
+                            programmer needs a development
+                            environment.
+                        </p>
+
+                        <div class="info-box">
+
+                            <h3>
+                                What is an IDE?
+                            </h3>
+
+                            <p>
+                                An <strong>Integrated Development
+                                Environment (IDE)</strong> provides
+                                tools for writing, editing, running,
+                                and debugging code.
+                            </p>
+
+                        </div>
+
+                        <p>
+                            Common C# development environments include:
+                        </p>
+
+                        <div class="environment-grid">
+
+                            <div>
+                                <strong>VISUAL STUDIO</strong>
+                                <span>Full-featured IDE</span>
+                            </div>
+
+                            <div>
+                                <strong>VISUAL STUDIO CODE</strong>
+                                <span>Lightweight code editor</span>
+                            </div>
+
+                        </div>
+
+                        <p>
+                            A basic C# program can display text
+                            using <code>Console.WriteLine()</code>.
+                        </p>
+
+                        <pre class="lesson-code">Console.WriteLine("Welcome to C#!");</pre>
+
+                        <div class="lesson-tip">
+                            The statement instructs the program
+                            to display the specified message in
+                            the console.
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 5 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 04
+                        </span>
+
+                        <h2>
+                            Understanding C# Program Structure
+                        </h2>
+
+                        <p>
+                            A C# program is made up of different
+                            elements that work together to perform
+                            a task.
+                        </p>
+
+                        <div class="concept-list">
+
+                            <div>
+                                <span class="concept-number">01</span>
+
+                                <p>
+                                    <strong>Statements</strong>
+                                    Instructions that tell the
+                                    program what to do.
+                                </p>
+                            </div>
+
+                            <div>
+                                <span class="concept-number">02</span>
+
+                                <p>
+                                    <strong>Braces { }</strong>
+                                    Define blocks of code.
+                                </p>
+                            </div>
+
+                            <div>
+                                <span class="concept-number">03</span>
+
+                                <p>
+                                    <strong>Semicolons ;</strong>
+                                    Mark the end of most statements.
+                                </p>
+                            </div>
+
+                            <div>
+                                <span class="concept-number">04</span>
+
+                                <p>
+                                    <strong>Methods</strong>
+                                    Contain instructions that can
+                                    be executed.
+                                </p>
+                            </div>
+
+                            <div>
+                                <span class="concept-number">05</span>
+
+                                <p>
+                                    <strong>Comments</strong>
+                                    Provide notes that help explain
+                                    the code.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 6 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            PROGRAM STRUCTURE • EXAMPLE
+                        </span>
+
+                        <h2>
+                            A Basic C# Program
+                        </h2>
+
+                        <pre class="lesson-code">using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Hello, C#!");
+    }
+}</pre>
+
+                        <p>
+                            The <code>Main()</code> method serves
+                            as the starting point of a traditional
+                            C# console application.
+                        </p>
+
+                        <p>
+                            The <code>Console.WriteLine()</code>
+                            statement displays text on the screen.
+                        </p>
+
+                        <div class="highlight-box">
+
+                            <span>APPRENTICE NOTE</span>
+
+                            <p>
+                                Modern C# project templates may
+                                look different because C# also
+                                supports top-level statements.
+                            </p>
+
+                            <p>
+                                For introductory learning, both
+                                forms can be introduced depending
+                                on the development environment used.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 7 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 05
+                        </span>
+
+                        <h2>
+                            C# Syntax
+                        </h2>
+
+                        <p>
+                            Syntax refers to the rules that
+                            determine how C# code must be written.
+                        </p>
+
+                        <pre class="lesson-code">Console.WriteLine("Hello!");</pre>
+
+                        <div class="syntax-breakdown">
+
+                            <div>
+                                <code>Console.WriteLine()</code>
+
+                                <p>
+                                    The command used to display output.
+                                </p>
+                            </div>
+
+                            <div>
+                                <code>"Hello!"</code>
+
+                                <p>
+                                    The text being displayed.
+                                </p>
+                            </div>
+
+                            <div>
+                                <code>;</code>
+
+                                <p>
+                                    Marks the end of the statement.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="warning-box">
+
+                            <strong>
+                                C# IS CASE-SENSITIVE
+                            </strong>
+
+                            <p>
+                                Uppercase and lowercase letters
+                                are treated differently.
+                            </p>
+
+                            <pre class="lesson-code small-code">Console.WriteLine("Hello");</pre>
+
+                            <p>is different from:</p>
+
+                            <pre class="lesson-code small-code">console.writeline("Hello");</pre>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 8 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 06
+                        </span>
+
+                        <h2>
+                            Planning a Program
+                        </h2>
+
+                        <p>
+                            Writing code is only one part of
+                            programming. Before implementing a
+                            solution, programmers can create a
+                            plan that describes how the problem
+                            will be solved.
+                        </p>
+
+                        <div class="planning-card">
+
+                            <span>01</span>
+
+                            <div>
+
+                                <h3>Pseudocode</h3>
+
+                                <p>
+                                    Pseudocode is a simplified,
+                                    human-readable description of
+                                    the steps a program should
+                                    perform.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <pre class="lesson-code">START
+Input user's name
+Display user's name
+END</pre>
+
+                        <p>
+                            Pseudocode allows programmers to focus
+                            on the logic of the solution before
+                            worrying about programming syntax.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 9 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            PROGRAM PLANNING • 02
+                        </span>
+
+                        <h2>
+                            Flowcharts
+                        </h2>
+
+                        <p>
+                            A flowchart is a visual representation
+                            of the steps in an algorithm.
+                        </p>
+
+                        <div class="flowchart-list">
+
+                            <div>
+                                <span class="flow-symbol oval"></span>
+
+                                <p>
+                                    <strong>Oval</strong>
+                                    Start / End
+                                </p>
+                            </div>
+
+                            <div>
+                                <span class="flow-symbol parallelogram"></span>
+
+                                <p>
+                                    <strong>Parallelogram</strong>
+                                    Input / Output
+                                </p>
+                            </div>
+
+                            <div>
+                                <span class="flow-symbol rectangle"></span>
+
+                                <p>
+                                    <strong>Rectangle</strong>
+                                    Process
+                                </p>
+                            </div>
+
+                            <div>
+                                <span class="flow-symbol diamond"></span>
+
+                                <p>
+                                    <strong>Diamond</strong>
+                                    Decision
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="lesson-tip">
+                            Arrows show the direction of flow
+                            from one step to another.
+                        </div>
+
+                        <div class="section-divider"></div>
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 07
+                        </span>
+
+                        <h2>
+                            Understanding Sequential Flow
+                        </h2>
+
+                        <p>
+                            A sequential structure is a programming
+                            structure in which instructions are
+                            executed one after another in the order
+                            in which they appear.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 10 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            SEQUENTIAL FLOW • EXAMPLE
+                        </span>
+
+                        <h2>
+                            Instructions Follow an Order
+                        </h2>
+
+                        <pre class="lesson-code">Console.WriteLine("Enter the magical world.");
+Console.WriteLine("Learn the ancient spells.");
+Console.WriteLine("Begin your C# journey.");</pre>
+
+                        <div class="sequence-visual">
+
+                            <div>01</div>
+                            <span>↓</span>
+
+                            <div>02</div>
+                            <span>↓</span>
+
+                            <div>03</div>
+
+                        </div>
+
+                        <p>
+                            The statements are executed from
+                            <strong>top to bottom</strong>.
+                        </p>
+
+                        <div class="highlight-box">
+
+                            <span>REMEMBER</span>
+
+                            <p>
+                                Understanding sequential execution
+                                is important because it serves as
+                                the foundation for more advanced
+                                structures such as decision
+                                structures and loops.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 11 -->
+                <article class="reading-page">
+
+                    <div class="page-content final-page">
+
+                        <span class="chapter-label">
+                            CONSULT THE C# CODEX
+                        </span>
+
+                        <h2>
+                            The Apprentice's Quick Codex
+                        </h2>
+
+                        <div class="codex-list">
+
+                            <div>
+                                <strong>01 • C# Introduction</strong>
+
+                                <p>
+                                    C# is a programming language
+                                    used for developing different
+                                    types of applications and
+                                    introducing fundamental
+                                    programming concepts.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>02 • Getting Started</strong>
+
+                                <p>
+                                    A development environment allows
+                                    code to be written, executed,
+                                    and tested.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>03 • Syntax</strong>
+
+                                <p>
+                                    Statements generally end with
+                                    semicolons, braces organize
+                                    blocks of code, and C# is
+                                    case-sensitive.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>04 • Output</strong>
+
+                                <p>
+                                    <code>Console.WriteLine()</code>
+                                    displays information in the
+                                    console.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>05 • Comments</strong>
+
+                                <p>
+                                    Comments are notes placed in
+                                    source code to explain sections
+                                    without affecting program
+                                    execution.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="video-section">
+
+                            <span class="chapter-label">
+                                WATCH THE SPELL IN ACTION
+                            </span>
+
+                            <h3>
+                                C# Full Course — Bro Code
+                            </h3>
+
+                            <p>
+                                Relevant sections:
+                            </p>
+
+                            <ul>
+                                <li>
+                                    00:00:00 — Course Introduction
+                                </li>
+
+                                <li>
+                                    00:06:30 — Output
+                                </li>
+                            </ul>
+
+                            <a
+                                href="https://youtu.be/wxznTygnRfQ?si=QpeSrC508uk8W3jf"
+                                target="_blank"
+                                class="watch-button"
+                            >
+                                WATCH THE COURSE ↗
+                            </a>
+
+                        </div>
+
+                        <div class="final-message">
+
+                            <div class="final-witch">
+                                ✦
+                            </div>
+
+                            <h3>
+                                SPELLCRAFT COMPLETE
+                            </h3>
+
+                            <p>
+                                You have reviewed the foundations
+                                of C# and are now ready to choose
+                                your Witch Guide.
+                            </p>
+
+                            <button
+                                id="chooseWitchButton"
+                                type="button"
+                            >
+                                CONTINUE TO WITCH GUIDE →
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- RIGHT NAVIGATION -->
+            <button
+                class="side-navigation next-navigation"
+                id="nextButton"
+                type="button"
+                aria-label="Next page"
+            >
+                <small>NEXT</small>
+                <span>›</span>
+
+                <div
+                    class="unlock-timer"
+                    id="unlockTimer"
+                >
+                    3
+                </div>
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- LOCK MESSAGE -->
+    <div class="review-message" id="reviewMessage">
+
+        <div class="review-card">
+
+            <button
+                class="message-close"
+                id="messageClose"
+                type="button"
+            >
+                ×
+            </button>
+
+            <div class="message-witch">
+
+                <div class="mini-hat"></div>
+                <div class="mini-head"></div>
+                <div class="mini-body"></div>
+
+                <span class="mini-sparkle sparkle-one">✦</span>
+                <span class="mini-sparkle sparkle-two">✧</span>
+                <span class="mini-sparkle sparkle-three">✦</span>
+
+            </div>
+
+            <h2>
+                HOLD ON, APPRENTICE!
+            </h2>
 
             <p>
-                Before you choose your Witch Guide and enter the
-                first trial, review the spells below. Every
-                question inside Book I uses exactly what's written
-                on this scroll — read carefully.
+                Please review first.
             </p>
+
+            <strong>
+                Review makes you stronger
+                and smarter!
+            </strong>
+
+            <span class="wait-text">
+                The next spell will unlock shortly.
+            </span>
 
         </div>
 
-    </section>
+    </div>
 
+    <div class="scroll-reminder" id="scrollReminder">
 
+     Scroll down for more information
 
-    <!-- LESSON 1 -->
+    </div>
 
-    <article class="lesson-card">
-
-        <span class="lesson-number">01</span>
-
-        <h2>
-            Every Statement Ends With a Semicolon ( ; )
-        </h2>
-
-        <p>
-            A <strong>statement</strong> is one complete instruction
-            in C#. The semicolon tells the compiler "this instruction
-            is finished." Forgetting it is the most common reason
-            code fails to run.
-        </p>
-
-        <pre class="lesson-code">int age = 20;
-Console.WriteLine("Hello World");
-int score = 100;</pre>
-
-        <p class="lesson-tip">
-            💡 If you see a blank space where code should end —
-            think semicolon first.
-        </p>
-
-    </article>
-
-
-
-    <!-- LESSON 2 -->
-
-    <article class="lesson-card">
-
-        <span class="lesson-number">02</span>
-
-        <h2>
-            Code Has an Order: Declare → Open → Do → Close
-        </h2>
-
-        <p>
-            A method is written in this order: its declaration
-            (like <code>static void Main()</code>), then an opening
-            brace <code>{</code> to start the body, the statements
-            inside, then a closing brace <code>}</code> to end it.
-            A variable must also exist before you can use it.
-        </p>
-
-        <pre class="lesson-code">static void Main()
-{
-    int score = 100;
-    Console.WriteLine(score);
-}</pre>
-
-        <p class="lesson-tip">
-            💡 You can't print a variable before it's created —
-            "score" has to exist first.
-        </p>
-
-    </article>
-
-
-
-    <!-- LESSON 3 -->
-
-    <article class="lesson-card">
-
-        <span class="lesson-number">03</span>
-
-        <h2>
-            Proper Formatting: Indent What's Inside the Braces
-        </h2>
-
-        <p>
-            Anything inside <code>{ }</code> should be indented so
-            it's clear it belongs to that block. An
-            <code>if</code> condition always needs parentheses
-            <code>( )</code>, and its statement still needs a
-            semicolon.
-        </p>
-
-        <pre class="lesson-code">if (age >= 18)
-{
-    Console.WriteLine("Adult");
-}</pre>
-
-        <p class="lesson-tip">
-            💡 Indentation isn't required to run the code — but it
-            IS required in these trials to prove you understand
-            structure.
-        </p>
-
-    </article>
-
-
-
-    <!-- CTA -->
-
-    <section class="reading-cta">
-
-        <p>
-            Studied everything? Choose your Witch Guide next.
-        </p>
-
-        <button id="chooseWitchButton">
-            ✦ CHOOSE YOUR WITCH GUIDE →
-        </button>
-
-    </section>
-
-</main>
-
-
-<script src="reading1.js"></script>
+    <script src="reading1.js"></script>
 
 </body>
 

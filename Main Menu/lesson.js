@@ -673,7 +673,7 @@ function openBook(bookNumber) {
     if (bookNumber === 1) {
 
         window.location.href =
-            "/Book1/characters/reading1.html";
+            "../Book1/characters/reading1.html";
 
         return;
 
@@ -691,7 +691,7 @@ function openBook(bookNumber) {
         ) {
 
             window.location.href =
-                "/Book2/characters/character2.html";
+                "../Book2/characters/character2.html";
 
         }
 
