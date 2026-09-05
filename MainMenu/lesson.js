@@ -17,7 +17,7 @@ const characters = {
             "A calm and focused witch who helps learners understand programming logic and solve problems step by step.",
         stat: "LOGIC",
         image: "images/GiTei.png",
-        video: "videos/gitei.mp4"
+        video: "videos/GiTei.mp4"
     },
 
     achi: {
@@ -28,7 +28,7 @@ const characters = {
             "A clever witch who guides learners in understanding C# fundamentals, variables, and different types of data.",
         stat: "DATA",
         image: "images/Achi.png",
-        video: "videos/achi.mp4"
+        video: "videos/Achi.mp4"
     },
 
     leeserin: {
@@ -39,7 +39,7 @@ const characters = {
             "A knowledgeable witch who helps learners understand proper C# syntax and organize their code correctly.",
         stat: "SYNTAX",
         image: "images/LeeSerin.png",
-        video: "videos/leeserin.mp4"
+        video: "videos/LeeSerin.mp4"
     },
 
     cythera: {
@@ -50,7 +50,7 @@ const characters = {
             "A determined witch who challenges learners to apply their knowledge through programming activities and coding challenges.",
         stat: "CHALLENGE",
         image: "images/Cythera.png",
-        video: "videos/cythera.mp4"
+        video: "videos/Cythera.mp4"
     },
 
     zari: {
@@ -61,7 +61,7 @@ const characters = {
             "An energetic witch who encourages learners to apply programming concepts and create effective solutions.",
         stat: "APPLICATION",
         image: "images/Zari.png",
-        video: "videos/zari.mp4"
+        video: "videos/Zari.mp4"
     }
 
 };
