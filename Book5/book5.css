@@ -3529,3 +3529,756 @@ body{
     z-index:20;
 
 }
+
+
+/* =========================================================
+   GREEN THEME OVERRIDE
+   Replaces the RED/WRAITH accents with DARK GREEN
+   ========================================================= */
+
+/* =========================
+   ENEMY HP
+========================= */
+
+.enemy-hp{
+    background:#22c55e;
+}
+
+
+/* =========================
+   ENEMY SPELL
+========================= */
+
+.enemy-spell{
+    background:rgba(6,78,59,.35);
+    border-color:#047857;
+    color:#86efac;
+}
+
+
+/* =========================
+   ENEMY AURA
+========================= */
+
+.enemy-aura{
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(34,197,94,.25),
+            transparent 68%
+        );
+
+}
+
+
+/* =========================
+   ENEMY FRAME
+========================= */
+
+.imp-frame{
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(34,197,94,.18),
+            transparent 65%
+        );
+
+}
+
+
+/* =========================
+   VS EFFECT
+========================= */
+
+.vs{
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(34,197,94,.20),
+            transparent 70%
+        );
+
+    border-color:rgba(34,197,94,.45);
+
+    box-shadow:
+        0 0 30px
+        rgba(34,197,94,.16);
+
+}
+
+
+/* =========================
+   DAMAGE FLASH → GREEN
+========================= */
+
+@keyframes damageFlash{
+
+    0%{
+
+        filter:
+            brightness(1)
+            saturate(1);
+
+    }
+
+    25%{
+
+        filter:
+            brightness(1.8)
+            saturate(1.8)
+            drop-shadow(
+                0 0 18px
+                rgba(34,197,94,.9)
+            );
+
+    }
+
+    100%{
+
+        filter:
+            brightness(1)
+            saturate(1);
+
+    }
+
+}
+
+
+/* =========================
+   FLOATING DAMAGE NUMBER
+========================= */
+
+.floating-number.dmg{
+
+    color:#4ade80;
+
+    text-shadow:
+        0 0 10px rgba(34,197,94,.9),
+        0 0 3px #000;
+
+}
+
+
+/* =========================
+   RATIONALE BOX
+========================= */
+
+.rationale-box{
+
+    border-color:#22c55e;
+
+    box-shadow:
+        0 0 40px rgba(34,197,94,.25);
+
+}
+
+
+.rationale-close{
+
+    border-color:#22c55e;
+
+    color:#86efac;
+
+}
+
+
+.rationale-close:hover{
+
+    background:#14532d;
+
+    color:white;
+
+}
+
+
+.rationale-title{
+
+    color:#86efac;
+
+}
+
+
+/* =========================
+   LOSE SCREEN
+========================= */
+
+.lose-box{
+
+    border-color:#22c55e;
+
+}
+
+
+.lose-box > span{
+
+    color:#4ade80;
+
+}
+
+
+.lose-box h1{
+
+    color:#86efac;
+
+}
+
+
+#loseMenuButton{
+
+    border-color:#22c55e;
+
+    color:#86efac;
+
+}
+
+
+#loseMenuButton:hover{
+
+    background:#14532d;
+
+    color:white;
+
+}
+
+
+/* =========================
+   RETRY BUTTON
+========================= */
+
+#retryTrialButton{
+
+    background:#166534;
+
+    border:1px solid #22c55e;
+
+    color:#dcfce7;
+
+}
+
+
+#retryTrialButton:hover{
+
+    background:#15803d;
+
+}
+
+
+/* =========================
+   WRAITH INTRO
+========================= */
+
+.mimic-intro-screen{
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(3,40,25,.38),
+            rgba(0,0,0,.98) 72%
+        ),
+        #000;
+
+}
+
+
+/* INTRO BOX */
+
+.mimic-intro-box{
+
+    border-color:#047857 !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(3,30,22,.96),
+            rgba(2,5,4,.98)
+        ) !important;
+
+    box-shadow:
+
+        0 0 25px rgba(6,95,70,.5),
+
+        0 0 90px rgba(0,0,0,.95),
+
+        inset 0 0 35px rgba(6,95,70,.18) !important;
+
+}
+
+
+/* WRAITH PORTRAIT */
+
+.mimic-intro-portrait img{
+
+    filter:
+        grayscale(.25)
+        contrast(1.35)
+        brightness(.72)
+        drop-shadow(
+            0 0 18px
+            rgba(34,197,94,.85)
+        );
+
+}
+
+
+/* GREEN AURA */
+
+.mimic-intro-aura{
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(34,197,94,.38),
+            transparent 66%
+        ) !important;
+
+}
+
+
+/* NAME */
+
+.mimic-intro-name{
+
+    color:#86efac !important;
+
+    text-shadow:
+        2px 0 #064e3b,
+        -2px 0 #021c14,
+        0 0 16px rgba(34,197,94,.75);
+
+}
+
+
+/* DIALOGUE */
+
+.mimic-dialogue{
+
+    color:#e5e7eb !important;
+
+    text-shadow:
+        0 0 7px
+        rgba(34,197,94,.22);
+
+}
+
+
+/* CONTINUE */
+
+#mimicContinueButton{
+
+    background:#14532d;
+
+    border-color:#22c55e;
+
+    color:#dcfce7;
+
+}
+
+
+#mimicContinueButton:hover{
+
+    background:#166534;
+
+    color:white;
+
+}
+
+
+/* =========================
+   ENEMY BATTLE ATMOSPHERE
+========================= */
+
+.enemy-fighter .imp-frame{
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(6,95,70,.34),
+            transparent 68%
+        );
+
+}
+
+
+.enemy-fighter .imp-frame img{
+
+    filter:
+        grayscale(.25)
+        contrast(1.25)
+        brightness(.72)
+        drop-shadow(
+            0 0 18px
+            rgba(34,197,94,.85)
+        );
+
+}
+
+
+/* =========================
+   GREEN GLITCH BARS
+========================= */
+
+.enemy-fighter .imp-frame::before,
+.enemy-fighter .imp-frame::after{
+
+    background:
+        rgba(34,197,94,.42);
+
+}
+
+
+/* =========================
+   TIMER
+========================= */
+
+#timeAttackTimer{
+
+    color:#86efac;
+
+    text-shadow:
+        0 0 8px
+        rgba(34,197,94,.6);
+
+}
+
+
+/* =========================
+   TIMER DANGER
+========================= */
+
+#timeAttackTimer.danger{
+
+    color:#dcfce7;
+
+}
+
+
+/* =========================
+   PLAYER / GENERAL ACCENTS
+========================= */
+
+.player-fighter .fighter-name{
+
+    color:#4ade80;
+
+}
+
+
+.panel-title{
+
+    color:#4ade80;
+
+}
+
+
+.question-type{
+
+    color:#4ade80;
+
+}
+
+
+.question-counter strong{
+
+    color:#4ade80;
+
+}
+
+
+.book-title span{
+
+    color:#4ade80;
+
+}
+
+
+.start-box > span{
+
+    color:#4ade80;
+
+}
+
+
+.selected-witch-preview strong{
+
+    color:#86efac;
+
+}
+
+
+.battle-stats strong{
+
+    color:#4ade80;
+
+}
+
+
+/* =========================
+   START BUTTON
+========================= */
+
+#startBattleButton{
+
+    background:#166534;
+
+    border-color:#22c55e;
+
+}
+
+
+#startBattleButton:hover{
+
+    background:#15803d;
+
+}
+
+
+/* =========================
+   RESULT SCREEN
+========================= */
+
+.result-box{
+
+    border-color:#22c55e;
+
+}
+
+
+.result-box > span{
+
+    color:#4ade80;
+
+}
+
+
+.result-box button{
+
+    background:#166534;
+
+    border:1px solid #22c55e;
+
+}
+
+
+.result-box button:hover{
+
+    background:#15803d;
+
+}
+
+
+/* =========================
+   POWER-UP HOVER
+========================= */
+
+.power-up:hover{
+
+    border-color:#22c55e;
+
+}
+
+
+/* =========================
+   ANSWER HOVER
+========================= */
+
+.answer-button:hover{
+
+    border-color:#22c55e;
+
+}
+
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+.music-control button:hover{
+
+    border-color:#22c55e;
+
+}
+
+
+/* =========================
+   CODE DISPLAY
+========================= */
+
+.code-display{
+
+    color:#86efac;
+
+}
+
+
+/* =========================
+   TYPED ANSWER
+========================= */
+
+.type-answer-input{
+
+    color:#86efac;
+
+}
+
+
+.type-answer-input:focus{
+
+    border-color:#22c55e;
+
+    box-shadow:
+        0 0 0 2px
+        rgba(34,197,94,.20);
+
+}
+
+
+/* =========================
+   SELECT SCREEN
+========================= */
+
+.select-header span{
+
+    color:#4ade80;
+
+}
+
+
+.witch-card:hover{
+
+    border-color:#22c55e;
+
+}
+
+
+.witch-card.selected{
+
+    border-color:#4ade80;
+
+    background:#052e16;
+
+    box-shadow:
+        0 0 25px
+        rgba(34,197,94,.30);
+
+}
+
+
+.witch-card-name{
+
+    color:#86efac;
+
+}
+
+
+.witch-card-power{
+
+    background:
+        rgba(6,78,59,.35);
+
+    border-color:#047857;
+
+    color:#86efac;
+
+}
+
+
+#confirmWitchButton{
+
+    background:#166534;
+
+    border-color:#22c55e;
+
+}
+
+
+#confirmWitchButton:hover:not(:disabled){
+
+    background:#15803d;
+
+}
+
+
+/* =========================
+   GREEN WRAITH GLITCH
+========================= */
+
+@keyframes wraithBar{
+
+    0%,80%,100%{
+
+        opacity:0;
+
+        transform:translateX(0);
+
+    }
+
+    82%{
+
+        opacity:1;
+
+        transform:translateX(-12px) scaleX(.6);
+
+    }
+
+    84%{
+
+        opacity:.7;
+
+        transform:translateX(18px) scaleX(1.2);
+
+    }
+
+    86%{
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* =========================
+   GENERAL GREEN GLOW
+========================= */
+
+.enemy-fighter .fighter-name{
+
+    color:#4ade80;
+
+    text-shadow:
+        0 0 8px
+        rgba(34,197,94,.35);
+
+}
+
+
+/* =========================
+   WRAITH INTRO SCAN
+========================= */
+
+.mimic-intro-screen::before{
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(74,222,128,.035) 0px,
+            rgba(74,222,128,.035) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+
+}
+
+
+/* =========================
+   FINAL GREEN ATMOSPHERE
+========================= */
+
+.enemy-fighter .fighter-role{
+
+    color:#86a99b;
+
+}

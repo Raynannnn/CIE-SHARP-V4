@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Book VII | Array Chamber</title>
+
+    <link rel="stylesheet" href="book7.css">
+
+</head>
+
+<body>
+
+
+<!-- =========================
+     BACKGROUND
+========================= -->
+
+<img
+    class="battle-background"
+    src="images/book7-array-chamber-bg.png"
+    alt="Book VII Array Chamber Background"
+>
+
+<div class="background-overlay"></div>
+
+
+<!-- =========================
+     BACKGROUND MUSIC
+========================= -->
+
+<audio
+    id="bgMusic"
+    src="audio/book7-theme.mp3"
+    loop
+></audio>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="battle-header">
+
+    <a
+        href="/Main Menu/lesson.html"
+        class="back-button"
+    >
+        ← EXIT
+    </a>
+
+
+    <div class="book-title">
+
+        <span>BOOK VII</span>
+
+        <h1>ARRAY CHAMBER</h1>
+
+    </div>
+
+
+    <div class="question-counter">
+
+        <span>CHALLENGE</span>
+
+        <strong id="questionNumber">
+            1 / 9
+        </strong>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     MAIN GAME
+========================= -->
+
+<main class="game-screen">
+
+
+    <!-- =========================
+         BATTLE STAGE
+    ========================= -->
+
+    <section class="battle-stage">
+
+
+        <!-- PLAYER -->
+
+        <div class="fighter player-fighter">
+
+            <div class="fighter-info">
+
+                <div
+                    class="fighter-name"
+                    id="playerName"
+                >
+                    Logic Witch
+                </div>
+
+                <div
+                    class="fighter-role"
+                    id="playerRole"
+                >
+                    The Problem Solver
+                </div>
+
+            </div>
+
+
+            <!-- HP -->
+
+            <div class="hp-wrapper">
+
+                <div class="hp-top">
+
+                    <span>HP</span>
+
+                    <strong id="playerHpText">
+                        100 / 100
+                    </strong>
+
+                </div>
+
+
+                <div class="hp-bar">
+
+                    <div
+                        class="hp-fill player-hp"
+                        id="playerHp"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- WITCH -->
+
+            <div class="witch-display">
+
+                <div class="magic-aura"></div>
+
+                <img
+                    id="playerCharacter"
+                    src=""
+                    alt="Selected Witch"
+                >
+
+            </div>
+
+
+            <div
+                class="spell-name"
+                id="spellName"
+            >
+                ARRAY SPELL
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             CENTER
+        ========================= -->
+
+        <div class="battle-center">
+
+            <div class="chapter-badge">
+                THE ARRAY CHAMBER
+            </div>
+
+
+            <div class="vs">
+
+                <span>VS</span>
+
+            </div>
+
+
+            <div
+                class="battle-message"
+                id="battleMessage"
+            >
+                Choose your answer...
+            </div>
+
+
+            <!-- POWER UPS -->
+
+            <div class="power-ups-title">
+                POWER UPS
+            </div>
+
+
+            <div class="power-ups">
+
+
+                <button
+                    class="power-up"
+                    id="hintPower"
+                    title="Remove one wrong answer"
+                >
+
+                    <span class="power-icon">💡</span>
+
+                    <span>HINT</span>
+
+                    <small id="hintCount">2</small>
+
+                </button>
+
+
+                <button
+                    class="power-up"
+                    id="healPower"
+                    title="Restore 25 HP"
+                >
+
+                    <span class="power-icon">❤️</span>
+
+                    <span>HEAL</span>
+
+                    <small id="healCount">1</small>
+
+                </button>
+
+
+                <button
+                    class="power-up"
+                    id="doublePower"
+                    title="Double your next attack"
+                >
+
+                    <span class="power-icon">⚡</span>
+
+                    <span>2X POWER</span>
+
+                    <small id="doubleCount">1</small>
+
+                </button>
+
+
+                <button
+                    class="power-up"
+                    id="mysticSightPower"
+                    title="Reveal the important array index"
+                >
+
+                    <span class="power-icon">🔍</span>
+
+                    <span>MYSTIC SIGHT</span>
+
+                    <small id="mysticSightCount">1</small>
+
+                </button>
+
+
+                <button
+                    class="power-up"
+                    id="omnidataPower"
+                    title="Reveal an array clue"
+                >
+
+                    <span class="power-icon">📊</span>
+
+                    <span>OMNIDATA</span>
+
+                    <small id="omnidataCount">1</small>
+
+                </button>
+
+
+                <button
+                    class="power-up"
+                    id="syntaxSorceryPower"
+                    title="Reveal the syntax clue"
+                >
+
+                    <span class="power-icon">✨</span>
+
+                    <span>SYNTAX SORCERY</span>
+
+                    <small id="syntaxSorceryCount">1</small>
+
+                </button>
+
+
+                <button
+                    class="power-up"
+                    id="flameburstPower"
+                    title="Remove wrong choices"
+                >
+
+                    <span class="power-icon">🔥</span>
+
+                    <span>FLAMEBURST</span>
+
+                    <small id="flameburstCount">1</small>
+
+                </button>
+
+
+                <button
+                    class="power-up"
+                    id="mindcraftPower"
+                    title="Highlight the important part"
+                >
+
+                    <span class="power-icon">🧠</span>
+
+                    <span>MINDCRAFT</span>
+
+                    <small id="mindcraftCount">1</small>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             ENEMY
+        ========================= -->
+
+        <div class="fighter enemy-fighter">
+
+            <div class="fighter-info">
+
+                <div class="fighter-name">
+                    The Index Golem
+                </div>
+
+                <div class="fighter-role">
+                    Guardian of the Array Chamber
+                </div>
+
+            </div>
+
+
+            <!-- HP -->
+
+            <div class="hp-wrapper">
+
+                <div class="hp-top">
+
+                    <span>GOLEM HP</span>
+
+                    <strong id="enemyHpText">
+                        100 / 100
+                    </strong>
+
+                </div>
+
+
+                <div class="hp-bar">
+
+                    <div
+                        class="hp-fill enemy-hp"
+                        id="enemyHp"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- GOLEM -->
+
+            <div class="character-frame imp-frame">
+
+                <img
+                    id="enemyCharacter"
+                    src="images/index-golem.png"
+                    alt="The Index Golem"
+                >
+
+            </div>
+
+
+            <div class="spell-name enemy-spell">
+                INDEX CRUSH
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         BOTTOM
+    ========================= -->
+
+    <section class="battle-bottom">
+
+
+        <!-- ANSWERS -->
+
+        <div class="answer-panel">
+
+            <div class="panel-title">
+                ✦ ARRAY OPTIONS
+            </div>
+
+
+            <div
+                class="answers"
+                id="answers"
+            ></div>
+
+
+            <div
+                class="feedback"
+                id="feedback"
+            ></div>
+
+        </div>
+
+
+
+        <!-- QUESTION -->
+
+        <div class="question-panel">
+
+            <div
+                class="question-type"
+                id="questionType"
+            >
+                DATA MATCH
+            </div>
+
+
+            <h2 id="questionText">
+                What is stored at index 0?
+            </h2>
+
+
+            <div
+                class="code-display"
+                id="codeDisplay"
+            ></div>
+
+
+            <div class="battle-stats">
+
+                <div>
+
+                    <span>POWER</span>
+
+                    <strong id="score">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>ESSENCE</span>
+
+                    <strong id="essence">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>PROGRESS</span>
+
+                    <strong id="trialStatus">
+                        0 / 9
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================
+     ATTACK VIDEO
+========================= -->
+
+<div
+    class="attack-animation"
+    id="attackAnimation"
+>
+
+    <video
+        id="attackVideo"
+        playsinline
+    >
+
+        <source
+            id="attackVideoSource"
+            src=""
+            type="video/mp4"
+        >
+
+    </video>
+
+</div>
+
+
+
+<!-- =========================
+     AUDIO
+========================= -->
+
+<audio
+    id="damageSound"
+    src="audio/damage-hit.mp3"
+    preload="auto"
+></audio>
+
+<audio
+    id="healSound"
+    src="audio/heal-chime.mp3"
+    preload="auto"
+></audio>
+
+<audio
+    id="golemSound"
+    src="audio/index-golem.mp3"
+    preload="auto"
+></audio>
+
+
+
+<!-- =========================
+     RATIONALE
+========================= -->
+
+<div
+    class="rationale-box"
+    id="rationaleBox"
+>
+
+    <button
+        class="rationale-close"
+        id="rationaleClose"
+    >
+        ✕
+    </button>
+
+    <div class="rationale-title">
+        💡 ARRAY MEMORY
+    </div>
+
+    <div
+        class="rationale-text"
+        id="rationaleText"
+    ></div>
+
+</div>
+
+
+
+<!-- =========================
+     START SCREEN
+========================= -->
+
+<section
+    class="start-screen"
+    id="startScreen"
+>
+
+    <div class="start-box">
+
+        <span>
+            BOOK VII • ARRAY CHAMBER
+        </span>
+
+
+        <h1>
+            THE INDEX GOLEM
+        </h1>
+
+
+        <p>
+            Deep inside the ancient Array Chamber, the Index Golem
+            guards a collection of stored values. Every value has a
+            position, and every position has an index. Learn to read,
+            access, manipulate, and traverse arrays before the Golem
+            rearranges the chamber forever.
+        </p>
+
+
+        <div class="array-lore">
+
+            <div class="array-symbol">
+                [ 0 ] [ 1 ] [ 2 ]
+            </div>
+
+            <small>
+                REMEMBER: ARRAYS START COUNTING FROM ZERO.
+            </small>
+
+        </div>
+
+
+        <div class="selected-witch-preview">
+
+            <img
+                id="startWitchImage"
+                src=""
+                alt="Selected Witch"
+            >
+
+            <div>
+
+                <small>
+                    YOUR WITCH GUIDE
+                </small>
+
+                <strong id="startWitchName">
+                    Logic Witch
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <button id="startBattleButton">
+            ⚔ ENTER THE ARRAY CHAMBER
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     GOLEM INTRO
+========================= -->
+
+<section
+    class="mimic-intro-screen"
+    id="mimicIntroScreen"
+>
+
+    <div class="mimic-intro-box">
+
+        <div class="mimic-intro-portrait">
+
+            <div class="mimic-intro-aura"></div>
+
+            <img
+                src="images/index-golem.png"
+                alt="The Index Golem"
+            >
+
+        </div>
+
+
+        <div class="mimic-intro-name">
+            THE INDEX GOLEM
+        </div>
+
+
+        <div
+            class="mimic-dialogue"
+            id="mimicDialogueText"
+        >
+            ...
+        </div>
+
+
+        <button id="mimicContinueButton">
+            CONTINUE ▶
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     VICTORY
+========================= -->
+
+<section
+    class="result-screen"
+    id="resultScreen"
+>
+
+    <div class="result-box">
+
+        <div class="result-icon">
+            💎
+        </div>
+
+        <span>
+            CHAMBER CLEARED
+        </span>
+
+
+        <h1>
+            THE ARRAY HAS BEEN RESTORED
+        </h1>
+
+
+        <p>
+            The Index Golem falls silent as the scattered values
+            return to their proper positions. You have mastered
+            array indexing, element counting, and logical errors.
+            The next chamber awaits.
+        </p>
+
+
+        <div class="final-stats">
+
+            <div>
+
+                <strong id="finalScore">
+                    0
+                </strong>
+
+                <span>
+                    POWER
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong id="finalEssence">
+                    0
+                </strong>
+
+                <span>
+                    ESSENCE
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <button
+            onclick="location.href='/Main Menu/lesson.html'"
+        >
+            RETURN TO JOURNEY
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     DEFEAT
+========================= -->
+
+<section
+    class="lose-screen"
+    id="loseScreen"
+>
+
+    <div class="lose-box">
+
+        <div class="result-icon">
+            💀
+        </div>
+
+        <span>
+            CHAMBER FAILED
+        </span>
+
+
+        <h1>
+            THE GOLEM REARRANGED THE ARRAY
+        </h1>
+
+
+        <p>
+            Your indexes became corrupted. Study the array positions,
+            then return and try the chamber again.
+        </p>
+
+
+        <div class="lose-actions">
+
+            <button id="retryTrialButton">
+                ⟲ RETRY CHAMBER
+            </button>
+
+
+            <button id="loseMenuButton">
+                🏠 RETURN TO MAIN MENU
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<script src="book7.js"></script>
+
+</body>
+
+</html>

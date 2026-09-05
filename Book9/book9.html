@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Book IX | Null Witches Tower</title>
+
+    <link
+        rel="stylesheet"
+        href="book9.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     FINAL BOSS BACKGROUND
+===================================================== -->
+
+<img
+    class="battle-background"
+    src="images/book9-null-witch-bg.png"
+    alt="Null Witches Tower Background"
+>
+
+
+<div class="background-overlay"></div>
+
+
+<!-- =====================================================
+     PURPLE FIRE ATMOSPHERE
+===================================================== -->
+
+<div class="void-fire void-fire-one"></div>
+<div class="void-fire void-fire-two"></div>
+<div class="void-fire void-fire-three"></div>
+
+
+<div class="corruption-particles"></div>
+
+
+<!-- =====================================================
+     BACKGROUND MUSIC
+===================================================== -->
+
+<audio
+    id="bgMusic"
+    src="audio/book9-final-boss.mp3"
+    loop
+></audio>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="battle-header">
+
+
+    <a
+        href="/Main Menu/lesson.html"
+        class="back-button"
+    >
+        ← EXIT
+    </a>
+
+
+    <div class="book-title">
+
+        <span>BOOK IX • FINAL BOSS</span>
+
+        <h1>NULL WITCHES TOWER</h1>
+
+    </div>
+
+
+    <div class="question-counter">
+
+        <span>FINAL TRIAL</span>
+
+        <strong id="questionNumber">
+            1 / 9
+        </strong>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN GAME
+===================================================== -->
+
+<main class="game-screen">
+
+
+    <!-- =================================================
+         FINAL BOSS TITLE
+    ================================================== -->
+
+    <div class="final-boss-banner">
+
+        <span>
+            ⚠ FINAL CORRUPTION DETECTED ⚠
+        </span>
+
+        <strong>
+            THE NULL WITCH
+        </strong>
+
+        <small>
+            CONTROLS THE CORRUPTION ITSELF
+        </small>
+
+    </div>
+
+
+
+    <!-- =================================================
+         BATTLE STAGE
+    ================================================== -->
+
+    <section class="battle-stage">
+
+
+        <!-- =================================================
+             PLAYER
+        ================================================== -->
+
+        <div class="fighter player-fighter">
+
+
+            <div class="fighter-info">
+
+                <div
+                    class="fighter-name"
+                    id="playerName"
+                >
+                    Logic Witch
+                </div>
+
+                <div
+                    class="fighter-role"
+                    id="playerRole"
+                >
+                    The Final C# Guardian
+                </div>
+
+            </div>
+
+
+
+            <!-- PLAYER HP -->
+
+            <div class="hp-wrapper">
+
+                <div class="hp-top">
+
+                    <span>
+                        HP
+                    </span>
+
+                    <strong id="playerHpText">
+                        100 / 100
+                    </strong>
+
+                </div>
+
+
+                <div class="hp-bar">
+
+                    <div
+                        class="hp-fill player-hp"
+                        id="playerHp"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PLAYER CHARACTER -->
+
+            <div class="witch-display final-player-display">
+
+                <div class="magic-aura"></div>
+
+                <img
+                    id="playerCharacter"
+                    src=""
+                    alt="Selected Witch"
+                >
+
+            </div>
+
+
+            <div
+                class="spell-name"
+                id="spellName"
+            >
+                FINAL C# SPELL
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             CENTER
+        ================================================== -->
+
+        <div class="battle-center">
+
+
+            <div class="chapter-badge final-badge">
+
+                FINAL BATTLE
+
+            </div>
+
+
+            <div class="vs final-vs">
+
+                <span>
+                    VS
+                </span>
+
+            </div>
+
+
+            <div
+                class="battle-message"
+                id="battleMessage"
+            >
+                The final corruption awaits...
+            </div>
+
+
+
+            <!-- POWER UPS -->
+
+
+            <div class="power-ups-title">
+
+                FINAL SPELLS
+
+            </div>
+
+
+            <div class="power-ups">
+
+
+                <!-- HINT -->
+
+                <button
+                    class="power-up"
+                    id="hintPower"
+                    title="Remove one wrong answer"
+                >
+
+                    <span class="power-icon">
+                        💡
+                    </span>
+
+                    <span>
+                        HINT
+                    </span>
+
+                    <small id="hintCount">
+                        3
+                    </small>
+
+                </button>
+
+
+
+                <!-- HEAL -->
+
+                <button
+                    class="power-up"
+                    id="healPower"
+                    title="Restore 25 HP"
+                >
+
+                    <span class="power-icon">
+                        💜
+                    </span>
+
+                    <span>
+                        HEAL
+                    </span>
+
+                    <small id="healCount">
+                        2
+                    </small>
+
+                </button>
+
+
+
+                <!-- DOUBLE -->
+
+                <button
+                    class="power-up"
+                    id="doublePower"
+                    title="Double your next correct attack"
+                >
+
+                    <span class="power-icon">
+                        🔥
+                    </span>
+
+                    <span>
+                        2X POWER
+                    </span>
+
+                    <small id="doubleCount">
+                        2
+                    </small>
+
+                </button>
+
+
+
+                <!-- MYSTIC SIGHT -->
+
+                <button
+                    class="power-up"
+                    id="mysticSightPower"
+                    title="Detects the mistake hidden in the code"
+                >
+
+                    <span class="power-icon">
+                        🔍
+                    </span>
+
+                    <span>
+                        MYSTIC SIGHT
+                    </span>
+
+                    <small id="mysticSightCount">
+                        2
+                    </small>
+
+                </button>
+
+
+
+                <!-- OMNIDATA -->
+
+                <button
+                    class="power-up"
+                    id="omnidataPower"
+                    title="Reveals a major clue about the challenge"
+                >
+
+                    <span class="power-icon">
+                        📊
+                    </span>
+
+                    <span>
+                        OMNIDATA
+                    </span>
+
+                    <small id="omnidataCount">
+                        1
+                    </small>
+
+                </button>
+
+
+
+                <!-- SYNTAX SORCERY -->
+
+                <button
+                    class="power-up"
+                    id="syntaxSorceryPower"
+                    title="Shows the correct syntax needed"
+                >
+
+                    <span class="power-icon">
+                        ✨
+                    </span>
+
+                    <span>
+                        SYNTAX
+                    </span>
+
+                    <small id="syntaxSorceryCount">
+                        1
+                    </small>
+
+                </button>
+
+
+
+                <!-- FLAMEBURST -->
+
+                <button
+                    class="power-up"
+                    id="flameburstPower"
+                    title="Deal instant damage to the Null Witch"
+                >
+
+                    <span class="power-icon">
+                        🔥
+                    </span>
+
+                    <span>
+                        FLAMEBURST
+                    </span>
+
+                    <small id="flameburstCount">
+                        1
+                    </small>
+
+                </button>
+
+
+
+                <!-- MINDCRAFT -->
+
+                <button
+                    class="power-up"
+                    id="mindcraftPower"
+                    title="Highlights the key problem and protects you"
+                >
+
+                    <span class="power-icon">
+                        🧠
+                    </span>
+
+                    <span>
+                        MINDCRAFT
+                    </span>
+
+                    <small id="mindcraftCount">
+                        1
+                    </small>
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+        <!-- =================================================
+             NULL WITCH
+        ================================================== -->
+
+        <div class="fighter enemy-fighter">
+
+
+            <div class="fighter-info">
+
+                <div class="fighter-name">
+
+                    THE NULL WITCH
+
+                </div>
+
+                <div class="fighter-role">
+
+                    Controller of Corruption
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BOSS HP -->
+
+            <div class="hp-wrapper boss-hp-wrapper">
+
+                <div class="hp-top">
+
+                    <span>
+                        CORRUPTION
+                    </span>
+
+                    <strong id="enemyHpText">
+                        100 / 100
+                    </strong>
+
+                </div>
+
+
+                <div class="hp-bar boss-hp-bar">
+
+                    <div
+                        class="hp-fill enemy-hp"
+                        id="enemyHp"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BOSS -->
+
+            <div class="enemy-display null-witch-display">
+
+                <div class="boss-fire"></div>
+
+                <div class="boss-ring"></div>
+
+                <img
+                    id="enemyCharacter"
+                    src="images/null-witch.png"
+                    alt="The Null Witch"
+                >
+
+            </div>
+
+
+            <div class="boss-title">
+
+                THE CORRUPTION ITSELF
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         QUESTION AREA
+    ================================================== -->
+
+    <section class="battle-bottom">
+
+
+        <div class="question-panel">
+
+
+            <div class="question-header">
+
+                <span
+                    class="question-section"
+                    id="questionSection"
+                >
+                    CODE DUEL
+                </span>
+
+                <span
+                    class="question-round"
+                    id="questionRound"
+                >
+                    ROUND 1
+                </span>
+
+            </div>
+
+
+
+            <h2 id="questionTitle">
+
+                Repair the corrupted spell.
+
+            </h2>
+
+
+
+            <pre
+                class="code-box"
+                id="codeQuestion"
+            ></pre>
+
+
+
+            <!-- TEXT ANSWER -->
+
+            <div
+                class="typed-answer-wrapper"
+                id="typedAnswerWrapper"
+            >
+
+                <input
+                    type="text"
+                    id="typedAnswer"
+                    class="typed-answer"
+                    placeholder="Type your corrected C# code..."
+                    autocomplete="off"
+                >
+
+                <button
+                    id="submitTyped"
+                    class="submit-button"
+                >
+                    CAST
+                </button>
+
+            </div>
+
+
+
+            <!-- CHOICES -->
+
+            <div
+                class="answers"
+                id="answers"
+            ></div>
+
+
+
+            <!-- FEEDBACK -->
+
+            <div
+                class="feedback-box"
+                id="feedbackBox"
+            >
+                Choose your answer...
+            </div>
+
+
+            <button
+                id="nextQuestionButton"
+                class="next-question-button"
+            >
+                NEXT ROUND ▶
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =====================================================
+     NULL WITCH INTRO
+===================================================== -->
+
+<section
+    class="boss-intro-screen"
+    id="bossIntroScreen"
+>
+
+
+    <div class="boss-intro-box">
+
+
+        <div class="boss-warning">
+
+            ⚠ FINAL BOSS ⚠
+
+        </div>
+
+
+        <div class="boss-portrait">
+
+            <div class="intro-fire"></div>
+
+            <img
+                src="images/null-witch.png"
+                alt="The Null Witch"
+            >
+
+        </div>
+
+
+        <div class="boss-intro-name">
+
+            THE NULL WITCH
+
+        </div>
+
+
+        <div class="boss-intro-role">
+
+            CONTROLS THE CORRUPTION ITSELF
+
+        </div>
+
+
+        <div
+            class="boss-dialogue"
+            id="bossDialogue"
+        >
+
+            ...
+
+        </div>
+
+
+        <button
+            id="bossContinueButton"
+        >
+            ENTER THE FINAL BATTLE ▶
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     VICTORY
+===================================================== -->
+
+<section
+    class="result-screen"
+    id="resultScreen"
+>
+
+
+    <div class="result-box final-victory">
+
+
+        <div class="result-icon">
+
+            👑
+
+        </div>
+
+
+        <span>
+
+            FINAL BOSS DEFEATED
+
+        </span>
+
+
+        <h1>
+
+            THE GREAT C# SPELLBOOK IS RESTORED
+
+        </h1>
+
+
+        <p>
+
+            The Null Witch has fallen.
+            The corruption disappears from the tower,
+            and the Great C# Spellbook is finally restored.
+
+            You have completed the final trial of CIE-Sharp.
+
+        </p>
+
+
+        <div class="final-stats">
+
+
+            <div>
+
+                <strong id="finalScore">
+                    0
+                </strong>
+
+                <span>
+                    POWER
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong id="finalEssence">
+                    0
+                </strong>
+
+                <span>
+                    ESSENCE
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="victory-seal">
+
+            ✦ CIE-SHARP CHAMPION ✦
+
+        </div>
+
+
+        <button
+            onclick="location.href='/Main Menu/lesson.html'"
+        >
+
+            RETURN TO JOURNEY
+
+        </button>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     DEFEAT
+===================================================== -->
+
+<section
+    class="lose-screen"
+    id="loseScreen"
+>
+
+
+    <div class="lose-box final-defeat">
+
+
+        <div class="result-icon">
+
+            ☠️
+
+        </div>
+
+
+        <span>
+
+            FINAL TRIAL FAILED
+
+        </span>
+
+
+        <h1>
+
+            THE NULL WITCH CONSUMED YOUR SPELL
+
+        </h1>
+
+
+        <p>
+
+            The corruption has overwhelmed your magic.
+            The Great C# Spellbook remains incomplete.
+
+        </p>
+
+
+        <div class="lose-actions">
+
+
+            <button id="retryTrialButton">
+
+                ⟲ RETRY FINAL BATTLE
+
+            </button>
+
+
+            <button id="loseMenuButton">
+
+                🏠 RETURN TO MAIN MENU
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<script src="book9.js"></script>
+
+
+</body>
+
+</html>
