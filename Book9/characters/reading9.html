@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Spellcraft IX | Null Witches Tower</title>
+
+    <link rel="stylesheet" href="reading9.css">
+
+</head>
+
+<body>
+
+
+    <div class="background-overlay"></div>
+    <div class="stars"></div>
+
+    <!-- HEADER -->
+    <header class="reading-header">
+
+        <a href="../../MainMenu/lesson.html" class="back-button">
+            <span>←</span>
+            EXIT
+        </a>
+
+        <div class="book-title">
+            <span>SPELLCRAFT IX</span>
+            <h1>NULL WITCHES TOWER</h1>
+        </div>
+
+        <div class="stage-tag">
+            <span>STAGE</span>
+            <strong>READ & LEARN</strong>
+        </div>
+
+    </header>
+
+
+    <!-- SKIP ALL -->
+    <button
+        id="skipAllButton"
+        class="skip-all-button"
+        type="button"
+    >
+        ⏭ SKIP ALL
+    </button>
+
+
+    <!-- READING AREA -->
+    <main class="reading-main">
+
+        <!-- TOP STATUS -->
+        <div class="reading-status">
+
+            <div class="spell-status">
+                <span class="status-label">ARCANE PROGRESS</span>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <div class="page-counter" id="pageCounter">
+                PAGE 1 / 11
+            </div>
+
+        </div>
+
+
+        <!-- READER -->
+        <section class="reader-wrapper">
+
+            <!-- LEFT NAVIGATION -->
+            <button
+                class="side-navigation prev-navigation"
+                id="prevButton"
+                type="button"
+                aria-label="Previous page"
+            >
+                <span>‹</span>
+                <small>PREVIOUS</small>
+            </button>
+
+
+            <!-- BOOK / PAGE -->
+            <div class="spell-book">
+
+                <div class="book-glow"></div>
+
+                <!-- PAGE 1 -->
+                <article class="reading-page active">
+
+                    <div class="page-content intro-page">
+
+                        <div class="witch-library">
+
+                            <div class="moon"></div>
+
+                            <div class="witch-portrait">
+                                <img src="images/Zari.png" alt="Zari the Logicraft Witch">
+                            </div>
+
+                            <div class="magic-particles">
+                                ✦ ✧ ✦ ✧
+                            </div>
+
+                        </div>
+
+                        <span class="chapter-label">
+                            WELCOME BACK, APPRENTICE
+                        </span>
+
+                        <h2>
+                            SPELLCRAFT IX:
+                            <br>
+                            NULL WITCHES TOWER
+                        </h2>
+
+                        <p>
+                            Enter the Null Witches Tower and restore
+                            the Great C# Spellbook — the final trial
+                            where file handling and every spell you
+                            have learned must work together.
+                        </p>
+
+                        <div class="syllabus-box">
+
+                            <span>SYLLABUS ALIGNMENT</span>
+
+                            <strong>
+                                CLO 5 – File I/O / Programming Integration
+                            </strong>
+
+                            <p>
+                                File handling basics, opening, reading,
+                                writing, closing, file-related errors,
+                                and integration of previously learned
+                                concepts.
+                            </p>
+
+                        </div>
+
+                        <p class="intro-note">
+                            The pages ahead contain the knowledge
+                            needed before entering the next magical
+                            challenge. Read carefully, Apprentice.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 2 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 01
+                        </span>
+
+                        <h2>
+                            Understanding File Input and Output
+                        </h2>
+
+                        <p>
+                            Programs sometimes need to store
+                            information so that it can be accessed
+                            again after the program has finished
+                            running.
+                        </p>
+
+                        <p>
+                            <strong>File input/output (File I/O)</strong>
+                            allows programs to interact with files
+                            stored on a computer.
+                        </p>
+
+                        <div class="highlight-box">
+
+                            <span>ARCANE FACT</span>
+
+                            <p>
+                                A program can read information from a
+                                file or write new information into a
+                                file.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 3 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 02
+                        </span>
+
+                        <h2>
+                            Working with Files
+                        </h2>
+
+                        <p>
+                            C# provides classes and methods that allow
+                            programs to work with files.
+                        </p>
+
+                        <p>
+                            The <code>System.IO</code> namespace
+                            contains features commonly used for file
+                            operations.
+                        </p>
+
+                        <div class="lesson-tip">
+                            The File class provides methods for
+                            creating, reading, writing, copying,
+                            deleting, and checking files.
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 4 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 03
+                        </span>
+
+                        <h2>
+                            Creating and Writing Files
+                        </h2>
+
+                        <p>
+                            A program can create a new file and store
+                            information inside it.
+                        </p>
+
+                        <p>
+                            Writing information to a file allows data
+                            to be preserved beyond the current
+                            execution of a program.
+                        </p>
+
+                        <div class="warning-box">
+
+                            <strong>
+                                REPLACE OR APPEND?
+                            </strong>
+
+                            <p>
+                                When writing to an existing file,
+                                programmers should understand whether
+                                the operation will replace existing
+                                content or add information to it.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 5 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 04
+                        </span>
+
+                        <h2>
+                            Reading Files
+                        </h2>
+
+                        <p>
+                            Programs can read information stored in a
+                            file and use that information during
+                            execution.
+                        </p>
+
+                        <div class="highlight-box">
+
+                            <span>REMEMBER</span>
+
+                            <p>
+                                Reading a file can be useful for
+                                retrieving saved data, displaying
+                                stored information, or processing
+                                information that was created
+                                previously.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 6 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 05
+                        </span>
+
+                        <h2>
+                            Checking and Managing Files
+                        </h2>
+
+                        <p>
+                            Before performing an operation, a program
+                            may need to determine whether a file
+                            exists.
+                        </p>
+
+                        <p>
+                            C# provides file-handling features that
+                            can help programs check files and perform
+                            operations such as copying, moving,
+                            deleting, or replacing them.
+                        </p>
+
+                        <div class="lesson-tip">
+                            Proper file management helps prevent
+                            unexpected errors.
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 7 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 06
+                        </span>
+
+                        <h2>
+                            Handling File-Related Errors
+                        </h2>
+
+                        <p>
+                            File operations may encounter problems,
+                            such as attempting to access a file that
+                            does not exist or using an invalid
+                            location.
+                        </p>
+
+                        <p>
+                            C# provides exception handling through
+                            structures such as <code>try</code>,
+                            <code>catch</code>, and
+                            <code>finally</code>.
+                        </p>
+
+                        <pre class="lesson-code">try{
+    // risky file operation
+}
+catch(Exception e){
+    Console.WriteLine("Error: " + e.Message);
+}</pre>
+
+                        <div class="lesson-tip">
+                            Exception handling allows a program to
+                            respond to certain runtime problems
+                            instead of terminating unexpectedly.
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 8 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 07
+                        </span>
+
+                        <h2>
+                            Restoring the Great C# Spellbook
+                        </h2>
+
+                        <p>
+                            The final Spellcraft brings together the
+                            concepts introduced throughout the course.
+                        </p>
+
+                        <p>
+                            A complete programming solution may
+                            involve:
+                        </p>
+
+                        <div class="skill-grid">
+                            <span>Variables</span>
+                            <span>Operators</span>
+                            <span>Conditions</span>
+                            <span>Loops</span>
+                            <span>Methods</span>
+                            <span>Arrays</span>
+                            <span>File I/O</span>
+                            <span>Exceptions</span>
+                        </div>
+
+                        <div class="highlight-box">
+
+                            <span>ARCANE FACT</span>
+
+                            <p>
+                                The goal is to understand how these
+                                concepts can work together to create a
+                                structured C# program.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 9 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 08
+                        </span>
+
+                        <h2>
+                            Reviewing the Programming Process
+                        </h2>
+
+                        <p>
+                            Before implementing a complete program,
+                            the problem should be analyzed and
+                            planned.
+                        </p>
+
+                        <p>
+                            The programming process can include:
+                        </p>
+
+                        <div class="concept-list">
+
+                            <div>
+                                <span class="concept-number">01</span>
+                                <p>Understanding the problem</p>
+                            </div>
+
+                            <div>
+                                <span class="concept-number">02</span>
+                                <p>Identifying the required input</p>
+                            </div>
+
+                            <div>
+                                <span class="concept-number">03</span>
+                                <p>Determining the necessary processes</p>
+                            </div>
+
+                            <div>
+                                <span class="concept-number">04</span>
+                                <p>Identifying the expected output</p>
+                            </div>
+
+                            <div>
+                                <span class="concept-number">05</span>
+                                <p>Designing an algorithm</p>
+                            </div>
+
+                            <div>
+                                <span class="concept-number">06</span>
+                                <p>Creating pseudocode or a flowchart</p>
+                            </div>
+
+                            <div>
+                                <span class="concept-number">07</span>
+                                <p>Implementing the solution in C#</p>
+                            </div>
+
+                            <div>
+                                <span class="concept-number">08</span>
+                                <p>Testing the program</p>
+                            </div>
+
+                            <div>
+                                <span class="concept-number">09</span>
+                                <p>Identifying and correcting errors</p>
+                            </div>
+
+                        </div>
+
+                        <div class="lesson-tip">
+                            This process connects the planning skills
+                            introduced in Spellcraft I with the
+                            programming concepts developed throughout
+                            the course.
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 10 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            CONSULT THE C# CODEX
+                        </span>
+
+                        <h2>
+                            The Apprentice's Quick Codex
+                        </h2>
+
+                        <div class="codex-list">
+
+                            <div>
+                                <strong>01 • C# Files</strong>
+
+                                <p>
+                                    C# provides file-handling features
+                                    through the System.IO namespace.
+                                    The File class includes methods for
+                                    common operations such as
+                                    creating, reading, writing,
+                                    copying, deleting, and checking
+                                    files.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>02 • Writing to Files</strong>
+
+                                <p>
+                                    Programs can save information into
+                                    a file using file-writing methods.
+                                    Writing can create a new file or
+                                    replace existing content depending
+                                    on the operation being used.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>03 • Reading from Files</strong>
+
+                                <p>
+                                    Programs can retrieve stored
+                                    information from a file and use
+                                    the retrieved content during
+                                    execution. This allows information
+                                    to be preserved and accessed
+                                    later.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>04 • Checking Files</strong>
+
+                                <p>
+                                    Programs can check whether a file
+                                    exists before attempting to access
+                                    it. This can help reduce errors
+                                    during file operations.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>05 • C# Exceptions</strong>
+
+                                <p>
+                                    Exceptions are runtime problems
+                                    that can occur while a program is
+                                    executing. C# provides
+                                    exception-handling structures such
+                                    as try, catch, and finally to
+                                    allow programs to respond to
+                                    errors in a controlled manner.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>06 • Integrating C# Concepts</strong>
+
+                                <p>
+                                    The C# curriculum connects file
+                                    handling and exception handling
+                                    with the programming concepts
+                                    introduced earlier. Understanding
+                                    how these concepts work together
+                                    allows programmers to develop more
+                                    complete and reliable
+                                    applications.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="video-section">
+
+                            <span class="chapter-label">
+                                WATCH THE SPELL IN ACTION
+                            </span>
+
+                            <h3>
+                                C# Full Course — Bro Code
+                            </h3>
+
+                            <p>
+                                Relevant sections:
+                            </p>
+
+                            <ul>
+                                <li>
+                                    02:08:52 — Exception Handling
+                                </li>
+
+                                <li>
+                                    02:13:53 — Conditional Operator
+                                </li>
+
+                                <li>
+                                    02:16:53 — String Interpolation
+                                </li>
+
+                                <li>
+                                    02:20:18 — Multidimensional Arrays
+                                </li>
+                            </ul>
+
+                            <a
+                                href="https://youtu.be/wxznTygnRfQ?si=QpeSrC508uk8W3jf"
+                                target="_blank"
+                                class="watch-button"
+                            >
+                                WATCH THE COURSE ↗
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 11 -->
+                <article class="reading-page">
+
+                    <div class="page-content final-page">
+
+                        <span class="chapter-label">
+                            SPELLCRAFT IX • REVIEW COMPLETE
+                        </span>
+
+                        <h2>
+                            The Tower's Secrets Revealed
+                        </h2>
+
+                        <div class="final-message">
+
+                            <div class="final-witch">
+                                ✦
+                            </div>
+
+                            <h3>
+                                SPELLCRAFT COMPLETE
+                            </h3>
+
+                            <p>
+                                You have reviewed file handling,
+                                exception handling, and how every
+                                spell you have learned works together.
+                                You are now ready to choose your Witch
+                                Guide for the Null Witches Tower
+                                trial.
+                            </p>
+
+                            <button
+                                id="chooseWitchButton"
+                                type="button"
+                            >
+                                CONTINUE TO WITCH GUIDE →
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- RIGHT NAVIGATION -->
+            <button
+                class="side-navigation next-navigation"
+                id="nextButton"
+                type="button"
+                aria-label="Next page"
+            >
+                <small>NEXT</small>
+                <span>›</span>
+
+                <div
+                    class="unlock-timer"
+                    id="unlockTimer"
+                >
+                    3
+                </div>
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- LOCK MESSAGE -->
+    <div class="review-message" id="reviewMessage">
+
+        <div class="review-card">
+
+            <button
+                class="message-close"
+                id="messageClose"
+                type="button"
+            >
+                ×
+            </button>
+
+            <div class="message-witch">
+
+                <div class="mini-hat"></div>
+                <div class="mini-head"></div>
+                <div class="mini-body"></div>
+
+                <span class="mini-sparkle sparkle-one">✦</span>
+                <span class="mini-sparkle sparkle-two">✧</span>
+                <span class="mini-sparkle sparkle-three">✦</span>
+
+            </div>
+
+            <h2>
+                HOLD ON, APPRENTICE!
+            </h2>
+
+            <p>
+                Please review first.
+            </p>
+
+            <strong>
+                Review makes you stronger
+                and smarter!
+            </strong>
+
+            <span class="wait-text">
+                The next spell will unlock shortly.
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- SKIP CONFIRM MODAL -->
+    <div class="skip-confirm-modal" id="skipConfirmModal">
+
+        <div class="skip-confirm-card">
+
+            <h2>
+                WAIT, APPRENTICE!
+            </h2>
+
+            <p>
+                Are you sure you're ready? Skipping will take
+                you straight to choosing your Witch Guide for
+                Book IX.
+            </p>
+
+            <div class="skip-confirm-actions">
+
+                <button id="skipConfirmYes" type="button">
+                    YES, I'M READY
+                </button>
+
+                <button id="skipConfirmNo" type="button">
+                    NOT YET
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="scroll-reminder" id="scrollReminder">
+
+        <span class="scroll-arrow"></span>
+
+        <small>SCROLL FOR MORE</small>
+
+    </div>
+
+    <script src="reading9.js"></script>
+
+</body>
+
+</html>

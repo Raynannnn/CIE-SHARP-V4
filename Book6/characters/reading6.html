@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Spellcraft VI | Method Hall</title>
+
+    <link rel="stylesheet" href="reading6.css">
+
+</head>
+
+<body>
+
+
+    <div class="background-overlay"></div>
+    <div class="stars"></div>
+
+    <!-- HEADER -->
+    <header class="reading-header">
+
+        <a href="../../MainMenu/lesson.html" class="back-button">
+            <span>←</span>
+            EXIT
+        </a>
+
+        <div class="book-title">
+            <span>SPELLCRAFT VI</span>
+            <h1>METHOD HALL</h1>
+        </div>
+
+        <div class="stage-tag">
+            <span>STAGE</span>
+            <strong>READ & LEARN</strong>
+        </div>
+
+    </header>
+
+
+    <!-- SKIP ALL -->
+    <button
+        id="skipAllButton"
+        class="skip-all-button"
+        type="button"
+    >
+        ⏭ SKIP ALL
+    </button>
+
+
+    <!-- READING AREA -->
+    <main class="reading-main">
+
+        <!-- TOP STATUS -->
+        <div class="reading-status">
+
+            <div class="spell-status">
+                <span class="status-label">ARCANE PROGRESS</span>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <div class="page-counter" id="pageCounter">
+                PAGE 1 / 11
+            </div>
+
+        </div>
+
+
+        <!-- READER -->
+        <section class="reader-wrapper">
+
+            <!-- LEFT NAVIGATION -->
+            <button
+                class="side-navigation prev-navigation"
+                id="prevButton"
+                type="button"
+                aria-label="Previous page"
+            >
+                <span>‹</span>
+                <small>PREVIOUS</small>
+            </button>
+
+
+            <!-- BOOK / PAGE -->
+            <div class="spell-book">
+
+                <div class="book-glow"></div>
+
+                <!-- PAGE 1 -->
+                <article class="reading-page active">
+
+                    <div class="page-content intro-page">
+
+                        <div class="witch-library">
+
+                            <div class="moon"></div>
+
+                            <div class="witch-portrait">
+                                <img src="images/LeeSerin.png" alt="LeeSerin the Codeweaver Witch">
+                            </div>
+
+                            <div class="magic-particles">
+                                ✦ ✧ ✦ ✧
+                            </div>
+
+                        </div>
+
+                        <span class="chapter-label">
+                            WELCOME BACK, APPRENTICE
+                        </span>
+
+                        <h2>
+                            SPELLCRAFT VI:
+                            <br>
+                            METHOD HALL
+                        </h2>
+
+                        <p>
+                            Enter the Method Hall and learn how
+                            reusable blocks of code organize your
+                            programs — the spellwork that lets your
+                            magic be called upon again and again.
+                        </p>
+
+                        <div class="syllabus-box">
+
+                            <span>SYLLABUS ALIGNMENT</span>
+
+                            <strong>
+                                CLO 3 – Methods
+                            </strong>
+
+                            <p>
+                                Method declaration, invocation,
+                                parameters, arguments, return values,
+                                overloading, testing and debugging.
+                            </p>
+
+                        </div>
+
+                        <p class="intro-note">
+                            The pages ahead contain the knowledge
+                            needed before entering the next magical
+                            challenge. Read carefully, Apprentice.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 2 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 01
+                        </span>
+
+                        <h2>
+                            Understanding Methods
+                        </h2>
+
+                        <p>
+                            A <strong>method</strong> is a named block
+                            of code designed to perform a particular
+                            task.
+                        </p>
+
+                        <p>
+                            Methods help organize programs by dividing
+                            larger problems into smaller sections.
+                            Instead of writing the same instructions
+                            repeatedly, a programmer can place them
+                            inside a method and call the method
+                            whenever it is needed.
+                        </p>
+
+                        <div class="highlight-box">
+
+                            <span>ARCANE FACT</span>
+
+                            <p>
+                                A method lets a spell be cast the same
+                                way every time it is called, without
+                                rewriting the incantation.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 3 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 02
+                        </span>
+
+                        <h2>
+                            Declaring a Method
+                        </h2>
+
+                        <p>
+                            A method declaration defines the method's
+                            name, return type, parameters, and
+                            instructions.
+                        </p>
+
+                        <p>
+                            A method can be designed to perform a
+                            specific action, such as displaying
+                            information, calculating a value, or
+                            processing data.
+                        </p>
+
+                        <pre class="lesson-code">static void CastSpell(){
+    Console.WriteLine("A spell is cast!");
+}</pre>
+
+                        <div class="lesson-tip">
+                            Using descriptive method names helps make
+                            a program easier to understand.
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 4 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 03
+                        </span>
+
+                        <h2>
+                            Calling a Method
+                        </h2>
+
+                        <p>
+                            A method does not perform its task simply
+                            because it has been declared. It needs to
+                            be <strong>called</strong> or invoked.
+                        </p>
+
+                        <p>
+                            Calling a method tells the program to
+                            execute the instructions contained within
+                            that method.
+                        </p>
+
+                        <pre class="lesson-code">CastSpell();</pre>
+
+                        <div class="highlight-box">
+
+                            <span>REMEMBER</span>
+
+                            <p>
+                                A method can also be called multiple
+                                times whenever the same operation is
+                                required.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 5 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 04
+                        </span>
+
+                        <h2>
+                            Parameters and Arguments
+                        </h2>
+
+                        <p>
+                            Methods can receive information through
+                            <strong>parameters</strong>. A parameter
+                            is a variable defined in the method
+                            declaration that represents information
+                            the method expects to receive.
+                        </p>
+
+                        <p>
+                            An <strong>argument</strong> is the actual
+                            value provided when the method is called.
+                        </p>
+
+                        <pre class="lesson-code">static void CastSpell(string spellName){
+    Console.WriteLine(spellName + " is cast!");
+}
+
+CastSpell("Fireball");</pre>
+
+                        <div class="lesson-tip">
+                            Using parameters allows one method to work
+                            with different values instead of creating
+                            separate methods for every situation.
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 6 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 05
+                        </span>
+
+                        <h2>
+                            Return Values
+                        </h2>
+
+                        <p>
+                            Some methods perform an action without
+                            producing a value, while others calculate
+                            and return a result.
+                        </p>
+
+                        <p>
+                            A method that returns a value specifies
+                            the appropriate return type. The
+                            <code>return</code> statement sends the
+                            result back to the part of the program
+                            that called the method.
+                        </p>
+
+                        <pre class="lesson-code">static int AddMana(int a, int b){
+    return a + b;
+}</pre>
+
+                        <div class="highlight-box">
+
+                            <span>ARCANE FACT</span>
+
+                            <p>
+                                Return values allow methods to perform
+                                calculations or processes while
+                                allowing another part of the program
+                                to use the resulting information.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 7 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 06
+                        </span>
+
+                        <h2>
+                            void Methods
+                        </h2>
+
+                        <p>
+                            A method that does not return a value can
+                            use the <code>void</code> return type.
+                        </p>
+
+                        <p>
+                            These methods are useful when the purpose
+                            of the method is simply to perform an
+                            action, such as displaying information.
+                        </p>
+
+                        <div class="skill-grid">
+                            <span>void</span>
+                            <span>int</span>
+                            <span>string</span>
+                        </div>
+
+                        <div class="lesson-tip">
+                            A void method performs its task and then
+                            ends, without sending any value back.
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 8 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 07
+                        </span>
+
+                        <h2>
+                            Method Overloading
+                        </h2>
+
+                        <p>
+                            <strong>Method overloading</strong> allows
+                            multiple methods to have the same name
+                            while using different parameter lists.
+                        </p>
+
+                        <p>
+                            This allows programmers to use one
+                            meaningful method name for related
+                            operations that require different types or
+                            numbers of inputs.
+                        </p>
+
+                        <pre class="lesson-code">static int AddMana(int a, int b){
+    return a + b;
+}
+
+static double AddMana(double a, double b){
+    return a + b;
+}</pre>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 9 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 08
+                        </span>
+
+                        <h2>
+                            Organizing Programs with Methods
+                        </h2>
+
+                        <p>
+                            Methods can make a program easier to read,
+                            test, and maintain because each method can
+                            focus on a particular task.
+                        </p>
+
+                        <p>
+                            Breaking a large program into smaller
+                            methods also makes it easier to identify
+                            where a problem occurs when debugging.
+                        </p>
+
+                        <div class="warning-box">
+
+                            <strong>
+                                TESTING & DEBUGGING
+                            </strong>
+
+                            <p>
+                                Well-organized methods make it easier
+                                to trace an issue back to the exact
+                                block of code responsible, rather than
+                                searching through an entire spellbook.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 10 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            CONSULT THE C# CODEX
+                        </span>
+
+                        <h2>
+                            The Apprentice's Quick Codex
+                        </h2>
+
+                        <div class="codex-list">
+
+                            <div>
+                                <strong>01 • C# Methods</strong>
+
+                                <p>
+                                    Methods are named blocks of
+                                    instructions that execute when
+                                    they are called. They help reduce
+                                    repeated code and allow programs
+                                    to be divided into smaller, more
+                                    manageable tasks.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>02 • Method Parameters</strong>
+
+                                <p>
+                                    Parameters allow information to be
+                                    passed into a method. A method can
+                                    have one parameter, multiple
+                                    parameters, or none depending on
+                                    what information it needs.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>03 • Default Parameters</strong>
+
+                                <p>
+                                    A parameter can be assigned a
+                                    default value. If an argument is
+                                    not provided when the method is
+                                    called, the default value can be
+                                    used instead.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>04 • Return Values</strong>
+
+                                <p>
+                                    Methods can send a result back to
+                                    the part of the program that
+                                    called them. The method's return
+                                    type indicates what kind of value
+                                    it produces.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>05 • Named Arguments</strong>
+
+                                <p>
+                                    Named arguments allow a programmer
+                                    to specify which parameter
+                                    receives a particular value when
+                                    calling a method. This can make
+                                    method calls clearer, especially
+                                    when several parameters are
+                                    involved.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>06 • Method Overloading</strong>
+
+                                <p>
+                                    Method overloading allows related
+                                    methods to share a name as long as
+                                    their parameter lists differ. The
+                                    compiler determines which version
+                                    should be used based on the
+                                    arguments provided.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="video-section">
+
+                            <span class="chapter-label">
+                                WATCH THE SPELL IN ACTION
+                            </span>
+
+                            <h3>
+                                C# Full Course — Bro Code
+                            </h3>
+
+                            <p>
+                                Relevant sections:
+                            </p>
+
+                            <ul>
+                                <li>
+                                    01:54:42 — Methods
+                                </li>
+
+                                <li>
+                                    02:00:37 — Return Keyword
+                                </li>
+
+                                <li>
+                                    02:04:12 — Method Overloading
+                                </li>
+
+                                <li>
+                                    02:05:44 — params Keyword
+                                </li>
+                            </ul>
+
+                            <a
+                                href="https://youtu.be/wxznTygnRfQ?si=QpeSrC508uk8W3jf"
+                                target="_blank"
+                                class="watch-button"
+                            >
+                                WATCH THE COURSE ↗
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 11 -->
+                <article class="reading-page">
+
+                    <div class="page-content final-page">
+
+                        <span class="chapter-label">
+                            SPELLCRAFT VI • REVIEW COMPLETE
+                        </span>
+
+                        <h2>
+                            The Hall's Secrets Revealed
+                        </h2>
+
+                        <div class="final-message">
+
+                            <div class="final-witch">
+                                ✦
+                            </div>
+
+                            <h3>
+                                SPELLCRAFT COMPLETE
+                            </h3>
+
+                            <p>
+                                You have reviewed methods, parameters,
+                                return values, and overloading. You
+                                are now ready to choose your Witch
+                                Guide for the Method Hall trial.
+                            </p>
+
+                            <button
+                                id="chooseWitchButton"
+                                type="button"
+                            >
+                                CONTINUE TO WITCH GUIDE →
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- RIGHT NAVIGATION -->
+            <button
+                class="side-navigation next-navigation"
+                id="nextButton"
+                type="button"
+                aria-label="Next page"
+            >
+                <small>NEXT</small>
+                <span>›</span>
+
+                <div
+                    class="unlock-timer"
+                    id="unlockTimer"
+                >
+                    3
+                </div>
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- LOCK MESSAGE -->
+    <div class="review-message" id="reviewMessage">
+
+        <div class="review-card">
+
+            <button
+                class="message-close"
+                id="messageClose"
+                type="button"
+            >
+                ×
+            </button>
+
+            <div class="message-witch">
+
+                <div class="mini-hat"></div>
+                <div class="mini-head"></div>
+                <div class="mini-body"></div>
+
+                <span class="mini-sparkle sparkle-one">✦</span>
+                <span class="mini-sparkle sparkle-two">✧</span>
+                <span class="mini-sparkle sparkle-three">✦</span>
+
+            </div>
+
+            <h2>
+                HOLD ON, APPRENTICE!
+            </h2>
+
+            <p>
+                Please review first.
+            </p>
+
+            <strong>
+                Review makes you stronger
+                and smarter!
+            </strong>
+
+            <span class="wait-text">
+                The next spell will unlock shortly.
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- SKIP CONFIRM MODAL -->
+    <div class="skip-confirm-modal" id="skipConfirmModal">
+
+        <div class="skip-confirm-card">
+
+            <h2>
+                WAIT, APPRENTICE!
+            </h2>
+
+            <p>
+                Are you sure you're ready? Skipping will take
+                you straight to choosing your Witch Guide for
+                Book VI.
+            </p>
+
+            <div class="skip-confirm-actions">
+
+                <button id="skipConfirmYes" type="button">
+                    YES, I'M READY
+                </button>
+
+                <button id="skipConfirmNo" type="button">
+                    NOT YET
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="scroll-reminder" id="scrollReminder">
+
+        <span class="scroll-arrow"></span>
+
+        <small>SCROLL FOR MORE</small>
+
+    </div>
+
+    <script src="reading6.js"></script>
+
+</body>
+
+</html>

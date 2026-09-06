@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Spellcraft IV | Logic Gate</title>
+
+    <link rel="stylesheet" href="reading4.css">
+
+</head>
+
+<body>
+
+
+    <div class="background-overlay"></div>
+    <div class="stars"></div>
+
+    <!-- HEADER -->
+    <header class="reading-header">
+
+        <a href="../../MainMenu/lesson.html" class="back-button">
+            <span>←</span>
+            EXIT
+        </a>
+
+        <div class="book-title">
+            <span>SPELLCRAFT IV</span>
+            <h1>LOGIC GATE</h1>
+        </div>
+
+        <div class="stage-tag">
+            <span>STAGE</span>
+            <strong>READ & LEARN</strong>
+        </div>
+
+    </header>
+
+
+    <!-- SKIP ALL -->
+    <button
+        id="skipAllButton"
+        class="skip-all-button"
+        type="button"
+    >
+        ⏭ SKIP ALL
+    </button>
+
+
+    <!-- READING AREA -->
+    <main class="reading-main">
+
+        <!-- TOP STATUS -->
+        <div class="reading-status">
+
+            <div class="spell-status">
+                <span class="status-label">ARCANE PROGRESS</span>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <div class="page-counter" id="pageCounter">
+                PAGE 1 / 11
+            </div>
+
+        </div>
+
+
+        <!-- READER -->
+        <section class="reader-wrapper">
+
+            <!-- LEFT NAVIGATION -->
+            <button
+                class="side-navigation prev-navigation"
+                id="prevButton"
+                type="button"
+                aria-label="Previous page"
+            >
+                <span>‹</span>
+                <small>PREVIOUS</small>
+            </button>
+
+
+            <!-- BOOK / PAGE -->
+            <div class="spell-book">
+
+                <div class="book-glow"></div>
+
+                <!-- PAGE 1 -->
+                <article class="reading-page active">
+
+                    <div class="page-content intro-page">
+
+                        <div class="witch-library">
+
+                            <div class="moon"></div>
+
+                            <div class="witch-portrait">
+                                <img src="images/Zari.png" alt="Zari the Logicraft Witch">
+                            </div>
+
+                            <div class="magic-particles">
+                                ✦ ✧ ✦ ✧
+                            </div>
+
+                        </div>
+
+                        <span class="chapter-label">
+                            WELCOME BACK, APPRENTICE
+                        </span>
+
+                        <h2>
+                            SPELLCRAFT IV:
+                            <br>
+                            LOGIC GATE
+                        </h2>
+
+                        <p>
+                            Enter the Logic Gate and master how programs
+                            make decisions using conditions — the very
+                            spellwork that lets your code choose its
+                            own path.
+                        </p>
+
+                        <div class="syllabus-box">
+
+                            <span>SYLLABUS ALIGNMENT</span>
+
+                            <strong>
+                                CLO 2 – Decision Structures
+                            </strong>
+
+                            <p>
+                                if, else, else if, switch, and
+                                conditions.
+                            </p>
+
+                        </div>
+
+                        <p class="intro-note">
+                            The pages ahead contain the knowledge
+                            needed before entering the next magical
+                            challenge. Read carefully, Apprentice.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 2 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 01
+                        </span>
+
+                        <h2>
+                            Understanding Conditions
+                        </h2>
+
+                        <p>
+                            Programs often need to make decisions based
+                            on information or circumstances. A
+                            <strong>condition</strong> is an expression
+                            that evaluates to either true or false.
+                        </p>
+
+                        <p>
+                            Conditions commonly use comparison operators
+                            such as <code>&gt;</code>, <code>&lt;</code>,
+                            <code>==</code>, and <code>!=</code>.
+                        </p>
+
+                        <div class="highlight-box">
+
+                            <span>ARCANE FACT</span>
+
+                            <p>
+                                A program may check whether a player's
+                                level is high enough to enter a
+                                particular area.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 3 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 02
+                        </span>
+
+                        <h2>
+                            The if Statement
+                        </h2>
+
+                        <p>
+                            The <code>if</code> statement allows a
+                            program to execute a block of code only
+                            when a specified condition is true.
+                        </p>
+
+                        <p>
+                            It is useful when a program has an action
+                            that should occur only under a particular
+                            circumstance.
+                        </p>
+
+                        <pre class="lesson-code">int mana = 30;
+
+if(mana &gt;= 20){
+    Console.WriteLine("Spell activated!");
+}</pre>
+
+                        <div class="lesson-tip">
+                            The code inside the curly braces only runs
+                            when the condition evaluates to true.
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 4 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 03
+                        </span>
+
+                        <h2>
+                            The if-else Statement
+                        </h2>
+
+                        <p>
+                            An <code>if-else</code> structure provides
+                            two possible paths. If the condition is
+                            true, the if block is executed. If the
+                            condition is false, the else block is
+                            executed.
+                        </p>
+
+                        <pre class="lesson-code">if(mana &gt;= 20){
+    Console.WriteLine("Spell activated!");
+}
+else{
+    Console.WriteLine("Not enough mana.");
+}</pre>
+
+                        <div class="highlight-box">
+
+                            <span>REMEMBER</span>
+
+                            <p>
+                                This allows a program to respond
+                                differently depending on the result of
+                                a condition.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 5 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 04
+                        </span>
+
+                        <h2>
+                            The else-if Statement
+                        </h2>
+
+                        <p>
+                            Sometimes a program needs to evaluate more
+                            than two possibilities. The
+                            <code>else if</code> structure allows
+                            additional conditions to be checked when
+                            previous conditions are false.
+                        </p>
+
+                        <pre class="lesson-code">if(level &gt;= 10){
+    Console.WriteLine("Master Rank");
+}
+else if(level &gt;= 5){
+    Console.WriteLine("Adept Rank");
+}
+else{
+    Console.WriteLine("Novice Rank");
+}</pre>
+
+                        <div class="lesson-tip">
+                            Multiple else-if branches can be used when
+                            a program needs to classify information
+                            into different categories.
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 6 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 05
+                        </span>
+
+                        <h2>
+                            Nested Conditions
+                        </h2>
+
+                        <p>
+                            A conditional statement can be placed
+                            inside another conditional statement. This
+                            is known as a <strong>nested
+                            condition</strong>.
+                        </p>
+
+                        <p>
+                            Nested conditions are useful when one
+                            decision depends on another decision.
+                        </p>
+
+                        <div class="warning-box">
+
+                            <strong>
+                                WATCH YOUR NESTING
+                            </strong>
+
+                            <p>
+                                Excessive nesting can make a program
+                                harder to read, so conditions should be
+                                organized carefully.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 7 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 06
+                        </span>
+
+                        <h2>
+                            The switch Statement
+                        </h2>
+
+                        <p>
+                            A <code>switch</code> statement provides
+                            another way to select an action based on a
+                            value. It is useful when a program needs to
+                            compare one expression against several
+                            possible cases.
+                        </p>
+
+                        <div class="concept-list">
+
+                            <div>
+                                <span class="concept-number">case</span>
+                                <p>Identifies a possible matching value.</p>
+                            </div>
+
+                            <div>
+                                <span class="concept-number">break</span>
+                                <p>Ends the selected case.</p>
+                            </div>
+
+                            <div>
+                                <span class="concept-number">default</span>
+                                <p>Provides an alternative when no case matches.</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 8 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 07
+                        </span>
+
+                        <h2>
+                            Combining Conditions
+                        </h2>
+
+                        <p>
+                            Logical operators can be combined with
+                            conditional statements to create more
+                            specific decisions.
+                        </p>
+
+                        <p>
+                            For example, a program may require two
+                            conditions to be true before allowing an
+                            action to occur.
+                        </p>
+
+                        <div class="skill-grid">
+                            <span>&&</span>
+                            <span>||</span>
+                            <span>!</span>
+                        </div>
+
+                        <div class="lesson-tip">
+                            Using &&, ||, and ! allows programmers to
+                            create conditions that represent more
+                            complex situations.
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 9 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 08
+                        </span>
+
+                        <h2>
+                            Short-Hand If...Else
+                        </h2>
+
+                        <p>
+                            C# also supports a shorter conditional
+                            expression for situations where a simple
+                            decision needs to produce one of two
+                            possible results.
+                        </p>
+
+                        <pre class="lesson-code small-code">string result = (mana &gt;= 20) ? "Cast" : "Blocked";</pre>
+
+                        <div class="highlight-box">
+
+                            <span>ARCANE FACT</span>
+
+                            <p>
+                                This is known as the ternary operator —
+                                it evaluates a condition and returns one
+                                of two values in a single line.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 10 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            CONSULT THE C# CODEX
+                        </span>
+
+                        <h2>
+                            The Apprentice's Quick Codex
+                        </h2>
+
+                        <div class="codex-list">
+
+                            <div>
+                                <strong>01 • C# Booleans</strong>
+
+                                <p>
+                                    Boolean values represent either true
+                                    or false. They are commonly used as
+                                    the result of comparisons and serve
+                                    as the foundation of conditional
+                                    statements.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>02 • C# If...Else</strong>
+
+                                <p>
+                                    The if statement allows code to run
+                                    when a condition is true. else
+                                    provides an alternative when the
+                                    condition is false, while else if
+                                    allows additional conditions to be
+                                    evaluated.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>03 • Short-Hand If...Else</strong>
+
+                                <p>
+                                    C# also supports a shorter
+                                    conditional expression for
+                                    situations where a simple decision
+                                    needs to produce one of two possible
+                                    results.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>04 • C# Switch</strong>
+
+                                <p>
+                                    A switch statement evaluates a value
+                                    and compares it with several
+                                    possible cases. When a matching case
+                                    is found, its corresponding
+                                    instructions can be executed.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>05 • Logical Conditions</strong>
+
+                                <p>
+                                    Logical operators can connect
+                                    multiple conditions or reverse a
+                                    condition's result. This allows
+                                    programs to make decisions using
+                                    more than one requirement.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="video-section">
+
+                            <span class="chapter-label">
+                                WATCH THE SPELL IN ACTION
+                            </span>
+
+                            <h3>
+                                C# Full Course — Bro Code
+                            </h3>
+
+                            <p>
+                                Relevant sections:
+                            </p>
+
+                            <ul>
+                                <li>
+                                    00:53:26 — If Statements
+                                </li>
+
+                                <li>
+                                    00:59:43 — Switches
+                                </li>
+
+                                <li>
+                                    01:02:50 — Logical Operators
+                                </li>
+                            </ul>
+
+                            <a
+                                href="https://youtu.be/wxznTygnRfQ?si=QpeSrC508uk8W3jf"
+                                target="_blank"
+                                class="watch-button"
+                            >
+                                WATCH THE COURSE ↗
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 11 -->
+                <article class="reading-page">
+
+                    <div class="page-content final-page">
+
+                        <span class="chapter-label">
+                            SPELLCRAFT IV • REVIEW COMPLETE
+                        </span>
+
+                        <h2>
+                            The Gate's Secrets Revealed
+                        </h2>
+
+                        <div class="final-message">
+
+                            <div class="final-witch">
+                                ✦
+                            </div>
+
+                            <h3>
+                                SPELLCRAFT COMPLETE
+                            </h3>
+
+                            <p>
+                                You have reviewed conditions, decision
+                                structures, and logical operators. You
+                                are now ready to choose your Witch
+                                Guide for the Logic Gate trial.
+                            </p>
+
+                            <button
+                                id="chooseWitchButton"
+                                type="button"
+                            >
+                                CONTINUE TO WITCH GUIDE →
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- RIGHT NAVIGATION -->
+            <button
+                class="side-navigation next-navigation"
+                id="nextButton"
+                type="button"
+                aria-label="Next page"
+            >
+                <small>NEXT</small>
+                <span>›</span>
+
+                <div
+                    class="unlock-timer"
+                    id="unlockTimer"
+                >
+                    3
+                </div>
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- LOCK MESSAGE -->
+    <div class="review-message" id="reviewMessage">
+
+        <div class="review-card">
+
+            <button
+                class="message-close"
+                id="messageClose"
+                type="button"
+            >
+                ×
+            </button>
+
+            <div class="message-witch">
+
+                <div class="mini-hat"></div>
+                <div class="mini-head"></div>
+                <div class="mini-body"></div>
+
+                <span class="mini-sparkle sparkle-one">✦</span>
+                <span class="mini-sparkle sparkle-two">✧</span>
+                <span class="mini-sparkle sparkle-three">✦</span>
+
+            </div>
+
+            <h2>
+                HOLD ON, APPRENTICE!
+            </h2>
+
+            <p>
+                Please review first.
+            </p>
+
+            <strong>
+                Review makes you stronger
+                and smarter!
+            </strong>
+
+            <span class="wait-text">
+                The next spell will unlock shortly.
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- SKIP CONFIRM MODAL -->
+    <div class="skip-confirm-modal" id="skipConfirmModal">
+
+        <div class="skip-confirm-card">
+
+            <h2>
+                WAIT, APPRENTICE!
+            </h2>
+
+            <p>
+                Are you sure you're ready? Skipping will take
+                you straight to choosing your Witch Guide for
+                Book IV.
+            </p>
+
+            <div class="skip-confirm-actions">
+
+                <button id="skipConfirmYes" type="button">
+                    YES, I'M READY
+                </button>
+
+                <button id="skipConfirmNo" type="button">
+                    NOT YET
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="scroll-reminder" id="scrollReminder">
+
+        <span class="scroll-arrow"></span>
+
+        <small>SCROLL FOR MORE</small>
+
+    </div>
+
+    <script src="reading4.js"></script>
+
+</body>
+
+</html>

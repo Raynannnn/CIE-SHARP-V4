@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Spellcraft V | Loop Dungeon</title>
+
+    <link rel="stylesheet" href="reading5.css">
+
+</head>
+
+<body>
+
+
+    <div class="background-overlay"></div>
+    <div class="stars"></div>
+
+    <!-- HEADER -->
+    <header class="reading-header">
+
+        <a href="../../MainMenu/lesson.html" class="back-button">
+            <span>←</span>
+            EXIT
+        </a>
+
+        <div class="book-title">
+            <span>SPELLCRAFT V</span>
+            <h1>LOOP DUNGEON</h1>
+        </div>
+
+        <div class="stage-tag">
+            <span>STAGE</span>
+            <strong>READ & LEARN</strong>
+        </div>
+
+    </header>
+
+
+    <!-- SKIP ALL -->
+    <button
+        id="skipAllButton"
+        class="skip-all-button"
+        type="button"
+    >
+        ⏭ SKIP ALL
+    </button>
+
+
+    <!-- READING AREA -->
+    <main class="reading-main">
+
+        <!-- TOP STATUS -->
+        <div class="reading-status">
+
+            <div class="spell-status">
+                <span class="status-label">ARCANE PROGRESS</span>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <div class="page-counter" id="pageCounter">
+                PAGE 1 / 11
+            </div>
+
+        </div>
+
+
+        <!-- READER -->
+        <section class="reader-wrapper">
+
+            <!-- LEFT NAVIGATION -->
+            <button
+                class="side-navigation prev-navigation"
+                id="prevButton"
+                type="button"
+                aria-label="Previous page"
+            >
+                <span>‹</span>
+                <small>PREVIOUS</small>
+            </button>
+
+
+            <!-- BOOK / PAGE -->
+            <div class="spell-book">
+
+                <div class="book-glow"></div>
+
+                <!-- PAGE 1 -->
+                <article class="reading-page active">
+
+                    <div class="page-content intro-page">
+
+                        <div class="witch-library">
+
+                            <div class="moon"></div>
+
+                            <div class="witch-portrait">
+                                <img src="images/GiTei.png" alt="GiTei the Logic Witch">
+                            </div>
+
+                            <div class="magic-particles">
+                                ✦ ✧ ✦ ✧
+                            </div>
+
+                        </div>
+
+                        <span class="chapter-label">
+                            WELCOME BACK, APPRENTICE
+                        </span>
+
+                        <h2>
+                            SPELLCRAFT V:
+                            <br>
+                            LOOP DUNGEON
+                        </h2>
+
+                        <p>
+                            Descend into the Loop Dungeon and master
+                            repetition — the spellwork that lets your
+                            code repeat an action again, and again,
+                            and again.
+                        </p>
+
+                        <div class="syllabus-box">
+
+                            <span>SYLLABUS ALIGNMENT</span>
+
+                            <strong>
+                                CLO 2 – Iteration
+                            </strong>
+
+                            <p>
+                                for, while, do-while, loop conditions,
+                                counters, repetition.
+                            </p>
+
+                        </div>
+
+                        <p class="intro-note">
+                            The pages ahead contain the knowledge
+                            needed before entering the next magical
+                            challenge. Read carefully, Apprentice.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 2 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 01
+                        </span>
+
+                        <h2>
+                            Understanding Loops
+                        </h2>
+
+                        <p>
+                            A <strong>loop</strong> is a programming
+                            structure that allows a block of
+                            instructions to be executed repeatedly.
+                        </p>
+
+                        <p>
+                            Loops are useful when the same operation
+                            needs to be performed multiple times.
+                            Instead of writing the same statements
+                            repeatedly, a programmer can use a loop to
+                            control the repetition.
+                        </p>
+
+                        <div class="highlight-box">
+
+                            <span>ARCANE FACT</span>
+
+                            <p>
+                                A single loop can replace dozens of
+                                repeated lines of code with just a few
+                                lines of instructions.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 3 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 02
+                        </span>
+
+                        <h2>
+                            The while Loop
+                        </h2>
+
+                        <p>
+                            A <code>while</code> loop repeatedly
+                            executes a block of code as long as its
+                            condition remains true.
+                        </p>
+
+                        <p>
+                            The condition is checked before each
+                            iteration. If the condition is already
+                            false when the loop begins, the
+                            instructions inside the loop may not
+                            execute at all.
+                        </p>
+
+                        <pre class="lesson-code">int mana = 0;
+
+while(mana &lt; 5){
+    Console.WriteLine("Gathering mana...");
+    mana++;
+}</pre>
+
+                        <div class="lesson-tip">
+                            A counter or another changing value is
+                            often used to eventually make the
+                            condition false.
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 4 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 03
+                        </span>
+
+                        <h2>
+                            The do-while Loop
+                        </h2>
+
+                        <p>
+                            The <code>do-while</code> loop is similar
+                            to a while loop, but the instructions are
+                            executed before the condition is checked.
+                        </p>
+
+                        <pre class="lesson-code">int mana = 0;
+
+do{
+    Console.WriteLine("Gathering mana...");
+    mana++;
+}
+while(mana &lt; 5);</pre>
+
+                        <div class="highlight-box">
+
+                            <span>REMEMBER</span>
+
+                            <p>
+                                Because of this structure, the code
+                                inside a do-while loop executes at
+                                least once before the condition
+                                determines whether repetition should
+                                continue.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 5 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 04
+                        </span>
+
+                        <h2>
+                            The for Loop
+                        </h2>
+
+                        <p>
+                            A <code>for</code> loop is useful when the
+                            number of repetitions is known or can be
+                            controlled through a counter.
+                        </p>
+
+                        <p>
+                            A typical for loop contains three parts:
+                        </p>
+
+                        <div class="concept-list">
+
+                            <div>
+                                <span class="concept-number">01</span>
+                                <p><strong>Initialization</strong> Establishes the starting value.</p>
+                            </div>
+
+                            <div>
+                                <span class="concept-number">02</span>
+                                <p><strong>Condition</strong> Determines whether the loop continues.</p>
+                            </div>
+
+                            <div>
+                                <span class="concept-number">03</span>
+                                <p><strong>Iteration</strong> Changes the counter after each repetition.</p>
+                            </div>
+
+                        </div>
+
+                        <pre class="lesson-code">for(int i = 1; i &lt;= 5; i++){
+    Console.WriteLine("Strike " + i);
+}</pre>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 6 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 05
+                        </span>
+
+                        <h2>
+                            Loop Counters
+                        </h2>
+
+                        <p>
+                            A <strong>loop counter</strong> keeps track
+                            of how many times a loop has executed.
+                        </p>
+
+                        <p>
+                            For example, a counter can begin at one and
+                            increase by one after each iteration. The
+                            loop can then stop once the counter reaches
+                            a specified value.
+                        </p>
+
+                        <div class="warning-box">
+
+                            <strong>
+                                CONTROL YOUR COUNTER
+                            </strong>
+
+                            <p>
+                                Correctly controlling the counter is
+                                important for preventing unintended
+                                repetition.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 7 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 06
+                        </span>
+
+                        <h2>
+                            Nested Loops
+                        </h2>
+
+                        <p>
+                            A loop can be placed inside another loop.
+                            This is called a <strong>nested
+                            loop</strong>.
+                        </p>
+
+                        <p>
+                            Nested loops are useful for problems
+                            involving repeated groups of repetitions,
+                            such as working with rows and columns or
+                            processing multidimensional data.
+                        </p>
+
+                        <pre class="lesson-code">for(int row = 1; row &lt;= 3; row++){
+    for(int col = 1; col &lt;= 3; col++){
+        Console.WriteLine("Row " + row + ", Col " + col);
+    }
+}</pre>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 8 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 07
+                        </span>
+
+                        <h2>
+                            break and continue
+                        </h2>
+
+                        <p>
+                            C# provides statements that can control how
+                            loops behave.
+                        </p>
+
+                        <div class="concept-list">
+
+                            <div>
+                                <span class="concept-number">break</span>
+                                <p>Immediately stops a loop.</p>
+                            </div>
+
+                            <div>
+                                <span class="concept-number">continue</span>
+                                <p>Skips the remaining instructions in the current iteration and proceeds to the next iteration.</p>
+                            </div>
+
+                        </div>
+
+                        <div class="lesson-tip">
+                            These statements provide additional control
+                            when normal loop conditions are not enough.
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 9 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 08
+                        </span>
+
+                        <h2>
+                            The foreach Loop
+                        </h2>
+
+                        <p>
+                            A <code>foreach</code> loop can be used to
+                            process each element in a collection or
+                            array without manually managing an index
+                            counter.
+                        </p>
+
+                        <pre class="lesson-code">string[] spells = { "Fireball", "Heal", "Shield" };
+
+foreach(string spell in spells){
+    Console.WriteLine(spell);
+}</pre>
+
+                        <div class="highlight-box">
+
+                            <span>ARCANE FACT</span>
+
+                            <p>
+                                foreach automatically moves through
+                                every item in a collection, one at a
+                                time, until none remain.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 10 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            CONSULT THE C# CODEX
+                        </span>
+
+                        <h2>
+                            The Apprentice's Quick Codex
+                        </h2>
+
+                        <div class="codex-list">
+
+                            <div>
+                                <strong>01 • C# While Loop</strong>
+
+                                <p>
+                                    A while loop repeats instructions
+                                    while its condition evaluates to
+                                    true. The condition is checked
+                                    before each repetition, meaning the
+                                    loop may execute zero or more
+                                    times.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>02 • C# Do/While Loop</strong>
+
+                                <p>
+                                    A do-while loop executes its
+                                    instructions before checking the
+                                    condition. As a result, the loop
+                                    body runs at least once.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>03 • C# For Loop</strong>
+
+                                <p>
+                                    A for loop combines initialization,
+                                    a condition, and an iteration
+                                    expression in one structure. It is
+                                    particularly useful when repetition
+                                    can be controlled with a counter.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>04 • C# Foreach Loop</strong>
+
+                                <p>
+                                    A foreach loop can be used to
+                                    process each element in a
+                                    collection or array without
+                                    manually managing an index counter.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>05 • C# Break and Continue</strong>
+
+                                <p>
+                                    The break statement ends a loop
+                                    immediately, while continue moves
+                                    the program to the next iteration.
+                                    These statements can provide
+                                    additional control over repeated
+                                    execution.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>06 • Nested Loops</strong>
+
+                                <p>
+                                    A loop can contain another loop.
+                                    The inner loop completes its
+                                    repetitions for each iteration of
+                                    the outer loop.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="video-section">
+
+                            <span class="chapter-label">
+                                WATCH THE SPELL IN ACTION
+                            </span>
+
+                            <h3>
+                                C# Full Course — Bro Code
+                            </h3>
+
+                            <p>
+                                Relevant sections:
+                            </p>
+
+                            <ul>
+                                <li>
+                                    01:06:36 — While Loops
+                                </li>
+
+                                <li>
+                                    01:09:45 — For Loops
+                                </li>
+
+                                <li>
+                                    01:13:24 — Nested Loops
+                                </li>
+
+                                <li>
+                                    01:18:28 — Number Guessing Game
+                                </li>
+                            </ul>
+
+                            <a
+                                href="https://youtu.be/wxznTygnRfQ?si=QpeSrC508uk8W3jf"
+                                target="_blank"
+                                class="watch-button"
+                            >
+                                WATCH THE COURSE ↗
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 11 -->
+                <article class="reading-page">
+
+                    <div class="page-content final-page">
+
+                        <span class="chapter-label">
+                            SPELLCRAFT V • REVIEW COMPLETE
+                        </span>
+
+                        <h2>
+                            The Dungeon's Secrets Revealed
+                        </h2>
+
+                        <div class="final-message">
+
+                            <div class="final-witch">
+                                ✦
+                            </div>
+
+                            <h3>
+                                SPELLCRAFT COMPLETE
+                            </h3>
+
+                            <p>
+                                You have reviewed loops, counters, and
+                                repetition control. You are now ready
+                                to choose your Witch Guide for the Loop
+                                Dungeon trial.
+                            </p>
+
+                            <button
+                                id="chooseWitchButton"
+                                type="button"
+                            >
+                                CONTINUE TO WITCH GUIDE →
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- RIGHT NAVIGATION -->
+            <button
+                class="side-navigation next-navigation"
+                id="nextButton"
+                type="button"
+                aria-label="Next page"
+            >
+                <small>NEXT</small>
+                <span>›</span>
+
+                <div
+                    class="unlock-timer"
+                    id="unlockTimer"
+                >
+                    3
+                </div>
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- LOCK MESSAGE -->
+    <div class="review-message" id="reviewMessage">
+
+        <div class="review-card">
+
+            <button
+                class="message-close"
+                id="messageClose"
+                type="button"
+            >
+                ×
+            </button>
+
+            <div class="message-witch">
+
+                <div class="mini-hat"></div>
+                <div class="mini-head"></div>
+                <div class="mini-body"></div>
+
+                <span class="mini-sparkle sparkle-one">✦</span>
+                <span class="mini-sparkle sparkle-two">✧</span>
+                <span class="mini-sparkle sparkle-three">✦</span>
+
+            </div>
+
+            <h2>
+                HOLD ON, APPRENTICE!
+            </h2>
+
+            <p>
+                Please review first.
+            </p>
+
+            <strong>
+                Review makes you stronger
+                and smarter!
+            </strong>
+
+            <span class="wait-text">
+                The next spell will unlock shortly.
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- SKIP CONFIRM MODAL -->
+    <div class="skip-confirm-modal" id="skipConfirmModal">
+
+        <div class="skip-confirm-card">
+
+            <h2>
+                WAIT, APPRENTICE!
+            </h2>
+
+            <p>
+                Are you sure you're ready? Skipping will take
+                you straight to choosing your Witch Guide for
+                Book V.
+            </p>
+
+            <div class="skip-confirm-actions">
+
+                <button id="skipConfirmYes" type="button">
+                    YES, I'M READY
+                </button>
+
+                <button id="skipConfirmNo" type="button">
+                    NOT YET
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="scroll-reminder" id="scrollReminder">
+
+        <span class="scroll-arrow"></span>
+
+        <small>SCROLL FOR MORE</small>
+
+    </div>
+
+    <script src="reading5.js"></script>
+
+</body>
+
+</html>

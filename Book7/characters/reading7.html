@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Spellcraft VII | Array Chamber</title>
+
+    <link rel="stylesheet" href="reading7.css">
+
+</head>
+
+<body>
+
+
+    <div class="background-overlay"></div>
+    <div class="stars"></div>
+
+    <!-- HEADER -->
+    <header class="reading-header">
+
+        <a href="../../MainMenu/lesson.html" class="back-button">
+            <span>←</span>
+            EXIT
+        </a>
+
+        <div class="book-title">
+            <span>SPELLCRAFT VII</span>
+            <h1>ARRAY CHAMBER</h1>
+        </div>
+
+        <div class="stage-tag">
+            <span>STAGE</span>
+            <strong>READ & LEARN</strong>
+        </div>
+
+    </header>
+
+
+    <!-- SKIP ALL -->
+    <button
+        id="skipAllButton"
+        class="skip-all-button"
+        type="button"
+    >
+        ⏭ SKIP ALL
+    </button>
+
+
+    <!-- READING AREA -->
+    <main class="reading-main">
+
+        <!-- TOP STATUS -->
+        <div class="reading-status">
+
+            <div class="spell-status">
+                <span class="status-label">ARCANE PROGRESS</span>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <div class="page-counter" id="pageCounter">
+                PAGE 1 / 11
+            </div>
+
+        </div>
+
+
+        <!-- READER -->
+        <section class="reader-wrapper">
+
+            <!-- LEFT NAVIGATION -->
+            <button
+                class="side-navigation prev-navigation"
+                id="prevButton"
+                type="button"
+                aria-label="Previous page"
+            >
+                <span>‹</span>
+                <small>PREVIOUS</small>
+            </button>
+
+
+            <!-- BOOK / PAGE -->
+            <div class="spell-book">
+
+                <div class="book-glow"></div>
+
+                <!-- PAGE 1 -->
+                <article class="reading-page active">
+
+                    <div class="page-content intro-page">
+
+                        <div class="witch-library">
+
+                            <div class="moon"></div>
+
+                            <div class="witch-portrait">
+                                <img src="images/Cythera.png" alt="Cythera the Ember Witch">
+                            </div>
+
+                            <div class="magic-particles">
+                                ✦ ✧ ✦ ✧
+                            </div>
+
+                        </div>
+
+                        <span class="chapter-label">
+                            WELCOME BACK, APPRENTICE
+                        </span>
+
+                        <h2>
+                            SPELLCRAFT VII:
+                            <br>
+                            ARRAY CHAMBER
+                        </h2>
+
+                        <p>
+                            Enter the Array Chamber and learn how to
+                            store multiple values using arrays — the
+                            spellwork that lets your magic hold many
+                            treasures under a single name.
+                        </p>
+
+                        <div class="syllabus-box">
+
+                            <span>SYLLABUS ALIGNMENT</span>
+
+                            <strong>
+                                CLO 4 – Arrays
+                            </strong>
+
+                            <p>
+                                Array declaration, initialization,
+                                indexing, manipulation, traversal,
+                                multidimensional arrays, array
+                                libraries/functions.
+                            </p>
+
+                        </div>
+
+                        <p class="intro-note">
+                            The pages ahead contain the knowledge
+                            needed before entering the next magical
+                            challenge. Read carefully, Apprentice.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 2 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 01
+                        </span>
+
+                        <h2>
+                            Understanding Arrays
+                        </h2>
+
+                        <p>
+                            An <strong>array</strong> is a data
+                            structure that allows multiple values of
+                            the same data type to be stored under one
+                            variable name.
+                        </p>
+
+                        <p>
+                            Without arrays, a programmer would need to
+                            create separate variables for every
+                            individual value. Arrays provide a more
+                            organized way to manage groups of related
+                            information.
+                        </p>
+
+                        <div class="highlight-box">
+
+                            <span>ARCANE FACT</span>
+
+                            <p>
+                                A program can use an array to store
+                                several scores, item prices, or
+                                character levels.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 3 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 02
+                        </span>
+
+                        <h2>
+                            Declaring an Array
+                        </h2>
+
+                        <p>
+                            An array declaration specifies the type of
+                            values that the array will contain.
+                        </p>
+
+                        <p>
+                            The square brackets <code>[]</code>
+                            indicate that the variable represents an
+                            array rather than a single value.
+                        </p>
+
+                        <pre class="lesson-code">int[] scores = { 90, 85, 78, 92 };</pre>
+
+                        <div class="lesson-tip">
+                            An array can be initialized with a group
+                            of values when it is created.
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 4 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 03
+                        </span>
+
+                        <h2>
+                            Array Indexing
+                        </h2>
+
+                        <p>
+                            Each element in an array has an
+                            <strong>index</strong> that identifies its
+                            position.
+                        </p>
+
+                        <p>
+                            C# arrays use zero-based indexing, meaning
+                            the first element is located at index 0,
+                            the second at index 1, and so on.
+                        </p>
+
+                        <pre class="lesson-code">int[] scores = { 90, 85, 78, 92 };
+
+Console.WriteLine(scores[0]);
+// Output: 90</pre>
+
+                        <div class="highlight-box">
+
+                            <span>REMEMBER</span>
+
+                            <p>
+                                Understanding indexes is important
+                                when accessing or modifying individual
+                                elements.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 5 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 04
+                        </span>
+
+                        <h2>
+                            Accessing and Modifying Elements
+                        </h2>
+
+                        <p>
+                            A particular array element can be accessed
+                            using its index.
+                        </p>
+
+                        <p>
+                            Values stored in an array can also be
+                            changed by assigning a new value to a
+                            specific position.
+                        </p>
+
+                        <pre class="lesson-code">scores[1] = 88;</pre>
+
+                        <div class="lesson-tip">
+                            This allows programs to update information
+                            without replacing the entire array.
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 6 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 05
+                        </span>
+
+                        <h2>
+                            Array Length
+                        </h2>
+
+                        <p>
+                            The number of elements an array contains
+                            can be determined using its
+                            <code>Length</code> property.
+                        </p>
+
+                        <pre class="lesson-code">Console.WriteLine(scores.Length);
+// Output: 4</pre>
+
+                        <div class="highlight-box">
+
+                            <span>ARCANE FACT</span>
+
+                            <p>
+                                Knowing the length of an array is
+                                especially useful when traversing its
+                                elements with loops.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 7 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 06
+                        </span>
+
+                        <h2>
+                            Traversing an Array
+                        </h2>
+
+                        <p>
+                            Array traversal means going through the
+                            elements of an array one at a time.
+                        </p>
+
+                        <pre class="lesson-code">for(int i = 0; i &lt; scores.Length; i++){
+    Console.WriteLine(scores[i]);
+}
+
+foreach(int score in scores){
+    Console.WriteLine(score);
+}</pre>
+
+                        <div class="lesson-tip">
+                            A <code>for</code> loop can be used when
+                            the programmer needs access to the index
+                            of each element. A <code>foreach</code>
+                            loop can be used when the program simply
+                            needs to process each element in the
+                            collection.
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 8 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 07
+                        </span>
+
+                        <h2>
+                            Array Operations
+                        </h2>
+
+                        <p>
+                            Arrays can be processed using loops and
+                            built-in C# features.
+                        </p>
+
+                        <p>
+                            Programs can search through arrays, sort
+                            their contents, calculate values from
+                            their elements, or perform other
+                            operations depending on the problem being
+                            solved.
+                        </p>
+
+                        <div class="warning-box">
+
+                            <strong>
+                                LOOPS + ARRAYS
+                            </strong>
+
+                            <p>
+                                Understanding how arrays work together
+                                with loops is an important programming
+                                skill.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 9 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 08
+                        </span>
+
+                        <h2>
+                            Multidimensional Arrays
+                        </h2>
+
+                        <p>
+                            A <strong>multidimensional array</strong>
+                            stores information across more than one
+                            dimension.
+                        </p>
+
+                        <p>
+                            A two-dimensional array can be visualized
+                            as a table containing rows and columns.
+                        </p>
+
+                        <pre class="lesson-code small-code">int[,] grid = {
+    { 1, 2, 3 },
+    { 4, 5, 6 }
+};</pre>
+
+                        <div class="lesson-tip">
+                            Nested loops are commonly used to access
+                            and process the values stored in a
+                            multidimensional array.
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 10 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            CONSULT THE C# CODEX
+                        </span>
+
+                        <h2>
+                            The Apprentice's Quick Codex
+                        </h2>
+
+                        <div class="codex-list">
+
+                            <div>
+                                <strong>01 • C# Arrays</strong>
+
+                                <p>
+                                    Arrays allow multiple values of the
+                                    same type to be grouped under one
+                                    variable. This is useful when a
+                                    program needs to manage a
+                                    collection of related values.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>02 • Creating and Initializing Arrays</strong>
+
+                                <p>
+                                    An array can be declared by
+                                    specifying its data type followed
+                                    by square brackets. Values can be
+                                    assigned during initialization, or
+                                    an array can be created first and
+                                    populated later.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>03 • Accessing Array Elements</strong>
+
+                                <p>
+                                    Array elements are accessed using
+                                    their index. C# uses zero-based
+                                    indexing, so the first element is
+                                    at position 0.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>04 • Array Length</strong>
+
+                                <p>
+                                    The Length property provides the
+                                    number of elements contained in an
+                                    array. It can be used when
+                                    determining how many elements need
+                                    to be processed.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>05 • Looping Through Arrays</strong>
+
+                                <p>
+                                    Arrays can be processed using
+                                    loops. A for loop provides access
+                                    to element indexes, while foreach
+                                    can directly process each element.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>06 • Sorting Arrays</strong>
+
+                                <p>
+                                    C# provides features that can
+                                    arrange array elements into a
+                                    particular order. Sorting is
+                                    useful when information needs to
+                                    be organized before being
+                                    displayed or processed.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>07 • Multidimensional Arrays</strong>
+
+                                <p>
+                                    Multidimensional arrays allow
+                                    information to be organized across
+                                    multiple dimensions, such as rows
+                                    and columns. They can be processed
+                                    using nested loops.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="video-section">
+
+                            <span class="chapter-label">
+                                WATCH THE SPELL IN ACTION
+                            </span>
+
+                            <h3>
+                                C# Full Course — Bro Code
+                            </h3>
+
+                            <p>
+                                Relevant sections:
+                            </p>
+
+                            <ul>
+                                <li>
+                                    01:46:53 — Arrays
+                                </li>
+
+                                <li>
+                                    01:52:50 — foreach Loop
+                                </li>
+
+                                <li>
+                                    02:20:18 — Multidimensional Arrays
+                                </li>
+                            </ul>
+
+                            <a
+                                href="https://youtu.be/wxznTygnRfQ?si=QpeSrC508uk8W3jf"
+                                target="_blank"
+                                class="watch-button"
+                            >
+                                WATCH THE COURSE ↗
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 11 -->
+                <article class="reading-page">
+
+                    <div class="page-content final-page">
+
+                        <span class="chapter-label">
+                            SPELLCRAFT VII • REVIEW COMPLETE
+                        </span>
+
+                        <h2>
+                            The Chamber's Secrets Revealed
+                        </h2>
+
+                        <div class="final-message">
+
+                            <div class="final-witch">
+                                ✦
+                            </div>
+
+                            <h3>
+                                SPELLCRAFT COMPLETE
+                            </h3>
+
+                            <p>
+                                You have reviewed arrays, indexing,
+                                traversal, and multidimensional
+                                structures. You are now ready to
+                                choose your Witch Guide for the Array
+                                Chamber trial.
+                            </p>
+
+                            <button
+                                id="chooseWitchButton"
+                                type="button"
+                            >
+                                CONTINUE TO WITCH GUIDE →
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- RIGHT NAVIGATION -->
+            <button
+                class="side-navigation next-navigation"
+                id="nextButton"
+                type="button"
+                aria-label="Next page"
+            >
+                <small>NEXT</small>
+                <span>›</span>
+
+                <div
+                    class="unlock-timer"
+                    id="unlockTimer"
+                >
+                    3
+                </div>
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- LOCK MESSAGE -->
+    <div class="review-message" id="reviewMessage">
+
+        <div class="review-card">
+
+            <button
+                class="message-close"
+                id="messageClose"
+                type="button"
+            >
+                ×
+            </button>
+
+            <div class="message-witch">
+
+                <div class="mini-hat"></div>
+                <div class="mini-head"></div>
+                <div class="mini-body"></div>
+
+                <span class="mini-sparkle sparkle-one">✦</span>
+                <span class="mini-sparkle sparkle-two">✧</span>
+                <span class="mini-sparkle sparkle-three">✦</span>
+
+            </div>
+
+            <h2>
+                HOLD ON, APPRENTICE!
+            </h2>
+
+            <p>
+                Please review first.
+            </p>
+
+            <strong>
+                Review makes you stronger
+                and smarter!
+            </strong>
+
+            <span class="wait-text">
+                The next spell will unlock shortly.
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- SKIP CONFIRM MODAL -->
+    <div class="skip-confirm-modal" id="skipConfirmModal">
+
+        <div class="skip-confirm-card">
+
+            <h2>
+                WAIT, APPRENTICE!
+            </h2>
+
+            <p>
+                Are you sure you're ready? Skipping will take
+                you straight to choosing your Witch Guide for
+                Book VII.
+            </p>
+
+            <div class="skip-confirm-actions">
+
+                <button id="skipConfirmYes" type="button">
+                    YES, I'M READY
+                </button>
+
+                <button id="skipConfirmNo" type="button">
+                    NOT YET
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="scroll-reminder" id="scrollReminder">
+
+        <span class="scroll-arrow"></span>
+
+        <small>SCROLL FOR MORE</small>
+
+    </div>
+
+    <script src="reading7.js"></script>
+
+</body>
+
+</html>
