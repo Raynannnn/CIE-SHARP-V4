@@ -59,7 +59,7 @@ var characters = {
 
         role: "The Challenge Master",
 
-        image: "images/bea.png",
+        image: "images/Cythera.png",
 
         attackVideo: "videos/ember-witch-attack.mp4",
 

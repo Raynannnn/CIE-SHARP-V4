@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Spellcraft II | Data Vault</title>
+
+    <link rel="stylesheet" href="reading2.css">
+
+</head>
+
+<body>
+
+
+    <div class="background-overlay"></div>
+    <div class="stars"></div>
+
+    <!-- HEADER -->
+    <header class="reading-header">
+
+        <a href="../MainMenu/lesson.html" class="back-button">
+            <span>←</span>
+            EXIT
+        </a>
+
+        <div class="book-title">
+            <span>SPELLCRAFT II</span>
+            <h1>DATA VAULT</h1>
+        </div>
+
+        <div class="stage-tag">
+            <span>STAGE</span>
+            <strong>READ & LEARN</strong>
+        </div>
+
+    </header>
+
+
+    <!-- SKIP ALL -->
+    <button
+        id="skipAllButton"
+        class="skip-all-button"
+        type="button"
+    >
+        ⏭ SKIP ALL
+    </button>
+
+
+    <!-- READING AREA -->
+    <main class="reading-main">
+
+        <!-- TOP STATUS -->
+        <div class="reading-status">
+
+            <div class="spell-status">
+                <span class="status-label">ARCANE PROGRESS</span>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <div class="page-counter" id="pageCounter">
+                PAGE 1 / 11
+            </div>
+
+        </div>
+
+
+        <!-- READER -->
+        <section class="reader-wrapper">
+
+            <!-- LEFT NAVIGATION -->
+            <button
+                class="side-navigation prev-navigation"
+                id="prevButton"
+                type="button"
+                aria-label="Previous page"
+            >
+                <span>‹</span>
+                <small>PREVIOUS</small>
+            </button>
+
+
+            <!-- BOOK / PAGE -->
+            <div class="spell-book">
+
+                <div class="book-glow"></div>
+
+                <!-- PAGE 1 -->
+                <article class="reading-page active">
+
+                    <div class="page-content intro-page">
+
+                        <div class="witch-library">
+
+                            <div class="moon"></div>
+
+                            <div class="witch">
+
+                                <div class="witch-hat"></div>
+
+                                <div class="witch-head"></div>
+
+                                <div class="witch-body"></div>
+
+                                <div class="witch-arm"></div>
+
+                                <div class="wand"></div>
+
+                            </div>
+
+                            <div class="magic-particles">
+                                ✦ ✧ ✦ ✧
+                            </div>
+
+                        </div>
+
+                        <span class="chapter-label">
+                            WELCOME BACK, APPRENTICE
+                        </span>
+
+                        <h2>
+                            SPELLCRAFT II:
+                            <br>
+                            DATA VAULT
+                        </h2>
+
+                        <p>
+                            Descend into the Data Vault and learn how
+                            C# stores and manages different kinds of
+                            information using variables and data types.
+                        </p>
+
+                        <div class="syllabus-box">
+
+                            <span>SYLLABUS ALIGNMENT</span>
+
+                            <strong>
+                                CLO 1 – Variables & Data Types
+                            </strong>
+
+                            <p>
+                                Variables, declaration, initialization,
+                                data types, and naming conventions.
+                            </p>
+
+                        </div>
+
+                        <p class="intro-note">
+                            The pages ahead contain the knowledge
+                            needed before entering the next magical
+                            challenge. Read carefully, Apprentice.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 2 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 01
+                        </span>
+
+                        <h2>
+                            Understanding Variables
+                        </h2>
+
+                        <p>
+                            Variables are named storage locations used
+                            by a program to keep information that may
+                            be needed during execution. A variable can
+                            hold a value such as a number, a character,
+                            text, or a Boolean value.
+                        </p>
+
+                        <p>
+                            Variables make programs more flexible
+                            because their stored values can be used,
+                            displayed, or changed while the program
+                            runs.
+                        </p>
+
+                        <div class="highlight-box">
+
+                            <span>ARCANE FACT</span>
+
+                            <p>
+                                A variable can be thought of as a
+                                labeled container that holds a
+                                particular value.
+                            </p>
+
+                        </div>
+
+                        <div class="example-box">
+
+                            <span>EXAMPLE</span>
+
+                            <p>
+                                A program may use variables to store:
+                            </p>
+
+                            <ol>
+                                <li>
+                                    A character's <strong>name</strong>
+                                </li>
+
+                                <li>
+                                    A character's <strong>level</strong>
+                                </li>
+
+                                <li>
+                                    A character's
+                                    <strong>health points</strong>
+                                </li>
+
+                                <li>
+                                    The amount of
+                                    <strong>mana</strong>
+                                </li>
+                            </ol>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 3 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 02
+                        </span>
+
+                        <h2>
+                            Declaring a Variable
+                        </h2>
+
+                        <p>
+                            Before using a variable, the programmer
+                            needs to specify its data type and give
+                            it a name. The general structure is:
+                        </p>
+
+                        <pre class="lesson-code">dataType variableName;</pre>
+
+                        <p>
+                            For example:
+                        </p>
+
+                        <pre class="lesson-code">int playerLevel;</pre>
+
+                        <div class="info-box">
+
+                            <h3>
+                                What Does This Do?
+                            </h3>
+
+                            <p>
+                                This statement declares a variable
+                                named <code>playerLevel</code> that
+                                is intended to store an integer.
+                                Declaring a variable tells C# what
+                                kind of information the variable is
+                                designed to hold.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 4 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 03
+                        </span>
+
+                        <h2>
+                            Initializing and Assigning Variables
+                        </h2>
+
+                        <p>
+                            A variable can be given a value when it
+                            is declared. This is called
+                            <strong>initialization</strong>.
+                        </p>
+
+                        <pre class="lesson-code">int playerLevel = 10;</pre>
+
+                        <p>
+                            A variable can also be declared first and
+                            assigned a value later.
+                        </p>
+
+                        <pre class="lesson-code">int playerLevel;
+playerLevel = 10;</pre>
+
+                        <div class="highlight-box">
+
+                            <span>REMEMBER</span>
+
+                            <p>
+                                Once a variable has been assigned a
+                                value, that value can be used in other
+                                parts of the program. Variables can
+                                also receive new values — when a new
+                                value is assigned, the previous value
+                                is replaced.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 5 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 04
+                        </span>
+
+                        <h2>
+                            Common C# Data Types
+                        </h2>
+
+                        <p>
+                            A data type determines the kind of value
+                            that a variable can store. Choosing the
+                            appropriate data type helps the program
+                            handle information correctly.
+                        </p>
+
+                        <div class="skill-grid">
+
+                            <span>int</span>
+                            <span>double</span>
+                            <span>float</span>
+                            <span>decimal</span>
+                            <span>char</span>
+                            <span>string</span>
+                            <span>bool</span>
+
+                        </div>
+
+                        <div class="concept-list">
+
+                            <div>
+                                <span class="concept-number">01</span>
+
+                                <p>
+                                    <strong>int</strong>
+                                    Stores whole numbers.
+                                </p>
+                            </div>
+
+                            <div>
+                                <span class="concept-number">02</span>
+
+                                <p>
+                                    <strong>double / float / decimal</strong>
+                                    Store numbers with decimal values.
+                                    Decimal is commonly used when
+                                    greater precision is needed.
+                                </p>
+                            </div>
+
+                            <div>
+                                <span class="concept-number">03</span>
+
+                                <p>
+                                    <strong>char</strong>
+                                    Stores a single character.
+                                </p>
+                            </div>
+
+                            <div>
+                                <span class="concept-number">04</span>
+
+                                <p>
+                                    <strong>string</strong>
+                                    Stores text.
+                                </p>
+                            </div>
+
+                            <div>
+                                <span class="concept-number">05</span>
+
+                                <p>
+                                    <strong>bool</strong>
+                                    Stores either true or false.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 6 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 05
+                        </span>
+
+                        <h2>
+                            Identifiers & Naming Conventions
+                        </h2>
+
+                        <p>
+                            The name given to a variable is called an
+                            <strong>identifier</strong>. A good
+                            variable name should describe the
+                            information it stores.
+                        </p>
+
+                        <pre class="lesson-code">int playerLevel = 10;</pre>
+
+                        <p>
+                            is easier to understand than:
+                        </p>
+
+                        <pre class="lesson-code">int x = 10;</pre>
+
+                        <div class="warning-box">
+
+                            <strong>
+                                C# NAMING RULES
+                            </strong>
+
+                            <p>
+                                Variable names should not contain
+                                spaces or use reserved C# keywords,
+                                and capitalization matters because
+                                C# is case-sensitive.
+                            </p>
+
+                        </div>
+
+                        <div class="lesson-tip">
+                            Using meaningful names makes programs
+                            easier to read, understand, and maintain.
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 7 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 06
+                        </span>
+
+                        <h2>
+                            Constants
+                        </h2>
+
+                        <p>
+                            Some values should remain unchanged
+                            throughout a program. C# allows
+                            programmers to define these values as
+                            constants using the <code>const</code>
+                            keyword.
+                        </p>
+
+                        <pre class="lesson-code">const int maxLevel = 100;</pre>
+
+                        <div class="info-box">
+
+                            <h3>
+                                One Rule to Remember
+                            </h3>
+
+                            <p>
+                                A constant must be given a value when
+                                it is declared and cannot later be
+                                changed.
+                            </p>
+
+                        </div>
+
+                        <div class="lesson-tip">
+                            Constants are useful for information that
+                            should remain fixed, such as a maximum
+                            level, a conversion value, or another
+                            fixed value used by a program.
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 8 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 07
+                        </span>
+
+                        <h2>
+                            Displaying Variable Values
+                        </h2>
+
+                        <p>
+                            Variables can be displayed using
+                            <code>Console.WriteLine()</code>. A
+                            program can also combine text and
+                            variable values when producing output.
+                        </p>
+
+                        <pre class="lesson-code">int playerLevel = 10;
+Console.WriteLine(playerLevel);</pre>
+
+                        <div class="highlight-box">
+
+                            <span>ARCANE FACT</span>
+
+                            <p>
+                                This allows programs to display
+                                information that changes depending on
+                                the values currently stored in the
+                                variables — such as a player's name
+                                or current level — instead of
+                                displaying the same message every
+                                time.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 9 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            LEARN THE SPELL • 08
+                        </span>
+
+                        <h2>
+                            Receiving User Input
+                        </h2>
+
+                        <p>
+                            Programs can become more interactive by
+                            allowing users to enter information. C#
+                            provides <code>Console.ReadLine()</code>
+                            for receiving input from the console.
+                        </p>
+
+                        <pre class="lesson-code">Console.WriteLine("Enter your name:");
+string playerName = Console.ReadLine();</pre>
+
+                        <div class="warning-box">
+
+                            <strong>
+                                INPUT IS RECEIVED AS TEXT
+                            </strong>
+
+                            <p>
+                                Information entered by the user is
+                                initially received as text, so
+                                numerical input may need to be
+                                converted to the appropriate numeric
+                                data type before it can be used in
+                                calculations.
+                            </p>
+
+                        </div>
+
+                        <div class="lesson-tip">
+                            This allows a program to receive
+                            information such as a user's name, age,
+                            score, or other values while the program
+                            is running.
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 10 -->
+                <article class="reading-page">
+
+                    <div class="page-content">
+
+                        <span class="chapter-label">
+                            CONSULT THE C# CODEX
+                        </span>
+
+                        <h2>
+                            The Apprentice's Quick Codex
+                        </h2>
+
+                        <div class="codex-list">
+
+                            <div>
+                                <strong>01 • Variables</strong>
+
+                                <p>
+                                    Variables provide a way to store
+                                    information under a specific name.
+                                    In C#, a variable is associated
+                                    with a data type that determines
+                                    what kind of value it can hold.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>02 • Constants</strong>
+
+                                <p>
+                                    Constants are values that are
+                                    intended to remain unchanged after
+                                    they are declared using the
+                                    <code>const</code> keyword.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>03 • Data Types</strong>
+
+                                <p>
+                                    Data types describe the kind of
+                                    information a variable can store,
+                                    such as integers, decimal numbers,
+                                    characters, text, and Boolean
+                                    values.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>04 • Identifiers</strong>
+
+                                <p>
+                                    Identifiers are names used to
+                                    identify variables. Meaningful
+                                    identifiers make code easier to
+                                    understand.
+                                </p>
+                            </div>
+
+                            <div>
+                                <strong>05 • Input & Output</strong>
+
+                                <p>
+                                    <code>Console.WriteLine()</code>
+                                    displays variable values, while
+                                    <code>Console.ReadLine()</code>
+                                    receives information from the
+                                    user as text.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="video-section">
+
+                            <span class="chapter-label">
+                                WATCH THE SPELL IN ACTION
+                            </span>
+
+                            <h3>
+                                C# Full Course — Bro Code
+                            </h3>
+
+                            <p>
+                                Relevant sections:
+                            </p>
+
+                            <ul>
+                                <li>
+                                    00:10:48 — Variables
+                                </li>
+
+                                <li>
+                                    00:19:32 — Constants
+                                </li>
+
+                                <li>
+                                    00:20:35 — Type Casting
+                                </li>
+
+                                <li>
+                                    00:27:49 — User Input
+                                </li>
+                            </ul>
+
+                            <a
+                                href="https://youtu.be/wxznTygnRfQ?si=QpeSrC508uk8W3jf"
+                                target="_blank"
+                                class="watch-button"
+                            >
+                                WATCH THE COURSE ↗
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAGE 11 -->
+                <article class="reading-page">
+
+                    <div class="page-content final-page">
+
+                        <span class="chapter-label">
+                            SPELLCRAFT II • REVIEW COMPLETE
+                        </span>
+
+                        <h2>
+                            The Vault's Secrets Revealed
+                        </h2>
+
+                        <div class="final-message">
+
+                            <div class="final-witch">
+                                ✦
+                            </div>
+
+                            <h3>
+                                SPELLCRAFT COMPLETE
+                            </h3>
+
+                            <p>
+                                You have reviewed variables, data
+                                types, constants, and how programs
+                                display and receive information. You
+                                are now ready to choose your Witch
+                                Guide for the Data Vault trial.
+                            </p>
+
+                            <button
+                                id="chooseWitchButton"
+                                type="button"
+                            >
+                                CONTINUE TO WITCH GUIDE →
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- RIGHT NAVIGATION -->
+            <button
+                class="side-navigation next-navigation"
+                id="nextButton"
+                type="button"
+                aria-label="Next page"
+            >
+                <small>NEXT</small>
+                <span>›</span>
+
+                <div
+                    class="unlock-timer"
+                    id="unlockTimer"
+                >
+                    3
+                </div>
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- LOCK MESSAGE -->
+    <div class="review-message" id="reviewMessage">
+
+        <div class="review-card">
+
+            <button
+                class="message-close"
+                id="messageClose"
+                type="button"
+            >
+                ×
+            </button>
+
+            <div class="message-witch">
+
+                <div class="mini-hat"></div>
+                <div class="mini-head"></div>
+                <div class="mini-body"></div>
+
+                <span class="mini-sparkle sparkle-one">✦</span>
+                <span class="mini-sparkle sparkle-two">✧</span>
+                <span class="mini-sparkle sparkle-three">✦</span>
+
+            </div>
+
+            <h2>
+                HOLD ON, APPRENTICE!
+            </h2>
+
+            <p>
+                Please review first.
+            </p>
+
+            <strong>
+                Review makes you stronger
+                and smarter!
+            </strong>
+
+            <span class="wait-text">
+                The next spell will unlock shortly.
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- SKIP CONFIRM MODAL -->
+    <div class="skip-confirm-modal" id="skipConfirmModal">
+
+        <div class="skip-confirm-card">
+
+            <h2>
+                WAIT, APPRENTICE!
+            </h2>
+
+            <p>
+                Are you sure you're ready? Skipping will take
+                you straight to choosing your Witch Guide for
+                Book II.
+            </p>
+
+            <div class="skip-confirm-actions">
+
+                <button id="skipConfirmYes" type="button">
+                    YES, I'M READY
+                </button>
+
+                <button id="skipConfirmNo" type="button">
+                    NOT YET
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="scroll-reminder" id="scrollReminder">
+
+        <span class="scroll-arrow"></span>
+
+        <small>SCROLL FOR MORE</small>
+
+    </div>
+
+    <script src="reading2.js"></script>
+
+</body>
+
+</html>
