@@ -4308,3 +4308,83 @@ body{
     background:#22c55e;
 
 }
+
+/* =========================================================
+   BOOK V FINAL FIX - TIMER + ANIMATION
+========================================================= */
+
+.time-attack-timer{
+    display:none;
+    margin-top:8px;
+    padding:6px 14px;
+    min-width:115px;
+    border:1px solid #60a5fa;
+    border-radius:6px;
+    background:rgba(2,6,23,.95);
+    color:#facc15;
+    font-size:18px;
+    letter-spacing:1px;
+    box-shadow:0 0 14px rgba(96,165,250,.25);
+}
+
+.time-attack-timer.show{
+    display:block;
+    animation:timerPop .25s ease;
+}
+
+.time-attack-timer.danger{
+    color:#fecaca;
+    border-color:#ef4444;
+    animation:timerDanger .7s infinite;
+}
+
+@keyframes timerPop{
+    from{transform:scale(.85);opacity:0;}
+    to{transform:scale(1);opacity:1;}
+}
+
+@keyframes timerDanger{
+    0%,100%{transform:scale(1);box-shadow:0 0 8px rgba(239,68,68,.35);}
+    50%{transform:scale(1.05);box-shadow:0 0 22px rgba(239,68,68,.85);}
+}
+
+/* Supports both the old .active JS and the fixed .show JS */
+.attack-animation.active,
+.attack-animation.show{
+    display:flex !important;
+    opacity:1 !important;
+}
+
+.attack-animation{
+    overflow:hidden;
+}
+
+.attack-animation video{
+    background:#000;
+}
+
+.next-question-button{
+    grid-column:1 / -1;
+    min-height:44px;
+    margin-top:6px;
+    padding:10px 16px;
+    background:#4f46e5;
+    border:1px solid #818cf8;
+    border-radius:5px;
+    color:#fff;
+    font-family:inherit;
+    font-size:16px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.next-question-button:hover{
+    background:#6366f1;
+    transform:translateY(-2px);
+}
+
+.next-question-button:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+    transform:none;
+}

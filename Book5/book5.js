@@ -3851,6 +3851,7 @@ function finishBook(){
         String(essence)
     );
 
+    localStorage.setItem("book6Unlocked", "true");
 
     /*
        Victory visual
@@ -5381,4 +5382,730 @@ refreshPowerUI();
 
 console.log(
     "BOOK V BUTTON SYSTEM READY"
+);
+
+/* =========================================================
+   BOOK V — FINAL SAFE FIX
+   Keeps:
+   ✓ Selected Witch
+   ✓ Enter Trial
+   ✓ Wraith Intro
+   ✓ Original Gameplay
+
+   Fixes:
+   ✓ Timer visibility
+   ✓ Question looping
+   ✓ Animation sequence
+   ✓ Feedback timing
+========================================================= */
+
+
+/* =========================================================
+   SAFE SELECTED WITCH REFRESH
+========================================================= */
+
+function refreshSelectedWitchBook5(){
+
+
+    selectedCharacter =
+        localStorage.getItem(
+            "cieSharpCharacter"
+        ) || "GiTei";
+
+
+    player =
+        characters[selectedCharacter] ||
+        characters.GiTei;
+
+
+    var playerNameElement =
+        document.getElementById(
+            "playerName"
+        );
+
+
+    var playerRoleElement =
+        document.getElementById(
+            "playerRole"
+        );
+
+
+    var playerImageElement =
+        document.getElementById(
+            "playerCharacter"
+        );
+
+
+    var startImageElement =
+        document.getElementById(
+            "startWitchImage"
+        );
+
+
+    var startNameElement =
+        document.getElementById(
+            "startWitchName"
+        );
+
+
+    /* =========================
+       BATTLE DISPLAY
+    ========================= */
+
+    if(playerNameElement){
+
+        playerNameElement.textContent =
+            player.name;
+
+    }
+
+
+    if(playerRoleElement){
+
+        playerRoleElement.textContent =
+            player.role;
+
+    }
+
+
+    if(playerImageElement){
+
+        playerImageElement.src =
+            player.image;
+
+
+        playerImageElement.alt =
+            player.name;
+
+    }
+
+
+    /* =========================
+       START SCREEN PREVIEW
+    ========================= */
+
+    if(startImageElement){
+
+        startImageElement.src =
+            player.image;
+
+
+        startImageElement.alt =
+            player.name;
+
+    }
+
+
+    if(startNameElement){
+
+        startNameElement.textContent =
+            player.name;
+
+    }
+
+
+    /* =========================
+       SIGNATURE POWER
+    ========================= */
+
+    var powers = [
+
+        "mysticSightPower",
+
+        "omnidataPower",
+
+        "syntaxSorceryPower",
+
+        "flameburstPower",
+
+        "mindcraftPower"
+
+    ];
+
+
+    powers.forEach(
+        function(id){
+
+
+            var powerButton =
+                document.getElementById(id);
+
+
+            if(!powerButton){
+
+                return;
+
+            }
+
+
+            if(
+                id === player.power
+            ){
+
+                powerButton.style.display =
+                    "";
+
+            }
+
+            else{
+
+                powerButton.style.display =
+                    "none";
+
+            }
+
+
+        }
+    );
+
+
+}
+
+
+/* =========================================================
+   RUN SELECTED WITCH
+========================================================= */
+
+refreshSelectedWitchBook5();
+
+
+
+/* =========================================================
+   TIMER FIX
+========================================================= */
+
+var book5OriginalStopTimer =
+    stopTimeAttack;
+
+
+stopTimeAttack =
+function(){
+
+
+    if(timeAttackTimer){
+
+        clearInterval(
+            timeAttackTimer
+        );
+
+
+        timeAttackTimer =
+            null;
+
+    }
+
+
+    timeAttackActive =
+        false;
+
+
+    var timerElement =
+        document.getElementById(
+            "timeAttackTimer"
+        );
+
+
+    if(timerElement){
+
+        timerElement.classList.remove(
+            "show",
+            "danger"
+        );
+
+    }
+
+
+};
+
+
+
+/* =========================================================
+   TIMER DISPLAY
+========================================================= */
+
+updateTimerDisplay =
+function(){
+
+
+    var timerElement =
+        document.getElementById(
+            "timeAttackTimer"
+        );
+
+
+    if(!timerElement){
+
+        return;
+
+    }
+
+
+    timerElement.textContent =
+        "TIME: " +
+        Math.max(
+            0,
+            timeAttackSeconds
+        );
+
+
+    timerElement.classList.add(
+        "show"
+    );
+
+
+    if(
+        timeAttackSeconds <= 5
+    ){
+
+        timerElement.classList.add(
+            "danger"
+        );
+
+    }
+
+    else{
+
+        timerElement.classList.remove(
+            "danger"
+        );
+
+    }
+
+
+};
+
+
+
+/* =========================================================
+   START TIMER
+========================================================= */
+
+startTimeAttack =
+function(){
+
+
+    stopTimeAttack();
+
+
+    timeAttackSeconds =
+        20;
+
+
+    timeAttackActive =
+        true;
+
+
+    updateTimerDisplay();
+
+
+    timeAttackTimer =
+        setInterval(
+            function(){
+
+
+                if(answered){
+
+                    stopTimeAttack();
+
+                    return;
+
+                }
+
+
+                timeAttackSeconds--;
+
+
+                updateTimerDisplay();
+
+
+                if(
+                    timeAttackSeconds <= 0
+                ){
+
+                    stopTimeAttack();
+
+
+                    timeAttackExpired();
+
+                }
+
+
+            },
+
+            1000
+        );
+
+
+};
+
+
+
+/* =========================================================
+   QUESTION LOOP FIX
+
+   IMPORTANT:
+   Do NOT finish game just because
+   questions are finished.
+========================================================= */
+
+var originalBook5LoadQuestion =
+    loadQuestion;
+
+
+loadQuestion =
+function(){
+
+
+    /* =========================
+       LOOP QUESTIONS
+    ========================= */
+
+    if(
+        currentQuestion >=
+        questions.length
+    ){
+
+        currentQuestion =
+            0;
+
+    }
+
+
+    if(
+        currentQuestion < 0
+    ){
+
+        currentQuestion =
+            0;
+
+    }
+
+
+    /* =========================
+       CALL ORIGINAL
+    ========================= */
+
+    originalBook5LoadQuestion();
+
+
+};
+
+
+
+/* =========================================================
+   FINISH BOOK FIX
+
+   Victory ONLY when enemy HP = 0
+========================================================= */
+
+var originalBook5Finish =
+    finishBook;
+
+
+finishBook =
+function(){
+
+
+    /* =========================
+       ENEMY STILL ALIVE
+    ========================= */
+
+    if(enemyHP > 0){
+
+
+        currentQuestion =
+            0;
+
+
+        loadQuestion();
+
+
+        return;
+
+    }
+
+
+    /* =========================
+       REAL VICTORY
+    ========================= */
+
+    originalBook5Finish();
+
+
+};
+
+
+
+/* =========================================================
+   ATTACK ANIMATION FIX
+========================================================= */
+
+var originalBook5PlayerAttack =
+    playerAttack;
+
+
+playerAttack =
+function(callback){
+
+
+    var animationElement =
+        document.getElementById(
+            "attackAnimation"
+        );
+
+
+    var videoElement =
+        document.getElementById(
+            "attackVideo"
+        );
+
+
+    /* =========================
+       SAFETY CHECK
+    ========================= */
+
+    if(
+        !animationElement ||
+        !videoElement
+    ){
+
+
+        if(
+            typeof callback ===
+            "function"
+        ){
+
+            callback();
+
+        }
+
+
+        return;
+
+    }
+
+
+    /* =========================
+       CURRENT WITCH
+    ========================= */
+
+    var currentPlayer =
+        characters[selectedCharacter] ||
+        characters.GiTei;
+
+
+    var completed =
+        false;
+
+
+    function endAnimation(){
+
+
+        if(completed){
+
+            return;
+
+        }
+
+
+        completed =
+            true;
+
+
+        videoElement.pause();
+
+
+        animationElement.classList.remove(
+            "show",
+            "fade-out"
+        );
+
+
+        animationElement.style.display =
+            "none";
+
+
+        if(
+            typeof callback ===
+            "function"
+        ){
+
+            callback();
+
+        }
+
+
+    }
+
+
+    /* =========================
+       SHOW ANIMATION
+    ========================= */
+
+    animationElement.style.display =
+        "flex";
+
+
+    animationElement.classList.remove(
+        "fade-out"
+    );
+
+
+    animationElement.classList.add(
+        "show"
+    );
+
+
+    /* =========================
+       LOAD VIDEO
+    ========================= */
+
+    if(
+        currentPlayer.attackVideo
+    ){
+
+
+        videoElement.src =
+            currentPlayer.attackVideo;
+
+
+        videoElement.currentTime =
+            0;
+
+
+        videoElement.onended =
+            function(){
+
+
+                endAnimation();
+
+
+            };
+
+
+        videoElement.onerror =
+            function(){
+
+
+                setTimeout(
+                    endAnimation,
+                    500
+                );
+
+
+            };
+
+
+        videoElement.load();
+
+
+        var playPromise =
+            videoElement.play();
+
+
+        if(playPromise){
+
+
+            playPromise.catch(
+                function(){
+
+
+                    setTimeout(
+                        endAnimation,
+                        500
+                    );
+
+
+                }
+            );
+
+
+        }
+
+
+        /* SAFETY FALLBACK */
+
+        setTimeout(
+            function(){
+
+
+                endAnimation();
+
+
+            },
+
+            5000
+        );
+
+
+    }
+
+    else{
+
+
+        setTimeout(
+            endAnimation,
+            500
+        );
+
+
+    }
+
+
+};
+
+
+
+/* =========================================================
+   SAFE ENTER TRIAL FIX
+
+   IMPORTANT:
+   Does NOT remove original Wraith Intro.
+========================================================= */
+
+var safeStartButton =
+    document.getElementById(
+        "startBattleButton"
+    );
+
+
+if(safeStartButton){
+
+
+    safeStartButton.addEventListener(
+        "click",
+        function(){
+
+
+            /* Refresh witch first */
+
+            refreshSelectedWitchBook5();
+
+
+        }
+    );
+
+
+}
+
+
+
+/* =========================================================
+   FINAL CHECK
+========================================================= */
+
+console.log(
+    "BOOK V SAFE FIX LOADED"
+);
+
+
+console.log(
+    "Selected Witch:",
+    selectedCharacter
+);
+
+
+console.log(
+    "Witch Name:",
+    player.name
 );

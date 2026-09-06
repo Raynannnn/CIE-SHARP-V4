@@ -1,0 +1,199 @@
+/* =========================================================
+   STRUGGLE GUIDE — asks the player if they're stuck
+   Same file works in every book. Link this AFTER the
+   book's own CSS file (and after answer-guide.css if used).
+========================================================= */
+
+.struggle-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:6000;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    background:rgba(2,6,23,.82);
+
+    backdrop-filter:blur(6px);
+
+}
+
+
+.struggle-overlay.show{
+
+    display:flex;
+
+}
+
+
+.struggle-card{
+
+    width:min(420px,100%);
+
+    padding:32px 26px;
+
+    text-align:center;
+
+    background:#0f172a;
+
+    border:2px solid #8b5cf6;
+
+    border-radius:16px;
+
+    box-shadow:0 0 45px rgba(139,92,246,.3);
+
+    animation:struggleIn .25s ease;
+
+}
+
+
+@keyframes struggleIn{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.9);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+.struggle-card h2{
+
+    color:#e9d5ff;
+
+    font-family:'VT323',monospace;
+
+    font-size:22px;
+
+    margin-bottom:12px;
+
+    line-height:1.4;
+
+}
+
+
+.struggle-card p{
+
+    color:#94a3b8;
+
+    font-family:'VT323',monospace;
+
+    font-size:16px;
+
+    margin-bottom:22px;
+
+    line-height:1.5;
+
+}
+
+
+.struggle-actions{
+
+    display:flex;
+
+    gap:12px;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+}
+
+
+.struggle-btn{
+
+    padding:11px 24px;
+
+    border-radius:8px;
+
+    font-family:'VT323',monospace;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+
+.struggle-btn.yes{
+
+    border:none;
+
+    background:linear-gradient(90deg,#7c3aed,#a855f7);
+
+    color:#fff;
+
+}
+
+
+.struggle-btn.yes:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 8px 20px rgba(124,58,237,.35);
+
+}
+
+
+.struggle-btn.no{
+
+    background:#1e293b;
+
+    border:1px solid #475569;
+
+    color:#cbd5e1;
+
+}
+
+
+.struggle-btn.no:hover{
+
+    background:#334155;
+
+    color:#fff;
+
+}
+
+
+@media(max-width:650px){
+
+    .struggle-card{
+
+        padding:26px 18px;
+
+    }
+
+    .struggle-card h2{
+
+        font-size:19px;
+
+    }
+
+    .struggle-card p{
+
+        font-size:15px;
+
+    }
+
+}

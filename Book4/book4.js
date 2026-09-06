@@ -2161,6 +2161,11 @@ document.getElementById(
     "show"
 );
 
+localStorage.setItem("book4Completed", "true");
+localStorage.setItem("book4Score", score);
+localStorage.setItem("book4Essence", essence);
+localStorage.setItem("book5Unlocked", "true");
+
 
 }
 

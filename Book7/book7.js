@@ -1875,6 +1875,8 @@ function saveProgress(){
         essence
     );
 
+    localStorage.setItem("book8Unlocked", "true");
+
 }
 
 

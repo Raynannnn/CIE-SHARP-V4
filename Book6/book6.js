@@ -1484,7 +1484,7 @@ document.getElementById("loseMenuButton").addEventListener(
     "click",
     function(){
 
-        location.href = '/MainMenu/lesson.html';
+        location.href = '../../MainMenu/lesson.html';
 
     }
 );

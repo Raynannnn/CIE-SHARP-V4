@@ -279,7 +279,7 @@ var questions = [
             "How many times does the loop run?",
 
         code:
-`for (int i = 0; i < 5; i++)
+`for (int i = 0; i < 8; i++)
 {
     Attack();
 }`,
@@ -288,7 +288,7 @@ var questions = [
 
             "4 times",
 
-            "5 times",
+            "8 times",
 
             "6 times",
 
@@ -299,10 +299,10 @@ var questions = [
         correct: 1,
 
         feedback:
-            "The loop starts at 0 and stops before 5. That's 5 repetitions.",
+            "The loop starts at 0 and stops before 8. That's 8 repetitions.",
 
         rationale:
-            "The loop executes when i is 0, 1, 2, 3, and 4. That gives 5 total repetitions."
+            "The loop executes when i is 0, 1, 2, 3, and 4. That gives 8 total repetitions."
 
     },
 
@@ -373,7 +373,7 @@ var questions = [
             "Complete the loop.",
 
         code:
-`for (int i = 0; i ___ 5; i++)`,
+`for (int i = 0; i ___ 8; i++)`,
 
         answers: [
 
@@ -390,10 +390,10 @@ var questions = [
         correct: 1,
 
         feedback:
-            "To repeat while i is below 5, use <.",
+            "To repeat while i is below 8, use <.",
 
         rationale:
-            "The less-than operator < means i must remain below 5."
+            "The less-than operator < means i must remain below 8."
 
     },
 
@@ -441,7 +441,7 @@ var questions = [
         mode: "type",
 
         question:
-            "Round 5 — Complete the condition.",
+            "Round 8 — Complete the condition.",
 
         code:
 `while (health ___ 0)`,
@@ -512,7 +512,7 @@ var questions = [
             "Challenge 2 — Fix the loop.",
 
         code:
-`for (int i = 0; i < 5; ____)`,
+`for (int i = 0; i < 8; ____)`,
 
         expectedAnswer:
             "i++",
@@ -521,7 +521,7 @@ var questions = [
             "Type the update expression...",
 
         feedback:
-            "The loop needs to increase so it can eventually reach 5. Use i++.",
+            "The loop needs to increase so it can eventually reach 8. Use i++.",
 
         rationale:
             "The update expression must increase i after every repetition. i++ increases i by one."
@@ -567,13 +567,13 @@ var questions = [
             "Challenge 4 — How many times does this loop run?",
 
         code:
-`for (int i = 1; i <= 5; i++)`,
+`for (int i = 1; i <= 8; i++)`,
 
         answers: [
 
             "4 times",
 
-            "5 times",
+            "8 times",
 
             "6 times",
 
@@ -584,10 +584,10 @@ var questions = [
         correct: 1,
 
         feedback:
-            "Because the condition uses <= 5, the loop includes 5.",
+            "Because the condition uses <= 8, the loop includes 8.",
 
         rationale:
-            "The values are 1, 2, 3, 4, and 5. That makes 5 iterations."
+            "The values are 1, 2, 3, 4, and 8. That makes 8 iterations."
 
     },
 
@@ -598,7 +598,7 @@ var questions = [
         mode: "type",
 
         question:
-            "Challenge 5 — Is this loop already correct? Type YES or NO.",
+            "Challenge 8 — Is this loop already correct? Type YES or NO.",
 
         code:
 `while (energy > 0)
@@ -1050,7 +1050,7 @@ function endWraithIntro(){
 
         loadQuestion();
 
-    }, 500);
+    }, 800);
 
 }
 
@@ -1076,7 +1076,7 @@ if(startBattleButton){
             if(bgMusic){
 
                 bgMusic.volume =
-                    0.35;
+                    0.38;
 
                 bgMusic.play()
                     .catch(function(){});
@@ -1283,7 +1283,7 @@ function loadQuestion(){
        SAVE PROGRESS
     ----------------------------------------- */
 
-    saveBook5Progress();
+    saveBook8Progress();
 
 }
 
@@ -1396,7 +1396,7 @@ function createTypedAnswer(q){
 
 
     input.id =
-        "book5AnswerInput";
+        "book8AnswerInput";
 
 
     var submit =
@@ -1557,7 +1557,7 @@ function checkTypedAnswer(){
 
     var input =
         document.getElementById(
-            "book5AnswerInput"
+            "book8AnswerInput"
         );
 
 
@@ -1747,7 +1747,7 @@ function handleWrongAnswer(q){
 
 
     playerHP -=
-        15;
+        18;
 
 
     if(playerHP < 0){
@@ -1758,7 +1758,7 @@ function handleWrongAnswer(q){
 
 
     score -=
-        25;
+        28;
 
 
     if(score < 0){
@@ -1805,7 +1805,7 @@ function handleWrongAnswer(q){
         document.getElementById(
             "playerCharacter"
         ),
-        "-15",
+        "-18",
         "damage"
     );
 
@@ -2211,7 +2211,7 @@ function updateTimerDisplay(){
 
 
     if(
-        timeAttackSeconds <= 5
+        timeAttackSeconds <= 8
     ){
 
         timer.classList.add(
@@ -2433,7 +2433,7 @@ function enemyHitEffect(){
             );
 
         },
-        500
+        800
     );
 
 }
@@ -2486,7 +2486,7 @@ function playerDamageEffect(){
             );
 
         },
-        500
+        800
     );
 
 
@@ -2698,7 +2698,7 @@ function useHeal(){
 
 
     playerHP +=
-        25;
+        28;
 
 
     if(playerHP > 100){
@@ -2716,7 +2716,7 @@ function useHeal(){
         document.getElementById(
             "playerCharacter"
         ),
-        "+25",
+        "+28",
         "heal"
     );
 
@@ -2957,7 +2957,7 @@ function useSyntaxSorcery(){
             ){
 
                 buttons[i].style.opacity =
-                    "0.25";
+                    "0.28";
 
                 buttons[i].disabled =
                     true;
@@ -3015,7 +3015,7 @@ function useFlameburst(){
 
 
     enemyHP -=
-        15;
+        18;
 
 
     if(enemyHP < 0){
@@ -3026,7 +3026,7 @@ function useFlameburst(){
 
 
     score +=
-        25;
+        28;
 
 
     updateHP();
@@ -3036,7 +3036,7 @@ function useFlameburst(){
 
     showFloatingNumber(
         enemyCharacter,
-        "-15",
+        "-18",
         "damage"
     );
 
@@ -3045,7 +3045,7 @@ function useFlameburst(){
 
 
     showFeedback(
-        "🔥 FLAMEBURST — The Wraith's loop burns for 15 damage.",
+        "🔥 FLAMEBURST — The Wraith's loop burns for 18 damage.",
         true
     );
 
@@ -3298,7 +3298,7 @@ function screenCorruption(){
             );
 
         },
-        450
+        480
     );
 
 }
@@ -3323,7 +3323,7 @@ function horrorShake(){
             );
 
         },
-        500
+        800
     );
 
 }
@@ -3354,7 +3354,7 @@ function greenFlash(){
             flash.remove();
 
         },
-        250
+        280
     );
 
 }
@@ -3501,7 +3501,7 @@ function randomWraithHorror(){
             break;
 
 
-        case 5:
+        case 8:
 
             wraithWhisper();
 
@@ -3717,7 +3717,7 @@ setInterval(
 
 
         image.style.opacity =
-            "0.15";
+            "0.18";
 
 
         setTimeout(
@@ -3770,7 +3770,7 @@ function wraithEyeFlash(){
             eyes.remove();
 
         },
-        500
+        800
     );
 
 }
@@ -3788,7 +3788,7 @@ setInterval(
 
             if(
                 Math.random() <
-                0.35
+                0.38
             ){
 
                 wraithEyeFlash();
@@ -3822,11 +3822,11 @@ function finishBook(){
 
 
     score +=
-        500;
+        800;
 
 
     essence +=
-        50;
+        80;
 
 
     updateHP();
@@ -3835,19 +3835,19 @@ function finishBook(){
 
 
     localStorage.setItem(
-        "book5Completed",
+        "book8Completed",
         "true"
     );
 
 
     localStorage.setItem(
-        "book5Score",
+        "book8Score",
         String(score)
     );
 
 
     localStorage.setItem(
-        "book5Essence",
+        "book8Essence",
         String(essence)
     );
 
@@ -3857,7 +3857,7 @@ function finishBook(){
     */
 
     document.body.classList.add(
-        "book5-victory"
+        "book8-victory"
     );
 
 
@@ -3955,12 +3955,12 @@ function showVictory(){
 
 
     victory.className =
-        "book5-victory-overlay";
+        "book8-victory-overlay";
 
 
     victory.innerHTML =
 
-        '<div class="book5-victory-content">' +
+        '<div class="book8-victory-content">' +
 
             '<div class="victory-glitch">' +
                 'LOOP TERMINATED' +
@@ -3979,7 +3979,7 @@ function showVictory(){
                 score +
             '</div>' +
 
-            '<button id="book5Continue">' +
+            '<button id="book8Continue">' +
                 'CONTINUE'
             '</button>' +
 
@@ -3993,7 +3993,7 @@ function showVictory(){
 
     var continueButton =
         document.getElementById(
-            "book5Continue"
+            "book8Continue"
         );
 
 
@@ -4004,7 +4004,7 @@ function showVictory(){
             function(){
 
                 localStorage.setItem(
-                    "book5Completed",
+                    "book8Completed",
                     "true"
                 );
 
@@ -4035,7 +4035,7 @@ function loseGame(){
 
 
     document.body.classList.add(
-        "book5-defeat"
+        "book8-defeat"
     );
 
 
@@ -4068,12 +4068,12 @@ function loseGame(){
 
 
     defeat.className =
-        "book5-defeat-overlay";
+        "book8-defeat-overlay";
 
 
     defeat.innerHTML =
 
-        '<div class="book5-defeat-content">' +
+        '<div class="book8-defeat-content">' +
 
             '<div class="defeat-glitch">' +
                 'LOOP ERROR'
@@ -4087,7 +4087,7 @@ function loseGame(){
                 'The Endless Wraith has forced you into eternal repetition.'
             '</p>' +
 
-            '<button id="book5Retry">' +
+            '<button id="book8Retry">' +
                 'BREAK THE LOOP'
             '</button>' +
 
@@ -4101,7 +4101,7 @@ function loseGame(){
 
     var retry =
         document.getElementById(
-            "book5Retry"
+            "book8Retry"
         );
 
 
@@ -4109,7 +4109,7 @@ function loseGame(){
 
         retry.addEventListener(
             "click",
-            restartBook5
+            restartBook8
         );
 
     }
@@ -4121,7 +4121,7 @@ function loseGame(){
    RESTART BOOK V
    ========================================================= */
 
-function restartBook5(){
+function restartBook8(){
 
     stopTimeAttack();
 
@@ -4169,33 +4169,33 @@ function restartBook5(){
 
 
     localStorage.removeItem(
-        "book5CurrentQuestion"
+        "book8CurrentQuestion"
     );
 
 
     localStorage.removeItem(
-        "book5Score"
+        "book8Score"
     );
 
 
     localStorage.removeItem(
-        "book5Essence"
+        "book8Essence"
     );
 
 
     localStorage.removeItem(
-        "book5PlayerHP"
+        "book8PlayerHP"
     );
 
 
     localStorage.removeItem(
-        "book5EnemyHP"
+        "book8EnemyHP"
     );
 
 
     document.body.classList.remove(
-        "book5-victory",
-        "book5-defeat",
+        "book8-victory",
+        "book8-defeat",
         "screen-corruption",
         "horror-shake",
         "damage-flash"
@@ -4222,7 +4222,7 @@ function restartBook5(){
 
     var fallbackVictory =
         document.querySelector(
-            ".book5-victory-overlay"
+            ".book8-victory-overlay"
         );
 
 
@@ -4235,7 +4235,7 @@ function restartBook5(){
 
     var fallbackDefeat =
         document.querySelector(
-            ".book5-defeat-overlay"
+            ".book8-defeat-overlay"
         );
 
 
@@ -4286,7 +4286,7 @@ if(retryButton){
 
     retryButton.addEventListener(
         "click",
-        restartBook5
+        restartBook8
     );
 
 }
@@ -4346,7 +4346,7 @@ document.addEventListener(
 
             var input =
                 document.getElementById(
-                    "book5AnswerInput"
+                    "book8AnswerInput"
                 );
 
 
@@ -4380,40 +4380,40 @@ document.addEventListener(
    SAVE PROGRESS
    ========================================================= */
 
-function saveBook5Progress(){
+function saveBook8Progress(){
 
     localStorage.setItem(
-        "book5CurrentQuestion",
+        "book8CurrentQuestion",
         String(currentQuestion)
     );
 
 
     localStorage.setItem(
-        "book5Score",
+        "book8Score",
         String(score)
     );
 
 
     localStorage.setItem(
-        "book5Essence",
+        "book8Essence",
         String(essence)
     );
 
 
     localStorage.setItem(
-        "book5PlayerHP",
+        "book8PlayerHP",
         String(playerHP)
     );
 
 
     localStorage.setItem(
-        "book5EnemyHP",
+        "book8EnemyHP",
         String(enemyHP)
     );
 
 
     localStorage.setItem(
-        "book5SurvivalMistakes",
+        "book8SurvivalMistakes",
         String(survivalMistakes)
     );
 
@@ -4427,7 +4427,7 @@ function saveBook5Progress(){
 setInterval(
     function(){
 
-        saveBook5Progress();
+        saveBook8Progress();
 
     },
     3000
@@ -4438,41 +4438,41 @@ setInterval(
    LOAD SAVED PROGRESS
    ========================================================= */
 
-function loadBook5Progress(){
+function loadBook8Progress(){
 
     var savedQuestion =
         localStorage.getItem(
-            "book5CurrentQuestion"
+            "book8CurrentQuestion"
         );
 
 
     var savedScore =
         localStorage.getItem(
-            "book5Score"
+            "book8Score"
         );
 
 
     var savedEssence =
         localStorage.getItem(
-            "book5Essence"
+            "book8Essence"
         );
 
 
     var savedPlayerHP =
         localStorage.getItem(
-            "book5PlayerHP"
+            "book8PlayerHP"
         );
 
 
     var savedEnemyHP =
         localStorage.getItem(
-            "book5EnemyHP"
+            "book8EnemyHP"
         );
 
 
     var savedMistakes =
         localStorage.getItem(
-            "book5SurvivalMistakes"
+            "book8SurvivalMistakes"
         );
 
 
@@ -4549,30 +4549,30 @@ function loadBook5Progress(){
    CLEAR BOOK V SAVE
    ========================================================= */
 
-function clearBook5Save(){
+function clearBook8Save(){
 
     localStorage.removeItem(
-        "book5CurrentQuestion"
+        "book8CurrentQuestion"
     );
 
     localStorage.removeItem(
-        "book5Score"
+        "book8Score"
     );
 
     localStorage.removeItem(
-        "book5Essence"
+        "book8Essence"
     );
 
     localStorage.removeItem(
-        "book5PlayerHP"
+        "book8PlayerHP"
     );
 
     localStorage.removeItem(
-        "book5EnemyHP"
+        "book8EnemyHP"
     );
 
     localStorage.removeItem(
-        "book5SurvivalMistakes"
+        "book8SurvivalMistakes"
     );
 
 }
@@ -4582,7 +4582,7 @@ function clearBook5Save(){
    INITIALIZE BOOK V
    ========================================================= */
 
-function initializeBook5(){
+function initializeBook8(){
 
     setupWraithImage();
 
@@ -4622,14 +4622,14 @@ if(
 
     document.addEventListener(
         "DOMContentLoaded",
-        initializeBook5
+        initializeBook8
     );
 
 }
 
 else{
 
-    initializeBook5();
+    initializeBook8();
 
 }
 
@@ -4830,7 +4830,7 @@ if(retryButton){
     retryButton.onclick =
         function(){
 
-            restartBook5();
+            restartBook8();
 
         };
 
@@ -4921,7 +4921,7 @@ if(retryBookButton){
     retryBookButton.onclick =
         function(){
 
-            restartBook5();
+            restartBook8();
 
         };
 
@@ -4989,7 +4989,7 @@ document.addEventListener(
 
             var input =
                 document.getElementById(
-                    "book5AnswerInput"
+                    "book8AnswerInput"
                 );
 
 
