@@ -328,7 +328,7 @@ if(skipConfirmYes){
         function(){
 
             window.location.href =
-                "character7.html";
+                "characters7.html";
 
         }
     );
