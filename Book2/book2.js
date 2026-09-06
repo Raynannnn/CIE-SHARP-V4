@@ -2081,7 +2081,7 @@ document
         function(){
 
             location.href =
-                '/MainMenu/lesson.html';
+                '../../MainMenu/lesson.html';
 
         }
     );

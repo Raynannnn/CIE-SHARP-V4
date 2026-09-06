@@ -4282,3 +4282,29 @@ body{
     color:#86a99b;
 
 }
+
+.result-actions{
+
+    display:flex;
+
+    gap:15px;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+}
+
+.next-book-button{
+
+    background:#16a34a;
+
+    border:1px solid #22c55e;
+
+}
+
+.next-book-button:hover{
+
+    background:#22c55e;
+
+}
