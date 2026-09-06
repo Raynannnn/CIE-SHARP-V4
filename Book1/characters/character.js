@@ -353,7 +353,7 @@ continueButton.addEventListener(
         );
 
 
-        window.location.href =
+        location.href =
             "../Book1/book1.html";
 
     }
