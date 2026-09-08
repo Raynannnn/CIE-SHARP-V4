@@ -38,7 +38,7 @@
                 '<path d="M12 3v14" stroke="#facc15" stroke-width="2.5" stroke-linecap="round"/>' +
                 '<path d="M6 12l6 6 6-6" stroke="#facc15" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>' +
             '</svg>' +
-            '<span>CHOOSE YOUR ANSWER HERE</span>';
+            '<span>ANSWER HERE</span>';
 
         document.body.appendChild(el);
 

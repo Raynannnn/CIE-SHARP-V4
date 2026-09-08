@@ -1290,7 +1290,7 @@ body{
 
 .battle-bottom{
 
-    min-height:225px;
+    min-height:150px;
 
     display:flex;
 
@@ -2670,7 +2670,7 @@ body{
 ===================================================== */
 
 .battle-bottom{
-    height:205px;
+    height:auto;
     min-height:205px;
     display:flex;
     justify-content:center;
@@ -2680,10 +2680,10 @@ body{
 .question-panel{
     width:100%;
     max-width:950px;
-    height:100%;
-    min-height:0;
-    padding:10px 14px;
-    overflow:hidden;
+    height:auto;
+    min-height:100%;
+    padding:10px 14px 14px;
+    overflow:visible;
 }
 
 .question-header{
@@ -2895,4 +2895,210 @@ body{
 
     background:#22c55e;
 
+}
+
+/* =====================================================
+   BOOK IX — COMPACT FIT (no-scroll fix)
+   Shrinks the fighters, hp bars, power-ups and question
+   panel just enough for everything (including the
+   Next Round button) to stay inside one screen,
+   without needing to scroll.
+===================================================== */
+
+.game-screen{
+    padding:8px 20px 10px;
+    gap:6px;
+    height:calc(100vh - 68px);
+}
+
+.final-boss-banner{
+    padding:2px 5px;
+}
+
+.final-boss-banner strong{
+    font-size:18px;
+}
+
+.final-boss-banner span{
+    font-size:8px;
+}
+
+.final-boss-banner small{
+    font-size:9px;
+}
+
+.battle-stage{
+    gap:12px;
+}
+
+.fighter-info{
+    margin-bottom:4px;
+}
+
+.fighter-name{
+    font-size:19px;
+}
+
+.fighter-role{
+    font-size:11px;
+}
+
+.hp-wrapper{
+    width:190px;
+    margin-bottom:5px;
+}
+
+.boss-hp-wrapper{
+    width:190px;
+}
+
+.witch-display,
+.witch-display img{
+    width:130px;
+    height:130px;
+}
+
+.magic-aura{
+    width:145px;
+    height:145px;
+}
+
+.null-witch-display{
+    width:140px;
+    height:140px;
+}
+
+.null-witch-display img{
+    width:125px;
+    height:125px;
+}
+
+.boss-fire{
+    width:125px;
+    height:125px;
+}
+
+.boss-ring{
+    width:145px;
+    height:145px;
+}
+
+.boss-title{
+    font-size:9px;
+}
+
+.chapter-badge{
+    padding:4px 10px;
+    font-size:10px;
+}
+
+.vs{
+    margin:5px 0;
+}
+
+.vs span{
+    font-size:22px;
+}
+
+.battle-message{
+    min-height:26px;
+    font-size:12px;
+}
+
+.power-ups-title{
+    margin-top:5px;
+    font-size:8px;
+}
+
+.power-ups{
+    margin-top:4px;
+}
+
+.power-up{
+    width:44px;
+    height:48px;
+}
+
+.power-icon{
+    font-size:15px;
+}
+
+.power-up > span:not(.power-icon){
+    font-size:7px;
+}
+
+.battle-bottom{
+    min-height:150px;
+}
+
+.question-panel{
+    padding:8px 12px 10px;
+}
+
+.question-header{
+    margin-bottom:3px;
+}
+
+.question-panel h2{
+    font-size:14px;
+    margin-bottom:4px;
+}
+
+.code-box{
+    min-height:38px;
+    max-height:50px;
+    height:40px;
+    font-size:12px;
+    padding:6px 8px;
+}
+
+.typed-answer-wrapper{
+    margin-top:5px;
+}
+
+.typed-answer{
+    min-height:32px;
+    height:32px;
+    padding:5px 9px;
+}
+
+.submit-button{
+    min-height:32px;
+    padding:5px 14px;
+}
+
+.answers{
+    margin-top:5px;
+    gap:4px;
+}
+
+.answer-button{
+    min-height:28px;
+    padding:5px 8px;
+    font-size:12px;
+}
+
+.feedback-box{
+    margin-top:4px;
+    min-height:20px;
+    padding:4px 8px;
+    font-size:11px;
+}
+
+.next-question-button{
+    margin-top:4px;
+    min-height:28px;
+    padding:5px;
+    font-size:12px;
+}
+
+@media(max-width:650px){
+
+    .game-screen{
+        height:auto;
+    }
+
+    .battle-bottom{
+        min-height:0;
+    }
 }

@@ -8,7 +8,7 @@
 
 (function(){
 
-    var IDLE_DELAY = 6000; /* how long to wait before showing the hint */
+    var IDLE_DELAY = 3000; /* how long to wait before showing the hint */
 
     var idleTimer = null;
 
