@@ -1,0 +1,512 @@
+/* =========================================================
+   PAUSE MENU — floating "II" button that opens a small
+   pause menu (Volume / Restart / Readings / Exit).
+   Same file works in every book. Link this AFTER the
+   book's own CSS file (order vs. the other guide CSS
+   files doesn't matter).
+========================================================= */
+
+.pause-menu-button{
+
+    position:fixed;
+
+    top:84px;
+
+    right:16px;
+
+    z-index:500;
+
+    width:42px;
+
+    height:42px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:rgba(15,23,42,.92);
+
+    border:1px solid #8b5cf6;
+
+    color:#e9d5ff;
+
+    cursor:pointer;
+
+    box-shadow:0 6px 16px rgba(0,0,0,.4);
+
+    transition:.2s;
+
+}
+
+
+.pause-menu-button:hover{
+
+    background:#1e1b4b;
+
+    border-color:#a78bfa;
+
+    transform:translateY(-2px);
+
+}
+
+
+.pause-menu-button svg{
+
+    width:18px;
+
+    height:18px;
+
+}
+
+
+@media(max-width:650px){
+
+    .pause-menu-button{
+
+        top:auto;
+
+        bottom:14px;
+
+        right:60px;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   OVERLAY
+========================================================= */
+
+.pause-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:7500;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    background:rgba(2,6,23,.85);
+
+    backdrop-filter:blur(6px);
+
+}
+
+
+.pause-overlay.show{
+
+    display:flex;
+
+}
+
+
+.pause-card{
+
+    position:relative;
+
+    width:min(400px,100%);
+
+    padding:30px 26px 26px;
+
+    text-align:center;
+
+    background:#0f172a;
+
+    border:2px solid #8b5cf6;
+
+    border-radius:16px;
+
+    box-shadow:0 0 45px rgba(139,92,246,.3);
+
+    animation:pauseCardIn .25s ease;
+
+    font-family:'VT323',monospace;
+
+}
+
+
+@keyframes pauseCardIn{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.9);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+.pause-close{
+
+    position:absolute;
+
+    top:10px;
+
+    right:12px;
+
+    width:30px;
+
+    height:30px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#1e293b;
+
+    color:#cbd5e1;
+
+    cursor:pointer;
+
+}
+
+
+.pause-close:hover{
+
+    background:#312e81;
+
+    color:#fff;
+
+}
+
+
+.pause-close svg{
+
+    width:14px;
+
+    height:14px;
+
+}
+
+
+.pause-card h2{
+
+    color:#e9d5ff;
+
+    font-size:24px;
+
+    letter-spacing:3px;
+
+    margin-bottom:22px;
+
+}
+
+
+
+/* =========================
+   VOLUME
+========================= */
+
+.pause-volume{
+
+    margin-bottom:22px;
+
+    padding:16px;
+
+    background:rgba(15,23,42,.6);
+
+    border:1px solid #334155;
+
+    border-radius:10px;
+
+    text-align:left;
+
+}
+
+
+.pause-volume-top{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:10px;
+
+    color:#c4b5fd;
+
+    font-size:15px;
+
+    letter-spacing:1px;
+
+}
+
+
+.pause-volume-top span{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+
+.pause-volume-top svg{
+
+    width:18px;
+
+    height:18px;
+
+}
+
+
+#pauseVolumeValue{
+
+    color:#facc15;
+
+    font-size:16px;
+
+}
+
+
+.pause-volume-row{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+
+#pauseVolumeSlider{
+
+    flex:1;
+
+    -webkit-appearance:none;
+
+    appearance:none;
+
+    height:6px;
+
+    border-radius:6px;
+
+    background:#1e293b;
+
+    outline:none;
+
+    accent-color:#a855f7;
+
+}
+
+
+#pauseVolumeSlider::-webkit-slider-thumb{
+
+    -webkit-appearance:none;
+
+    appearance:none;
+
+    width:16px;
+
+    height:16px;
+
+    border-radius:50%;
+
+    background:#a855f7;
+
+    border:2px solid #e9d5ff;
+
+    cursor:pointer;
+
+}
+
+
+.pause-mute-button{
+
+    width:32px;
+
+    height:32px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border:1px solid #475569;
+
+    border-radius:8px;
+
+    background:#111827;
+
+    color:#cbd5e1;
+
+    cursor:pointer;
+
+}
+
+
+.pause-mute-button:hover{
+
+    border-color:#a78bfa;
+
+    color:#fff;
+
+}
+
+
+.pause-mute-button svg{
+
+    width:16px;
+
+    height:16px;
+
+}
+
+
+
+/* =========================
+   MENU ACTIONS
+========================= */
+
+.pause-actions{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+
+.pause-menu-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:13px 16px;
+
+    background:#111827;
+
+    border:1px solid #334155;
+
+    border-radius:9px;
+
+    color:#e2e8f0;
+
+    font-family:inherit;
+
+    font-size:17px;
+
+    letter-spacing:.5px;
+
+    text-decoration:none;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+    width:100%;
+
+}
+
+
+.pause-menu-item:hover{
+
+    background:#1e293b;
+
+    border-color:#818cf8;
+
+    transform:translateY(-2px);
+
+}
+
+
+.pause-menu-item svg{
+
+    width:20px;
+
+    height:20px;
+
+    flex-shrink:0;
+
+    color:#a78bfa;
+
+}
+
+
+.pause-menu-item.exit-item{
+
+    border-color:#7f1d1d;
+
+}
+
+
+.pause-menu-item.exit-item svg{
+
+    color:#f87171;
+
+}
+
+
+.pause-menu-item.exit-item:hover{
+
+    background:#3f1212;
+
+    border-color:#ef4444;
+
+}
+
+
+@media(max-width:650px){
+
+    .pause-card{
+
+        padding:26px 20px 22px;
+
+    }
+
+    .pause-card h2{
+
+        font-size:21px;
+
+    }
+
+    .pause-menu-item{
+
+        font-size:15px;
+
+        padding:11px 14px;
+
+    }
+
+}
