@@ -510,3 +510,27 @@
     }
 
 }
+
+/* =========================================================
+   LANDSCAPE PHONE FIX — works even if compact mode is OFF.
+   Forces a consistent small top-right position so it never
+   overlaps other UI on short/landscape phone screens.
+========================================================= */
+
+@media (orientation:landscape) and (max-height:500px){
+
+    .pause-menu-button{
+        top:4px !important;
+        right:4px !important;
+        left:auto !important;
+        bottom:auto !important;
+        width:26px !important;
+        height:26px !important;
+    }
+
+    .pause-menu-button svg{
+        width:12px !important;
+        height:12px !important;
+    }
+
+}
