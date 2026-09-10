@@ -21,7 +21,7 @@
     var readingsURL =
         window.PAUSE_MENU_READINGS_URL ||
         window.STRUGGLE_REVIEWER_URL ||
-        "characters/reading1.html";
+        "characters/reading6.html";
 
     var exitURL =
         window.PAUSE_MENU_EXIT_URL ||
