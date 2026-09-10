@@ -3760,3 +3760,11 @@ body.book6-dark .submit-answer-button:hover{
     background:#22c55e;
 
 }
+
+.pause-menu-button{
+
+    top:100px;
+    left:30px;
+    right:auto;
+
+}

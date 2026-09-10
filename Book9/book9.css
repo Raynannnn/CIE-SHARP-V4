@@ -3102,3 +3102,11 @@ body{
         min-height:0;
     }
 }
+
+.pause-menu-button{
+
+    top:100px;
+    left:30px;
+    right:auto;
+
+}

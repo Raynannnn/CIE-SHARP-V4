@@ -4388,3 +4388,11 @@ body{
     cursor:not-allowed;
     transform:none;
 }
+
+.pause-menu-button{
+
+    top:100px;
+    left:30px;
+    right:auto;
+
+}
