@@ -8,317 +8,915 @@
    / rotate-guide.css if used). Everything here is scoped
    behind BOTH:
      1) body.cie-compact-mode (only applies once toggled ON)
-     2) a max-width:650px media query (never touches desktop)
+     2) a phone-sized media query (portrait OR landscape)
    so it is 100% optional and never affects players who don't
-   press the button.
+   press the button, and never affects tablets/desktop.
 ========================================================= */
 
 
 /* =========================================================
    FLOATING TOGGLE BUTTON
+   Now shows on BOTH narrow-portrait phones AND
+   short-landscape phones (max-height:500px keeps tablets,
+   which are much taller in landscape, from matching).
 ========================================================= */
 
 .compact-toggle{
-
     position:fixed;
-
     left:14px;
-
     bottom:14px;
-
     z-index:400;
-
     display:none;
-
     align-items:center;
-
     gap:6px;
-
     padding:9px 13px;
-
     border-radius:30px;
-
     background:rgba(15,23,42,.92);
-
     border:1px solid #60a5fa;
-
     color:#e2e8f0;
-
     font-family:'VT323',monospace;
-
     font-size:14px;
-
     letter-spacing:.5px;
-
     cursor:pointer;
-
     box-shadow:0 6px 16px rgba(0,0,0,.4);
-
 }
 
-
-@media(max-width:650px){
-
+@media(max-width:650px),
+(orientation:landscape) and (max-height:500px){
     .compact-toggle{
-
         display:flex;
-
     }
-
 }
-
 
 .compact-toggle:hover{
-
     border-color:#93c5fd;
-
     background:#1e293b;
-
 }
-
 
 .compact-toggle svg{
-
     width:16px;
-
     height:16px;
-
     flex-shrink:0;
-
 }
 
-
 .compact-toggle.active{
-
     border-color:#facc15;
-
     color:#facc15;
-
 }
 
 
 /* =========================================================
-   COMPACT MODE OVERRIDES
-   Only active when body has .cie-compact-mode AND the
-   screen is phone-sized.
+   COMPACT MODE — PORTRAIT PHONE
 ========================================================= */
 
 @media(max-width:650px){
 
-
-    /* ---------- POWER-UPS ROW ----------
-       The default row is flex-wrap:nowrap with 7-8 buttons
-       at ~52px each, which never fits a phone width. Letting
-       it wrap (and shrinking each button a little) is the
-       single biggest fix for the "siksikan" problem. */
-
     body.cie-compact-mode .power-ups{
-
         flex-wrap:wrap;
-
         gap:6px;
-
         max-width:260px;
-
         margin-left:auto;
-
         margin-right:auto;
-
     }
-
 
     body.cie-compact-mode .power-up{
-
         width:46px;
-
         height:50px;
-
     }
-
 
     body.cie-compact-mode .power-icon{
-
         font-size:16px;
-
     }
-
 
     body.cie-compact-mode .power-up > span:not(.power-icon){
-
         font-size:6.5px;
-
     }
-
 
     body.cie-compact-mode .power-up small{
-
         font-size:9px;
-
     }
-
-
-    /* ---------- WITCH / ENEMY ART ----------
-       Shrinks the oversized character art so more of the
-       battle stage + question panel fits without scrolling. */
 
     body.cie-compact-mode .witch-display,
     body.cie-compact-mode .enemy-display,
     body.cie-compact-mode .imp-frame,
     body.cie-compact-mode .null-witch-display{
-
         width:130px;
-
         height:130px;
-
     }
-
 
     body.cie-compact-mode .witch-display img,
     body.cie-compact-mode .imp-frame img,
     body.cie-compact-mode .null-witch-display img{
-
         width:120px;
-
         height:120px;
-
     }
-
 
     body.cie-compact-mode .magic-aura{
-
         width:145px;
-
         height:145px;
-
     }
-
-
-    /* ---------- FIGHTER TEXT ---------- */
 
     body.cie-compact-mode .fighter-name{
-
         font-size:19px;
-
     }
-
 
     body.cie-compact-mode .fighter-role{
-
         font-size:11px;
-
     }
-
 
     body.cie-compact-mode .hp-wrapper{
-
         width:170px;
-
     }
-
-
-    /* ---------- QUESTION / CODE / ANSWERS ---------- */
 
     body.cie-compact-mode .code-display,
     body.cie-compact-mode .code-box{
-
         font-size:12px;
-
         max-height:70px;
-
     }
-
 
     body.cie-compact-mode .question-panel h2,
     body.cie-compact-mode .question-panel h2#questionTitle{
-
         font-size:15px;
-
     }
-
 
     body.cie-compact-mode .answer-button{
-
         min-height:38px;
-
         padding:6px 8px;
-
         font-size:12.5px;
-
     }
-
 
     body.cie-compact-mode .typed-answer-wrapper,
     body.cie-compact-mode .typed-answer-row,
     body.cie-compact-mode .type-answer-row{
-
         flex-direction:column;
-
     }
-
 
     body.cie-compact-mode .submit-answer-button,
     body.cie-compact-mode .submit-button{
-
         width:100%;
-
     }
-
-
-    /* ---------- BATTLE STATS ROW ---------- */
 
     body.cie-compact-mode .battle-stats strong{
-
         font-size:14px;
-
     }
-
 
     body.cie-compact-mode .battle-stats span{
-
         font-size:7px;
-
     }
-
-
-    /* ---------- START / INTRO / RESULT BOXES ---------- */
 
     body.cie-compact-mode .start-box,
     body.cie-compact-mode .mimic-intro-box,
     body.cie-compact-mode .boss-intro-box,
     body.cie-compact-mode .result-box,
     body.cie-compact-mode .lose-box{
-
         padding:20px 16px;
-
     }
-
 
     body.cie-compact-mode .start-box h1,
     body.cie-compact-mode .result-box h1,
     body.cie-compact-mode .lose-box h1{
-
         font-size:24px;
-
     }
-
 
     body.cie-compact-mode .mimic-intro-portrait,
     body.cie-compact-mode .boss-portrait{
-
         width:120px;
-
         height:120px;
-
     }
-
 
     body.cie-compact-mode .mimic-intro-portrait img,
     body.cie-compact-mode .boss-portrait img{
-
         width:110px;
-
         height:110px;
+    }
+}
 
+
+/* =========================================================
+   COMPACT MODE — LANDSCAPE PHONE (NEW)
+   The real "landscape mobile game" layout. Only fires on
+   short/landscape screens (phones), never tablets/desktop.
+   No scrolling — everything shrinks to fit the viewport.
+========================================================= */
+
+@media (orientation:landscape) and (max-height:500px){
+
+    body.cie-compact-mode,
+    body.cie-compact-mode html{
+        overflow:hidden;
+    }
+
+    body.cie-compact-mode .battle-header{
+        height:32px;
+        padding:2px 10px;
+    }
+
+    body.cie-compact-mode .book-title span{ font-size:7px; }
+    body.cie-compact-mode .book-title h1{ font-size:13px; letter-spacing:1px; }
+    body.cie-compact-mode .question-counter span{ font-size:6px; }
+    body.cie-compact-mode .question-counter strong{ font-size:11px; }
+
+    body.cie-compact-mode .game-screen{
+        height:calc(100vh - 32px);
+        padding:4px 8px 6px;
+        gap:4px;
+    }
+
+    body.cie-compact-mode .battle-stage{
+        grid-template-columns:1fr 92px 1fr;
+        gap:6px;
+    }
+
+    body.cie-compact-mode .fighter-info{ margin-bottom:2px; }
+    body.cie-compact-mode .fighter-name{ font-size:12px; }
+    body.cie-compact-mode .fighter-role{ font-size:7px; }
+
+    body.cie-compact-mode .hp-wrapper{ width:100px; margin-bottom:3px; }
+    body.cie-compact-mode .hp-top{ font-size:7px; margin-bottom:1px; }
+    body.cie-compact-mode .hp-bar{ height:8px; }
+
+    body.cie-compact-mode .witch-display,
+    body.cie-compact-mode .enemy-display,
+    body.cie-compact-mode .imp-frame,
+    body.cie-compact-mode .null-witch-display{
+        width:70px;
+        height:70px;
+    }
+
+    body.cie-compact-mode .witch-display img,
+    body.cie-compact-mode .imp-frame img,
+    body.cie-compact-mode .null-witch-display img{
+        width:62px;
+        height:62px;
+    }
+
+    body.cie-compact-mode .magic-aura{ width:80px; height:80px; }
+    body.cie-compact-mode .spell-name{ font-size:7px; padding:2px 7px; }
+
+    body.cie-compact-mode .chapter-badge{ font-size:6px; margin-bottom:2px; }
+    body.cie-compact-mode .vs{ width:34px; height:34px; }
+    body.cie-compact-mode .vs span{ font-size:15px; }
+    body.cie-compact-mode .battle-message{ font-size:8px; min-height:16px; margin-top:2px; }
+
+    body.cie-compact-mode .power-ups-title{ font-size:6px; margin-top:3px; }
+    body.cie-compact-mode .power-ups{
+        flex-wrap:wrap;
+        gap:2px;
+        max-width:90px;
+        margin-top:3px;
+    }
+    body.cie-compact-mode .power-up{ width:26px; height:28px; }
+    body.cie-compact-mode .power-icon{ font-size:10px; }
+    body.cie-compact-mode .power-up > span:not(.power-icon){ display:none; }
+    body.cie-compact-mode .power-up small{ font-size:6px; top:0; right:1px; }
+
+    body.cie-compact-mode .battle-bottom{
+        height:auto;
+        min-height:0;
+        grid-template-columns:1fr 1.3fr;
+        gap:4px;
+    }
+
+    body.cie-compact-mode .answer-panel,
+    body.cie-compact-mode .question-panel{ padding:5px 6px; }
+
+    body.cie-compact-mode .panel-title{ font-size:7px; margin-bottom:3px; }
+
+    body.cie-compact-mode .answers{ gap:3px; }
+    body.cie-compact-mode .answer-button{
+        min-height:22px;
+        padding:3px 5px;
+        font-size:9px;
+    }
+
+    body.cie-compact-mode .feedback{ font-size:8px; height:14px; margin-top:2px; }
+
+    body.cie-compact-mode .question-type{ font-size:6px; margin-bottom:2px; }
+    body.cie-compact-mode .question-panel h2{ font-size:10px; margin-bottom:3px; }
+
+    body.cie-compact-mode .code-display,
+    body.cie-compact-mode .code-box{
+        height:32px;
+        max-height:32px;
+        padding:4px;
+        font-size:8px;
+    }
+
+    body.cie-compact-mode .typed-answer-wrapper,
+    body.cie-compact-mode .typed-answer-row,
+    body.cie-compact-mode .type-answer-row{
+        flex-direction:row;
+    }
+
+    body.cie-compact-mode .battle-stats{ margin-top:3px; }
+    body.cie-compact-mode .battle-stats div{ padding:2px; }
+    body.cie-compact-mode .battle-stats span{ font-size:5px; }
+    body.cie-compact-mode .battle-stats strong{ font-size:9px; }
+
+    body.cie-compact-mode .compact-toggle{
+        left:4px;
+        bottom:4px;
+        padding:4px 7px;
+        font-size:9px;
+        gap:3px;
+    }
+    body.cie-compact-mode .compact-toggle svg{ width:10px; height:10px; }
+
+    body.cie-compact-mode .pause-menu-button{
+        top:4px !important;
+        right:4px !important;
+        left:auto !important;
+        bottom:auto !important;
+        width:24px;
+        height:24px;
+    }
+    body.cie-compact-mode .pause-menu-button svg{ width:11px; height:11px; }
+
+    body.cie-compact-mode .rotate-reopen{
+        display:none !important;
+    }
+
+    body.cie-compact-mode .start-box,
+    body.cie-compact-mode .mimic-intro-box,
+    body.cie-compact-mode .boss-intro-box,
+    body.cie-compact-mode .result-box,
+    body.cie-compact-mode .lose-box{
+        max-height:92vh;
+        overflow-y:auto;
+        padding:14px 18px;
+    }
+
+    body.cie-compact-mode .start-box h1,
+    body.cie-compact-mode .result-box h1,
+    body.cie-compact-mode .lose-box h1{
+        font-size:18px;
+        margin:6px 0;
+    }
+
+    body.cie-compact-mode .start-box p,
+    body.cie-compact-mode .result-box p,
+    body.cie-compact-mode .lose-box p{
+        font-size:11px;
+        line-height:1.4;
+    }
+
+    body.cie-compact-mode .selected-witch-preview{
+        width:220px;
+        margin:10px auto;
+        padding:6px 10px;
+    }
+
+    body.cie-compact-mode .final-stats{
+        gap:30px;
+        margin:10px 0;
+    }
+
+    body.cie-compact-mode .final-stats strong{
+        font-size:20px;
+    }
+}
+
+/* =========================================================
+   DEVICE-ASK OVERLAY — asks once which device the player is on
+========================================================= */
+
+.compact-ask-overlay{
+    position:fixed;
+    inset:0;
+    z-index:7000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(2,6,23,.85);
+    backdrop-filter:blur(6px);
+}
+
+.compact-ask-overlay.show{
+    display:flex;
+}
+
+.compact-ask-card{
+    width:min(380px,100%);
+    padding:30px 24px;
+    text-align:center;
+    background:#0f172a;
+    border:2px solid #60a5fa;
+    border-radius:16px;
+    box-shadow:0 0 40px rgba(96,165,250,.3);
+    font-family:'VT323',monospace;
+    animation:compactAskIn .25s ease;
+}
+
+@keyframes compactAskIn{
+    from{ opacity:0; transform:scale(.9); }
+    to{ opacity:1; transform:scale(1); }
+}
+
+.compact-ask-card h2{
+    color:#bfdbfe;
+    font-size:22px;
+    margin-bottom:10px;
+    line-height:1.4;
+}
+
+.compact-ask-card p{
+    color:#94a3b8;
+    font-size:15px;
+    margin-bottom:22px;
+    line-height:1.5;
+}
+
+.compact-ask-actions{
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.compact-ask-btn{
+    padding:11px 24px;
+    border-radius:8px;
+    font-family:'VT323',monospace;
+    font-size:17px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.compact-ask-btn.phone{
+    border:none;
+    background:linear-gradient(90deg,#2563eb,#60a5fa);
+    color:#fff;
+}
+
+.compact-ask-btn.phone:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(37,99,235,.35);
+}
+
+.compact-ask-btn.other{
+    background:#1e293b;
+    border:1px solid #475569;
+    color:#cbd5e1;
+}
+
+.compact-ask-btn.other:hover{
+    background:#334155;
+    color:#fff;
+}
+
+@media(max-width:650px){
+
+    .compact-ask-card{
+        padding:26px 18px;
+    }
+
+    .compact-ask-card h2{
+        font-size:19px;
+    }
+
+    .compact-ask-card p{
+        font-size:14px;
+    }
+
+}
+
+/* =========================================================
+   TEXT-HEAVY CONTENT — keeps long text from blowing up the
+   layout in compact mode. Long questions, long answer
+   choices (Code Assembly's "→" chains), long rationale
+   explanations, and long Omnidata clues now shrink and
+   scroll instead of growing the box.
+========================================================= */
+
+
+/* ---------- PORTRAIT PHONE ---------- */
+
+@media(max-width:650px){
+
+    body.cie-compact-mode .question-panel h2{
+        font-size:13px;
+        line-height:1.3;
+        max-height:54px;
+        overflow-y:auto;
+    }
+
+    body.cie-compact-mode .answer-button{
+        font-size:10.5px;
+        line-height:1.25;
+        white-space:normal;
+        word-break:break-word;
+    }
+
+    body.cie-compact-mode .battle-message{
+        font-size:11px;
+        line-height:1.3;
+        max-height:44px;
+        overflow-y:auto;
+    }
+
+    body.cie-compact-mode .rationale-box{
+        width:min(320px,92%);
+        padding:14px 16px;
+    }
+
+    body.cie-compact-mode .rationale-title{
+        font-size:11px;
+    }
+
+    body.cie-compact-mode .rationale-text{
+        font-size:12.5px;
+        line-height:1.35;
+        max-height:180px;
+        overflow-y:auto;
+    }
+
+    body.cie-compact-mode .code-display,
+    body.cie-compact-mode .code-box{
+        overflow-y:auto;
+    }
+
+}
+
+
+/* ---------- LANDSCAPE PHONE ---------- */
+
+@media (orientation:landscape) and (max-height:500px){
+
+    body.cie-compact-mode .question-panel h2{
+        font-size:9px;
+        line-height:1.2;
+        max-height:26px;
+        overflow-y:auto;
+        margin-bottom:2px;
+    }
+
+    body.cie-compact-mode .answer-button{
+        font-size:7.5px;
+        line-height:1.15;
+        white-space:normal;
+        word-break:break-word;
+    }
+
+    body.cie-compact-mode .battle-message{
+        font-size:7px;
+        line-height:1.2;
+        max-height:20px;
+        overflow-y:auto;
+    }
+
+    body.cie-compact-mode .rationale-box{
+        width:min(280px,90%);
+        padding:10px 12px;
+    }
+
+    body.cie-compact-mode .rationale-title{
+        font-size:9px;
+        margin-bottom:4px;
+    }
+
+    body.cie-compact-mode .rationale-text{
+        font-size:10px;
+        line-height:1.3;
+        max-height:120px;
+        overflow-y:auto;
+    }
+
+    body.cie-compact-mode .code-display,
+    body.cie-compact-mode .code-box{
+        overflow-y:auto;
+    }
+
+}
+
+/* =========================================================
+   READING PAGES — COMPACT MODE
+   reading#.html uses different markup than the battle
+   screens (book#.html), so these are separate rules.
+========================================================= */
+
+
+/* ---------- PORTRAIT PHONE ---------- */
+
+@media(max-width:650px){
+
+    body.cie-compact-mode .reading-header{
+        padding:8px;
+        gap:5px;
+    }
+
+    body.cie-compact-mode .book-title span{
+        font-size:7px;
+    }
+
+    body.cie-compact-mode .book-title h1{
+        font-size:11px;
+    }
+
+    body.cie-compact-mode .stage-tag span{
+        font-size:10px;
+    }
+
+    body.cie-compact-mode .stage-tag strong{
+        font-size:15px;
+    }
+
+    body.cie-compact-mode .reading-main{
+        padding:12px 8px 24px;
+    }
+
+    body.cie-compact-mode .page-counter{
+        font-size:14px;
+        padding:5px 8px;
+        min-width:85px;
+    }
+
+    body.cie-compact-mode .spell-book{
+        min-height:480px;
+    }
+
+    body.cie-compact-mode .reading-page{
+        min-height:480px;
+        padding:24px 16px 80px;
+    }
+
+    body.cie-compact-mode .page-content h2{
+        font-size:22px;
+        margin-bottom:14px;
+    }
+
+    body.cie-compact-mode .page-content h3{
+        font-size:18px;
+    }
+
+    body.cie-compact-mode .page-content p{
+        font-size:16px;
+        line-height:1.35;
+        margin-bottom:12px;
+    }
+
+    body.cie-compact-mode .chapter-label{
+        font-size:7px;
+        margin-bottom:14px;
+    }
+
+    body.cie-compact-mode .lesson-code,
+    body.cie-compact-mode .code-box{
+        font-size:13px;
+        padding:12px;
+    }
+
+    body.cie-compact-mode .side-navigation{
+        width:60px;
+        min-height:45px;
+    }
+
+    body.cie-compact-mode .side-navigation span{
+        font-size:30px;
+    }
+
+    body.cie-compact-mode .side-navigation small{
+        font-size:9px;
+    }
+
+    body.cie-compact-mode .witch-library{
+        width:150px;
+        height:130px;
+    }
+
+    body.cie-compact-mode .moon{
+        width:85px;
+        height:85px;
+        left:32px;
+    }
+
+    body.cie-compact-mode .syllabus-box{
+        padding:14px;
+        margin:16px auto;
+    }
+
+    body.cie-compact-mode .syllabus-box strong{
+        font-size:18px;
+    }
+
+    body.cie-compact-mode .syllabus-box p{
+        font-size:15px;
+    }
+
+    body.cie-compact-mode .skip-all-button{
+        font-size:12px;
+        padding:6px 10px;
+    }
+
+}
+
+
+/* ---------- LANDSCAPE PHONE ---------- */
+
+@media (orientation:landscape) and (max-height:500px){
+
+    body.cie-compact-mode .reading-header{
+        min-height:0;
+        padding:4px 12px;
+    }
+
+    body.cie-compact-mode .back-button{
+        padding:5px 10px;
+        font-size:11px;
+    }
+
+    body.cie-compact-mode .book-title span{
+        font-size:6px;
+        margin-bottom:2px;
+    }
+
+    body.cie-compact-mode .book-title h1{
+        font-size:9px;
+    }
+
+    body.cie-compact-mode .stage-tag span{
+        font-size:8px;
+    }
+
+    body.cie-compact-mode .stage-tag strong{
+        font-size:11px;
+    }
+
+    body.cie-compact-mode .reading-main{
+        padding:8px 10px 10px;
+    }
+
+    body.cie-compact-mode .reading-status{
+        margin-bottom:8px;
+        gap:10px;
+    }
+
+    body.cie-compact-mode .status-label{
+        font-size:9px;
+        margin-bottom:3px;
+    }
+
+    body.cie-compact-mode .progress-bar{
+        height:5px;
+    }
+
+    body.cie-compact-mode .page-counter{
+        font-size:10px;
+        padding:3px 6px;
+        min-width:65px;
+    }
+
+    body.cie-compact-mode .reader-wrapper{
+        grid-template-columns:50px minmax(0,1fr) 50px;
+        gap:6px;
+    }
+
+    body.cie-compact-mode .side-navigation{
+        min-height:0;
+    }
+
+    body.cie-compact-mode .side-navigation span{
+        font-size:24px;
+    }
+
+    body.cie-compact-mode .side-navigation small{
+        font-size:8px;
+    }
+
+    body.cie-compact-mode .spell-book{
+        min-height:0;
+        max-height:calc(100vh - 110px);
+        overflow-y:auto;
+    }
+
+    body.cie-compact-mode .reading-page{
+        min-height:0;
+        padding:14px 16px;
+    }
+
+    body.cie-compact-mode .page-content h2{
+        font-size:16px;
+        margin-bottom:8px;
+    }
+
+    body.cie-compact-mode .page-content h3{
+        font-size:13px;
+        margin-bottom:6px;
+    }
+
+    body.cie-compact-mode .page-content p{
+        font-size:11px;
+        line-height:1.25;
+        margin-bottom:8px;
+    }
+
+    body.cie-compact-mode .chapter-label{
+        font-size:6px;
+        margin-bottom:8px;
+    }
+
+    body.cie-compact-mode .lesson-code,
+    body.cie-compact-mode .code-box{
+        font-size:10px;
+        padding:8px;
+        margin:10px 0;
+    }
+
+    body.cie-compact-mode .info-box,
+    body.cie-compact-mode .highlight-box,
+    body.cie-compact-mode .example-box,
+    body.cie-compact-mode .warning-box{
+        padding:10px;
+        margin:10px 0;
+    }
+
+    body.cie-compact-mode .concept-list p,
+    body.cie-compact-mode .example-box ol,
+    body.cie-compact-mode .codex-list p{
+        font-size:11px;
+    }
+
+    body.cie-compact-mode .skill-grid span{
+        padding:6px 4px;
+        font-size:10px;
+    }
+
+    body.cie-compact-mode .environment-grid div{
+        padding:10px;
+    }
+
+    body.cie-compact-mode .environment-grid strong{
+        font-size:12px;
+    }
+
+    body.cie-compact-mode .environment-grid span{
+        font-size:10px;
+    }
+
+    body.cie-compact-mode .witch-library{
+        width:110px;
+        height:95px;
+        margin-bottom:12px;
+    }
+
+    body.cie-compact-mode .moon{
+        width:65px;
+        height:65px;
+        left:22px;
+        top:2px;
+    }
+
+    body.cie-compact-mode .witch{
+        left:37px;
+        width:70px;
+        height:100px;
+    }
+
+    body.cie-compact-mode .syllabus-box{
+        padding:10px;
+        margin:14px auto;
+    }
+
+    body.cie-compact-mode .syllabus-box strong{
+        font-size:14px;
+    }
+
+    body.cie-compact-mode .syllabus-box p{
+        font-size:11px;
+    }
+
+    body.cie-compact-mode .intro-note{
+        font-size:11px;
+    }
+
+    body.cie-compact-mode .final-message{
+        padding:16px 12px;
+    }
+
+    body.cie-compact-mode .final-witch{
+        width:45px;
+        height:45px;
+        font-size:22px;
+    }
+
+    body.cie-compact-mode .final-message h3{
+        font-size:17px;
+    }
+
+    body.cie-compact-mode .final-message p{
+        font-size:12px;
+    }
+
+    body.cie-compact-mode #chooseWitchButton{
+        padding:10px 16px;
+        font-size:14px;
+    }
+
+    body.cie-compact-mode .skip-all-button{
+        top:6px;
+        right:8px;
+        padding:5px 9px;
+        font-size:10px;
     }
 
 }

@@ -1,23 +1,30 @@
 /* =========================================================
    COMPACT VIEW
-   Adds a floating "Compact View" toggle button on phone
-   screens. When pressed, applies body.cie-compact-mode,
-   which shrinks the power-up row, witch/enemy art, HP bars,
-   code display, and answer buttons (see compact-view.css).
+   On first load, asks the player once whether they're on a
+   phone or a tablet/desktop, and sets compact mode based on
+   the answer. A floating toggle button stays available after
+   that in case they want to switch manually.
 
    Same file works in every book — just paste as-is.
-   Optional and OFF by default. The player's choice is
-   remembered across books via localStorage.
+   The player's answer/choice is remembered across books via
+   localStorage.
 ========================================================= */
 
 (function(){
 
     var STORAGE_KEY = "cieSharpCompactMode";
 
+    var ASK_KEY = "cieSharpCompactAsked";
+
     var toggleButton = null;
+
+    var askOverlay = null;
 
     var isActive =
         localStorage.getItem(STORAGE_KEY) === "on";
+
+    var hasAsked =
+        localStorage.getItem(ASK_KEY) === "true";
 
 
 
@@ -46,6 +53,99 @@
         document.body.appendChild(el);
 
         return el;
+
+    }
+
+
+
+    /* =========================================================
+       CREATE DEVICE-ASK OVERLAY
+    ========================================================= */
+
+    function createAskOverlay(){
+
+        var el = document.createElement("div");
+
+        el.id = "compactAskOverlay";
+
+        el.className = "compact-ask-overlay";
+
+        el.innerHTML =
+
+            '<div class="compact-ask-card">' +
+
+                '<h2>What device are you using?</h2>' +
+
+                '<p>If you are on a phone, we can switch you to a compact view that fits smaller screens better.</p>' +
+
+                '<div class="compact-ask-actions">' +
+                    '<button id="compactAskPhone" class="compact-ask-btn phone">PHONE</button>' +
+                    '<button id="compactAskOther" class="compact-ask-btn other">TABLET / DESKTOP</button>' +
+                '</div>' +
+
+            '</div>';
+
+        document.body.appendChild(el);
+
+        return el;
+
+    }
+
+
+
+    /* =========================================================
+       ASK THE PLAYER (ONCE)
+    ========================================================= */
+
+    function askDevice(){
+
+        askOverlay = createAskOverlay();
+
+        askOverlay.classList.add("show");
+
+
+        document.getElementById("compactAskPhone")
+            .addEventListener("click", function(){
+
+                setActive(true);
+
+                markAsked();
+
+                closeAskOverlay();
+
+            });
+
+
+        document.getElementById("compactAskOther")
+            .addEventListener("click", function(){
+
+                setActive(false);
+
+                markAsked();
+
+                closeAskOverlay();
+
+            });
+
+    }
+
+
+    function closeAskOverlay(){
+
+        if(askOverlay){
+
+            askOverlay.classList.remove("show");
+
+        }
+
+    }
+
+
+    function markAsked(){
+
+        hasAsked = true;
+
+        localStorage.setItem(ASK_KEY, "true");
 
     }
 
@@ -100,14 +200,9 @@
     }
 
 
+    function setActive(value){
 
-    /* =========================================================
-       TOGGLE
-    ========================================================= */
-
-    function toggleCompactMode(){
-
-        isActive = !isActive;
+        isActive = value;
 
         localStorage.setItem(
 
@@ -118,6 +213,18 @@
         );
 
         applyState();
+
+    }
+
+
+
+    /* =========================================================
+       TOGGLE (MANUAL BUTTON)
+    ========================================================= */
+
+    function toggleCompactMode(){
+
+        setActive(!isActive);
 
     }
 
@@ -140,6 +247,16 @@
         );
 
         applyState();
+
+
+        if(!hasAsked){
+
+            /* small delay so it doesn't collide with the
+               page's own load animations */
+
+            setTimeout(askDevice, 400);
+
+        }
 
     }
 
