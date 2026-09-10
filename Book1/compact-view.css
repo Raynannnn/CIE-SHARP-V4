@@ -1,0 +1,324 @@
+/* =========================================================
+   COMPACT VIEW — optional mobile-friendly layout toggle
+   Fixes the squished power-up row / oversized witch & enemy
+   art / cramped answer buttons on small phone screens.
+
+   Same file works in every book. Link this AFTER the book's
+   own CSS file (and after answer-guide.css / struggle-guide.css
+   / rotate-guide.css if used). Everything here is scoped
+   behind BOTH:
+     1) body.cie-compact-mode (only applies once toggled ON)
+     2) a max-width:650px media query (never touches desktop)
+   so it is 100% optional and never affects players who don't
+   press the button.
+========================================================= */
+
+
+/* =========================================================
+   FLOATING TOGGLE BUTTON
+========================================================= */
+
+.compact-toggle{
+
+    position:fixed;
+
+    left:14px;
+
+    bottom:14px;
+
+    z-index:400;
+
+    display:none;
+
+    align-items:center;
+
+    gap:6px;
+
+    padding:9px 13px;
+
+    border-radius:30px;
+
+    background:rgba(15,23,42,.92);
+
+    border:1px solid #60a5fa;
+
+    color:#e2e8f0;
+
+    font-family:'VT323',monospace;
+
+    font-size:14px;
+
+    letter-spacing:.5px;
+
+    cursor:pointer;
+
+    box-shadow:0 6px 16px rgba(0,0,0,.4);
+
+}
+
+
+@media(max-width:650px){
+
+    .compact-toggle{
+
+        display:flex;
+
+    }
+
+}
+
+
+.compact-toggle:hover{
+
+    border-color:#93c5fd;
+
+    background:#1e293b;
+
+}
+
+
+.compact-toggle svg{
+
+    width:16px;
+
+    height:16px;
+
+    flex-shrink:0;
+
+}
+
+
+.compact-toggle.active{
+
+    border-color:#facc15;
+
+    color:#facc15;
+
+}
+
+
+/* =========================================================
+   COMPACT MODE OVERRIDES
+   Only active when body has .cie-compact-mode AND the
+   screen is phone-sized.
+========================================================= */
+
+@media(max-width:650px){
+
+
+    /* ---------- POWER-UPS ROW ----------
+       The default row is flex-wrap:nowrap with 7-8 buttons
+       at ~52px each, which never fits a phone width. Letting
+       it wrap (and shrinking each button a little) is the
+       single biggest fix for the "siksikan" problem. */
+
+    body.cie-compact-mode .power-ups{
+
+        flex-wrap:wrap;
+
+        gap:6px;
+
+        max-width:260px;
+
+        margin-left:auto;
+
+        margin-right:auto;
+
+    }
+
+
+    body.cie-compact-mode .power-up{
+
+        width:46px;
+
+        height:50px;
+
+    }
+
+
+    body.cie-compact-mode .power-icon{
+
+        font-size:16px;
+
+    }
+
+
+    body.cie-compact-mode .power-up > span:not(.power-icon){
+
+        font-size:6.5px;
+
+    }
+
+
+    body.cie-compact-mode .power-up small{
+
+        font-size:9px;
+
+    }
+
+
+    /* ---------- WITCH / ENEMY ART ----------
+       Shrinks the oversized character art so more of the
+       battle stage + question panel fits without scrolling. */
+
+    body.cie-compact-mode .witch-display,
+    body.cie-compact-mode .enemy-display,
+    body.cie-compact-mode .imp-frame,
+    body.cie-compact-mode .null-witch-display{
+
+        width:130px;
+
+        height:130px;
+
+    }
+
+
+    body.cie-compact-mode .witch-display img,
+    body.cie-compact-mode .imp-frame img,
+    body.cie-compact-mode .null-witch-display img{
+
+        width:120px;
+
+        height:120px;
+
+    }
+
+
+    body.cie-compact-mode .magic-aura{
+
+        width:145px;
+
+        height:145px;
+
+    }
+
+
+    /* ---------- FIGHTER TEXT ---------- */
+
+    body.cie-compact-mode .fighter-name{
+
+        font-size:19px;
+
+    }
+
+
+    body.cie-compact-mode .fighter-role{
+
+        font-size:11px;
+
+    }
+
+
+    body.cie-compact-mode .hp-wrapper{
+
+        width:170px;
+
+    }
+
+
+    /* ---------- QUESTION / CODE / ANSWERS ---------- */
+
+    body.cie-compact-mode .code-display,
+    body.cie-compact-mode .code-box{
+
+        font-size:12px;
+
+        max-height:70px;
+
+    }
+
+
+    body.cie-compact-mode .question-panel h2,
+    body.cie-compact-mode .question-panel h2#questionTitle{
+
+        font-size:15px;
+
+    }
+
+
+    body.cie-compact-mode .answer-button{
+
+        min-height:38px;
+
+        padding:6px 8px;
+
+        font-size:12.5px;
+
+    }
+
+
+    body.cie-compact-mode .typed-answer-wrapper,
+    body.cie-compact-mode .typed-answer-row,
+    body.cie-compact-mode .type-answer-row{
+
+        flex-direction:column;
+
+    }
+
+
+    body.cie-compact-mode .submit-answer-button,
+    body.cie-compact-mode .submit-button{
+
+        width:100%;
+
+    }
+
+
+    /* ---------- BATTLE STATS ROW ---------- */
+
+    body.cie-compact-mode .battle-stats strong{
+
+        font-size:14px;
+
+    }
+
+
+    body.cie-compact-mode .battle-stats span{
+
+        font-size:7px;
+
+    }
+
+
+    /* ---------- START / INTRO / RESULT BOXES ---------- */
+
+    body.cie-compact-mode .start-box,
+    body.cie-compact-mode .mimic-intro-box,
+    body.cie-compact-mode .boss-intro-box,
+    body.cie-compact-mode .result-box,
+    body.cie-compact-mode .lose-box{
+
+        padding:20px 16px;
+
+    }
+
+
+    body.cie-compact-mode .start-box h1,
+    body.cie-compact-mode .result-box h1,
+    body.cie-compact-mode .lose-box h1{
+
+        font-size:24px;
+
+    }
+
+
+    body.cie-compact-mode .mimic-intro-portrait,
+    body.cie-compact-mode .boss-portrait{
+
+        width:120px;
+
+        height:120px;
+
+    }
+
+
+    body.cie-compact-mode .mimic-intro-portrait img,
+    body.cie-compact-mode .boss-portrait img{
+
+        width:110px;
+
+        height:110px;
+
+    }
+
+}
