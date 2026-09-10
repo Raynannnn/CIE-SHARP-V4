@@ -375,3 +375,108 @@
         font-size:20px;
     }
 }
+
+/* =========================================================
+   DEVICE-ASK OVERLAY — asks once which device the player is on
+========================================================= */
+
+.compact-ask-overlay{
+    position:fixed;
+    inset:0;
+    z-index:7000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(2,6,23,.85);
+    backdrop-filter:blur(6px);
+}
+
+.compact-ask-overlay.show{
+    display:flex;
+}
+
+.compact-ask-card{
+    width:min(380px,100%);
+    padding:30px 24px;
+    text-align:center;
+    background:#0f172a;
+    border:2px solid #60a5fa;
+    border-radius:16px;
+    box-shadow:0 0 40px rgba(96,165,250,.3);
+    font-family:'VT323',monospace;
+    animation:compactAskIn .25s ease;
+}
+
+@keyframes compactAskIn{
+    from{ opacity:0; transform:scale(.9); }
+    to{ opacity:1; transform:scale(1); }
+}
+
+.compact-ask-card h2{
+    color:#bfdbfe;
+    font-size:22px;
+    margin-bottom:10px;
+    line-height:1.4;
+}
+
+.compact-ask-card p{
+    color:#94a3b8;
+    font-size:15px;
+    margin-bottom:22px;
+    line-height:1.5;
+}
+
+.compact-ask-actions{
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.compact-ask-btn{
+    padding:11px 24px;
+    border-radius:8px;
+    font-family:'VT323',monospace;
+    font-size:17px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.compact-ask-btn.phone{
+    border:none;
+    background:linear-gradient(90deg,#2563eb,#60a5fa);
+    color:#fff;
+}
+
+.compact-ask-btn.phone:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(37,99,235,.35);
+}
+
+.compact-ask-btn.other{
+    background:#1e293b;
+    border:1px solid #475569;
+    color:#cbd5e1;
+}
+
+.compact-ask-btn.other:hover{
+    background:#334155;
+    color:#fff;
+}
+
+@media(max-width:650px){
+
+    .compact-ask-card{
+        padding:26px 18px;
+    }
+
+    .compact-ask-card h2{
+        font-size:19px;
+    }
+
+    .compact-ask-card p{
+        font-size:14px;
+    }
+
+}

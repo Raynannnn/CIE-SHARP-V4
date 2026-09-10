@@ -337,7 +337,7 @@ continueButton.addEventListener(
 
 
         window.location.href =
-            "../book5.html";
+            "../book7.html";
 
     }
 );
