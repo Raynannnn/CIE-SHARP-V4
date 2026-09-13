@@ -882,9 +882,9 @@ function checkAnswer(event){
         }
 
 
-        /* DAMAGE EFFECT NOW HAPPENS AFTER THE ATTACK VIDEO ENDS (changed) */
+                /* SPELL CAST FLASH (replaces attack video) */
 
-        playAttack(function(){
+        castSpellFlash(function(){
 
             showDamageEffect(enemyFighterEl);
 
@@ -921,7 +921,7 @@ function checkAnswer(event){
         );
 
 
-        if(mindcraftShield){
+                if(mindcraftShield){
 
             /* MINDCRAFT ABSORBS THE HIT (added) */
 
@@ -944,28 +944,33 @@ function checkAnswer(event){
                 "The Syntax Imp attacks!";
 
 
-            playerHP -= 20;
+            /* RED FLASH + SOUND (replaces enemy attack video) */
+
+            enemyAttackFlash(function(){
+
+                playerHP -= 20;
 
 
-            if(playerHP < 0){
+                if(playerHP < 0){
 
-                playerHP = 0;
+                    playerHP = 0;
 
-            }
-
-
-            updateHP();
+                }
 
 
-            /* DAMAGE EFFECT ON THE PLAYER (added) */
+                updateHP();
 
-            showDamageEffect(playerFighterEl);
 
-            showFloatingNumber(
-                playerFighterEl,
-                "-20",
-                "dmg"
-            );
+
+                showDamageEffect(playerFighterEl);
+
+                showFloatingNumber(
+                    playerFighterEl,
+                    "-20",
+                    "dmg"
+                );
+
+            });
 
         }
 
@@ -1059,79 +1064,93 @@ function disableAnswers(){
 
 
 
-/* =========================
-   FULLSCREEN ATTACK VIDEO
-========================= */
+function castSpellFlash(onComplete){
 
-function playAttack(onComplete){
+    /* flash the player's witch */
 
-    attackVideoSource.src =
-        player.attackVideo;
+    playerFighterEl.querySelector(".witch-display img")
+        .classList.remove("cast-flash");
 
+    void playerFighterEl.offsetWidth;
 
-    attackVideo.load();
-
-
-    /* SHOW VIDEO */
-
-    attackAnimation.classList.remove("fade-out");
-
-    attackAnimation.classList.add("show");
+    playerFighterEl.querySelector(".witch-display img")
+        .classList.add("cast-flash");
 
 
-    attackVideo.currentTime = 0;
+    /* quick full-screen flash */
+
+    var flash = document.createElement("div");
+
+    flash.className = "screen-cast-flash";
+
+    document.body.appendChild(flash);
 
 
-    attackVideo.play().catch(function(){
+    setTimeout(function(){
 
-        console.log(
-            "Attack video could not start."
-        );
+        flash.remove();
 
-    });
+        if(typeof onComplete === "function"){
 
+            onComplete();
 
-    /* =========================
-       VIDEO FINISHED
-    ========================= */
+        }
 
-    attackVideo.onended = function(){
+    }, 350);
 
-        /* START FADE OUT */
+}
 
-        attackAnimation.classList.add(
-            "fade-out"
-        );
+function enemyAttackFlash(onComplete){
 
+    /* play the hit sound IMMEDIATELY, not delayed */
 
-        /* WAIT FOR FADE OUT */
+    if(damageSound){
 
-        setTimeout(function(){
+        damageSound.currentTime = 0;
 
-            attackAnimation.classList.remove(
-                "show"
+        damageSound.play().catch(function(){
+
+            console.log(
+                "Damage sound could not play."
             );
 
-            attackAnimation.classList.remove(
-                "fade-out"
-            );
+        });
 
-            attackVideo.pause();
-
-            attackVideo.currentTime = 0;
+    }
 
 
-            /* RUN THE DAMAGE EFFECT / HP UPDATE AFTER THE VIDEO (added) */
+    /* red flash on the player witch */
 
-            if(typeof onComplete === "function"){
+    var playerImg =
+        playerFighterEl.querySelector(".witch-display img");
 
-                onComplete();
+    playerImg.classList.remove("damage-flash");
 
-            }
+    void playerImg.offsetWidth;
 
-        }, 700);
+    playerImg.classList.add("damage-flash");
 
-    };
+
+    /* full-screen red flash */
+
+    var flash = document.createElement("div");
+
+    flash.className = "screen-hit-flash";
+
+    document.body.appendChild(flash);
+
+
+    setTimeout(function(){
+
+        flash.remove();
+
+        if(typeof onComplete === "function"){
+
+            onComplete();
+
+        }
+
+    }, 350);
 
 }
 

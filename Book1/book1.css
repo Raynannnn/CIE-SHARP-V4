@@ -1099,110 +1099,47 @@ body{
 
 
 /* =========================
-   ATTACK VIDEO
+   SPELL CAST FLASH (replaces attack video)
 ========================= */
 
-.attack-animation{
+.cast-flash{
+    animation: castFlash .45s ease;
+}
 
+@keyframes castFlash{
+
+    0%{
+        filter: brightness(1) saturate(1);
+    }
+
+    30%{
+        filter:
+            brightness(2)
+            saturate(1.6)
+            drop-shadow(0 0 25px rgba(167,139,250,.95));
+    }
+
+    100%{
+        filter: brightness(1) saturate(1);
+    }
+
+}
+
+/* full-screen quick flash so it still feels like an "attack" moment */
+.screen-cast-flash{
     position:fixed;
-
     inset:0;
-
-    width:100vw;
-
-    height:100vh;
-
     z-index:9999;
-
-    display:none;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:#000;
-
+    background:rgba(167,139,250,.35);
     pointer-events:none;
-
     opacity:0;
-
+    animation: screenFlashFade .35s ease;
 }
 
-
-/* SHOW ATTACK */
-
-.attack-animation.show{
-
-    display:flex;
-
-    animation:attackFadeIn .5s ease forwards;
-
-}
-
-
-/* VIDEO */
-
-.attack-animation video{
-
-    position:absolute;
-
-    inset:0;
-
-    width:100vw;
-
-    height:100vh;
-
-    object-fit:cover;
-
-    display:block;
-
-}
-
-
-/* =========================
-   FADE IN
-========================= */
-
-@keyframes attackFadeIn{
-
-    from{
-
-        opacity:0;
-
-    }
-
-    to{
-
-        opacity:1;
-
-    }
-
-}
-
-
-/* FADE OUT */
-
-.attack-animation.fade-out{
-
-    animation:attackFadeOut .7s ease forwards;
-
-}
-
-
-@keyframes attackFadeOut{
-
-    from{
-
-        opacity:1;
-
-    }
-
-    to{
-
-        opacity:0;
-
-    }
-
+@keyframes screenFlashFade{
+    0%{ opacity:0; }
+    30%{ opacity:1; }
+    100%{ opacity:0; }
 }
 
 
@@ -2328,3 +2265,22 @@ body{
 
 }
 
+/* =========================
+   ENEMY ATTACK FLASH (RED) — replaces enemy attack video
+========================= */
+
+.screen-hit-flash{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:rgba(239,68,68,.40);
+    pointer-events:none;
+    opacity:0;
+    animation: screenHitFade .35s ease;
+}
+
+@keyframes screenHitFade{
+    0%{ opacity:0; }
+    30%{ opacity:1; }
+    100%{ opacity:0; }
+}
