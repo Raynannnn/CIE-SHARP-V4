@@ -503,17 +503,26 @@ var trialStatus =
 var battleMessage =
     document.getElementById("battleMessage");
 
+    /* =========================
+   VICTORY ATTACK VIDEO
+========================= */
 
-var attackAnimation =
-    document.getElementById("attackAnimation");
+var victoryAttackVideo =
+    document.getElementById(
+        "victoryAttackVideo"
+    );
 
 
-var attackVideo =
-    document.getElementById("attackVideo");
+var victoryAttackVideoSource =
+    document.getElementById(
+        "victoryAttackVideoSource"
+    );
 
 
-var attackVideoSource =
-    document.getElementById("attackVideoSource");
+var resultBox =
+    document.getElementById(
+        "resultBox"
+    );
 
 var damageSound =
     document.getElementById("damageSound");
@@ -1353,68 +1362,159 @@ function disableAnswers(){
 }
 
 
+/* =========================
+   PLAYER ATTACK SOUND
+========================= */
+
+function playFlashSound(){
+
+    try{
+
+        var AudioContextClass =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+
+        if(!AudioContextClass){
+
+            return;
+
+        }
+
+
+        var audioContext =
+            new AudioContextClass();
+
+
+        var oscillator =
+            audioContext.createOscillator();
+
+
+        var gain =
+            audioContext.createGain();
+
+
+        oscillator.connect(
+            gain
+        );
+
+
+        gain.connect(
+            audioContext.destination
+        );
+
+
+        oscillator.type =
+            "square";
+
+
+        oscillator.frequency.setValueAtTime(
+            320,
+            audioContext.currentTime
+        );
+
+
+        oscillator.frequency.exponentialRampToValueAtTime(
+            110,
+            audioContext.currentTime + 0.22
+        );
+
+
+        gain.gain.setValueAtTime(
+            0.12,
+            audioContext.currentTime
+        );
+
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.001,
+            audioContext.currentTime + 0.25
+        );
+
+
+        oscillator.start();
+
+
+        oscillator.stop(
+            audioContext.currentTime + 0.25
+        );
+
+    }
+
+    catch(error){
+
+        console.log(
+            "Attack flash sound could not play."
+        );
+
+    }
+
+}
 
 /* =========================
-   FULLSCREEN ATTACK VIDEO
+   PLAYER ATTACK FLASH
+   No video during gameplay
 ========================= */
 
 function playAttack(onComplete){
 
-    attackVideoSource.src =
-        player.attackVideo;
+    playFlashSound();
 
 
-    attackVideo.load();
+    /* =========================
+       FLASH PLAYER
+    ========================= */
+
+    playerFighterEl.classList.remove(
+        "player-attack-flash"
+    );
 
 
-    attackAnimation.classList.remove("fade-out");
-
-    attackAnimation.classList.add("show");
+    void playerFighterEl.offsetWidth;
 
 
-    attackVideo.currentTime = 0;
+    playerFighterEl.classList.add(
+        "player-attack-flash"
+    );
 
 
-    attackVideo.play().catch(function(){
+    /* =========================
+       FULL SCREEN FLASH
+    ========================= */
 
-        console.log(
-            "Attack video could not start."
+    var flash =
+        document.createElement("div");
+
+
+    flash.className =
+        "screen-cast-flash";
+
+
+    document.body.appendChild(
+        flash
+    );
+
+
+    setTimeout(function(){
+
+        playerFighterEl.classList.remove(
+            "player-attack-flash"
         );
 
-    });
+
+        flash.remove();
 
 
-    attackVideo.onended = function(){
+        if(
+            typeof onComplete ===
+            "function"
+        ){
 
-        attackAnimation.classList.add(
-            "fade-out"
-        );
+            onComplete();
 
+        }
 
-        setTimeout(function(){
-
-            attackAnimation.classList.remove(
-                "show"
-            );
-
-            attackAnimation.classList.remove(
-                "fade-out"
-            );
-
-            attackVideo.pause();
-
-            attackVideo.currentTime = 0;
-
-
-            if(typeof onComplete === "function"){
-
-                onComplete();
-
-            }
-
-        }, 700);
-
-    };
+    }, 400);
 
 }
 

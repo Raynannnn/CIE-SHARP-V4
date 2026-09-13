@@ -1063,8 +1063,99 @@ function disableAnswers(){
 }
 
 
+/* =========================
+   PLAYER ATTACK SOUND
+========================= */
+
+function playFlashSound(){
+
+    try{
+
+        var AudioContextClass =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+
+        if(!AudioContextClass){
+
+            return;
+
+        }
+
+
+        var audioContext =
+            new AudioContextClass();
+
+
+        var oscillator =
+            audioContext.createOscillator();
+
+
+        var gain =
+            audioContext.createGain();
+
+
+        oscillator.connect(
+            gain
+        );
+
+
+        gain.connect(
+            audioContext.destination
+        );
+
+
+        oscillator.type =
+            "square";
+
+
+        oscillator.frequency.setValueAtTime(
+            320,
+            audioContext.currentTime
+        );
+
+
+        oscillator.frequency.exponentialRampToValueAtTime(
+            110,
+            audioContext.currentTime + 0.22
+        );
+
+
+        gain.gain.setValueAtTime(
+            0.12,
+            audioContext.currentTime
+        );
+
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.001,
+            audioContext.currentTime + 0.25
+        );
+
+
+        oscillator.start();
+
+
+        oscillator.stop(
+            audioContext.currentTime + 0.25
+        );
+
+    }
+
+    catch(error){
+
+        console.log(
+            "Attack flash sound could not play."
+        );
+
+    }
+
+}
+
 
 function castSpellFlash(onComplete){
+
+    playFlashSound();
 
     /* flash the player's witch */
 
