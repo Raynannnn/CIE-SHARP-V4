@@ -8,7 +8,7 @@
 
 (function(){
 
-    var IDLE_DELAY = 6000; /* how long to wait before showing the hint */
+    var IDLE_DELAY = 3000; /* how long to wait before showing the hint */
 
     var idleTimer = null;
 
@@ -139,10 +139,21 @@
        start screen / enemy intro dialogue)
     ========================================================= */
 
-    function hasAnswerableContent(){
+       function hasAnswerableContent(){
 
         var answers =
             document.getElementById("answers");
+
+
+        var nextChallenge =
+            document.getElementById("nextChallengeOverlay");
+
+
+        if(nextChallenge && nextChallenge.classList.contains("show")){
+
+            return false;
+
+        }
 
 
         return !!(

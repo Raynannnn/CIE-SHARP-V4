@@ -1,21 +1,18 @@
 /* =========================================================
    ANSWER GUIDE
-   Points stuck players toward the answer area — or, once a
-   question has been answered, toward the Next Challenge
-   button instead. Add this script tag AFTER the book's own
-   script tag. Same file works in every book, no edits
-   needed to book#.js.
+   Points stuck players toward the answer area.
+   Add this script tag AFTER the book's own script tag
+   (e.g. after book1.js, book2.js, etc.) — same file works
+   in every book, no edits needed to book#.js.
 ========================================================= */
 
 (function(){
 
-    var IDLE_DELAY = 6000; /* how long to wait before showing the hint */
+    var IDLE_DELAY = 3000; /* how long to wait before showing the hint */
 
     var idleTimer = null;
 
     var arrowEl = null;
-
-    var arrowLabel = null;
 
     var badgeEl = null;
 
@@ -41,7 +38,7 @@
                 '<path d="M12 3v14" stroke="#facc15" stroke-width="2.5" stroke-linecap="round"/>' +
                 '<path d="M6 12l6 6 6-6" stroke="#facc15" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>' +
             '</svg>' +
-            '<span id="answerGuideLabel">CHOOSE YOUR ANSWER HERE</span>';
+            '<span>CHOOSE YOUR ANSWER HERE</span>';
 
         document.body.appendChild(el);
 
@@ -75,40 +72,13 @@
 
 
     /* =========================================================
-       FIND THE NEXT-CHALLENGE BUTTON, IF ANY
-    ========================================================= */
-
-    function findNextButton(){
-
-        return document.getElementById(
-            "nextQuestionButton"
-        );
-
-    }
-
-
-
-    /* =========================================================
        FIND WHERE TO POINT
-       If a Next Challenge button is showing, point at that.
-       Otherwise, prefer .answer-panel (Book I–VIII). Falls
-       back to the closest .question-panel, then to #answers
-       itself (covers Book IX, which has no separate
-       answer-panel).
+       Prefers .answer-panel (Book I–VIII). Falls back to the
+       closest .question-panel, then to #answers itself
+       (covers Book IX, which has no separate answer-panel).
     ========================================================= */
 
     function findAnswerTarget(){
-
-        var nextButton =
-            findNextButton();
-
-
-        if(nextButton){
-
-            return nextButton;
-
-        }
-
 
         var answers =
             document.getElementById("answers");
@@ -164,31 +134,31 @@
 
 
     /* =========================================================
-       ONLY GUIDE WHEN THERE'S SOMETHING ACTIONABLE
-       (an actual answer to pick/type, OR a Next Challenge
-       button waiting to be pressed) — keeps it from pointing
-       at an empty panel during the start screen / enemy
-       intro dialogue.
+       ONLY GUIDE WHEN THERE'S SOMETHING TO ANSWER
+       (keeps it from pointing at an empty panel during the
+       start screen / enemy intro dialogue)
     ========================================================= */
 
-    function hasGuidableContent(){
-
-        if(findNextButton()){
-
-            return true;
-
-        }
-
+       function hasAnswerableContent(){
 
         var answers =
             document.getElementById("answers");
 
 
+        var nextChallenge =
+            document.getElementById("nextChallengeOverlay");
+
+
+        if(nextChallenge && nextChallenge.classList.contains("show")){
+
+            return false;
+
+        }
+
+
         return !!(
             answers &&
-            answers.querySelector(
-                "button:not(.next-question-button), input"
-            )
+            answers.querySelector("button, input")
         );
 
     }
@@ -201,7 +171,7 @@
 
     function showGuide(){
 
-        if(!hasGuidableContent()){
+        if(!hasAnswerableContent()){
 
             return;
 
@@ -224,16 +194,6 @@
         highlightTarget.classList.add(
             "answer-guide-highlight"
         );
-
-
-        if(arrowLabel){
-
-            arrowLabel.textContent =
-                findNextButton() ?
-                    "TAP TO CONTINUE" :
-                    "CHOOSE YOUR ANSWER HERE";
-
-        }
 
 
         positionArrow();
@@ -333,7 +293,7 @@
 
 
     /* =========================================================
-       WATCH #answers FOR NEW QUESTIONS / NEXT BUTTON
+       WATCH #answers FOR NEW QUESTIONS
     ========================================================= */
 
     function watchAnswers(){
@@ -388,9 +348,6 @@
     function init(){
 
         arrowEl = createArrow();
-
-        arrowLabel =
-            document.getElementById("answerGuideLabel");
 
         attachWitchBadge();
 

@@ -918,29 +918,48 @@ function finishWrongAnswer(){
 
 function proceedAfterAnswer(){
 
-    setTimeout(function(){
+     setTimeout(
 
-        if(playerHP <= 0){
+        function(){
 
-            gameOver();
-            return;
+            if(playerHP <= 0){
 
-        }
+                gameOver();
 
-        if(currentQuestion >= questions.length - 1){
+                return;
 
-            finishGame();
-            return;
+            }
 
-        }
 
-        currentQuestion++;
+            showNextChallenge(function(){
 
-        loadQuestion();
+                if(
+                    currentQuestion >=
+                    questions.length - 1
+                ){
 
-    }, 1400);
+                    finishGame();
+
+                }
+
+                else{
+
+                    currentQuestion++;
+
+                    loadQuestion();
+
+                }
+
+            });
+
+        },
+
+        900
+
+    );
 
 }
+
 
 
 /* correct-answer path also needs to proceed */

@@ -1228,41 +1228,48 @@ essenceDisplay.textContent =
 
 setTimeout(
 
-    function(){
+        function(){
 
-        if(playerHP <= 0){
+            if(playerHP <= 0){
 
-            gameOver();
+                gameOver();
 
-            return;
+                return;
 
-        }
-
-
-        if(
-            currentQuestion >=
-            questions.length - 1
-        ){
-
-            finishGame();
-
-            return;
-
-        }
+            }
 
 
-        currentQuestion++;
+            showNextChallenge(function(){
 
-        loadQuestion();
+                if(
+                    currentQuestion >=
+                    questions.length - 1
+                ){
 
-    },
+                    finishGame();
 
-    1800
+                }
 
-);
+                else{
 
+                    currentQuestion++;
 
+                    loadQuestion();
+
+                }
+
+            });
+
+        },
+
+        900
+
+    );
+
+    
 }
+
+
 
 /* =========================
 DISABLE ANSWERS

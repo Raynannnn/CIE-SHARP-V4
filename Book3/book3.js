@@ -1321,7 +1321,7 @@ function resolveAnswer(isCorrect){
         essence;
 
 
-    setTimeout(
+        setTimeout(
 
         function(){
 
@@ -1334,25 +1334,30 @@ function resolveAnswer(isCorrect){
             }
 
 
-            if(
-                currentQuestion >=
-                questions.length - 1
-            ){
+            showNextChallenge(function(){
 
-                finishGame();
+                if(
+                    currentQuestion >=
+                    questions.length - 1
+                ){
 
-                return;
+                    finishGame();
 
-            }
+                }
 
+                else{
 
-            currentQuestion++;
+                    currentQuestion++;
 
-            loadQuestion();
+                    loadQuestion();
+
+                }
+
+            });
 
         },
 
-        1800
+        900
 
     );
 

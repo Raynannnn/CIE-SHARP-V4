@@ -1333,10 +1333,15 @@ function handleCorrectAnswer(q){
     }
 
 
-    showNextButton();
+    showNextChallenge(function(){
+
+        currentQuestion++;
+
+        loadQuestion();
+
+        });
 
 }
-
 
 
 /* =========================================================
@@ -1412,11 +1417,15 @@ function handleWrongAnswer(q){
     }
 
 
-    showNextButton();
+    showNextChallenge(function(){
+
+        currentQuestion++;
+
+        loadQuestion();
+
+        });
 
 }
-
-
 
 /* =========================================================
    RATIONALE
@@ -1446,56 +1455,6 @@ rationaleClose.addEventListener(
     }
 );
 
-
-
-/* =========================================================
-   NEXT QUESTION
-========================================================= */
-
-function showNextButton(){
-
-    var old =
-        document.getElementById(
-            "nextQuestionButton"
-        );
-
-
-    if(old){
-        old.remove();
-    }
-
-
-    var button =
-        document.createElement("button");
-
-
-    button.id =
-        "nextQuestionButton";
-
-
-    button.className =
-        "next-question-button";
-
-
-    button.textContent =
-        "NEXT CHALLENGE ▶";
-
-
-    button.addEventListener(
-        "click",
-        function(){
-
-            currentQuestion++;
-
-            loadQuestion();
-
-        }
-    );
-
-
-    answers.appendChild(button);
-
-}
 
 
 

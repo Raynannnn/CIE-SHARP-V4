@@ -875,11 +875,7 @@ function correctAnswerAction(
         "Your C# spell strikes the Null Witch!";
 
 
-    animateBossDamage();
-
-
-    nextQuestionButton.style.display =
-        "block";
+        animateBossDamage();
 
 
     if(enemyHP <= 0){
@@ -895,8 +891,19 @@ function correctAnswerAction(
 
     }
 
-}
+    else{
 
+        showNextChallenge(function(){
+
+            currentQuestion++;
+
+            loadQuestion();
+
+        });
+
+    }
+
+}
 
 /* =====================================================
    WRONG ANSWER
@@ -937,11 +944,7 @@ function wrongAnswerAction(
         "CORRUPTION STRIKE!";
 
 
-    animatePlayerDamage();
-
-
-    nextQuestionButton.style.display =
-        "block";
+        animatePlayerDamage();
 
 
     if(playerHP <= 0){
@@ -954,6 +957,18 @@ function wrongAnswerAction(
             },
             800
         );
+
+    }
+
+    else{
+
+        showNextChallenge(function(){
+
+            currentQuestion++;
+
+            loadQuestion();
+
+        });
 
     }
 

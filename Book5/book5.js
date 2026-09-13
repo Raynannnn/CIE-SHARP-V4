@@ -1729,7 +1729,13 @@ function handleCorrectAnswer(q){
     }
 
 
-    showNextButton();
+  showNextChallenge(function(){
+
+        currentQuestion++;
+
+        loadQuestion();
+
+        });
 
 }
 
@@ -1844,10 +1850,15 @@ function handleWrongAnswer(q){
     }
 
 
-    showNextButton();
+   showNextChallenge(function(){
+
+        currentQuestion++;
+
+        loadQuestion();
+
+        });
 
 }
-
 
 /* =========================================================
    FEEDBACK
@@ -1960,62 +1971,6 @@ function hideRationale(){
 }
 
 
-/* =========================================================
-   NEXT BUTTON
-   ========================================================= */
-
-function showNextButton(){
-
-    var oldButton =
-        document.getElementById(
-            "nextQuestionButton"
-        );
-
-
-    if(oldButton){
-
-        oldButton.remove();
-
-    }
-
-
-    var button =
-        document.createElement("button");
-
-
-    button.id =
-        "nextQuestionButton";
-
-
-    button.className =
-        "next-question-button";
-
-
-    button.textContent =
-        "NEXT CHALLENGE ▶";
-
-
-    button.addEventListener(
-        "click",
-        function(){
-
-            currentQuestion++;
-
-            loadQuestion();
-
-        }
-    );
-
-
-    if(answers){
-
-        answers.appendChild(
-            button
-        );
-
-    }
-
-}
 
 
 /* =========================================================
@@ -2303,9 +2258,17 @@ function timeAttackExpired(){
     }
 
 
-    showNextButton();
+    showNextChallenge(function(){
+
+        currentQuestion++;
+
+        loadQuestion();
+
+        });
 
 }
+
+
 
 
 /* =========================================================
@@ -3217,8 +3180,15 @@ handleWrongAnswer =
             );
 
 
-            showNextButton();
+            showNextChallenge(function(){
 
+        currentQuestion++;
+
+        loadQuestion();
+
+        });
+
+       }
 
             return;
 
@@ -3227,7 +3197,7 @@ handleWrongAnswer =
 
         originalHandleWrongAnswer(q);
 
-    };
+    
 
 
 /* =========================================================

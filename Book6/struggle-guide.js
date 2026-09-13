@@ -15,7 +15,7 @@
 
     var reviewerURL =
         window.STRUGGLE_REVIEWER_URL ||
-        "characters/reading6.html";
+        "characters/reading1.html";
 
 
     var idleTimer = null;
@@ -147,10 +147,21 @@
        ONLY TRIGGER WHEN THERE'S A QUESTION TO ANSWER
     ========================================================= */
 
-    function hasAnswerableContent(){
+        function hasAnswerableContent(){
 
         var answers =
             document.getElementById("answers");
+
+
+        var nextChallenge =
+            document.getElementById("nextChallengeOverlay");
+
+
+        if(nextChallenge && nextChallenge.classList.contains("show")){
+
+            return false;
+
+        }
 
 
         return !!(

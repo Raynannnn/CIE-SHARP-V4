@@ -8,7 +8,7 @@
 
 (function(){
 
-    var IDLE_DELAY = 6000; /* how long to wait before showing the hint */
+    var IDLE_DELAY = 3000; /* how long to wait before showing the hint */
 
     var idleTimer = null;
 
@@ -38,7 +38,7 @@
                 '<path d="M12 3v14" stroke="#facc15" stroke-width="2.5" stroke-linecap="round"/>' +
                 '<path d="M6 12l6 6 6-6" stroke="#facc15" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>' +
             '</svg>' +
-            '<span>ANSWER HERE</span>';
+            '<span>CHOOSE YOUR ANSWER HERE</span>';
 
         document.body.appendChild(el);
 
@@ -139,10 +139,21 @@
        start screen / enemy intro dialogue)
     ========================================================= */
 
-    function hasAnswerableContent(){
+       function hasAnswerableContent(){
 
         var answers =
             document.getElementById("answers");
+
+
+        var nextChallenge =
+            document.getElementById("nextChallengeOverlay");
+
+
+        if(nextChallenge && nextChallenge.classList.contains("show")){
+
+            return false;
+
+        }
 
 
         return !!(

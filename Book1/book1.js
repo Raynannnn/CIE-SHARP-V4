@@ -991,7 +991,7 @@ function checkAnswer(event){
     disableAnswers();
 
 
-    setTimeout(
+        setTimeout(
 
         function(){
 
@@ -1004,25 +1004,30 @@ function checkAnswer(event){
             }
 
 
-            if(
-                currentQuestion >=
-                questions.length - 1
-            ){
+            showNextChallenge(function(){
 
-                finishGame();
+                if(
+                    currentQuestion >=
+                    questions.length - 1
+                ){
 
-                return;
+                    finishGame();
 
-            }
+                }
 
+                else{
 
-            currentQuestion++;
+                    currentQuestion++;
 
-            loadQuestion();
+                    loadQuestion();
+
+                }
+
+            });
 
         },
 
-        1800
+        900
 
     );
 

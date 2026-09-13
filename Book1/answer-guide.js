@@ -139,10 +139,21 @@
        start screen / enemy intro dialogue)
     ========================================================= */
 
-    function hasAnswerableContent(){
+       function hasAnswerableContent(){
 
         var answers =
             document.getElementById("answers");
+
+
+        var nextChallenge =
+            document.getElementById("nextChallengeOverlay");
+
+
+        if(nextChallenge && nextChallenge.classList.contains("show")){
+
+            return false;
+
+        }
 
 
         return !!(
