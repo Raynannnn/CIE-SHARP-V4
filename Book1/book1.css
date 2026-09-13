@@ -2284,3 +2284,35 @@ body{
     30%{ opacity:1; }
     100%{ opacity:0; }
 }
+
+/* =========================
+   VICTORY ATTACK VIDEO
+========================= */
+
+.victory-attack-video{
+
+    display:none;
+
+    width:min(600px, 90%);
+
+    max-height:70vh;
+
+    border-radius:10px;
+
+    box-shadow: 0 0 60px rgba(139,92,246,.4);
+
+    margin-bottom:20px;
+
+}
+
+.victory-attack-video.show{
+
+    display:block;
+
+}
+
+.result-box.hidden-until-video{
+
+    display:none;
+
+}

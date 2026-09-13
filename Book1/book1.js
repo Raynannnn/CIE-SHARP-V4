@@ -1835,6 +1835,98 @@ function finishGame(){
 
     saveBookProgress();
 
+
+    playVictoryAttack();
+
+}
+
+
+/* =========================
+   VICTORY ATTACK VIDEO
+========================= */
+
+function playVictoryAttack(){
+
+    var video =
+        document.getElementById("victoryAttackVideo");
+
+    var source =
+        document.getElementById("victoryAttackVideoSource");
+
+    var resultBox =
+        document.getElementById("resultBox");
+
+
+    if(!video || !source || !resultBox){
+
+        return;
+
+    }
+
+
+    resultBox.classList.add("hidden-until-video");
+
+
+    source.src = player.attackVideo;
+
+    video.load();
+
+    video.classList.add("show");
+
+
+    video.play().catch(function(){
+
+        console.log(
+            "Victory video could not autoplay."
+        );
+
+        showResultBox();
+
+    });
+
+
+    video.onended = function(){
+
+        showResultBox();
+
+    };
+
+
+    /* safety fallback kung hindi umandar yung video */
+
+    setTimeout(function(){
+
+        showResultBox();
+
+    }, 6000);
+
+}
+
+
+function showResultBox(){
+
+    var video =
+        document.getElementById("victoryAttackVideo");
+
+    var resultBox =
+        document.getElementById("resultBox");
+
+
+    if(video){
+
+        video.classList.remove("show");
+
+        video.pause();
+
+    }
+
+
+    if(resultBox){
+
+        resultBox.classList.remove("hidden-until-video");
+
+    }
+
 }
 
 
@@ -1918,21 +2010,6 @@ function showDamageEffect(target){
     );
 
 
-    /* PLAY SOUND */
-
-    if(damageSound){
-
-        damageSound.currentTime = 0;
-
-        damageSound.play().catch(function(){
-
-            console.log(
-                "Damage sound could not play."
-            );
-
-        });
-
-    }
 
 
     /* REMOVE AFTER ANIMATION */
