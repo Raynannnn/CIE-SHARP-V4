@@ -293,7 +293,7 @@ if(chooseWitchButton){
         function(){
 
             window.location.href =
-                "character8.html";
+                "characters8.html";
 
         }
     );

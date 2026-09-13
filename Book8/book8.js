@@ -1,13 +1,12 @@
 /* =========================================================
    CIE-SHARP
-   BOOK V: LOOP DUNGEON
-   THE ENDLESS WRAITH
+   BOOK VIII: OBJECT CASTLE
+   THE CORRUPTED ARCHMEAGE
    ========================================================= */
 
 
 /* =========================================================
    CHARACTER DATA
-   Same player system as Book III
    ========================================================= */
 
 var selectedCharacter =
@@ -123,7 +122,7 @@ specialPowerIds.forEach(function(id){
 
 
 /* =========================================================
-   BOOK V GAME VARIABLES
+   BOOK VIII GAME VARIABLES
    ========================================================= */
 
 var playerHP = 100;
@@ -140,8 +139,7 @@ var answered = false;
 
 
 /* =========================================================
-   SURVIVAL TRIAL
-   Three mistakes = defeat
+   SURVIVAL TRIAL (kept available for future rounds)
    ========================================================= */
 
 var survivalMistakes = 0;
@@ -150,7 +148,7 @@ var survivalMaxMistakes = 3;
 
 
 /* =========================================================
-   TIME ATTACK
+   TIME ATTACK (kept available for future rounds)
    ========================================================= */
 
 var timeAttackSeconds = 20;
@@ -186,438 +184,263 @@ var mindcraftShield = false;
 
 
 /* =========================================================
-   BOOK V QUESTIONS
+   BOOK VIII QUESTIONS — CLASSES & OBJECTS
    ========================================================= */
 
 var questions = [
 
     /* =====================================================
        MICROGAME 1
-       DETERMINE WHAT HAPPENS NEXT
+       CHARACTER CREATOR
        ===================================================== */
 
     {
-        section: "DETERMINE WHAT HAPPENS NEXT",
+        section: "CHARACTER CREATOR",
 
         mode: "choice",
 
         question:
-            "What will this loop print?",
+            "Which code correctly declares the Character class with the fields it needs?",
 
         code:
-`for (int i = 0; i < 3; i++)
-{
-    Console.WriteLine(i);
-}`,
+`// The class needs three fields:
+// name, health, level`,
 
         answers: [
 
-            "0, 1, 2",
+`class Character
+{
+    public string name;
+    public int health;
+    public int level;
+}`,
 
-            "1, 2, 3",
+`class Character
+{
+    public string name;
+    public int health;
+}`,
 
-            "0, 1, 2, 3",
+`class Character
+{
+    string name;
+    int health;
+    int level;
+}`,
 
-            "3, 2, 1"
+`Character
+{
+    public string name;
+    public int health;
+    public int level;
+}`
 
         ],
 
         correct: 0,
 
         feedback:
-            "Remember: i < 3 means the loop runs for 0, 1, and 2.",
+            "Your Character class needs three fields: name, health, and level. Check their data types and names.",
 
         rationale:
-            "The loop starts at 0 and stops before 3, so it prints 0, 1, and 2."
-
-    },
-
-
-    {
-        section: "DETERMINE WHAT HAPPENS NEXT",
-
-        mode: "choice",
-
-        question:
-            "How many times does the word Spell appear?",
-
-        code:
-`for (int i = 1; i <= 3; i++)
-{
-    Console.WriteLine("Spell");
-}`,
-
-        answers: [
-
-            "1 time",
-
-            "2 times",
-
-            "3 times",
-
-            "4 times"
-
-        ],
-
-        correct: 2,
-
-        feedback:
-            "Count the values: 1, 2, and 3. That's 3 repetitions.",
-
-        rationale:
-            "The loop includes 1, 2, and 3 because the condition is i <= 3. Therefore, Spell appears 3 times."
-
-    },
-
-
-    {
-        section: "DETERMINE WHAT HAPPENS NEXT",
-
-        mode: "choice",
-
-        question:
-            "How many times does the loop run?",
-
-        code:
-`for (int i = 0; i < 8; i++)
-{
-    Attack();
-}`,
-
-        answers: [
-
-            "4 times",
-
-            "8 times",
-
-            "6 times",
-
-            "3 times"
-
-        ],
-
-        correct: 1,
-
-        feedback:
-            "The loop starts at 0 and stops before 8. That's 8 repetitions.",
-
-        rationale:
-            "The loop executes when i is 0, 1, 2, 3, and 4. That gives 8 total repetitions."
+            "A class needs the class keyword, a name, and its fields declared with an access modifier and a data type — public string name, public int health, and public int level."
 
     },
 
 
     /* =====================================================
        MICROGAME 2
-       TIME ATTACK
+       MAGICAL DATABASE
        ===================================================== */
 
     {
-        section: "TIME ATTACK",
-
-        mode: "type",
-
-        question:
-            "Round 1 — How many times does this loop run?",
-
-        code:
-`for (int i = 0; i < 4; i++)`,
-
-        expectedAnswer:
-            "4",
-
-        placeholder:
-            "Type your answer...",
-
-        feedback:
-            "i < 4 means the loop runs for 0, 1, 2, and 3.",
-
-        rationale:
-            "There are four iterations: i = 0, 1, 2, and 3."
-
-    },
-
-
-    {
-        section: "TIME ATTACK",
-
-        mode: "type",
-
-        question:
-            "Round 2 — What is the final value of i?",
-
-        code:
-`for (int i = 0; i <= 3; i++)`,
-
-        expectedAnswer:
-            "4",
-
-        placeholder:
-            "Type your answer...",
-
-        feedback:
-            "The loop stops when i <= 3 becomes false. The final value is 4.",
-
-        rationale:
-            "After the iteration where i is 3, i++ makes i equal to 4. Then 4 <= 3 is false."
-
-    },
-
-
-    {
-        section: "TIME ATTACK",
+        section: "MAGICAL DATABASE",
 
         mode: "choice",
 
         question:
-            "Complete the loop.",
+            "Challenge 1 — What value is stored in player.name?",
 
         code:
-`for (int i = 0; i ___ 8; i++)`,
+`Character player = new Character();
+player.name = "Luna";`,
 
         answers: [
 
-            ">",
+            "\"Luna\"",
 
-            "<",
+            "player",
 
-            "==",
+            "null",
 
-            "="
-
-        ],
-
-        correct: 1,
-
-        feedback:
-            "To repeat while i is below 8, use <.",
-
-        rationale:
-            "The less-than operator < means i must remain below 8."
-
-    },
-
-
-    {
-        section: "TIME ATTACK",
-
-        mode: "choice",
-
-        question:
-            "Which keyword repeats a block of code while a condition is true?",
-
-        code:
-`__________ (health > 0)
-{
-    Attack();
-}`,
-
-        answers: [
-
-            "if",
-
-            "for",
-
-            "while",
-
-            "switch"
-
-        ],
-
-        correct: 2,
-
-        feedback:
-            "The while keyword is used when a block repeats while a condition is true.",
-
-        rationale:
-            "A while loop continues executing its block as long as its condition remains true."
-
-    },
-
-
-    {
-        section: "TIME ATTACK",
-
-        mode: "type",
-
-        question:
-            "Round 8 — Complete the condition.",
-
-        code:
-`while (health ___ 0)`,
-
-        expectedAnswer:
-            ">",
-
-        placeholder:
-            "Type the operator...",
-
-        feedback:
-            "The loop should continue only while health is above zero. Use >.",
-
-        rationale:
-            "The greater-than operator checks whether health is still above zero."
-
-    },
-
-
-    /* =====================================================
-       MICROGAME 3
-       SURVIVAL TRIAL
-       ===================================================== */
-
-    {
-        section: "SURVIVAL TRIAL",
-
-        mode: "choice",
-
-        question:
-            "Challenge 1 — What values are printed?",
-
-        code:
-`for (int i = 0; i < 2; i++)
-{
-    Console.WriteLine(i);
-}`,
-
-        answers: [
-
-            "0, 1",
-
-            "1, 2",
-
-            "0, 1, 2",
-
-            "2 only"
+            "Character"
 
         ],
 
         correct: 0,
 
         feedback:
-            "i < 2 means the loop stops before 2.",
+            "Check the value assigned to player.name. It should be \"Luna\".",
 
         rationale:
-            "The loop executes for i = 0 and i = 1. It stops before i reaches 2."
+            "The line player.name = \"Luna\"; assigns the text \"Luna\" to the name field of the player object."
 
     },
 
 
     {
-        section: "SURVIVAL TRIAL",
+        section: "MAGICAL DATABASE",
 
         mode: "type",
 
         question:
-            "Challenge 2 — Fix the loop.",
+            "Challenge 2 — Create an object named wizard from the Character class.",
 
         code:
-`for (int i = 0; i < 8; ____)`,
-
-        expectedAnswer:
-            "i++",
-
-        placeholder:
-            "Type the update expression...",
-
-        feedback:
-            "The loop needs to increase so it can eventually reach 8. Use i++.",
-
-        rationale:
-            "The update expression must increase i after every repetition. i++ increases i by one."
-
-    },
-
-
-    {
-        section: "SURVIVAL TRIAL",
-
-        mode: "type",
-
-        question:
-            "Challenge 3 — Complete the loop.",
-
-        code:
-`while (_____ > 0)
+`class Character
 {
-    Attack();
+    public string name;
+    public int health;
+    public int level;
 }`,
 
         expectedAnswer:
-            "health",
+            "Character wizard = new Character();",
 
         placeholder:
-            "Type the variable...",
+            "Type your answer...",
 
         feedback:
-            "The condition should check whether health is greater than zero.",
+            "To create an object, use the class name followed by new Character().",
 
         rationale:
-            "The variable being checked is health, so the condition is while (health > 0)."
+            "Creating an object needs the class as the type, a variable name, and the new keyword calling the class's constructor: Character wizard = new Character();"
 
     },
 
 
     {
-        section: "SURVIVAL TRIAL",
+        section: "MAGICAL DATABASE",
+
+        mode: "type",
+
+        question:
+            "Challenge 3 — Set the character's health to 100.",
+
+        code:
+`Character wizard = new Character();`,
+
+        expectedAnswer:
+            "wizard.health = 100;",
+
+        placeholder:
+            "Type your answer...",
+
+        feedback:
+            "Use the object's name, followed by .health, to set its health value.",
+
+        rationale:
+            "Fields are accessed with dot notation. wizard.health = 100; stores 100 in the wizard object's health field."
+
+    },
+
+
+    /* =====================================================
+       MICROGAME 3
+       BOSS BATTLE
+       ===================================================== */
+
+    {
+        section: "BOSS BATTLE",
+
+        mode: "type",
+
+        question:
+            "Round 1 — Create a Character object.",
+
+        code:
+`class Character
+{
+    public string name;
+    public int health;
+    public int level;
+}`,
+
+        expectedAnswer:
+            "Character player = new Character();",
+
+        placeholder:
+            "Type your answer...",
+
+        feedback:
+            "Create an instance of the Character class using new.",
+
+        rationale:
+            "An object is created by writing the class name as the type, a variable name, then new Character() to call the constructor."
+
+    },
+
+
+    {
+        section: "BOSS BATTLE",
 
         mode: "choice",
 
         question:
-            "Challenge 4 — How many times does this loop run?",
+            "Round 2 — Which code correctly gives the object a name and health?",
 
         code:
-`for (int i = 1; i <= 8; i++)`,
+`Character player = new Character();`,
 
         answers: [
 
-            "4 times",
+`player.name = "Luna";
+player.health = 100;`,
 
-            "8 times",
+`player.Name = "Luna";
+player.Health = 100;`,
 
-            "6 times",
+`Character.name = "Luna";
+Character.health = 100;`,
 
-            "3 times"
+`new player.name = "Luna";`
 
         ],
 
-        correct: 1,
+        correct: 0,
 
         feedback:
-            "Because the condition uses <= 8, the loop includes 8.",
+            "Check that you assigned values to both the character's name and health.",
 
         rationale:
-            "The values are 1, 2, 3, 4, and 8. That makes 8 iterations."
+            "Fields are set through the object using dot notation with the exact field names declared in the class: player.name and player.health."
 
     },
 
 
     {
-        section: "SURVIVAL TRIAL",
+        section: "BOSS BATTLE",
 
         mode: "type",
 
         question:
-            "Challenge 8 — Is this loop already correct? Type YES or NO.",
+            "Round 3 — Display the object's name.",
 
         code:
-`while (energy > 0)
-{
-    Attack();
-    energy--;
-}`,
+`Character player = new Character();
+player.name = "Luna";`,
 
         expectedAnswer:
-            "yes",
+            "Console.WriteLine(player.name);",
 
         placeholder:
-            "YES or NO",
+            "Type your answer...",
 
         feedback:
-            "Check both parts: energy > 0 controls the loop, and energy-- reduces the value.",
+            "Use Console.WriteLine() with the object's name field.",
 
         rationale:
-            "The loop is already correct. It continues while energy is above zero and energy-- reduces energy after each attack."
+            "Console.WriteLine(player.name); reads the value stored in the object's name field and prints it to the console."
 
     }
 
@@ -723,38 +546,38 @@ var loseScreen =
 
 
 /* =========================================================
-   WRAITH INTRO DATA
+   ARCHMEAGE INTRO DATA
    ========================================================= */
 
 var wraithLines = [
 
-    "You should not have entered this dungeon...",
+    "You should not have entered this castle...",
 
-    "Every step here repeats.",
+    "Every object here was broken by my hand.",
 
-    "Every mistake returns.",
+    "Every class, every field, twisted and misplaced.",
 
-    "Every loop closes its jaws around you.",
+    "CLASS defines what a thing can be.",
 
-    "FOR counts your every move.",
+    "OBJECT gives that definition a life of its own.",
 
-    "WHILE watches until your condition fails.",
+    "FIELD holds what an object remembers.",
 
-    "And DO-WHILE...",
+    "I shattered them all.",
 
-    "DO-WHILE makes sure the nightmare happens at least once.",
+    "Names without health. Health without level. Objects without meaning.",
 
-    "You will repeat.",
+    "You will try to rebuild what I corrupted.",
 
-    "You will fail.",
+    "You will fail, again and again.",
 
-    "You will repeat again.",
+    "The castle will not forgive a careless field.",
 
-    "I am the Endless Wraith.",
+    "I am the Corrupted Archmeage.",
 
-    "Traps everything in repetition.",
+    "Manipulator of Calculations. Breaker of Blueprints.",
 
-    "Escape my Loop Dungeon...",
+    "Restore the Object Castle...",
 
     "if you can."
 
@@ -765,7 +588,7 @@ var wraithLineIndex = 0;
 
 
 /* =========================================================
-   WRAITH INTRO GLITCH
+   ARCHMEAGE INTRO GLITCH
    ========================================================= */
 
 function wraithGlitch(){
@@ -800,7 +623,7 @@ function wraithGlitch(){
 
 
 /* =========================================================
-   WRAITH IMAGE GLITCH
+   ARCHMEAGE IMAGE GLITCH
    ========================================================= */
 
 function wraithImageGlitch(){
@@ -919,7 +742,7 @@ function glitchText(
 
 
 /* =========================================================
-   SHOW WRAITH DIALOGUE
+   SHOW ARCHMEAGE DIALOGUE
    ========================================================= */
 
 function showWraithLine(){
@@ -955,7 +778,7 @@ function showWraithLine(){
         ){
 
             wraithContinueButton.textContent =
-                "ENTER THE LOOP DUNGEON";
+                "ENTER THE OBJECT CASTLE";
 
         }
 
@@ -972,7 +795,7 @@ function showWraithLine(){
 
 
 /* =========================================================
-   START WRAITH INTRO
+   START ARCHMEAGE INTRO
    ========================================================= */
 
 function startWraithIntro(){
@@ -1000,7 +823,7 @@ function startWraithIntro(){
 
 
 /* =========================================================
-   WRAITH CONTINUE
+   ARCHMEAGE CONTINUE
    ========================================================= */
 
 if(wraithContinueButton){
@@ -1032,7 +855,7 @@ if(wraithContinueButton){
 
 
 /* =========================================================
-   END WRAITH INTRO
+   END ARCHMEAGE INTRO
    ========================================================= */
 
 function endWraithIntro(){
@@ -1092,7 +915,7 @@ if(startBattleButton){
 }
 
 /* =========================================================
-   BOOK V — PART 2
+   BOOK VIII — PART 2
    GAMEPLAY ENGINE
    ========================================================= */
 
@@ -1126,8 +949,9 @@ function loadQuestion(){
     if(questionNumber){
 
         questionNumber.textContent =
-            "CHALLENGE " +
-            (currentQuestion + 1);
+            (currentQuestion + 1) +
+            " / " +
+            questions.length;
 
     }
 
@@ -1668,10 +1492,7 @@ function handleCorrectAnswer(q){
         true
     );
 
-
-    showRationale(
-        q.rationale
-    );
+    
 
 
     showFloatingNumber(
@@ -1828,8 +1649,7 @@ function handleWrongAnswer(q){
 
 
     if(
-        q.section ===
-        "SURVIVAL TRIAL" &&
+        q.section === "SURVIVAL TRIAL" &&
         survivalMistakes >=
         survivalMaxMistakes
     ){
@@ -1962,6 +1782,9 @@ function hideRationale(){
 
 /* =========================================================
    NEXT BUTTON
+   (Only listener that advances the question — do NOT add
+   a second document-level click listener for this button,
+   it causes the game to skip a question every click.)
    ========================================================= */
 
 function showNextButton(){
@@ -2125,7 +1948,9 @@ function updateTrialStatus(){
     else{
 
         trialStatus.textContent =
-            "";
+            (currentQuestion + 1) +
+            " / " +
+            questions.length;
 
         trialStatus.classList.remove(
             "danger"
@@ -2278,7 +2103,7 @@ function timeAttackExpired(){
 
 
     showFeedback(
-        "⌛ TIME'S UP — The loop consumed your time.",
+        "⌛ TIME'S UP — The corruption consumed your time.",
         false
     );
 
@@ -2334,7 +2159,32 @@ function stopTimeAttack(){
 
 /* =========================================================
    PLAYER ATTACK
+   FIX: the show/hide state uses the ".show" class (matches
+   book8.css .attack-animation.show), not ".active" — that
+   mismatch was why the attack video never appeared.
    ========================================================= */
+
+var attackFallbackTimer = null;
+
+function hideAttackAnimation(){
+
+    attackAnimation.classList.remove(
+        "show"
+    );
+
+    if(attackFallbackTimer){
+
+        clearTimeout(
+            attackFallbackTimer
+        );
+
+        attackFallbackTimer =
+            null;
+
+    }
+
+}
+
 
 function playerAttack(){
 
@@ -2344,7 +2194,7 @@ function playerAttack(){
 
 
     attackAnimation.classList.remove(
-        "active"
+        "show"
     );
 
 
@@ -2352,51 +2202,82 @@ function playerAttack(){
 
 
     attackAnimation.classList.add(
-        "active"
+        "show"
     );
 
 
-    if(
-        attackVideo &&
-        attackVideoSource
-    ){
+    if(attackFallbackTimer){
 
-        var attackData =
-            characters[
-                selectedCharacter
-            ];
+        clearTimeout(
+            attackFallbackTimer
+        );
 
-
-        if(
-            attackData &&
-            attackData.attackVideo
-        ){
-
-            attackVideoSource.src =
-                attackData.attackVideo;
-
-
-            attackVideo.load();
-
-
-            attackVideo.play()
-                .catch(function(){});
-
-        }
+        attackFallbackTimer =
+            null;
 
     }
 
 
-    setTimeout(
-        function(){
+    if(attackVideo){
 
-            attackAnimation.classList.remove(
-                "active"
+        attackVideo.removeEventListener(
+            "ended",
+            hideAttackAnimation
+        );
+
+    }
+
+
+    var attackData =
+        characters[
+            selectedCharacter
+        ];
+
+
+    if(
+        attackVideo &&
+        attackVideoSource &&
+        attackData &&
+        attackData.attackVideo
+    ){
+
+        attackVideoSource.src =
+            attackData.attackVideo;
+
+
+        attackVideo.load();
+
+
+        attackVideo.play()
+            .catch(function(){});
+
+
+        attackVideo.addEventListener(
+            "ended",
+            hideAttackAnimation
+        );
+
+
+        /* safety net — hides the animation anyway if the
+           video never fires "ended" (failed to load, etc.) */
+
+        attackFallbackTimer =
+            setTimeout(
+                hideAttackAnimation,
+                4000
             );
 
-        },
-        1000
-    );
+    }
+
+    else{
+
+        attackFallbackTimer =
+            setTimeout(
+                hideAttackAnimation,
+                1000
+            );
+
+    }
 
 }
 
@@ -2627,28 +2508,28 @@ function useHint(){
 
     if(
         q.section ===
-        "DETERMINE WHAT HAPPENS NEXT"
+        "CHARACTER CREATOR"
     ){
 
         hintText =
-            "Think about the starting value, condition, and update.";
+            "A class needs an access modifier, a data type, and a field name for each field.";
 
     }
 
     else if(
         q.section ===
-        "TIME ATTACK"
+        "MAGICAL DATABASE"
     ){
 
         hintText =
-            "Check how the loop condition changes during each iteration.";
+            "Objects are created with new, and their fields are accessed with a dot.";
 
     }
 
     else{
 
         hintText =
-            "Look carefully at what controls when the loop starts and stops.";
+            "Match the class's field names and types exactly when creating or updating an object.";
 
     }
 
@@ -2810,7 +2691,7 @@ function useMysticSight(){
 
 
     showFeedback(
-        "👁 MYSTIC SIGHT — The Wraith's pattern becomes visible.",
+        "👁 MYSTIC SIGHT — The Archmeage's corruption becomes visible.",
         true
     );
 
@@ -2871,7 +2752,7 @@ function useOmnidata(){
 
 
     showFeedback(
-        "◈ OMNIDATA — Analyze the loop from every angle.",
+        "◈ OMNIDATA — Analyze the object from every angle.",
         true
     );
 
@@ -3045,7 +2926,7 @@ function useFlameburst(){
 
 
     showFeedback(
-        "🔥 FLAMEBURST — The Wraith's loop burns for 18 damage.",
+        "🔥 FLAMEBURST — The Archmeage's corruption burns for 18 damage.",
         true
     );
 
@@ -3124,13 +3005,13 @@ function useMindcraft(){
 }
 
 /* =========================================================
-   BOOK V — PART 3
+   BOOK VIII — PART 3
    SURVIVAL, HORROR EFFECTS, VICTORY, SAVE SYSTEM
    ========================================================= */
 
 
 /* =========================================================
-   MINDCRAFT SHIELD FIX
+   MINDCRAFT SHIELD
    ========================================================= */
 
 function checkMindcraftShield(){
@@ -3199,11 +3080,6 @@ handleWrongAnswer =
         }
 
 
-        /*
-           If Mindcraft is active,
-           the player takes no damage.
-        */
-
         if(checkMindcraftShield()){
 
             answered = true;
@@ -3231,7 +3107,7 @@ handleWrongAnswer =
 
 
 /* =========================================================
-   WRAITH HORROR SYSTEM
+   ARCHMEAGE HORROR SYSTEM
    ========================================================= */
 
 var horrorInterval =
@@ -3241,47 +3117,6 @@ var horrorInterval =
 var horrorActive =
     false;
 
-
-/* =========================================================
-   GREEN WRAITH SCREEN EFFECT
-   ========================================================= */
-
-function greenWraithPulse(){
-
-    if(
-        !wraithIntroScreen ||
-        !wraithIntroScreen.classList.contains(
-            "show"
-        )
-    ){
-
-        return;
-
-    }
-
-
-    wraithIntroScreen.classList.add(
-        "wraith-green-pulse"
-    );
-
-
-    setTimeout(
-        function(){
-
-            wraithIntroScreen.classList.remove(
-                "wraith-green-pulse"
-            );
-
-        },
-        900
-    );
-
-}
-
-
-/* =========================================================
-   SCREEN CORRUPTION
-   ========================================================= */
 
 function screenCorruption(){
 
@@ -3304,10 +3139,6 @@ function screenCorruption(){
 }
 
 
-/* =========================================================
-   SCREEN SHAKE
-   ========================================================= */
-
 function horrorShake(){
 
     document.body.classList.add(
@@ -3328,10 +3159,6 @@ function horrorShake(){
 
 }
 
-
-/* =========================================================
-   GREEN FLASH
-   ========================================================= */
 
 function greenFlash(){
 
@@ -3360,10 +3187,6 @@ function greenFlash(){
 }
 
 
-/* =========================================================
-   HORROR WHISPER
-   ========================================================= */
-
 function wraithWhisper(){
 
     if(
@@ -3381,21 +3204,21 @@ function wraithWhisper(){
 
     var whispers = [
 
-        "...again...",
+        "...broken...",
 
-        "...repeat...",
+        "...misplaced...",
 
-        "...you cannot escape...",
+        "...you cannot rebuild me...",
 
-        "...again...",
+        "...field...",
 
-        "...loop...",
+        "...class...",
 
-        "...while...",
+        "...object...",
 
-        "...for...",
+        "...corrupted...",
 
-        "...do it again..."
+        "...try again..."
 
     ];
 
@@ -3439,10 +3262,6 @@ function wraithWhisper(){
 
 }
 
-
-/* =========================================================
-   WRAITH HORROR EVENT
-   ========================================================= */
 
 function randomWraithHorror(){
 
@@ -3501,7 +3320,7 @@ function randomWraithHorror(){
             break;
 
 
-        case 8:
+        case 5:
 
             wraithWhisper();
 
@@ -3511,10 +3330,6 @@ function randomWraithHorror(){
 
 }
 
-
-/* =========================================================
-   START HORROR EVENTS
-   ========================================================= */
 
 function startHorrorEvents(){
 
@@ -3543,10 +3358,6 @@ function startHorrorEvents(){
 }
 
 
-/* =========================================================
-   STOP HORROR EVENTS
-   ========================================================= */
-
 function stopHorrorEvents(){
 
     horrorActive =
@@ -3568,10 +3379,6 @@ function stopHorrorEvents(){
 }
 
 
-/* =========================================================
-   OVERRIDE START WRAITH INTRO
-   ========================================================= */
-
 var oldStartWraithIntro =
     startWraithIntro;
 
@@ -3586,10 +3393,6 @@ startWraithIntro =
 
     };
 
-
-/* =========================================================
-   OVERRIDE END WRAITH INTRO
-   ========================================================= */
 
 var oldEndWraithIntro =
     endWraithIntro;
@@ -3607,13 +3410,14 @@ endWraithIntro =
 
 
 /* =========================================================
-   WRAITH NAME
+   ARCHMEAGE NAME (guarded — html doesn't currently use
+   these ids, kept for future use)
    ========================================================= */
 
 if(enemyCharacter){
 
     enemyCharacter.alt =
-        "The Endless Wraith";
+        "The Corrupted Archmeage";
 
 }
 
@@ -3627,7 +3431,7 @@ var enemyName =
 if(enemyName){
 
     enemyName.textContent =
-        "THE ENDLESS WRAITH";
+        "THE CORRUPTED ARCHMEAGE";
 
 }
 
@@ -3641,13 +3445,13 @@ var enemyRole =
 if(enemyRole){
 
     enemyRole.textContent =
-        "Traps Everything in Repetition";
+        "Manipulator of Calculations";
 
 }
 
 
 /* =========================================================
-   WRAITH INTRO IMAGE
+   ARCHMEAGE INTRO IMAGE
    ========================================================= */
 
 function setupWraithImage(){
@@ -3673,7 +3477,7 @@ function setupWraithImage(){
 
 
     image.alt =
-        "The Endless Wraith";
+        "The Corrupted Archmeage";
 
 
     image.classList.add(
@@ -3687,7 +3491,7 @@ setupWraithImage();
 
 
 /* =========================================================
-   RANDOM WRAITH FLICKER
+   RANDOM ARCHMEAGE FLICKER
    ========================================================= */
 
 setInterval(
@@ -3736,70 +3540,6 @@ setInterval(
 );
 
 
-/* =========================================================
-   WRAITH EYE EFFECT
-   ========================================================= */
-
-function wraithEyeFlash(){
-
-    if(!wraithIntroScreen){
-        return;
-    }
-
-
-    var eyes =
-        document.createElement("div");
-
-
-    eyes.className =
-        "wraith-eye-flash";
-
-
-    eyes.innerHTML =
-        "●       ●";
-
-
-    wraithIntroScreen.appendChild(
-        eyes
-    );
-
-
-    setTimeout(
-        function(){
-
-            eyes.remove();
-
-        },
-        800
-    );
-
-}
-
-
-setInterval(
-    function(){
-
-        if(
-            wraithIntroScreen &&
-            wraithIntroScreen.classList.contains(
-                "show"
-            )
-        ){
-
-            if(
-                Math.random() <
-                0.38
-            ){
-
-                wraithEyeFlash();
-
-            }
-
-        }
-
-    },
-    3000
-);
 
 
 /* =========================================================
@@ -3852,10 +3592,6 @@ function finishBook(){
     );
 
 
-    /*
-       Victory visual
-    */
-
     document.body.classList.add(
         "book8-victory"
     );
@@ -3873,7 +3609,7 @@ function finishBook(){
     if(battleMessage){
 
         battleMessage.textContent =
-            "THE LOOP HAS BEEN BROKEN.";
+            "THE CORRUPTION HAS BEEN PURGED.";
 
     }
 
@@ -3908,7 +3644,7 @@ function showVictory(){
         if(resultTitle){
 
             resultTitle.textContent =
-                "LOOP TERMINATED";
+                "CASTLE RESTORED";
 
         }
 
@@ -3922,7 +3658,7 @@ function showVictory(){
         if(resultMessage){
 
             resultMessage.textContent =
-                "The Endless Wraith has been defeated. You escaped the Loop Dungeon.";
+                "The Corrupted Archmeage has been defeated. The Object Castle stands whole again.";
 
         }
 
@@ -3946,10 +3682,6 @@ function showVictory(){
     }
 
 
-    /*
-       Fallback victory screen
-    */
-
     var victory =
         document.createElement("div");
 
@@ -3963,15 +3695,15 @@ function showVictory(){
         '<div class="book8-victory-content">' +
 
             '<div class="victory-glitch">' +
-                'LOOP TERMINATED' +
+                'CASTLE RESTORED' +
             '</div>' +
 
             '<h1>' +
-                'THE WRAITH IS DEFEATED' +
+                'THE ARCHMEAGE IS DEFEATED' +
             '</h1>' +
 
             '<p>' +
-                'You escaped the Loop Dungeon.'
+                'You restored the Object Castle.' +
             '</p>' +
 
             '<div class="victory-score">' +
@@ -3980,7 +3712,7 @@ function showVictory(){
             '</div>' +
 
             '<button id="book8Continue">' +
-                'CONTINUE'
+                'CONTINUE' +
             '</button>' +
 
         '</div>';
@@ -4042,7 +3774,7 @@ function loseGame(){
     if(battleMessage){
 
         battleMessage.textContent =
-            "THE LOOP HAS CONSUMED YOU.";
+            "THE CORRUPTION HAS OVERWHELMED YOU.";
 
     }
 
@@ -4059,10 +3791,6 @@ function loseGame(){
     }
 
 
-    /*
-       Fallback defeat screen
-    */
-
     var defeat =
         document.createElement("div");
 
@@ -4076,19 +3804,19 @@ function loseGame(){
         '<div class="book8-defeat-content">' +
 
             '<div class="defeat-glitch">' +
-                'LOOP ERROR'
+                'OBJECT ERROR' +
             '</div>' +
 
             '<h1>' +
-                'YOU ARE TRAPPED'
+                'YOU ARE TRAPPED' +
             '</h1>' +
 
             '<p>' +
-                'The Endless Wraith has forced you into eternal repetition.'
+                'The Corrupted Archmeage has broken your progress.' +
             '</p>' +
 
             '<button id="book8Retry">' +
-                'BREAK THE LOOP'
+                'RESTORE THE CASTLE' +
             '</button>' +
 
         '</div>';
@@ -4118,7 +3846,7 @@ function loseGame(){
 
 
 /* =========================================================
-   RESTART BOOK V
+   RESTART BOOK VIII
    ========================================================= */
 
 function restartBook8(){
@@ -4273,26 +4001,6 @@ function restartBook8(){
 
 
 /* =========================================================
-   RETRY BUTTON
-   ========================================================= */
-
-var retryButton =
-    document.getElementById(
-        "retryButton"
-    );
-
-
-if(retryButton){
-
-    retryButton.addEventListener(
-        "click",
-        restartBook8
-    );
-
-}
-
-
-/* =========================================================
    KEYBOARD SUPPORT
    ========================================================= */
 
@@ -4304,10 +4012,6 @@ document.addEventListener(
             return;
         }
 
-
-        /*
-           Number keys for multiple choice.
-        */
 
         if(
             event.key >= "1" &&
@@ -4335,10 +4039,6 @@ document.addEventListener(
         }
 
 
-        /*
-           Enter submits typed answers.
-        */
-
         if(
             event.key ===
             "Enter"
@@ -4350,7 +4050,11 @@ document.addEventListener(
                 );
 
 
-            if(input){
+            if(
+                input &&
+                document.activeElement ===
+                input
+            ){
 
                 checkTypedAnswer();
 
@@ -4358,10 +4062,6 @@ document.addEventListener(
 
         }
 
-
-        /*
-           H = Hint
-        */
 
         if(
             event.key.toLowerCase() ===
@@ -4435,151 +4135,7 @@ setInterval(
 
 
 /* =========================================================
-   LOAD SAVED PROGRESS
-   ========================================================= */
-
-function loadBook8Progress(){
-
-    var savedQuestion =
-        localStorage.getItem(
-            "book8CurrentQuestion"
-        );
-
-
-    var savedScore =
-        localStorage.getItem(
-            "book8Score"
-        );
-
-
-    var savedEssence =
-        localStorage.getItem(
-            "book8Essence"
-        );
-
-
-    var savedPlayerHP =
-        localStorage.getItem(
-            "book8PlayerHP"
-        );
-
-
-    var savedEnemyHP =
-        localStorage.getItem(
-            "book8EnemyHP"
-        );
-
-
-    var savedMistakes =
-        localStorage.getItem(
-            "book8SurvivalMistakes"
-        );
-
-
-    if(savedQuestion !== null){
-
-        currentQuestion =
-            Number(
-                savedQuestion
-            );
-
-    }
-
-
-    if(savedScore !== null){
-
-        score =
-            Number(
-                savedScore
-            );
-
-    }
-
-
-    if(savedEssence !== null){
-
-        essence =
-            Number(
-                savedEssence
-            );
-
-    }
-
-
-    if(savedPlayerHP !== null){
-
-        playerHP =
-            Number(
-                savedPlayerHP
-            );
-
-    }
-
-
-    if(savedEnemyHP !== null){
-
-        enemyHP =
-            Number(
-                savedEnemyHP
-            );
-
-    }
-
-
-    if(savedMistakes !== null){
-
-        survivalMistakes =
-            Number(
-                savedMistakes
-            );
-
-    }
-
-
-    updateHP();
-
-    updateScore();
-
-    updateTrialStatus();
-
-}
-
-
-/* =========================================================
-   CLEAR BOOK V SAVE
-   ========================================================= */
-
-function clearBook8Save(){
-
-    localStorage.removeItem(
-        "book8CurrentQuestion"
-    );
-
-    localStorage.removeItem(
-        "book8Score"
-    );
-
-    localStorage.removeItem(
-        "book8Essence"
-    );
-
-    localStorage.removeItem(
-        "book8PlayerHP"
-    );
-
-    localStorage.removeItem(
-        "book8EnemyHP"
-    );
-
-    localStorage.removeItem(
-        "book8SurvivalMistakes"
-    );
-
-}
-
-
-/* =========================================================
-   INITIALIZE BOOK V
+   INITIALIZE BOOK VIII
    ========================================================= */
 
 function initializeBook8(){
@@ -4594,18 +4150,13 @@ function initializeBook8(){
     updateTrialStatus();
 
 
-    /*
-       Do NOT automatically load the questions.
-       Player must enter the dungeon first.
-    */
-
     console.log(
-        "BOOK V: LOOP DUNGEON INITIALIZED"
+        "BOOK VIII: OBJECT CASTLE INITIALIZED"
     );
 
 
     console.log(
-        "THE ENDLESS WRAITH IS WAITING..."
+        "THE CORRUPTED ARCHMEAGE IS WAITING..."
     );
 
 }
@@ -4635,48 +4186,8 @@ else{
 
 
 /* =========================================================
-   BOOK V DEBUG INFO
+   BOOK VIII — BUTTON CONNECTION
    ========================================================= */
-
-console.log(
-    "%cBOOK V: LOOP DUNGEON",
-    "font-size:20px;font-weight:bold;"
-);
-
-console.log(
-    "%cFOR • WHILE • DO-WHILE",
-    "font-size:14px;"
-);
-
-console.log(
-    "%cTHE ENDLESS WRAITH",
-    "font-size:16px;"
-);
-
-console.log(
-    "Current Question:",
-    currentQuestion
-);
-
-console.log(
-    "Player HP:",
-    playerHP
-);
-
-console.log(
-    "Enemy HP:",
-    enemyHP
-);
-
-
-/* =========================================================
-   BOOK V — BUTTON CONNECTION FIX
-   ========================================================= */
-
-
-/* =========================
-   POWER BUTTONS
-========================= */
 
 var hintButton =
     document.getElementById("hintPower");
@@ -4816,18 +4327,18 @@ if(mindcraftButton){
 
 
 /* =========================================================
-   RETRY TRIAL
-========================================================= */
+   RETRY / MENU BUTTONS
+   ========================================================= */
 
-var retryButton =
+var retryTrialButtonEl =
     document.getElementById(
         "retryTrialButton"
     );
 
 
-if(retryButton){
+if(retryTrialButtonEl){
 
-    retryButton.onclick =
+    retryTrialButtonEl.onclick =
         function(){
 
             restartBook8();
@@ -4836,10 +4347,6 @@ if(retryButton){
 
 }
 
-
-/* =========================================================
-   RETURN TO MAIN MENU
-========================================================= */
 
 var loseMenuButton =
     document.getElementById(
@@ -4853,131 +4360,16 @@ if(loseMenuButton){
         function(){
 
             window.location.href =
-                "/MainMenu/lesson.html";
+                "../../MainMenu/lesson.html";
 
         };
 
 }
-
-
-/* =========================================================
-   RESULT / VICTORY RETURN BUTTON
-========================================================= */
-
-var resultMenuButton =
-    document.getElementById(
-        "resultMenuButton"
-    );
-
-
-if(resultMenuButton){
-
-    resultMenuButton.onclick =
-        function(){
-
-            window.location.href =
-                "/MainMenu/lesson.html";
-
-        };
-
-}
-
-
-/* =========================================================
-   RESULT / NEXT BOOK BUTTON
-========================================================= */
-
-var nextBookButton =
-    document.getElementById(
-        "nextBookButton"
-    );
-
-
-if(nextBookButton){
-
-    nextBookButton.onclick =
-        function(){
-
-            window.location.href =
-                "book6.html";
-
-        };
-
-}
-
-
-/* =========================================================
-   RETRY FALLBACK
-========================================================= */
-
-var retryBookButton =
-    document.getElementById(
-        "retryBookButton"
-    );
-
-
-if(retryBookButton){
-
-    retryBookButton.onclick =
-        function(){
-
-            restartBook8();
-
-        };
-
-}
-
-
-/* =========================================================
-   RETURN HOME FALLBACK
-========================================================= */
-
-var returnHomeButton =
-    document.getElementById(
-        "returnHomeButton"
-    );
-
-
-if(returnHomeButton){
-
-    returnHomeButton.onclick =
-        function(){
-
-            window.location.href =
-                "/MainMenu/lesson.html";
-
-        };
-
-}
-
-
-/* =========================================================
-   NEXT CHALLENGE FALLBACK
-========================================================= */
-
-document.addEventListener(
-    "click",
-    function(event){
-
-        if(
-            event.target &&
-            event.target.id ===
-            "nextQuestionButton"
-        ){
-
-            currentQuestion++;
-
-            loadQuestion();
-
-        }
-
-    }
-);
 
 
 /* =========================================================
    TYPED ANSWER ENTER SUPPORT
-========================================================= */
+   ========================================================= */
 
 document.addEventListener(
     "keydown",
@@ -5009,48 +4401,50 @@ document.addEventListener(
 );
 
 
-/* ==============
+/* =========================================================
    POWER COUNT DISPLAY
-======= */
+   FIX: previous version was missing "=" signs on every
+   assignment below, which is a JavaScript syntax error.
+   ========================================================= */
 
 function updatePowerCounts(){
 
-    var hintCountElement 
+    var hintCountElement =
         document.getElementById(
             "hintCount"
         );
 
-    var healCountElement 
+    var healCountElement =
         document.getElementById(
             "healCount"
         );
 
-    var doubleCountElement 
+    var doubleCountElement =
         document.getElementById(
             "doubleCount"
         );
 
-    var mysticCountElement 
+    var mysticCountElement =
         document.getElementById(
             "mysticSightCount"
         );
 
-    var omnidataCountElement 
+    var omnidataCountElement =
         document.getElementById(
             "omnidataCount"
         );
 
-    var syntaxCountElement 
+    var syntaxCountElement =
         document.getElementById(
             "syntaxSorceryCount"
         );
 
-    var flameburstCountElement 
+    var flameburstCountElement =
         document.getElementById(
             "flameburstCount"
         );
 
-    var mindcraftCountElement 
+    var mindcraftCountElement =
         document.getElementById(
             "mindcraftCount"
         );
@@ -5058,7 +4452,7 @@ function updatePowerCounts(){
 
     if(hintCountElement){
 
-        hintCountElement.textContent 
+        hintCountElement.textContent =
             hintCount;
 
     }
@@ -5066,7 +4460,7 @@ function updatePowerCounts(){
 
     if(healCountElement){
 
-        healCountElement.textContent 
+        healCountElement.textContent =
             healCount;
 
     }
@@ -5074,7 +4468,7 @@ function updatePowerCounts(){
 
     if(doubleCountElement){
 
-        doubleCountElement.textContent 
+        doubleCountElement.textContent =
             doubleCount;
 
     }
@@ -5082,7 +4476,7 @@ function updatePowerCounts(){
 
     if(mysticCountElement){
 
-        mysticCountElement.textContent 
+        mysticCountElement.textContent =
             mysticSightCount;
 
     }
@@ -5090,7 +4484,7 @@ function updatePowerCounts(){
 
     if(omnidataCountElement){
 
-        omnidataCountElement.textContent 
+        omnidataCountElement.textContent =
             omnidataCount;
 
     }
@@ -5098,7 +4492,7 @@ function updatePowerCounts(){
 
     if(syntaxCountElement){
 
-        syntaxCountElement.textContent 
+        syntaxCountElement.textContent =
             syntaxSorceryCount;
 
     }
@@ -5106,7 +4500,7 @@ function updatePowerCounts(){
 
     if(flameburstCountElement){
 
-        flameburstCountElement.textContent 
+        flameburstCountElement.textContent =
             flameburstCount;
 
     }
@@ -5114,7 +4508,7 @@ function updatePowerCounts(){
 
     if(mindcraftCountElement){
 
-        mindcraftCountElement.textContent 
+        mindcraftCountElement.textContent =
             mindcraftCount;
 
     }
@@ -5122,22 +4516,22 @@ function updatePowerCounts(){
 }
 
 
-/* 
+/* =========================================================
    UPDATE POWER BUTTON STATE
- */
+   ========================================================= */
 
 function updatePowerButtons(){
 
     if(
         hintButton &&
-        hintCount < 0
+        hintCount <= 0
     ){
 
         hintButton.classList.add(
             "used"
         );
 
-        hintButton.disabled 
+        hintButton.disabled =
             true;
 
     }
@@ -5145,14 +4539,14 @@ function updatePowerButtons(){
 
     if(
         healButton &&
-        healCount < 0
+        healCount <= 0
     ){
 
         healButton.classList.add(
             "used"
         );
 
-        healButton.disabled 
+        healButton.disabled =
             true;
 
     }
@@ -5160,14 +4554,14 @@ function updatePowerButtons(){
 
     if(
         doubleButton &&
-        doubleCount < 0
+        doubleCount <= 0
     ){
 
         doubleButton.classList.add(
             "used"
         );
 
-        doubleButton.disabled 
+        doubleButton.disabled =
             true;
 
     }
@@ -5175,14 +4569,14 @@ function updatePowerButtons(){
 
     if(
         mysticButton &&
-        mysticSightCount < 0
+        mysticSightCount <= 0
     ){
 
         mysticButton.classList.add(
             "used"
         );
 
-        mysticButton.disabled 
+        mysticButton.disabled =
             true;
 
     }
@@ -5190,14 +4584,14 @@ function updatePowerButtons(){
 
     if(
         omnidataButton &&
-        omnidataCount < 0
+        omnidataCount <= 0
     ){
 
         omnidataButton.classList.add(
             "used"
         );
 
-        omnidataButton.disabled 
+        omnidataButton.disabled =
             true;
 
     }
@@ -5205,14 +4599,14 @@ function updatePowerButtons(){
 
     if(
         syntaxButton &&
-        syntaxSorceryCount < 0
+        syntaxSorceryCount <= 0
     ){
 
         syntaxButton.classList.add(
             "used"
         );
 
-        syntaxButton.disabled 
+        syntaxButton.disabled =
             true;
 
     }
@@ -5220,14 +4614,14 @@ function updatePowerButtons(){
 
     if(
         flameburstButton &&
-        flameburstCount < 0
+        flameburstCount <= 0
     ){
 
         flameburstButton.classList.add(
             "used"
         );
 
-        flameburstButton.disabled 
+        flameburstButton.disabled =
             true;
 
     }
@@ -5235,14 +4629,14 @@ function updatePowerButtons(){
 
     if(
         mindcraftButton &&
-        mindcraftCount < 0
+        mindcraftCount <= 0
     ){
 
         mindcraftButton.classList.add(
             "used"
         );
 
-        mindcraftButton.disabled 
+        mindcraftButton.disabled =
             true;
 
     }
@@ -5250,9 +4644,9 @@ function updatePowerButtons(){
 }
 
 
-/* 
+/* =========================================================
    REFRESH POWER UI
- */
+   ========================================================= */
 
 function refreshPowerUI(){
 
@@ -5263,10 +4657,10 @@ function refreshPowerUI(){
 }
 
 
-/* 
+/* =========================================================
    PATCH POWER FUNCTIONS
    Updates UI after every use.
-======================= */
+   ========================================================= */
 
 var oldUseHint =
     useHint;
@@ -5374,11 +4768,11 @@ useMindcraft =
 
 /* =========================================================
    INITIAL POWER UI
-========================================================= */
+   ========================================================= */
 
 refreshPowerUI();
 
 
 console.log(
-    "BOOK V BUTTON SYSTEM READY"
+    "BOOK VIII BUTTON SYSTEM READY"
 );
