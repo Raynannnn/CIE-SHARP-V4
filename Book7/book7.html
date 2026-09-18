@@ -402,98 +402,104 @@
 
 
     <!-- =========================
-         BOTTOM
+     BOTTOM GAME AREA
+========================= -->
+
+<section class="battle-bottom">
+
+    <!-- =========================
+         LEFT: QUESTION
     ========================= -->
 
-    <section class="battle-bottom">
+    <div class="question-panel">
 
-
-        <!-- ANSWERS -->
-
-        <div class="answer-panel">
-
-            <div class="panel-title">
-                ✦ ARRAY OPTIONS
-            </div>
-
-
-            <div
-                class="answers"
-                id="answers"
-            ></div>
-
-
-            <div
-                class="feedback"
-                id="feedback"
-            ></div>
-
+        <div
+            class="question-type"
+            id="questionType"
+        >
+            SYNTAX REPAIR
         </div>
 
 
+        <h2 id="questionText">
+            What symbol is missing?
+        </h2>
 
-        <!-- QUESTION -->
 
-        <div class="question-panel">
+        <div
+            class="code-display"
+            id="codeDisplay"
+        ></div>
 
-            <div
-                class="question-type"
-                id="questionType"
-            >
-                DATA MATCH
+
+        <div class="battle-stats">
+
+            <div>
+
+                <span>POWER</span>
+
+                <strong id="score">
+                    0
+                </strong>
+
             </div>
 
 
-            <h2 id="questionText">
-                What is stored at index 0?
-            </h2>
+            <div>
+
+                <span>ESSENCE</span>
+
+                <strong id="essence">
+                    0
+                </strong>
+
+            </div>
 
 
-            <div
-                class="code-display"
-                id="codeDisplay"
-            ></div>
+            <div>
 
+                <span>TRIAL</span>
 
-            <div class="battle-stats">
-
-                <div>
-
-                    <span>POWER</span>
-
-                    <strong id="score">
-                        0
-                    </strong>
-
-                </div>
-
-
-                <div>
-
-                    <span>ESSENCE</span>
-
-                    <strong id="essence">
-                        0
-                    </strong>
-
-                </div>
-
-
-                <div>
-
-                    <span>PROGRESS</span>
-
-                    <strong id="trialStatus">
-                        0 / 9
-                    </strong>
-
-                </div>
+                <strong id="trialStatus">
+                    0 / 9
+                </strong>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+
+    <!-- =========================
+         RIGHT: ANSWERS
+    ========================= -->
+
+    <div class="answer-panel">
+
+        <div class="panel-title">
+
+            <span>
+                ✦ SPELL OPTIONS
+            </span>
+
+        </div>
+
+
+        <div
+            class="answers"
+            id="answers"
+        ></div>
+
+
+        <div
+            class="feedback"
+            id="feedback"
+        ></div>
+
+    </div>
+
+</section>
 
 </main>
 

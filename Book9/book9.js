@@ -1390,6 +1390,59 @@ function showVictory(){
     battleMessage.textContent =
         "THE NULL WITCH HAS FALLEN.";
 
+        function showVictory(){
+
+    /* SAVE COMPLETION FOR CERTIFICATE (added) */
+
+    localStorage.setItem(
+        "book9Completed",
+        "true"
+    );
+
+
+    if(
+        !localStorage.getItem(
+            "cieSharpCompletionDate"
+        )
+    ){
+
+        localStorage.setItem(
+            "cieSharpCompletionDate",
+            new Date().toLocaleDateString(
+                "en-US",
+                {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric"
+                }
+            )
+        );
+
+    }
+
+
+    document.getElementById(
+        "finalScore"
+    ).textContent =
+        score;
+
+
+    document.getElementById(
+        "finalEssence"
+    ).textContent =
+        essence;
+
+
+    resultScreen.classList.add(
+        "show"
+    );
+
+
+    battleMessage.textContent =
+        "THE NULL WITCH HAS FALLEN.";
+
+}
+
 }
 
 

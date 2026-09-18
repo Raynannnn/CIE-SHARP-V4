@@ -2191,7 +2191,77 @@ document
         }
     );
 
+/* =========================
+   PLAY VICTORY VIDEO
+   Video only appears after
+   completing Book II
+========================= */
 
+function playVictoryAttack(){
+
+    if(
+        !victoryAttackVideo ||
+        !victoryAttackVideoSource
+    ){
+
+        return;
+
+    }
+
+
+    victoryAttackVideoSource.src =
+        player.attackVideo;
+
+
+    victoryAttackVideo.load();
+
+
+    victoryAttackVideo.classList.add(
+        "show"
+    );
+
+
+    resultBox.classList.add(
+        "hidden-until-video"
+    );
+
+
+    victoryAttackVideo.currentTime = 0;
+
+
+    victoryAttackVideo.play().catch(function(){
+
+        console.log(
+            "Victory video could not play."
+        );
+
+
+        victoryAttackVideo.classList.remove(
+            "show"
+        );
+
+
+        resultBox.classList.remove(
+            "hidden-until-video"
+        );
+
+    });
+
+
+    victoryAttackVideo.onended = function(){
+
+        victoryAttackVideo.classList.remove(
+            "show"
+        );
+
+
+        resultBox.classList.remove(
+            "hidden-until-video"
+        );
+
+    };
+
+}
 
 /* =========================
    FINISH GAME
@@ -2223,8 +2293,68 @@ function finishGame(){
         "show"
     );
 
+    /* =========================
+   HIDE ANSWER GUIDE
+   WHEN GAME ENDS
+========================= */
+
+var answerGuide =
+    document.getElementById(
+        "answerGuideArrow"
+    );
+
+
+if(answerGuide){
+
+    answerGuide.classList.remove(
+        "show"
+    );
+
+}
+
+
+var answerPanel =
+    document.querySelector(
+        ".answer-panel"
+    );
+
+
+if(answerPanel){
+
+    answerPanel.classList.remove(
+        "answer-guide-highlight"
+    );
+
+}
+
+
+var witchBadge =
+    document.querySelector(
+        ".witch-guide-badge"
+    );
+
+
+if(witchBadge){
+
+    witchBadge.classList.remove(
+        "show"
+    );
+
+}
 
     saveBookProgress();
+
+
+    /* =========================
+       SHOW SELECTED WITCH
+       VIDEO ONLY ON WIN
+    ========================= */
+
+    setTimeout(function(){
+
+        playVictoryAttack();
+
+    }, 400);
 
 }
 

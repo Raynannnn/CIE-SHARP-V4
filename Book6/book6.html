@@ -452,108 +452,104 @@
 
 
     <!-- =========================
-         BOTTOM GAME AREA
+     BOTTOM GAME AREA
+========================= -->
+
+<section class="battle-bottom">
+
+    <!-- =========================
+         LEFT: QUESTION
     ========================= -->
 
-    <section class="battle-bottom">
+    <div class="question-panel">
 
-
-        <!-- =========================
-             LEFT: ANSWERS
-        ========================= -->
-
-        <div class="answer-panel">
-
-            <div class="panel-title">
-
-                <span>
-                    ✦ SPELL OPTIONS
-                </span>
-
-            </div>
-
-
-            <div
-                class="answers"
-                id="answers"
-            ></div>
-
-
-            <div
-                class="feedback"
-                id="feedback"
-            ></div>
-
+        <div
+            class="question-type"
+            id="questionType"
+        >
+            SYNTAX REPAIR
         </div>
 
 
-
-        <!-- =========================
-             RIGHT: QUESTION
-        ========================= -->
-
-        <div class="question-panel">
+        <h2 id="questionText">
+            What symbol is missing?
+        </h2>
 
 
-            <div
-                class="question-type"
-                id="questionType"
-            >
-                PREDICT OUTPUT
+        <div
+            class="code-display"
+            id="codeDisplay"
+        ></div>
+
+
+        <div class="battle-stats">
+
+            <div>
+
+                <span>POWER</span>
+
+                <strong id="score">
+                    0
+                </strong>
+
             </div>
 
 
-            <h2 id="questionText">
-                What will this code output?
-            </h2>
+            <div>
+
+                <span>ESSENCE</span>
+
+                <strong id="essence">
+                    0
+                </strong>
+
+            </div>
 
 
-            <div
-                class="code-display"
-                id="codeDisplay"
-            ></div>
+            <div>
 
+                <span>TRIAL</span>
 
-            <div class="battle-stats">
-
-
-                <div>
-
-                    <span>POWER</span>
-
-                    <strong id="score">
-                        0
-                    </strong>
-
-                </div>
-
-
-                <div>
-
-                    <span>ESSENCE</span>
-
-                    <strong id="essence">
-                        0
-                    </strong>
-
-                </div>
-
-
-                <div>
-
-                    <span>TRIAL</span>
-
-                    <strong id="trialStatus">
-                        0 / 9
-                    </strong>
-
-                </div>
+                <strong id="trialStatus">
+                    0 / 9
+                </strong>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+
+    <!-- =========================
+         RIGHT: ANSWERS
+    ========================= -->
+
+    <div class="answer-panel">
+
+        <div class="panel-title">
+
+            <span>
+                ✦ SPELL OPTIONS
+            </span>
+
+        </div>
+
+
+        <div
+            class="answers"
+            id="answers"
+        ></div>
+
+
+        <div
+            class="feedback"
+            id="feedback"
+        ></div>
+
+    </div>
+
+</section>
 
 </main>
 

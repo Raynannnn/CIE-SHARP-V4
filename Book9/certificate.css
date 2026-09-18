@@ -1,0 +1,778 @@
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+
+html,
+body{
+
+    width:100%;
+    min-height:100%;
+
+}
+
+
+body{
+
+    font-family:'VT323', monospace;
+
+    background:#080c17;
+
+    color:#1e293b;
+
+}
+
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.certificate-background{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:-1;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(37,99,235,.13),
+            transparent 30%
+        ),
+
+        #0b1020;
+
+}
+
+
+
+/* =========================
+   TOOLBAR
+========================= */
+
+.cert-toolbar{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:16px 6%;
+
+    background:#111827;
+
+    border-bottom:2px solid #263451;
+
+}
+
+
+.cert-back-button{
+
+    text-decoration:none;
+
+    color:#cbd5e1;
+
+    background:#1e293b;
+
+    border:1px solid #334155;
+
+    padding:9px 16px;
+
+    border-radius:7px;
+
+    font-size:16px;
+
+    transition:.25s;
+
+}
+
+
+.cert-back-button:hover{
+
+    background:#334155;
+
+    color:white;
+
+}
+
+
+.cert-toolbar-actions{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+
+.cert-secondary-button{
+
+    padding:9px 16px;
+
+    border:1px solid #334155;
+
+    border-radius:7px;
+
+    background:#1e293b;
+
+    color:#cbd5e1;
+
+    font-family:inherit;
+
+    font-size:16px;
+
+    text-decoration:none;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+
+.cert-secondary-button:hover{
+
+    background:#334155;
+
+    color:white;
+
+}
+
+
+.cert-print-button{
+
+    padding:9px 18px;
+
+    border:none;
+
+    border-radius:7px;
+
+    background:#2563eb;
+
+    color:white;
+
+    font-family:inherit;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+
+.cert-print-button:hover{
+
+    background:#1d4ed8;
+
+    transform:translateY(-2px);
+
+}
+
+
+
+/* =========================
+   LOCKED SCREEN
+========================= */
+
+.cert-locked-screen,
+.cert-name-screen{
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-height:calc(100vh - 70px);
+
+    padding:30px;
+
+}
+
+
+.cert-locked-screen.show,
+.cert-name-screen.show{
+
+    display:flex;
+
+}
+
+
+.cert-locked-box,
+.cert-name-box{
+
+    width:500px;
+
+    max-width:92%;
+
+    padding:35px;
+
+    text-align:center;
+
+    background:#111827;
+
+    border:2px solid #334155;
+
+    border-radius:10px;
+
+}
+
+
+.cert-locked-title,
+.cert-name-title{
+
+    color:#60a5fa;
+
+    font-family:'PixelTitle','VT323',monospace;
+
+    font-size:20px;
+
+    letter-spacing:2px;
+
+    margin-bottom:14px;
+
+}
+
+
+.cert-locked-box p,
+.cert-name-box p{
+
+    color:#94a3b8;
+
+    font-size:17px;
+
+    line-height:1.6;
+
+    margin-bottom:20px;
+
+}
+
+
+.cert-name-input{
+
+    width:100%;
+
+    padding:12px 14px;
+
+    margin-bottom:16px;
+
+    background:#0b1220;
+
+    border:1px solid #334155;
+
+    border-radius:6px;
+
+    color:#f1f5f9;
+
+    font-family:inherit;
+
+    font-size:18px;
+
+    outline:none;
+
+}
+
+
+.cert-name-input:focus{
+
+    border-color:#60a5fa;
+
+}
+
+
+
+/* =========================
+   CERTIFICATE WRAPPER
+========================= */
+
+.certificate-wrapper{
+
+    display:none;
+
+    justify-content:center;
+
+    padding:40px 20px 60px;
+
+}
+
+
+.certificate-wrapper.show{
+
+    display:flex;
+
+}
+
+
+.certificate-page{
+
+    width:100%;
+
+    max-width:960px;
+
+}
+
+
+
+/* =========================
+   CERTIFICATE BORDER
+========================= */
+
+.certificate-border{
+
+    position:relative;
+
+    padding:55px 60px;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            #fdfaf1,
+            #f6efdc
+        );
+
+    border:3px double #b8935a;
+
+    box-shadow:
+
+        0 30px 60px rgba(0,0,0,.45),
+        inset 0 0 0 10px #fdfaf1;
+
+    text-align:center;
+
+}
+
+
+.certificate-corner{
+
+    position:absolute;
+
+    width:34px;
+
+    height:34px;
+
+    border:3px solid #b8935a;
+
+}
+
+
+.corner-tl{
+
+    top:12px;
+    left:12px;
+
+    border-right:none;
+    border-bottom:none;
+
+}
+
+
+.corner-tr{
+
+    top:12px;
+    right:12px;
+
+    border-left:none;
+    border-bottom:none;
+
+}
+
+
+.corner-bl{
+
+    bottom:12px;
+    left:12px;
+
+    border-right:none;
+    border-top:none;
+
+}
+
+
+.corner-br{
+
+    bottom:12px;
+    right:12px;
+
+    border-left:none;
+    border-top:none;
+
+}
+
+
+
+/* =========================
+   SEAL
+========================= */
+
+.certificate-seal{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-bottom:10px;
+
+}
+
+
+.seal-ring{
+
+    width:72px;
+
+    height:72px;
+
+    border-radius:50%;
+
+    background:#1e293b;
+
+    border:3px solid #b8935a;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    box-shadow:0 6px 16px rgba(0,0,0,.25);
+
+}
+
+
+.seal-ring span{
+
+    color:#f1c87a;
+
+    font-family:'PixelTitle','VT323',monospace;
+
+    font-size:20px;
+
+}
+
+
+
+/* =========================
+   HEADING
+========================= */
+
+.certificate-eyebrow{
+
+    display:block;
+
+    color:#8a6a3a;
+
+    font-size:14px;
+
+    letter-spacing:3px;
+
+    font-weight:bold;
+
+}
+
+
+.certificate-heading h1{
+
+    margin:10px 0;
+
+    color:#2c2415;
+
+    font-family:'PixelTitle','VT323',monospace;
+
+    font-size:26px;
+
+    letter-spacing:2px;
+
+}
+
+
+.certificate-rule{
+
+    width:120px;
+
+    height:2px;
+
+    margin:14px auto 6px;
+
+    background:#b8935a;
+
+}
+
+
+
+/* =========================
+   BODY
+========================= */
+
+.certificate-presented-to{
+
+    margin-top:22px;
+
+    color:#6b5738;
+
+    font-size:15px;
+
+    letter-spacing:2px;
+
+}
+
+
+.certificate-name{
+
+    margin:12px 0 18px;
+
+    color:#1e293b;
+
+    font-family:'PixelTitle','VT323',monospace;
+
+    font-size:30px;
+
+    border-bottom:2px solid #b8935a;
+
+    display:inline-block;
+
+    padding:0 20px 10px;
+
+}
+
+
+.certificate-statement{
+
+    max-width:640px;
+
+    margin:0 auto;
+
+    color:#4b3f2a;
+
+    font-size:17px;
+
+    line-height:1.7;
+
+}
+
+
+
+/* =========================
+   STATS
+========================= */
+
+.certificate-stats{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:55px;
+
+    margin:32px 0 24px;
+
+}
+
+
+.cert-stat strong{
+
+    display:block;
+
+    color:#8a5a1e;
+
+    font-family:'PixelTitle','VT323',monospace;
+
+    font-size:20px;
+
+}
+
+
+.cert-stat span{
+
+    color:#8a7654;
+
+    font-size:12px;
+
+    letter-spacing:1px;
+
+}
+
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.certificate-footer{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    max-width:560px;
+
+    margin:30px auto 0;
+
+    gap:40px;
+
+}
+
+
+.certificate-signature,
+.certificate-date{
+
+    flex:1;
+
+    text-align:center;
+
+}
+
+
+.signature-line{
+
+    display:block;
+
+    padding-bottom:6px;
+
+    margin-bottom:6px;
+
+    border-bottom:1px solid #8a7654;
+
+    color:#2c2415;
+
+    font-family:'PixelTitle','VT323',monospace;
+
+    font-size:16px;
+
+}
+
+
+.certificate-signature small,
+.certificate-date small{
+
+    color:#8a7654;
+
+    font-size:11px;
+
+    letter-spacing:1px;
+
+}
+
+
+
+/* =========================
+   PRINT
+========================= */
+
+@media print{
+
+    .cert-toolbar,
+    .cert-locked-screen,
+    .cert-name-screen,
+    .certificate-background{
+
+        display:none !important;
+
+    }
+
+
+    body{
+
+        background:white;
+
+    }
+
+
+    .certificate-wrapper{
+
+        display:flex !important;
+
+        padding:0;
+
+    }
+
+
+    .certificate-page{
+
+        max-width:100%;
+
+    }
+
+
+    .certificate-border{
+
+        box-shadow:none;
+
+        border-color:#000;
+
+    }
+
+
+    @page{
+
+        size:landscape;
+
+        margin:0.5cm;
+
+    }
+
+}
+
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+    .cert-toolbar{
+
+        flex-direction:column;
+
+        gap:12px;
+
+        align-items:stretch;
+
+    }
+
+
+    .certificate-border{
+
+        padding:35px 22px;
+
+    }
+
+
+    .certificate-statement{
+
+        font-size:15px;
+
+    }
+
+
+    .certificate-stats{
+
+        gap:25px;
+
+        flex-wrap:wrap;
+
+    }
+
+
+    .certificate-footer{
+
+        flex-direction:column;
+
+        gap:18px;
+
+    }
+
+}

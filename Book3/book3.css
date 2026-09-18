@@ -830,7 +830,8 @@ body{
 
     display:grid;
 
-    grid-template-columns:1fr 1.35fr;
+    /* LEFT = QUESTION | RIGHT = ANSWERS */
+    grid-template-columns:1.35fr 1fr;
 
     gap:10px;
 
@@ -1099,10 +1100,79 @@ body{
 
 
 /* =========================
-   ATTACK VIDEO
+   PLAYER ATTACK FLASH
 ========================= */
 
-.attack-animation{
+.player-attack-flash{
+
+    animation:
+        playerAttackFlash .4s ease;
+
+}
+
+
+@keyframes playerAttackFlash{
+
+    0%{
+
+        filter:
+            brightness(1)
+            saturate(1);
+
+        transform:
+            scale(1);
+
+    }
+
+
+    25%{
+
+        filter:
+            brightness(3)
+            saturate(2)
+            drop-shadow(
+                0 0 25px
+                rgba(255,255,255,.9)
+            );
+
+        transform:
+            scale(1.08);
+
+    }
+
+
+    50%{
+
+        filter:
+            brightness(2)
+            saturate(2)
+            drop-shadow(
+                0 0 35px
+                rgba(167,139,250,.9)
+            );
+
+    }
+
+
+    100%{
+
+        filter:
+            brightness(1)
+            saturate(1);
+
+        transform:
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================
+   SCREEN SPELL FLASH
+========================= */
+
+.screen-cast-flash{
 
     position:fixed;
 
@@ -1112,39 +1182,52 @@ body{
 
     height:100vh;
 
-    z-index:9999;
-
-    display:none;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:#000;
+    z-index:9998;
 
     pointer-events:none;
 
-    opacity:0;
+    background:
+        rgba(167,139,250,.35);
+
+    animation:
+        screenCastFlash .4s ease;
 
 }
 
 
-/* SHOW ATTACK */
+@keyframes screenCastFlash{
 
-.attack-animation.show{
+    0%{
 
-    display:flex;
+        opacity:0;
 
-    animation:attackFadeIn .5s ease forwards;
+    }
+
+
+    25%{
+
+        opacity:1;
+
+    }
+
+
+    100%{
+
+        opacity:0;
+
+    }
 
 }
 
 
-/* VIDEO */
+/* =========================
+   VICTORY VIDEO
+   ONLY AFTER WINNING
+========================= */
 
-.attack-animation video{
+.victory-attack-video{
 
-    position:absolute;
+    position:fixed;
 
     inset:0;
 
@@ -1152,56 +1235,27 @@ body{
 
     height:100vh;
 
+    z-index:10000;
+
     object-fit:cover;
+
+    background:#000;
+
+    display:none;
+
+}
+
+
+.victory-attack-video.show{
 
     display:block;
 
 }
 
 
-/* =========================
-   FADE IN
-========================= */
+.result-box.hidden-until-video{
 
-@keyframes attackFadeIn{
-
-    from{
-
-        opacity:0;
-
-    }
-
-    to{
-
-        opacity:1;
-
-    }
-
-}
-
-
-/* FADE OUT */
-
-.attack-animation.fade-out{
-
-    animation:attackFadeOut .7s ease forwards;
-
-}
-
-
-@keyframes attackFadeOut{
-
-    from{
-
-        opacity:1;
-
-    }
-
-    to{
-
-        opacity:0;
-
-    }
+    visibility:hidden;
 
 }
 
@@ -3079,5 +3133,125 @@ body{
     top:100px;
     left:30px;
     right:auto;
+
+}
+
+/* =========================
+   VICTORY VIDEO MESSAGE
+========================= */
+
+.victory-video-message{
+
+    position:fixed;
+
+    top:50%;
+
+    left:50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width:90%;
+
+    max-width:800px;
+
+    text-align:center;
+
+    z-index:10001;
+
+    pointer-events:none;
+
+    animation:
+        victoryMessageAppear
+        1s ease;
+
+}
+
+
+.victory-video-message h1{
+
+    color:#facc15;
+
+    font-size:clamp(
+        35px,
+        6vw,
+        75px
+    );
+
+    letter-spacing:5px;
+
+    text-shadow:
+
+        0 0 10px
+        rgba(250,204,21,.8),
+
+        0 0 25px
+        rgba(250,204,21,.6),
+
+        0 0 45px
+        rgba(250,204,21,.4);
+
+}
+
+
+.victory-video-message h2{
+
+    margin-top:15px;
+
+    color:white;
+
+    font-size:clamp(
+        22px,
+        3vw,
+        40px
+    );
+
+    letter-spacing:2px;
+
+    text-shadow:
+
+        0 0 15px
+        rgba(255,255,255,.5);
+
+}
+
+
+.victory-video-message p{
+
+    margin-top:12px;
+
+    color:#cbd5e1;
+
+    font-size:clamp(
+        16px,
+        2vw,
+        25px
+    );
+
+    letter-spacing:1px;
+
+}
+
+
+@keyframes victoryMessageAppear{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+            translate(-50%, -40%);
+
+    }
+
+
+    100%{
+
+        opacity:1;
+
+        transform:
+            translate(-50%, -50%);
+
+    }
 
 }

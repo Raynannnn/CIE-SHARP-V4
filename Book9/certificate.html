@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>CIE-Sharp | Certificate of Completion</title>
+
+    <link rel="stylesheet" href="certificate.css">
+
+</head>
+
+<body>
+
+
+    
+
+<!-- =========================
+     BACKGROUND
+========================= -->
+
+<div class="certificate-background"></div>
+
+
+<!-- =========================
+     TOOLBAR (hidden on print)
+========================= -->
+
+<div class="cert-toolbar">
+
+    
+        href="lesson.html"
+        class="cert-back-button"
+    >
+        ← BACK TO LIBRARY
+    </a>
+
+
+    <div class="cert-toolbar-actions">
+
+        <button
+            id="editNameButton"
+            class="cert-secondary-button"
+        >
+            EDIT NAME
+        </button>
+
+
+        <button
+            id="printCertificateButton"
+            class="cert-print-button"
+        >
+            PRINT CERTIFICATE
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     LOCKED STATE
+     (shown if Book IX is not yet completed)
+========================= -->
+
+<section
+    class="cert-locked-screen"
+    id="certLockedScreen"
+>
+
+    <div class="cert-locked-box">
+
+        <div class="cert-locked-title">
+            CERTIFICATE LOCKED
+        </div>
+
+        <p>
+            Complete Book IX — The Null Witches Tower —
+            to unlock your Certificate of Completion.
+        </p>
+
+        
+            href="lesson.html"
+            class="cert-secondary-button"
+        >
+            RETURN TO LIBRARY
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     NAME INPUT MODAL
+========================= -->
+
+<section
+    class="cert-name-screen"
+    id="certNameScreen"
+>
+
+    <div class="cert-name-box">
+
+        <div class="cert-name-title">
+            ONE LAST STEP
+        </div>
+
+        <p>
+            Type the name you'd like printed on your
+            Certificate of Completion.
+        </p>
+
+        <input
+            type="text"
+            id="certNameInput"
+            class="cert-name-input"
+            placeholder="Full Name"
+            maxlength="60"
+        >
+
+        <button
+            id="certNameSubmit"
+            class="cert-print-button"
+        >
+            GENERATE CERTIFICATE
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CERTIFICATE
+========================= -->
+
+<main
+    class="certificate-wrapper"
+    id="certificateWrapper"
+>
+
+    <div class="certificate-page">
+
+        <div class="certificate-border">
+
+            <div class="certificate-corner corner-tl"></div>
+            <div class="certificate-corner corner-tr"></div>
+            <div class="certificate-corner corner-bl"></div>
+            <div class="certificate-corner corner-br"></div>
+
+
+            <div class="certificate-seal">
+
+                <div class="seal-ring">
+
+                    <span>C#</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="certificate-heading">
+
+                <span class="certificate-eyebrow">
+                    CIE-SHARP • THE ARCANE LIBRARY OF C#
+                </span>
+
+                <h1>
+                    CERTIFICATE OF COMPLETION
+                </h1>
+
+                <div class="certificate-rule"></div>
+
+            </div>
+
+
+            <div class="certificate-body">
+
+                <p class="certificate-presented-to">
+                    THIS CERTIFICATE IS PROUDLY PRESENTED TO
+                </p>
+
+                <h2
+                    class="certificate-name"
+                    id="certStudentName"
+                >
+                    Student Name
+                </h2>
+
+                <p class="certificate-statement">
+                    for successfully completing all nine books of the
+                    CIE-Sharp Adventure — mastering C# Beginnings,
+                    Variables &amp; Data Types, Operators, Conditional
+                    Statements, Loops, Methods, Arrays, Classes &amp;
+                    Objects, and defeating the final corruption in the
+                    Null Witches Tower.
+                </p>
+
+            </div>
+
+
+            <div class="certificate-stats">
+
+                <div class="cert-stat">
+
+                    <strong id="certTotalScore">0</strong>
+                    <span>TOTAL POWER</span>
+
+                </div>
+
+
+                <div class="cert-stat">
+
+                    <strong id="certTotalEssence">0</strong>
+                    <span>TOTAL ESSENCE</span>
+
+                </div>
+
+
+                <div class="cert-stat">
+
+                    <strong id="certWitchGuide">—</strong>
+                    <span>WITCH GUIDE</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="certificate-footer">
+
+                <div class="certificate-signature">
+
+                    <span class="signature-line">CIE-Sharp Academy</span>
+
+                    <small>PROGRAM COORDINATOR</small>
+
+                </div>
+
+
+                <div class="certificate-date">
+
+                    <span
+                        class="signature-line"
+                        id="certDate"
+                    >
+                        —
+                    </span>
+
+                    <small>DATE COMPLETED</small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+    <div class="cert-toolbar-actions">
+
+        <button
+            id="editNameButton"
+            class="cert-secondary-button"
+        >
+            EDIT NAME
+        </button>
+
+
+        <button
+            id="downloadPdfButton"
+            class="cert-print-button"
+        >
+            DOWNLOAD AS PDF
+        </button>
+
+
+        <button
+            id="printCertificateButton"
+            class="cert-secondary-button"
+        >
+            PRINT
+        </button>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script src="certificate.js"></script>
+
+</body>
+
+</html>

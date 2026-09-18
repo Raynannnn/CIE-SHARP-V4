@@ -538,17 +538,26 @@ var trialStatus =
 var battleMessage =
     document.getElementById("battleMessage");
 
+    /* =========================
+   VICTORY ATTACK VIDEO
+========================= */
 
-var attackAnimation =
-    document.getElementById("attackAnimation");
+var victoryAttackVideo =
+    document.getElementById(
+        "victoryAttackVideo"
+    );
 
 
-var attackVideo =
-    document.getElementById("attackVideo");
+var victoryAttackVideoSource =
+    document.getElementById(
+        "victoryAttackVideoSource"
+    );
 
 
-var attackVideoSource =
-    document.getElementById("attackVideoSource");
+var resultBox =
+    document.getElementById(
+        "resultBox"
+    );
 
 var damageSound =
     document.getElementById("damageSound");
@@ -1388,71 +1397,161 @@ function disableAnswers(){
 }
 
 
+/* =========================
+   FLASH ATTACK SOUND
+========================= */
+
+function playFlashSound(){
+
+    try{
+
+        var AudioContext =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+
+        if(!AudioContext){
+
+            return;
+
+        }
+
+
+        var audioContext =
+            new AudioContext();
+
+
+        var oscillator =
+            audioContext.createOscillator();
+
+
+        var gain =
+            audioContext.createGain();
+
+
+        oscillator.connect(gain);
+
+
+        gain.connect(
+            audioContext.destination
+        );
+
+
+        oscillator.type =
+            "square";
+
+
+        oscillator.frequency.setValueAtTime(
+            280,
+            audioContext.currentTime
+        );
+
+
+        oscillator.frequency.exponentialRampToValueAtTime(
+            100,
+            audioContext.currentTime + .18
+        );
+
+
+        gain.gain.setValueAtTime(
+            .10,
+            audioContext.currentTime
+        );
+
+
+        gain.gain.exponentialRampToValueAtTime(
+            .001,
+            audioContext.currentTime + .22
+        );
+
+
+        oscillator.start();
+
+
+        oscillator.stop(
+            audioContext.currentTime + .22
+        );
+
+
+    }
+
+    catch(error){
+
+        console.log(
+            "Flash sound could not play."
+        );
+
+    }
+
+}
+
 
 /* =========================
-   FULLSCREEN ATTACK VIDEO
+   PLAYER ATTACK FLASH
+   No video during gameplay
 ========================= */
 
 function playAttack(onComplete){
 
-    attackVideoSource.src =
-        player.attackVideo;
+    playFlashSound();
 
 
-    attackVideo.load();
+    /* =========================
+       FLASH PLAYER
+    ========================= */
+
+    playerFighterEl.classList.remove(
+        "player-attack-flash"
+    );
 
 
-    attackAnimation.classList.remove("fade-out");
-
-    attackAnimation.classList.add("show");
+    void playerFighterEl.offsetWidth;
 
 
-    attackVideo.currentTime = 0;
+    playerFighterEl.classList.add(
+        "player-attack-flash"
+    );
 
 
-    attackVideo.play().catch(function(){
+    /* =========================
+       FULL SCREEN FLASH
+    ========================= */
 
-        console.log(
-            "Attack video could not start."
+    var flash =
+        document.createElement("div");
+
+
+    flash.className =
+        "screen-cast-flash";
+
+
+    document.body.appendChild(
+        flash
+    );
+
+
+    setTimeout(function(){
+
+        playerFighterEl.classList.remove(
+            "player-attack-flash"
         );
 
-    });
+
+        flash.remove();
 
 
-    attackVideo.onended = function(){
+        if(
+            typeof onComplete ===
+            "function"
+        ){
 
-        attackAnimation.classList.add(
-            "fade-out"
-        );
+            onComplete();
 
+        }
 
-        setTimeout(function(){
-
-            attackAnimation.classList.remove(
-                "show"
-            );
-
-            attackAnimation.classList.remove(
-                "fade-out"
-            );
-
-            attackVideo.pause();
-
-            attackVideo.currentTime = 0;
-
-
-            if(typeof onComplete === "function"){
-
-                onComplete();
-
-            }
-
-        }, 700);
-
-    };
+    }, 400);
 
 }
-
 
 
 /* =========================
@@ -2159,11 +2258,199 @@ function finishGame(){
     );
 
 
+    /* =========================
+       HIDE ANSWER GUIDE
+       WHEN GAME ENDS
+    ========================= */
+
+    var answerGuide =
+        document.getElementById(
+            "answerGuideArrow"
+        );
+
+
+    if(answerGuide){
+
+        answerGuide.classList.remove(
+            "show"
+        );
+
+    }
+
+
+    var answerPanel =
+        document.querySelector(
+            ".answer-panel"
+        );
+
+
+    if(answerPanel){
+
+        answerPanel.classList.remove(
+            "answer-guide-highlight"
+        );
+
+    }
+
+
+    var witchBadge =
+        document.querySelector(
+            ".witch-guide-badge"
+        );
+
+
+    if(witchBadge){
+
+        witchBadge.classList.remove(
+            "show"
+        );
+
+    }
+
+
     saveBookProgress();
 
+
+    /* =========================
+       SHOW VICTORY VIDEO
+    ========================= */
+
+    setTimeout(function(){
+
+        playVictoryAttack();
+
+    }, 400);
+
 }
+/* =========================
+   PLAY VICTORY VIDEO
+   Video only appears after
+   completing Book II
+========================= */
+
+function playVictoryAttack(){
+
+    if(
+        !victoryAttackVideo ||
+        !victoryAttackVideoSource
+    ){
+
+        return;
+
+    }
 
 
+    /* =========================
+       LOAD SELECTED WITCH VIDEO
+    ========================= */
+
+    victoryAttackVideoSource.src =
+        player.attackVideo;
+
+
+    victoryAttackVideo.load();
+
+
+    /* =========================
+       CREATE VICTORY MESSAGE
+    ========================= */
+
+    var victoryMessage =
+        document.createElement("div");
+
+
+    victoryMessage.className =
+        "victory-video-message";
+
+
+    victoryMessage.innerHTML =
+
+        '<h1>CONGRATULATIONS!</h1>' +
+
+        '<h2>You Defeated the Data Mimic!</h2>' +
+
+        '<p>' +
+        'The Data Vault is safe once again.' +
+        '</p>';
+
+
+    document.body.appendChild(
+        victoryMessage
+    );
+
+
+    /* =========================
+       SHOW VIDEO
+    ========================= */
+
+    victoryAttackVideo.classList.add(
+        "show"
+    );
+
+
+    if(resultBox){
+
+        resultBox.classList.add(
+            "hidden-until-video"
+        );
+
+    }
+
+
+    victoryAttackVideo.currentTime = 0;
+
+
+    victoryAttackVideo.play().catch(function(){
+
+        console.log(
+            "Victory video could not play."
+        );
+
+
+        victoryAttackVideo.classList.remove(
+            "show"
+        );
+
+
+        victoryMessage.remove();
+
+
+        if(resultBox){
+
+            resultBox.classList.remove(
+                "hidden-until-video"
+            );
+
+        }
+
+    });
+
+
+    /* =========================
+       VIDEO FINISHED
+    ========================= */
+
+    victoryAttackVideo.onended = function(){
+
+        victoryAttackVideo.classList.remove(
+            "show"
+        );
+
+
+        victoryMessage.remove();
+
+
+        if(resultBox){
+
+            resultBox.classList.remove(
+                "hidden-until-video"
+            );
+
+        }
+
+    };
+
+}
 
 /* =========================
    SAVE PROGRESS

@@ -908,6 +908,36 @@ bookButtons.forEach(book => {
 
 function checkBookUnlocks() {
 
+    var certButton =
+    document.getElementById(
+        "viewCertificateButton"
+    );
+
+
+if(certButton){
+
+    if(
+        localStorage.getItem(
+            "book9Completed"
+        ) === "true"
+    ){
+
+        certButton.style.display =
+            "inline-block";
+
+
+        certButton.onclick =
+            function(){
+
+                window.location.href =
+                    "certificate.html";
+
+            };
+
+    }
+
+}
+
     const bookCards =
         document.querySelectorAll(
             ".story-book"

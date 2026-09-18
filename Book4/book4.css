@@ -808,17 +808,18 @@ BOTTOM
 ========================= */
 
 .battle-bottom{
+    
 
+    height:200px;
 
-height:200px;
+    min-height:200px;
 
-min-height:200px;
+    display:grid;
 
-display:grid;
+    /* LEFT = QUESTION | RIGHT = ANSWERS */
+    grid-template-columns:1.35fr 1fr;
 
-grid-template-columns:1fr 1.35fr;
-
-gap:10px;
+    gap:10px;
 
 
 }

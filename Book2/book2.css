@@ -830,7 +830,8 @@ body{
 
     display:grid;
 
-    grid-template-columns:1fr 1.35fr;
+    /* LEFT = QUESTION | RIGHT = ANSWERS */
+    grid-template-columns:1.35fr 1fr;
 
     gap:10px;
 
@@ -1098,112 +1099,7 @@ body{
 
 
 
-/* =========================
-   ATTACK VIDEO
-========================= */
 
-.attack-animation{
-
-    position:fixed;
-
-    inset:0;
-
-    width:100vw;
-
-    height:100vh;
-
-    z-index:9999;
-
-    display:none;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:#000;
-
-    pointer-events:none;
-
-    opacity:0;
-
-}
-
-
-/* SHOW ATTACK */
-
-.attack-animation.show{
-
-    display:flex;
-
-    animation:attackFadeIn .5s ease forwards;
-
-}
-
-
-/* VIDEO */
-
-.attack-animation video{
-
-    position:absolute;
-
-    inset:0;
-
-    width:100vw;
-
-    height:100vh;
-
-    object-fit:cover;
-
-    display:block;
-
-}
-
-
-/* =========================
-   FADE IN
-========================= */
-
-@keyframes attackFadeIn{
-
-    from{
-
-        opacity:0;
-
-    }
-
-    to{
-
-        opacity:1;
-
-    }
-
-}
-
-
-/* FADE OUT */
-
-.attack-animation.fade-out{
-
-    animation:attackFadeOut .7s ease forwards;
-
-}
-
-
-@keyframes attackFadeOut{
-
-    from{
-
-        opacity:1;
-
-    }
-
-    to{
-
-        opacity:0;
-
-    }
-
-}
 
 
 /* =========================
@@ -3080,5 +2976,165 @@ body{
     top:100px;
     left:30px;
     right:auto;
+
+}
+
+/* =========================
+   PLAYER ATTACK FLASH
+========================= */
+
+.player-attack-flash{
+
+    animation:
+        playerAttackFlash .4s ease;
+
+}
+
+
+@keyframes playerAttackFlash{
+
+    0%{
+
+        filter:
+            brightness(1)
+            saturate(1);
+
+        transform:
+            scale(1);
+
+    }
+
+
+    25%{
+
+        filter:
+            brightness(3)
+            saturate(2)
+            drop-shadow(
+                0 0 25px
+                rgba(255,255,255,.9)
+            );
+
+        transform:
+            scale(1.08);
+
+    }
+
+
+    50%{
+
+        filter:
+            brightness(2)
+            saturate(2)
+            drop-shadow(
+                0 0 35px
+                rgba(167,139,250,.9)
+            );
+
+    }
+
+
+    100%{
+
+        filter:
+            brightness(1)
+            saturate(1);
+
+        transform:
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================
+   SCREEN SPELL FLASH
+========================= */
+
+.screen-cast-flash{
+
+    position:fixed;
+
+    inset:0;
+
+    width:100vw;
+
+    height:100vh;
+
+    z-index:9998;
+
+    pointer-events:none;
+
+    background:
+        rgba(167,139,250,.35);
+
+    animation:
+        screenCastFlash .4s ease;
+
+}
+
+
+@keyframes screenCastFlash{
+
+    0%{
+
+        opacity:0;
+
+    }
+
+
+    25%{
+
+        opacity:1;
+
+    }
+
+
+    100%{
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* =========================
+   VICTORY VIDEO
+   ONLY AFTER WINNING
+========================= */
+
+.victory-attack-video{
+
+    position:fixed;
+
+    inset:0;
+
+    width:100vw;
+
+    height:100vh;
+
+    z-index:10000;
+
+    object-fit:cover;
+
+    background:#000;
+
+    display:none;
+
+}
+
+
+.victory-attack-video.show{
+
+    display:block;
+
+}
+
+
+.result-box.hidden-until-video{
+
+    visibility:hidden;
 
 }
