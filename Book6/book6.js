@@ -90,6 +90,172 @@ document.getElementById("startWitchImage").src =
 document.getElementById("startWitchName").textContent =
     player.name;
 
+/* =========================================================
+   ATTACK FLASH (same as Book II)
+   Walang video habang naglalaban. Flash lang ng witch
+   + screen flash. Video ay sa victory na lang.
+   ========================================================= */
+
+var playerFighterEl =
+    document.querySelector(".player-fighter");
+
+var victoryAttackVideo =
+    document.getElementById("victoryAttackVideo");
+
+var victoryAttackVideoSource =
+    document.getElementById("victoryAttackVideoSource");
+
+var resultBox =
+    document.getElementById("resultBox");
+
+
+function playFlashSound(){
+
+    try{
+
+        var Ctx =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+        if(!Ctx){
+            return;
+        }
+
+        var ctx = new Ctx();
+        var osc = ctx.createOscillator();
+        var gain = ctx.createGain();
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.type = "square";
+
+        osc.frequency.setValueAtTime(320, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(110, ctx.currentTime + 0.22);
+
+        gain.gain.setValueAtTime(0.12, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.25);
+
+        osc.start();
+        osc.stop(ctx.currentTime + 0.25);
+
+    }
+    catch(error){
+
+        console.log("Attack flash sound could not play.");
+
+    }
+
+}
+
+
+function playAttack(onComplete){
+
+    playFlashSound();
+
+    if(playerFighterEl){
+
+        playerFighterEl.classList.remove("player-attack-flash");
+
+        void playerFighterEl.offsetWidth;
+
+        playerFighterEl.classList.add("player-attack-flash");
+
+    }
+
+    var flash = document.createElement("div");
+
+    flash.className = "screen-cast-flash";
+
+    document.body.appendChild(flash);
+
+    setTimeout(function(){
+
+        if(playerFighterEl){
+
+            playerFighterEl.classList.remove("player-attack-flash");
+
+        }
+
+        flash.remove();
+
+        if(typeof onComplete === "function"){
+
+            onComplete();
+
+        }
+
+    }, 400);
+
+}
+
+
+var victoryVideoFallback = null;
+
+function showResultBoxAfterVideo(){
+
+    clearTimeout(victoryVideoFallback);
+
+    if(victoryAttackVideo){
+
+        victoryAttackVideo.classList.remove("show");
+
+        victoryAttackVideo.pause();
+
+    }
+
+    if(resultBox){
+
+        resultBox.classList.remove("hidden-until-video");
+
+    }
+
+}
+
+
+function playVictoryAttack(){
+
+    if(
+        !victoryAttackVideo ||
+        !victoryAttackVideoSource ||
+        !resultBox
+    ){
+
+        return;
+
+    }
+
+    victoryAttackVideoSource.src =
+        player.attackVideo;
+
+    victoryAttackVideo.load();
+
+    victoryAttackVideo.classList.add("show");
+
+    resultBox.classList.add("hidden-until-video");
+
+    victoryAttackVideo.currentTime = 0;
+
+    victoryAttackVideo.onended = showResultBoxAfterVideo;
+
+    victoryAttackVideo.onerror = showResultBoxAfterVideo;
+
+    var playPromise = victoryAttackVideo.play();
+
+    if(playPromise && playPromise.catch){
+
+        playPromise.catch(showResultBoxAfterVideo);
+
+    }
+
+    /* safety net: lalabas pa rin ang result box kahit di mag-end ang video */
+
+    victoryVideoFallback =
+        setTimeout(showResultBoxAfterVideo, 20000);
+
+}
+
+
 
 /* =========================
    SHOW ONLY THIS WITCH'S SIGNATURE POWER
@@ -272,6 +438,7 @@ int damage = 50;`,
 
 Heal();`,
         expectedAnswer: "Heal(20);",
+        acceptPattern: "^Heal\\(\\s*\\d+\\s*\\);$",
         placeholder: "Complete the method call...",
         rationale:
             "The method requires one integer parameter. Try passing a number such as 20."
@@ -368,9 +535,6 @@ var trialStatus = document.getElementById("trialStatus");
 
 var battleMessage = document.getElementById("battleMessage");
 
-var attackAnimation = document.getElementById("attackAnimation");
-var attackVideo = document.getElementById("attackVideo");
-var attackVideoSource = document.getElementById("attackVideoSource");
 
 var enemyAttackAnimation = document.getElementById("enemyAttackAnimation");
 var enemyAttackVideo = document.getElementById("enemyAttackVideo");
@@ -648,7 +812,7 @@ function renderTypedInput(q){
     input.className = "type-answer-input";
     input.id = "typedAnswerInput";
     input.placeholder =
-        q.placeholder ? ("e.g. " + q.placeholder) : "Type your answer...";
+        q.placeholder || "Type your answer...";
     input.autocomplete = "off";
     input.spellcheck = false;
 
@@ -737,7 +901,13 @@ function submitTypedAnswer(){
     var q = questions[currentQuestion];
 
     var isCorrect =
-        isTypedAnswerCorrect(input.value, q.expectedAnswer);
+        isTypedAnswerCorrect(input.value, q.expectedAnswer) ||
+        (
+            q.acceptPattern &&
+            new RegExp(q.acceptPattern).test(
+                normalizeAnswer(input.value)
+            )
+        );
 
     input.disabled = true;
     submitBtn.disabled = true;
@@ -833,7 +1003,7 @@ function resolveAnswer(isCorrect){
             enemyHP = 0;
         }
 
-        playWitchAttack(function(){
+        playAttack(function(){
 
             showDamageEffect(enemyFighterEl);
 
@@ -997,60 +1167,10 @@ function disableAnswers(){
 
 
 /* =========================
-   WITCH ATTACK VIDEO (correct answer)
-========================= */
-
-function playWitchAttack(onComplete){
-
-    if(!attackAnimation || !attackVideo || !attackVideoSource){
-
-        if(typeof onComplete === "function"){
-            onComplete();
-        }
-
-        return;
-
-    }
-
-    attackVideoSource.src = player.attackVideo;
-    attackVideo.load();
-
-    attackAnimation.classList.remove("fade-out");
-    attackAnimation.classList.add("show");
-
-    attackVideo.currentTime = 0;
-
-    attackVideo.play().catch(function(){
-
-        console.log("Attack video could not start.");
-
-    });
-
-    attackVideo.onended = function(){
-
-        attackAnimation.classList.add("fade-out");
-
-        setTimeout(function(){
-
-            attackAnimation.classList.remove("show");
-            attackAnimation.classList.remove("fade-out");
-
-            attackVideo.pause();
-            attackVideo.currentTime = 0;
-
-            if(typeof onComplete === "function"){
-                onComplete();
-            }
-
-        }, 700);
-
-    };
-
-}
-
-
-/* =========================
    COPY WARLOCK ATTACK VIDEO (wrong answer)
+   Isang beses lang tatawagin ang onComplete, kahit
+   mag-"ended" na AT mag-fallback timer (dati ay 2x
+   tumatawag kaya double damage at nalalaktawan ang tanong).
 ========================= */
 
 function playEnemyAttack(onComplete){
@@ -1065,18 +1185,18 @@ function playEnemyAttack(onComplete){
 
     }
 
-    enemyAttackAnimation.classList.remove("fade-out");
-    enemyAttackAnimation.classList.add("show");
+    var finished = false;
+    var fallbackTimer = null;
 
-    enemyAttackVideo.currentTime = 0;
+    function finish(){
 
-    enemyAttackVideo.play().catch(function(){
+        if(finished){
+            return;
+        }
 
-        console.log("Enemy attack video could not start.");
+        finished = true;
 
-    });
-
-    enemyAttackVideo.onended = function(){
+        clearTimeout(fallbackTimer);
 
         enemyAttackAnimation.classList.add("fade-out");
 
@@ -1094,16 +1214,39 @@ function playEnemyAttack(onComplete){
 
         }, 700);
 
-    };
+    }
 
-    /* safety fallback in case the video file is missing */
-    setTimeout(function(){
+    enemyAttackAnimation.classList.remove("fade-out");
+    enemyAttackAnimation.classList.add("show");
 
-        if(typeof onComplete === "function"){
-            onComplete();
-        }
+    enemyAttackVideo.currentTime = 0;
 
-    }, 2500);
+    enemyAttackVideo.onended = finish;
+    enemyAttackVideo.onerror = finish;
+
+    if(enemyAttackVideoSource){
+
+        /* pag walang video file, sa <source> lumalabas ang error */
+        enemyAttackVideoSource.onerror = finish;
+
+    }
+
+    var playPromise = enemyAttackVideo.play();
+
+    if(playPromise && playPromise.catch){
+
+        playPromise.catch(function(){
+
+            console.log("Enemy attack video could not start.");
+
+            finish();
+
+        });
+
+    }
+
+    /* safety net kung hindi mag-"ended" ang video */
+    fallbackTimer = setTimeout(finish, 15000);
 
 }
 
@@ -1524,6 +1667,10 @@ function finishGame(){
     document.getElementById("resultScreen").classList.add("show");
 
     saveBookProgress();
+
+    /* video ng witch, sa victory lang */
+
+    setTimeout(playVictoryAttack, 400);
 
 }
 

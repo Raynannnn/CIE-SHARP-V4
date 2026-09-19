@@ -564,31 +564,6 @@
 
 
 <!-- =========================
-     ATTACK VIDEO
-========================= -->
-
-<div
-    class="attack-animation"
-    id="attackAnimation"
->
-
-    <video
-        id="attackVideo" 
-        playsinline
-    >
-
-        <source
-            id="attackVideoSource"
-            src=""
-            type="video/mp4"
-        >
-
-    </video>
-
-</div>
-
-
-<!-- =========================
      SOUND EFFECTS
 ========================= -->
 
@@ -749,7 +724,21 @@
     id="resultScreen"
 >
 
-    <div class="result-box">
+    <video
+        class="victory-attack-video"
+        id="victoryAttackVideo"
+        playsinline
+    >
+
+        <source
+            id="victoryAttackVideoSource"
+            src=""
+            type="video/mp4"
+        >
+
+    </video>
+
+    <div class="result-box" id="resultBox">
 
         <div class="result-icon">
             ☠️
@@ -766,7 +755,7 @@
         <p>
             The Endless Wraith's armor cracks apart, revealing the
             third fragment of the Great C# Spellbook inside.
-            Book IV is now unlocked.
+            Book VI is now unlocked.
         </p>
 
 

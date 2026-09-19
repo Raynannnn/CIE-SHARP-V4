@@ -32,7 +32,7 @@
 <img
     class="battle-background"
     src="images/book6-method-hall-bg.jpg"
-    alt="Book III Background"
+    alt="Book VI Background"
 >
 
 <div class="background-overlay"></div>
@@ -556,31 +556,6 @@
 
 
 <!-- =========================
-     ATTACK VIDEO
-========================= -->
-
-<div
-    class="attack-animation"
-    id="attackAnimation"
->
-
-    <video
-        id="attackVideo" 
-        playsinline
-    >
-
-        <source
-            id="attackVideoSource"
-            src=""
-            type="video/mp4"
-        >
-
-    </video>
-
-</div>
-
-
-<!-- =========================
      COPY WARLOCK ATTACK VIDEO
 ========================= -->
 
@@ -761,7 +736,21 @@
     id="resultScreen"
 >
 
-    <div class="result-box">
+    <video
+        class="victory-attack-video"
+        id="victoryAttackVideo"
+        playsinline
+    >
+
+        <source
+            id="victoryAttackVideoSource"
+            src=""
+            type="video/mp4"
+        >
+
+    </video>
+
+    <div class="result-box" id="resultBox">
 
         <div class="result-icon">
             🕯️

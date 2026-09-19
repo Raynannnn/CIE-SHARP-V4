@@ -86,6 +86,172 @@ document.getElementById("startWitchImage").src =
 document.getElementById("startWitchName").textContent =
     player.name;
 
+/* =========================================================
+   ATTACK FLASH (same as Book II)
+   Walang video habang naglalaban. Flash lang ng witch
+   + screen flash. Video ay sa victory na lang.
+   ========================================================= */
+
+var playerFighterEl =
+    document.querySelector(".player-fighter");
+
+var victoryAttackVideo =
+    document.getElementById("victoryAttackVideo");
+
+var victoryAttackVideoSource =
+    document.getElementById("victoryAttackVideoSource");
+
+var resultBox =
+    document.getElementById("resultBox");
+
+
+function playFlashSound(){
+
+    try{
+
+        var Ctx =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+        if(!Ctx){
+            return;
+        }
+
+        var ctx = new Ctx();
+        var osc = ctx.createOscillator();
+        var gain = ctx.createGain();
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.type = "square";
+
+        osc.frequency.setValueAtTime(320, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(110, ctx.currentTime + 0.22);
+
+        gain.gain.setValueAtTime(0.12, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.25);
+
+        osc.start();
+        osc.stop(ctx.currentTime + 0.25);
+
+    }
+    catch(error){
+
+        console.log("Attack flash sound could not play.");
+
+    }
+
+}
+
+
+function playAttack(onComplete){
+
+    playFlashSound();
+
+    if(playerFighterEl){
+
+        playerFighterEl.classList.remove("player-attack-flash");
+
+        void playerFighterEl.offsetWidth;
+
+        playerFighterEl.classList.add("player-attack-flash");
+
+    }
+
+    var flash = document.createElement("div");
+
+    flash.className = "screen-cast-flash";
+
+    document.body.appendChild(flash);
+
+    setTimeout(function(){
+
+        if(playerFighterEl){
+
+            playerFighterEl.classList.remove("player-attack-flash");
+
+        }
+
+        flash.remove();
+
+        if(typeof onComplete === "function"){
+
+            onComplete();
+
+        }
+
+    }, 400);
+
+}
+
+
+var victoryVideoFallback = null;
+
+function showResultBoxAfterVideo(){
+
+    clearTimeout(victoryVideoFallback);
+
+    if(victoryAttackVideo){
+
+        victoryAttackVideo.classList.remove("show");
+
+        victoryAttackVideo.pause();
+
+    }
+
+    if(resultBox){
+
+        resultBox.classList.remove("hidden-until-video");
+
+    }
+
+}
+
+
+function playVictoryAttack(){
+
+    if(
+        !victoryAttackVideo ||
+        !victoryAttackVideoSource ||
+        !resultBox
+    ){
+
+        return;
+
+    }
+
+    victoryAttackVideoSource.src =
+        player.attackVideo;
+
+    victoryAttackVideo.load();
+
+    victoryAttackVideo.classList.add("show");
+
+    resultBox.classList.add("hidden-until-video");
+
+    victoryAttackVideo.currentTime = 0;
+
+    victoryAttackVideo.onended = showResultBoxAfterVideo;
+
+    victoryAttackVideo.onerror = showResultBoxAfterVideo;
+
+    var playPromise = victoryAttackVideo.play();
+
+    if(playPromise && playPromise.catch){
+
+        playPromise.catch(showResultBoxAfterVideo);
+
+    }
+
+    /* safety net: lalabas pa rin ang result box kahit di mag-end ang video */
+
+    victoryVideoFallback =
+        setTimeout(showResultBoxAfterVideo, 20000);
+
+}
+
+
 
 /* =========================================================
    SIGNATURE POWER
@@ -1668,28 +1834,21 @@ function handleCorrectAnswer(q){
         true
     );
 
+playAttack(function(){
 
-    showRationale(
-        q.rationale
-    );
+        showFloatingNumber(
+            enemyCharacter,
+            "-" + damage,
+            "dmg"
+        );
 
+        playSound(
+            damageSound
+        );
 
-    showFloatingNumber(
-        enemyCharacter,
-        "-" + damage,
-        "damage"
-    );
+        enemyHitEffect();
 
-
-    playSound(
-        damageSound
-    );
-
-
-    enemyHitEffect();
-
-
-    playerAttack();
+    });
 
 
     if(
@@ -1709,24 +1868,6 @@ function handleCorrectAnswer(q){
 
     }
 
-
-    if(
-        currentQuestion ===
-        questions.length - 1
-    ){
-
-        setTimeout(
-            function(){
-
-                finishBook();
-
-            },
-            1200
-        );
-
-        return;
-
-    }
 
 
   showNextChallenge(function(){
@@ -2296,75 +2437,6 @@ function stopTimeAttack(){
 
 
 /* =========================================================
-   PLAYER ATTACK
-   ========================================================= */
-
-function playerAttack(){
-
-    if(!attackAnimation){
-        return;
-    }
-
-
-    attackAnimation.classList.remove(
-        "active"
-    );
-
-
-    void attackAnimation.offsetWidth;
-
-
-    attackAnimation.classList.add(
-        "active"
-    );
-
-
-    if(
-        attackVideo &&
-        attackVideoSource
-    ){
-
-        var attackData =
-            characters[
-                selectedCharacter
-            ];
-
-
-        if(
-            attackData &&
-            attackData.attackVideo
-        ){
-
-            attackVideoSource.src =
-                attackData.attackVideo;
-
-
-            attackVideo.load();
-
-
-            attackVideo.play()
-                .catch(function(){});
-
-        }
-
-    }
-
-
-    setTimeout(
-        function(){
-
-            attackAnimation.classList.remove(
-                "active"
-            );
-
-        },
-        1000
-    );
-
-}
-
-
-/* =========================================================
    ENEMY HIT EFFECT
    ========================================================= */
 
@@ -2482,9 +2554,13 @@ function showFloatingNumber(
     number.className =
         "floating-number " +
         (
-            type ||
-            "damage"
+            (!type || type === "damage")
+                ? "dmg"
+                : type
         );
+
+    number.style.position =
+        "fixed";
 
 
     number.textContent =
@@ -2796,21 +2872,6 @@ function useMysticSight(){
     }
 
 
-    var button =
-        document.getElementById(
-            "mysticSightPower"
-        );
-
-
-    if(button){
-
-        button.textContent =
-            "MYSTIC SIGHT (" +
-            mysticSightCount +
-            ")";
-
-    }
-
 }
 
 
@@ -2849,21 +2910,6 @@ function useOmnidata(){
         q.rationale
     );
 
-
-    var button =
-        document.getElementById(
-            "omnidataPower"
-        );
-
-
-    if(button){
-
-        button.textContent =
-            "OMNIDATA (" +
-            omnidataCount +
-            ")";
-
-    }
 
 }
 
@@ -2940,21 +2986,6 @@ function useSyntaxSorcery(){
     );
 
 
-    var button =
-        document.getElementById(
-            "syntaxSorceryPower"
-        );
-
-
-    if(button){
-
-        button.textContent =
-            "SYNTAX SORCERY (" +
-            syntaxSorceryCount +
-            ")";
-
-    }
-
 }
 
 
@@ -3013,21 +3044,6 @@ function useFlameburst(){
     );
 
 
-    var button =
-        document.getElementById(
-            "flameburstPower"
-        );
-
-
-    if(button){
-
-        button.textContent =
-            "FLAMEBURST (" +
-            flameburstCount +
-            ")";
-
-    }
-
 
     if(enemyHP <= 0){
 
@@ -3068,21 +3084,6 @@ function useMindcraft(){
         true
     );
 
-
-    var button =
-        document.getElementById(
-            "mindcraftPower"
-        );
-
-
-    if(button){
-
-        button.textContent =
-            "MINDCRAFT (" +
-            mindcraftCount +
-            ")";
-
-    }
 
 }
 
@@ -3171,24 +3172,19 @@ handleWrongAnswer =
 
             answered = true;
 
-
             stopTimeAttack();
-
 
             showRationale(
                 q.rationale
             );
 
-
             showNextChallenge(function(){
 
-        currentQuestion++;
+                currentQuestion++;
 
-        loadQuestion();
+                loadQuestion();
 
-        });
-
-       }
+            });
 
             return;
 
@@ -3197,7 +3193,7 @@ handleWrongAnswer =
 
         originalHandleWrongAnswer(q);
 
-    
+    };
 
 
 /* =========================================================
@@ -3870,6 +3866,27 @@ function showVictory(){
         );
 
 
+        var finalScoreEl =
+            document.getElementById("finalScore");
+
+        var finalEssenceEl =
+            document.getElementById("finalEssence");
+
+        if(finalScoreEl){
+            finalScoreEl.textContent = score;
+        }
+
+        if(finalEssenceEl){
+            finalEssenceEl.textContent = essence;
+        }
+
+
+        /* video ng witch, sa victory lang */
+
+        setTimeout(playVictoryAttack, 400);
+
+
+
         var resultTitle =
             resultScreen.querySelector(
                 ".result-title"
@@ -4240,6 +4257,41 @@ function restartBook5(){
 
     }
 
+
+    /* balik ang lahat ng power-ups */
+
+    hintCount = 2;
+    healCount = 1;
+    doubleCount = 1;
+    mysticSightCount = 1;
+    omnidataCount = 1;
+    syntaxSorceryCount = 1;
+    flameburstCount = 1;
+    mindcraftCount = 1;
+
+    [
+        hintButton,
+        healButton,
+        doubleButton,
+        mysticButton,
+        omnidataButton,
+        syntaxButton,
+        flameburstButton,
+        mindcraftButton
+    ].forEach(function(button){
+
+        if(button){
+
+            button.classList.remove("used");
+
+            button.disabled = false;
+
+        }
+
+    });
+
+    refreshPowerUI();
+
 }
 
 
@@ -4270,6 +4322,16 @@ if(retryButton){
 document.addEventListener(
     "keydown",
     function(event){
+
+        if(
+            event.target &&
+            event.target.tagName === "INPUT"
+        ){
+
+            return;
+
+        }
+
 
         if(answered){
             return;
@@ -4986,244 +5048,75 @@ document.addEventListener(
 
 function updatePowerCounts(){
 
-    var hintCountElement 
-        document.getElementById(
-            "hintCount"
-        );
+    var pairs = [
 
-    var healCountElement 
-        document.getElementById(
-            "healCount"
-        );
+        ["hintCount", hintCount],
+        ["healCount", healCount],
+        ["doubleCount", doubleCount],
+        ["mysticSightCount", mysticSightCount],
+        ["omnidataCount", omnidataCount],
+        ["syntaxSorceryCount", syntaxSorceryCount],
+        ["flameburstCount", flameburstCount],
+        ["mindcraftCount", mindcraftCount]
 
-    var doubleCountElement 
-        document.getElementById(
-            "doubleCount"
-        );
+    ];
 
-    var mysticCountElement 
-        document.getElementById(
-            "mysticSightCount"
-        );
+    pairs.forEach(function(pair){
 
-    var omnidataCountElement 
-        document.getElementById(
-            "omnidataCount"
-        );
+        var element =
+            document.getElementById(pair[0]);
 
-    var syntaxCountElement 
-        document.getElementById(
-            "syntaxSorceryCount"
-        );
+        if(element){
 
-    var flameburstCountElement 
-        document.getElementById(
-            "flameburstCount"
-        );
+            element.textContent =
+                pair[1];
 
-    var mindcraftCountElement 
-        document.getElementById(
-            "mindcraftCount"
-        );
+        }
 
-
-    if(hintCountElement){
-
-        hintCountElement.textContent 
-            hintCount;
-
-    }
-
-
-    if(healCountElement){
-
-        healCountElement.textContent 
-            healCount;
-
-    }
-
-
-    if(doubleCountElement){
-
-        doubleCountElement.textContent 
-            doubleCount;
-
-    }
-
-
-    if(mysticCountElement){
-
-        mysticCountElement.textContent 
-            mysticSightCount;
-
-    }
-
-
-    if(omnidataCountElement){
-
-        omnidataCountElement.textContent 
-            omnidataCount;
-
-    }
-
-
-    if(syntaxCountElement){
-
-        syntaxCountElement.textContent 
-            syntaxSorceryCount;
-
-    }
-
-
-    if(flameburstCountElement){
-
-        flameburstCountElement.textContent 
-            flameburstCount;
-
-    }
-
-
-    if(mindcraftCountElement){
-
-        mindcraftCountElement.textContent 
-            mindcraftCount;
-
-    }
+    });
 
 }
 
 
-/* 
+/* =========================================================
    UPDATE POWER BUTTON STATE
- */
+   ========================================================= */
 
 function updatePowerButtons(){
 
-    if(
-        hintButton &&
-        hintCount < 0
-    ){
+    var buttonPairs = [
 
-        hintButton.classList.add(
-            "used"
-        );
+        [hintButton, hintCount],
+        [healButton, healCount],
+        [doubleButton, doubleCount],
+        [mysticButton, mysticSightCount],
+        [omnidataButton, omnidataCount],
+        [syntaxButton, syntaxSorceryCount],
+        [flameburstButton, flameburstCount],
+        [mindcraftButton, mindcraftCount]
 
-        hintButton.disabled 
-            true;
+    ];
 
-    }
+    buttonPairs.forEach(function(pair){
 
+        var button = pair[0];
 
-    if(
-        healButton &&
-        healCount < 0
-    ){
+        if(button && pair[1] <= 0){
 
-        healButton.classList.add(
-            "used"
-        );
+            button.classList.add("used");
 
-        healButton.disabled 
-            true;
+            button.disabled = true;
 
-    }
+        }
 
-
-    if(
-        doubleButton &&
-        doubleCount < 0
-    ){
-
-        doubleButton.classList.add(
-            "used"
-        );
-
-        doubleButton.disabled 
-            true;
-
-    }
-
-
-    if(
-        mysticButton &&
-        mysticSightCount < 0
-    ){
-
-        mysticButton.classList.add(
-            "used"
-        );
-
-        mysticButton.disabled 
-            true;
-
-    }
-
-
-    if(
-        omnidataButton &&
-        omnidataCount < 0
-    ){
-
-        omnidataButton.classList.add(
-            "used"
-        );
-
-        omnidataButton.disabled 
-            true;
-
-    }
-
-
-    if(
-        syntaxButton &&
-        syntaxSorceryCount < 0
-    ){
-
-        syntaxButton.classList.add(
-            "used"
-        );
-
-        syntaxButton.disabled 
-            true;
-
-    }
-
-
-    if(
-        flameburstButton &&
-        flameburstCount < 0
-    ){
-
-        flameburstButton.classList.add(
-            "used"
-        );
-
-        flameburstButton.disabled 
-            true;
-
-    }
-
-
-    if(
-        mindcraftButton &&
-        mindcraftCount < 0
-    ){
-
-        mindcraftButton.classList.add(
-            "used"
-        );
-
-        mindcraftButton.disabled 
-            true;
-
-    }
+    });
 
 }
 
 
-/* 
+/* =========================================================
    REFRESH POWER UI
- */
+   ========================================================= */
 
 function refreshPowerUI(){
 
@@ -5800,226 +5693,6 @@ function(){
     ========================= */
 
     originalBook5Finish();
-
-
-};
-
-
-
-/* =========================================================
-   ATTACK ANIMATION FIX
-========================================================= */
-
-var originalBook5PlayerAttack =
-    playerAttack;
-
-
-playerAttack =
-function(callback){
-
-
-    var animationElement =
-        document.getElementById(
-            "attackAnimation"
-        );
-
-
-    var videoElement =
-        document.getElementById(
-            "attackVideo"
-        );
-
-
-    /* =========================
-       SAFETY CHECK
-    ========================= */
-
-    if(
-        !animationElement ||
-        !videoElement
-    ){
-
-
-        if(
-            typeof callback ===
-            "function"
-        ){
-
-            callback();
-
-        }
-
-
-        return;
-
-    }
-
-
-    /* =========================
-       CURRENT WITCH
-    ========================= */
-
-    var currentPlayer =
-        characters[selectedCharacter] ||
-        characters.GiTei;
-
-
-    var completed =
-        false;
-
-
-    function endAnimation(){
-
-
-        if(completed){
-
-            return;
-
-        }
-
-
-        completed =
-            true;
-
-
-        videoElement.pause();
-
-
-        animationElement.classList.remove(
-            "show",
-            "fade-out"
-        );
-
-
-        animationElement.style.display =
-            "none";
-
-
-        if(
-            typeof callback ===
-            "function"
-        ){
-
-            callback();
-
-        }
-
-
-    }
-
-
-    /* =========================
-       SHOW ANIMATION
-    ========================= */
-
-    animationElement.style.display =
-        "flex";
-
-
-    animationElement.classList.remove(
-        "fade-out"
-    );
-
-
-    animationElement.classList.add(
-        "show"
-    );
-
-
-    /* =========================
-       LOAD VIDEO
-    ========================= */
-
-    if(
-        currentPlayer.attackVideo
-    ){
-
-
-        videoElement.src =
-            currentPlayer.attackVideo;
-
-
-        videoElement.currentTime =
-            0;
-
-
-        videoElement.onended =
-            function(){
-
-
-                endAnimation();
-
-
-            };
-
-
-        videoElement.onerror =
-            function(){
-
-
-                setTimeout(
-                    endAnimation,
-                    500
-                );
-
-
-            };
-
-
-        videoElement.load();
-
-
-        var playPromise =
-            videoElement.play();
-
-
-        if(playPromise){
-
-
-            playPromise.catch(
-                function(){
-
-
-                    setTimeout(
-                        endAnimation,
-                        500
-                    );
-
-
-                }
-            );
-
-
-        }
-
-
-        /* SAFETY FALLBACK */
-
-        setTimeout(
-            function(){
-
-
-                endAnimation();
-
-
-            },
-
-            5000
-        );
-
-
-    }
-
-    else{
-
-
-        setTimeout(
-            endAnimation,
-            500
-        );
-
-
-    }
 
 
 };

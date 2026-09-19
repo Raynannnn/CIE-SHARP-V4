@@ -1,8 +1,8 @@
 /* =========================================================
    STRUGGLE GUIDE — small popup that points at the menu
-   button. Same file works in every book. Link this AFTER
-   the book's own CSS file (and after answer-guide.css if
-   used).
+   button, then at the Readings item inside the pause menu.
+   Same file works in every book. Link this AFTER the
+   book's own CSS file (and after answer-guide.css if used).
 ========================================================= */
 
 .struggle-popup{
@@ -203,6 +203,105 @@
 
 
 /* =========================================================
+   READINGS ITEM INSIDE THE PAUSE MENU
+   (glow + a small "TAP HERE" tag pushed to the right)
+========================================================= */
+
+.pause-menu-item.struggle-highlight{
+
+    background:#1e1b4b;
+
+    border-color:#a78bfa;
+
+    animation:struggleItemPulse 1.2s ease-in-out infinite;
+
+}
+
+
+@keyframes struggleItemPulse{
+
+    0%,100%{
+
+        box-shadow:0 0 0 0 rgba(168,85,247,.65);
+
+    }
+
+    50%{
+
+        box-shadow:0 0 0 7px rgba(168,85,247,0);
+
+    }
+
+}
+
+
+.struggle-tag{
+
+    margin-left:auto;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    padding:2px 10px 2px 8px;
+
+    border-radius:999px;
+
+    background:#7c3aed;
+
+    color:#fff;
+
+    font-size:14px;
+
+    letter-spacing:1px;
+
+    white-space:nowrap;
+
+    animation:struggleNudge .8s ease-in-out infinite;
+
+}
+
+
+/* little arrow pointing left, made with CSS (no emoji) */
+
+.struggle-tag::before{
+
+    content:"";
+
+    width:0;
+
+    height:0;
+
+    border-top:5px solid transparent;
+
+    border-bottom:5px solid transparent;
+
+    border-right:7px solid #e9d5ff;
+
+}
+
+
+@keyframes struggleNudge{
+
+    0%,100%{
+
+        transform:translateX(0);
+
+    }
+
+    50%{
+
+        transform:translateX(-5px);
+
+    }
+
+}
+
+
+
+/* =========================================================
    SMALL SCREENS
 ========================================================= */
 
@@ -225,6 +324,14 @@
     .struggle-popup p{
 
         font-size:15px;
+
+    }
+
+    .struggle-tag{
+
+        font-size:13px;
+
+        padding:2px 8px 2px 6px;
 
     }
 

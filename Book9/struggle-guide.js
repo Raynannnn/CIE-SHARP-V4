@@ -4,8 +4,13 @@
    popup appears next to the pause (menu) button and points
    at it, suggesting the player open Menu > Readings.
 
-   - "No thanks, I got it" hides it, and it comes back after
-     another 20 seconds of no interaction.
+   Step 1: popup points at the menu button.
+   Step 2: if the player taps the menu button, the Readings
+           item inside the pause menu gets highlighted with
+           a "TAP HERE" tag.
+
+   - "No thanks, I got it" hides the popup, and it comes back
+     after another 20 seconds of no interaction.
    - Any click / key / input, or a new question, also hides
      it and restarts the timer.
    - Same file works in every book — just paste as-is.
@@ -18,9 +23,13 @@
 
 (function(){
 
-    var IDLE_DELAY = 20000; /* 20 seconds */
+    var IDLE_DELAY = 10000; /* 10 seconds */
 
     var MENU_BUTTON_ID = "pauseMenuButtonToggle";
+
+    var READINGS_BUTTON_ID = "pauseReadingsButton";
+
+    var PAUSE_OVERLAY_ID = "pauseOverlay";
 
 
     var idleTimer = null;
@@ -28,6 +37,8 @@
     var popup = null;
 
     var watchedAnswers = null;
+
+    var watchedOverlay = null;
 
 
 
@@ -87,6 +98,17 @@
         var el = document.getElementById(id);
 
         return !!(el && el.classList.contains("show"));
+
+    }
+
+
+    function isMenuButtonTarget(target){
+
+        return !!(
+            target &&
+            target.closest &&
+            target.closest("#" + MENU_BUTTON_ID)
+        );
 
     }
 
@@ -194,7 +216,7 @@
 
 
     /* =========================================================
-       SHOW / HIDE
+       SHOW / HIDE POPUP
     ========================================================= */
 
     function showPopup(){
@@ -243,6 +265,112 @@
 
 
     /* =========================================================
+       STEP 2 — POINT AT "READINGS" INSIDE THE PAUSE MENU
+    ========================================================= */
+
+    function pointAtReadings(){
+
+        var overlay =
+            document.getElementById(PAUSE_OVERLAY_ID);
+
+        var readings =
+            document.getElementById(READINGS_BUTTON_ID);
+
+
+        if(
+            !overlay ||
+            !readings ||
+            !overlay.classList.contains("show")
+        ){
+
+            return;
+
+        }
+
+
+        readings.classList.add("struggle-highlight");
+
+
+        if(!readings.querySelector(".struggle-tag")){
+
+            var tag = document.createElement("span");
+
+            tag.className = "struggle-tag";
+
+            tag.textContent = "TAP HERE";
+
+            readings.appendChild(tag);
+
+        }
+
+
+        watchPauseOverlay(overlay);
+
+    }
+
+
+    function clearReadingsPointer(){
+
+        var readings =
+            document.getElementById(READINGS_BUTTON_ID);
+
+
+        if(!readings){
+
+            return;
+
+        }
+
+
+        readings.classList.remove("struggle-highlight");
+
+
+        var tag = readings.querySelector(".struggle-tag");
+
+        if(tag){
+
+            tag.remove();
+
+        }
+
+    }
+
+
+    /* remove the pointer as soon as the pause menu closes */
+
+    function watchPauseOverlay(overlay){
+
+        if(watchedOverlay === overlay){
+
+            return;
+
+        }
+
+
+        watchedOverlay = overlay;
+
+
+        new MutationObserver(function(){
+
+            if(!overlay.classList.contains("show")){
+
+                clearReadingsPointer();
+
+            }
+
+        }).observe(overlay, {
+
+            attributes:true,
+
+            attributeFilter:["class"]
+
+        });
+
+    }
+
+
+
+    /* =========================================================
        ONLY TRIGGER WHEN THERE'S A QUESTION TO ANSWER
     ========================================================= */
 
@@ -254,7 +382,7 @@
 
         if(
             isVisible("nextChallengeOverlay") ||
-            isVisible("pauseOverlay") ||
+            isVisible(PAUSE_OVERLAY_ID) ||
             isVisible("resultScreen") ||
             isVisible("loseScreen")
         ){
@@ -297,6 +425,13 @@
         }
 
 
+        /* did the player follow the hint and tap the menu button? */
+
+        var followedHint =
+            isShown() &&
+            isMenuButtonTarget(event.target);
+
+
         if(isShown()){
 
             hidePopup();   /* also restarts the timer */
@@ -305,6 +440,13 @@
         else{
 
             resetIdleTimer();
+
+        }
+
+
+        if(followedHint){
+
+            pointAtReadings();
 
         }
 

@@ -4527,3 +4527,55 @@ body{
     right:auto;
 
 }
+
+
+/* =========================================================
+   BOOK V — ATTACK FLASH (kapareho ng Book II)
+   Walang video habang naglalaban, flash lang ng witch.
+========================================================= */
+
+.player-attack-flash{
+
+    animation:
+        playerAttackFlash .4s ease;
+
+}
+
+
+@keyframes playerAttackFlash{
+
+    0%{
+        filter:brightness(1) saturate(1);
+        transform:scale(1);
+    }
+
+    25%{
+        filter:
+            brightness(3)
+            saturate(2)
+            drop-shadow(0 0 25px rgba(255,255,255,.9));
+        transform:scale(1.08);
+    }
+
+    50%{
+        filter:
+            brightness(2)
+            saturate(2)
+            drop-shadow(0 0 35px rgba(74,222,128,.9));
+    }
+
+    100%{
+        filter:brightness(1) saturate(1);
+        transform:scale(1);
+    }
+
+}
+
+
+/* itatago ang result box habang tumatakbo ang victory video */
+
+.result-box.hidden-until-video{
+
+    visibility:hidden;
+
+}
