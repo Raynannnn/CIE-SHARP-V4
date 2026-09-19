@@ -1099,110 +1099,240 @@ body{
 
 
 
-/* =========================
-   ATTACK VIDEO
-========================= */
+/* =========================================================
+   BOOK 5 ATTACK FLASH
+   ========================================================= */
 
-.attack-animation{
+.cast-flash{
+    animation:
+        book5CastFlash
+        500ms
+        ease-out;
+}
+
+
+@keyframes book5CastFlash{
+
+    0%{
+        filter:
+            brightness(1)
+            saturate(1);
+    }
+
+
+    25%{
+        filter:
+            brightness(3)
+            saturate(1.5)
+            drop-shadow(
+                0 0 22px
+                rgba(255,255,255,.95)
+            );
+    }
+
+
+    50%{
+        filter:
+            brightness(2)
+            saturate(1.4)
+            drop-shadow(
+                0 0 30px
+                rgba(255,255,255,.75)
+            );
+    }
+
+
+    100%{
+        filter:
+            brightness(1)
+            saturate(1);
+    }
+
+}
+
+
+/* =========================================================
+   WHITE PLAYER ATTACK SCREEN FLASH
+   ========================================================= */
+
+.screen-cast-flash{
 
     position:fixed;
 
     inset:0;
 
-    width:100vw;
-
-    height:100vh;
-
-    z-index:9999;
-
-    display:none;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:#000;
+    z-index:9998;
 
     pointer-events:none;
 
-    opacity:0;
+    background:
+        rgba(255,255,255,.45);
+
+    animation:
+        book5ScreenCastFlash
+        400ms
+        ease-out;
 
 }
 
 
-/* SHOW ATTACK */
+@keyframes book5ScreenCastFlash{
 
-.attack-animation.show{
+    0%{
+        opacity:0;
+    }
 
-    display:flex;
 
-    animation:attackFadeIn .5s ease forwards;
+    25%{
+        opacity:1;
+    }
+
+
+    100%{
+        opacity:0;
+    }
 
 }
 
 
-/* VIDEO */
+/* =========================================================
+   RED ENEMY ATTACK SCREEN FLASH
+   ========================================================= */
 
-.attack-animation video{
+.screen-hit-flash{
 
-    position:absolute;
+    position:fixed;
 
     inset:0;
 
-    width:100vw;
+    z-index:9998;
 
-    height:100vh;
+    pointer-events:none;
 
-    object-fit:cover;
+    background:
+        rgba(255,30,60,.45);
+
+    animation:
+        book5ScreenHitFlash
+        450ms
+        ease-out;
+
+}
+
+
+
+@keyframes book5ScreenHitFlash{
+
+    0%{
+        opacity:0;
+    }
+
+
+    20%{
+        opacity:1;
+
+    }
+
+
+
+
+    100%{
+        opacity:0;
+    }
+
+}
+
+/* =========================================================
+   BOOK 5 VICTORY ATTACK VIDEO
+   ========================================================= */
+
+.victory-attack-video{
+
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+    background:#000;
+
+    z-index:10000;
+
+    display:none;
+
+}
+
+
+.victory-attack-video.show{
 
     display:block;
 
 }
 
 
-/* =========================
-   FADE IN
-========================= */
+/* =========================================================
+   VICTORY VIDEO MESSAGE
+   ========================================================= */
 
-@keyframes attackFadeIn{
+.victory-video-message{
 
-    from{
+    position:fixed;
 
-        opacity:0;
+    left:50%;
 
-    }
+    bottom:8%;
 
-    to{
+    transform:
+        translateX(-50%);
 
-        opacity:1;
+    z-index:10001;
 
-    }
+    width:min(
+        90%,
+        700px
+    );
+
+    padding:18px 24px;
+
+    text-align:center;
+
+    font-family:
+        "Press Start 2P",
+        monospace;
+
+    font-size:16px;
+
+    line-height:1.8;
+
+    color:#fff;
+
+    background:
+        rgba(0,0,0,.82);
+
+    border:
+        2px solid
+        rgba(255,255,255,.8);
+
+    box-shadow:
+        0 0 25px
+        rgba(255,255,255,.35);
+
+    pointer-events:none;
 
 }
 
 
-/* FADE OUT */
+.victory-video-message strong{
 
-.attack-animation.fade-out{
+    display:block;
 
-    animation:attackFadeOut .7s ease forwards;
+    margin-bottom:8px;
 
-}
-
-
-@keyframes attackFadeOut{
-
-    from{
-
-        opacity:1;
-
-    }
-
-    to{
-
-        opacity:0;
-
-    }
+    font-size:20px;
 
 }
 

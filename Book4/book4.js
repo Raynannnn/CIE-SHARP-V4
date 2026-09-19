@@ -716,14 +716,26 @@ document.getElementById("trialStatus");
 var battleMessage =
 document.getElementById("battleMessage");
 
-var attackAnimation =
-document.getElementById("attackAnimation");
+/* =========================
+   VICTORY ATTACK VIDEO
+========================= */
 
-var attackVideo =
-document.getElementById("attackVideo");
+var victoryAttackVideo =
+    document.getElementById(
+        "victoryAttackVideo"
+    );
 
-var attackVideoSource =
-document.getElementById("attackVideoSource");
+
+var victoryAttackVideoSource =
+    document.getElementById(
+        "victoryAttackVideoSource"
+    );
+
+
+var resultBox =
+    document.getElementById(
+        "resultBox"
+    );
 
 var damageSound =
 document.getElementById("damageSound");
@@ -1296,75 +1308,158 @@ buttons.forEach(
 }
 
 /* =========================
-ATTACK VIDEO
+   PLAYER ATTACK SOUND
+========================= */
+
+function playFlashSound(){
+
+    try{
+
+        var AudioContextClass =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+
+        if(!AudioContextClass){
+
+            return;
+
+        }
+
+
+        var audioContext =
+            new AudioContextClass();
+
+
+        var oscillator =
+            audioContext.createOscillator();
+
+
+        var gain =
+            audioContext.createGain();
+
+
+        oscillator.connect(
+            gain
+        );
+
+
+        gain.connect(
+            audioContext.destination
+        );
+
+
+        oscillator.type =
+            "square";
+
+
+        oscillator.frequency.setValueAtTime(
+            320,
+            audioContext.currentTime
+        );
+
+
+        oscillator.frequency.exponentialRampToValueAtTime(
+            110,
+            audioContext.currentTime + 0.22
+        );
+
+
+        gain.gain.setValueAtTime(
+            0.12,
+            audioContext.currentTime
+        );
+
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.001,
+            audioContext.currentTime + 0.25
+        );
+
+
+        oscillator.start();
+
+
+        oscillator.stop(
+            audioContext.currentTime + 0.25
+        );
+
+    }
+
+    catch(error){
+
+        console.log(
+            "Attack flash sound could not play."
+        );
+
+    }
+
+}
+
+/* =========================
+   PLAYER ATTACK FLASH
+   No video during gameplay
 ========================= */
 
 function playAttack(onComplete){
 
-
-attackVideoSource.src =
-    player.attackVideo;
+    playFlashSound();
 
 
-attackVideo.load();
+    /* =========================
+       FLASH PLAYER
+    ========================= */
 
-
-attackAnimation.classList.remove(
-    "fade-out"
-);
-
-
-attackAnimation.classList.add(
-    "show"
-);
-
-
-attackVideo.currentTime = 0;
-
-
-attackVideo.play().catch(function(){
-
-    console.log(
-        "Attack video could not start."
+    playerFighterEl.classList.remove(
+        "player-attack-flash"
     );
 
-});
+
+    void playerFighterEl.offsetWidth;
 
 
-attackVideo.onended = function(){
+    playerFighterEl.classList.add(
+        "player-attack-flash"
+    );
 
-    attackAnimation.classList.add(
-        "fade-out"
+
+    /* =========================
+       FULL SCREEN FLASH
+    ========================= */
+
+    var flash =
+        document.createElement("div");
+
+
+    flash.className =
+        "screen-cast-flash";
+
+
+    document.body.appendChild(
+        flash
     );
 
 
     setTimeout(function(){
 
-        attackAnimation.classList.remove(
-            "show"
+        playerFighterEl.classList.remove(
+            "player-attack-flash"
         );
 
 
-        attackAnimation.classList.remove(
-            "fade-out"
-        );
+        flash.remove();
 
 
-        attackVideo.pause();
-
-        attackVideo.currentTime = 0;
-
-
-        if(typeof onComplete === "function"){
+        if(
+            typeof onComplete ===
+            "function"
+        ){
 
             onComplete();
 
         }
 
-    }, 700);
-
-};
-
+    }, 400);
 
 }
 
@@ -2144,38 +2239,129 @@ rationaleClose.addEventListener(
 }
 
 /* =========================
+   PLAY VICTORY VIDEO
+   Video only appears after
+   completing Book II
+========================= */
+
+function playVictoryAttack(){
+
+    if(
+        !victoryAttackVideo ||
+        !victoryAttackVideoSource
+    ){
+
+        return;
+
+    }
+
+
+    victoryAttackVideoSource.src =
+        player.attackVideo;
+
+
+    victoryAttackVideo.load();
+
+
+    victoryAttackVideo.classList.add(
+        "show"
+    );
+
+
+    resultBox.classList.add(
+        "hidden-until-video"
+    );
+
+
+    victoryAttackVideo.currentTime = 0;
+
+
+    victoryAttackVideo.play().catch(function(){
+
+        console.log(
+            "Victory video could not play."
+        );
+
+
+        victoryAttackVideo.classList.remove(
+            "show"
+        );
+
+
+        resultBox.classList.remove(
+            "hidden-until-video"
+        );
+
+    });
+
+
+    victoryAttackVideo.onended = function(){
+
+        victoryAttackVideo.classList.remove(
+            "show"
+        );
+
+
+        resultBox.classList.remove(
+            "hidden-until-video"
+        );
+
+    };
+
+}
+
+/* =========================
 FINISH GAME
 ========================= */
 
 function finishGame(){
 
-
-document.getElementById(
-    "finalScore"
-).textContent =
-    score;
-
-
-document.getElementById(
-    "finalEssence"
-).textContent =
-    essence;
+    trialStatus.textContent =
+        questions.length +
+        " / " +
+        questions.length;
 
 
-document.getElementById(
-    "resultScreen"
-).classList.add(
-    "show"
-);
+    document.getElementById(
+        "finalScore"
+    ).textContent =
+        score;
 
-localStorage.setItem("book4Completed", "true");
-localStorage.setItem("book4Score", score);
-localStorage.setItem("book4Essence", essence);
-localStorage.setItem("book5Unlocked", "true");
+
+    document.getElementById(
+        "finalEssence"
+    ).textContent =
+        essence;
+
+
+    document.getElementById(
+        "resultScreen"
+    ).classList.add(
+        "show"
+    );
+
+
+    saveBookProgress();
+
+
+    /* =========================
+       SHOW SELECTED WITCH
+       VIDEO ONLY ON WIN
+    ========================= */
+
+    setTimeout(function(){
+
+        playVictoryAttack();
+
+    }, 400);
+
+    localStorage.setItem("book4Completed", "true");
+    localStorage.setItem("book4Score", score);
+    localStorage.setItem("book4Essence", essence);
+    localStorage.setItem("book5Unlocked", "true");
 
 
 }
-
 /* =========================
 GAME OVER
 ========================= */

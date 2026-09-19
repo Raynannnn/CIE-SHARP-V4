@@ -2321,6 +2321,11 @@ function finishGame(){
 
     }, 400);
 
+    localStorage.setItem("book3Completed", "true");
+    localStorage.setItem("book3Score", score);
+    localStorage.setItem("book3Essence", essence);
+    localStorage.setItem("book4Unlocked", "true");
+
 }
 /* =========================
    PLAY VICTORY VIDEO

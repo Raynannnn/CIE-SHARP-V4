@@ -1211,10 +1211,79 @@ body{
 
 
 /* =========================
-   ATTACK VIDEO
+   PLAYER ATTACK FLASH
 ========================= */
 
-.attack-animation{
+.player-attack-flash{
+
+    animation:
+        playerAttackFlash .4s ease;
+
+}
+
+
+@keyframes playerAttackFlash{
+
+    0%{
+
+        filter:
+            brightness(1)
+            saturate(1);
+
+        transform:
+            scale(1);
+
+    }
+
+
+    25%{
+
+        filter:
+            brightness(3)
+            saturate(2)
+            drop-shadow(
+                0 0 25px
+                rgba(255,255,255,.9)
+            );
+
+        transform:
+            scale(1.08);
+
+    }
+
+
+    50%{
+
+        filter:
+            brightness(2)
+            saturate(2)
+            drop-shadow(
+                0 0 35px
+                rgba(167,139,250,.9)
+            );
+
+    }
+
+
+    100%{
+
+        filter:
+            brightness(1)
+            saturate(1);
+
+        transform:
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================
+   SCREEN SPELL FLASH
+========================= */
+
+.screen-cast-flash{
 
     position:fixed;
 
@@ -1224,35 +1293,52 @@ body{
 
     height:100vh;
 
-    z-index:9999;
-
-    display:none;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:#000;
+    z-index:9998;
 
     pointer-events:none;
 
-    opacity:0;
+    background:
+        rgba(167,139,250,.35);
+
+    animation:
+        screenCastFlash .4s ease;
 
 }
 
 
-.attack-animation.show{
+@keyframes screenCastFlash{
 
-    display:flex;
+    0%{
 
-    animation:attackFadeIn .5s ease forwards;
+        opacity:0;
+
+    }
+
+
+    25%{
+
+        opacity:1;
+
+    }
+
+
+    100%{
+
+        opacity:0;
+
+    }
 
 }
 
 
-.attack-animation video{
+/* =========================
+   VICTORY VIDEO
+   ONLY AFTER WINNING
+========================= */
 
-    position:absolute;
+.victory-attack-video{
+
+    position:fixed;
 
     inset:0;
 
@@ -1260,40 +1346,27 @@ body{
 
     height:100vh;
 
+    z-index:10000;
+
     object-fit:cover;
 
-}
+    background:#000;
 
-
-@keyframes attackFadeIn{
-
-    from{
-        opacity:0;
-    }
-
-    to{
-        opacity:1;
-    }
+    display:none;
 
 }
 
 
-.attack-animation.fade-out{
+.victory-attack-video.show{
 
-    animation:attackFadeOut .7s ease forwards;
+    display:block;
 
 }
 
 
-@keyframes attackFadeOut{
+.result-box.hidden-until-video{
 
-    from{
-        opacity:1;
-    }
-
-    to{
-        opacity:0;
-    }
+    visibility:hidden;
 
 }
 

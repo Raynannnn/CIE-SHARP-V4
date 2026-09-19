@@ -65,7 +65,7 @@
         }
 
 
-        removeExistingOverlay();
+              removeExistingOverlay();
 
 
         target.classList.add(
@@ -73,7 +73,40 @@
         );
 
 
-        var overlay =
+        /* force-hide the answer-guide arrow/badge and the
+           struggle-guide popup if they happen to be open */
+
+        var guideArrow =
+            document.getElementById("answerGuideArrow");
+
+        if(guideArrow){
+
+            guideArrow.classList.remove("show");
+
+        }
+
+
+        var guideBadge =
+            document.querySelector(".witch-guide-badge");
+
+        if(guideBadge){
+
+            guideBadge.classList.remove("show");
+
+        }
+
+
+        var struggleOverlay =
+            document.getElementById("struggleOverlay");
+
+        if(struggleOverlay){
+
+            struggleOverlay.classList.remove("show");
+
+        }
+
+
+              var overlay =
             document.createElement("div");
 
         overlay.id =
@@ -82,6 +115,26 @@
         overlay.className =
             "next-challenge-overlay";
 
+
+        var ring =
+            document.createElement("div");
+
+        ring.className =
+            "portal-ring";
+
+        overlay.appendChild(ring);
+
+
+        var labelEl =
+            document.createElement("div");
+
+        labelEl.className =
+            "next-challenge-label";
+
+        labelEl.textContent =
+            "✦ CHALLENGE CLEARED ✦";
+
+        overlay.appendChild(labelEl);
 
         var button =
             document.createElement("button");

@@ -1,133 +1,114 @@
 /* =========================================================
-   STRUGGLE GUIDE — asks the player if they're stuck
-   Same file works in every book. Link this AFTER the
-   book's own CSS file (and after answer-guide.css if used).
+   STRUGGLE GUIDE — small popup that points at the menu
+   button. Same file works in every book. Link this AFTER
+   the book's own CSS file (and after answer-guide.css if
+   used).
 ========================================================= */
 
-.struggle-overlay{
+.struggle-popup{
 
     position:fixed;
 
-    inset:0;
-
     z-index:6000;
 
-    display:none;
+    width:240px;
 
-    align-items:center;
+    max-width:calc(100vw - 24px);
 
-    justify-content:center;
+    padding:14px 14px 12px;
 
-    padding:20px;
-
-    background:rgba(2,6,23,.82);
-
-    backdrop-filter:blur(6px);
-
-}
-
-
-.struggle-overlay.show{
-
-    display:flex;
-
-}
-
-
-.struggle-card{
-
-    width:min(420px,100%);
-
-    padding:32px 26px;
-
-    text-align:center;
+    text-align:left;
 
     background:#0f172a;
 
     border:2px solid #8b5cf6;
 
-    border-radius:16px;
+    border-radius:12px;
 
-    box-shadow:0 0 45px rgba(139,92,246,.3);
-
-    animation:struggleIn .25s ease;
-
-}
-
-
-@keyframes struggleIn{
-
-    from{
-
-        opacity:0;
-
-        transform:scale(.9);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:scale(1);
-
-    }
-
-}
-
-
-.struggle-card h2{
-
-    color:#e9d5ff;
+    box-shadow:0 0 30px rgba(139,92,246,.35);
 
     font-family:'VT323',monospace;
 
-    font-size:22px;
+    /* hidden by default, but still measurable by JS */
 
-    margin-bottom:12px;
+    opacity:0;
 
-    line-height:1.4;
+    visibility:hidden;
+
+    pointer-events:none;
+
+    transform:translateY(6px);
+
+    transition:opacity .25s ease, transform .25s ease, visibility .25s;
 
 }
 
 
-.struggle-card p{
+.struggle-popup.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+    pointer-events:auto;
+
+    transform:translateY(0);
+
+}
+
+
+.struggle-popup h2{
+
+    color:#e9d5ff;
+
+    font-size:20px;
+
+    line-height:1.3;
+
+    margin-bottom:6px;
+
+}
+
+
+.struggle-popup p{
 
     color:#94a3b8;
+
+    font-size:16px;
+
+    line-height:1.4;
+
+    margin-bottom:12px;
+
+}
+
+
+.struggle-popup p strong{
+
+    color:#c4b5fd;
+
+    font-weight:normal;
+
+}
+
+
+.struggle-dismiss{
+
+    width:100%;
+
+    padding:8px 12px;
+
+    background:#1e293b;
+
+    border:1px solid #475569;
+
+    border-radius:7px;
+
+    color:#cbd5e1;
 
     font-family:'VT323',monospace;
 
     font-size:16px;
-
-    margin-bottom:22px;
-
-    line-height:1.5;
-
-}
-
-
-.struggle-actions{
-
-    display:flex;
-
-    gap:12px;
-
-    justify-content:center;
-
-    flex-wrap:wrap;
-
-}
-
-
-.struggle-btn{
-
-    padding:11px 24px;
-
-    border-radius:8px;
-
-    font-family:'VT323',monospace;
-
-    font-size:17px;
 
     cursor:pointer;
 
@@ -136,38 +117,7 @@
 }
 
 
-.struggle-btn.yes{
-
-    border:none;
-
-    background:linear-gradient(90deg,#7c3aed,#a855f7);
-
-    color:#fff;
-
-}
-
-
-.struggle-btn.yes:hover{
-
-    transform:translateY(-2px);
-
-    box-shadow:0 8px 20px rgba(124,58,237,.35);
-
-}
-
-
-.struggle-btn.no{
-
-    background:#1e293b;
-
-    border:1px solid #475569;
-
-    color:#cbd5e1;
-
-}
-
-
-.struggle-btn.no:hover{
+.struggle-dismiss:hover{
 
     background:#334155;
 
@@ -176,23 +126,144 @@
 }
 
 
+
+/* =========================================================
+   ARROW — JS sets --arrow-x so it lines up with the button
+========================================================= */
+
+.struggle-popup::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:var(--arrow-x, 50%);
+
+    width:12px;
+
+    height:12px;
+
+    background:#0f172a;
+
+    transform:translateX(-50%) rotate(45deg);
+
+}
+
+
+.struggle-popup.below::after{
+
+    top:-8px;
+
+    border-left:2px solid #8b5cf6;
+
+    border-top:2px solid #8b5cf6;
+
+}
+
+
+.struggle-popup.above::after{
+
+    bottom:-8px;
+
+    border-right:2px solid #8b5cf6;
+
+    border-bottom:2px solid #8b5cf6;
+
+}
+
+
+
+/* =========================================================
+   MENU BUTTON GLOW WHILE THE POPUP IS SHOWING
+========================================================= */
+
+.pause-menu-button.struggle-highlight{
+
+    animation:strugglePulse 1.2s ease-in-out infinite;
+
+}
+
+
+@keyframes strugglePulse{
+
+    0%,100%{
+
+        box-shadow:0 6px 16px rgba(0,0,0,.4), 0 0 0 0 rgba(168,85,247,.7);
+
+    }
+
+    50%{
+
+        box-shadow:0 6px 16px rgba(0,0,0,.4), 0 0 0 10px rgba(168,85,247,0);
+
+    }
+
+}
+
+
+
+/* =========================================================
+   SMALL SCREENS
+========================================================= */
+
 @media(max-width:650px){
 
-    .struggle-card{
+    .struggle-popup{
 
-        padding:26px 18px;
+        width:220px;
 
-    }
-
-    .struggle-card h2{
-
-        font-size:19px;
+        padding:12px;
 
     }
 
-    .struggle-card p{
+    .struggle-popup h2{
+
+        font-size:18px;
+
+    }
+
+    .struggle-popup p{
 
         font-size:15px;
+
+    }
+
+}
+
+
+/* short landscape phones */
+
+@media (orientation:landscape) and (max-height:500px){
+
+    .struggle-popup{
+
+        width:210px;
+
+        padding:9px 10px;
+
+    }
+
+    .struggle-popup h2{
+
+        font-size:16px;
+
+        margin-bottom:3px;
+
+    }
+
+    .struggle-popup p{
+
+        font-size:13px;
+
+        margin-bottom:7px;
+
+    }
+
+    .struggle-dismiss{
+
+        padding:5px 8px;
+
+        font-size:14px;
 
     }
 

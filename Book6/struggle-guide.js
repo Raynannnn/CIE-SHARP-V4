@@ -1,49 +1,62 @@
 /* =========================================================
    STRUGGLE GUIDE
-   Detects when the player is idle for 7 seconds on a
-   question and offers to send them to the reviewer.
-   Same file works in every book — just paste as-is.
+   After 20 seconds of no interaction on a question, a small
+   popup appears next to the pause (menu) button and points
+   at it, suggesting the player open Menu > Readings.
 
-   Optional: set window.STRUGGLE_REVIEWER_URL BEFORE this
-   script tag if a book's reviewer path is different from
-   the default below.
+   - "No thanks, I got it" hides it, and it comes back after
+     another 20 seconds of no interaction.
+   - Any click / key / input, or a new question, also hides
+     it and restarts the timer.
+   - Same file works in every book — just paste as-is.
+
+   NOTE: the Readings link itself lives in pause-menu.js.
+   If a book needs a different path, keep setting
+   window.STRUGGLE_REVIEWER_URL before the scripts — the
+   pause menu reuses it automatically.
 ========================================================= */
 
 (function(){
 
     var IDLE_DELAY = 20000; /* 20 seconds */
 
-    var reviewerURL =
-        window.STRUGGLE_REVIEWER_URL ||
-        "characters/reading1.html";
+    var MENU_BUTTON_ID = "pauseMenuButtonToggle";
 
 
     var idleTimer = null;
 
-    var overlay = null;
-
-    var card = null;
+    var popup = null;
 
     var watchedAnswers = null;
 
 
 
     /* =========================================================
-       CREATE OVERLAY
+       CREATE POPUP
     ========================================================= */
 
-    function createOverlay(){
+    function createPopup(){
 
         var el = document.createElement("div");
 
-        el.id = "struggleOverlay";
+        el.id = "struggleGuide";
 
-        el.className = "struggle-overlay";
+        el.className = "struggle-popup";
 
         el.innerHTML =
-            '<div class="struggle-card" id="struggleCard"></div>';
+
+            '<h2>Struggling with the question?</h2>' +
+
+            '<p>Tap the menu button, then hit <strong>Readings</strong> for a quick refresher.</p>' +
+
+            '<button id="struggleDismiss" class="struggle-dismiss" type="button">' +
+                'No thanks, I got it' +
+            '</button>';
 
         document.body.appendChild(el);
+
+        el.querySelector("#struggleDismiss")
+            .addEventListener("click", hidePopup);
 
         return el;
 
@@ -52,72 +65,139 @@
 
 
     /* =========================================================
-       STEP 1 — ARE YOU STRUGGLING?
+       HELPERS
     ========================================================= */
 
-    function showStep1(){
+    function isShown(){
 
-        card.innerHTML =
+        return popup.classList.contains("show");
 
-            '<h2>Are you struggling with the question?</h2>' +
-
-            '<p>We can take you to the reviewer for a quick refresher.</p>' +
-
-            '<div class="struggle-actions">' +
-                '<button id="struggleYes" class="struggle-btn yes">YES</button>' +
-                '<button id="struggleNo" class="struggle-btn no">NO</button>' +
-            '</div>';
+    }
 
 
-        document.getElementById("struggleYes")
-            .addEventListener("click", showStep2);
+    function getMenuButton(){
+
+        return document.getElementById(MENU_BUTTON_ID);
+
+    }
 
 
-        document.getElementById("struggleNo")
-            .addEventListener("click", closeOverlay);
+    function isVisible(id){
+
+        var el = document.getElementById(id);
+
+        return !!(el && el.classList.contains("show"));
 
     }
 
 
 
     /* =========================================================
-       STEP 2 — CONFIRM GOING TO REVIEWER
+       POSITION — follows wherever the pause button is
     ========================================================= */
 
-    function showStep2(){
+    function positionPopup(){
 
-        card.innerHTML =
+        var btn = getMenuButton();
 
-            '<h2>Go to the Reviewer?</h2>' +
+        var vw = window.innerWidth;
 
-            '<p>Are you sure you want to leave the trial and review the lesson?</p>' +
+        var vh = window.innerHeight;
 
-            '<div class="struggle-actions">' +
-                '<button id="struggleConfirmYes" class="struggle-btn yes">YES</button>' +
-                '<button id="struggleConfirmNo" class="struggle-btn no">NO</button>' +
-            '</div>';
+        var margin = 12;
 
+        var gap = 14;
 
-        document.getElementById("struggleConfirmYes")
-            .addEventListener("click", function(){
+        var w = popup.offsetWidth;
 
-                window.location.href = reviewerURL;
-
-            });
+        var h = popup.offsetHeight;
 
 
-        document.getElementById("struggleConfirmNo")
-            .addEventListener("click", closeOverlay);
+        var rect = btn ? btn.getBoundingClientRect() : null;
+
+
+        /* fallback if the button isn't there / is hidden */
+
+        if(!rect || (rect.width === 0 && rect.height === 0)){
+
+            rect = {
+
+                left: vw - 58,
+
+                top: 84,
+
+                width: 42,
+
+                height: 42,
+
+                bottom: 126
+
+            };
+
+        }
+
+
+        var centerX = rect.left + rect.width / 2;
+
+
+        var left = Math.min(
+
+            Math.max(centerX - w / 2, margin),
+
+            vw - w - margin
+
+        );
+
+
+        /* button in the top half -> popup goes below it,
+           button in the bottom half -> popup goes above it */
+
+        var below = (rect.top + rect.height / 2) < vh / 2;
+
+
+        var top = below ?
+            rect.bottom + gap :
+            rect.top - h - gap;
+
+
+        top = Math.min(
+
+            Math.max(top, margin),
+
+            vh - h - margin
+
+        );
+
+
+        var arrowX = Math.min(
+
+            Math.max(centerX - left, 20),
+
+            w - 20
+
+        );
+
+
+        popup.style.left = left + "px";
+
+        popup.style.top = top + "px";
+
+        popup.style.setProperty("--arrow-x", arrowX + "px");
+
+
+        popup.classList.toggle("below", below);
+
+        popup.classList.toggle("above", !below);
 
     }
 
 
 
     /* =========================================================
-       OPEN / CLOSE
+       SHOW / HIDE
     ========================================================= */
 
-    function openOverlay(){
+    function showPopup(){
 
         if(!hasAnswerableContent()){
 
@@ -126,16 +206,35 @@
         }
 
 
-        showStep1();
+        positionPopup();
 
-        overlay.classList.add("show");
+        popup.classList.add("show");
+
+
+        var btn = getMenuButton();
+
+        if(btn){
+
+            btn.classList.add("struggle-highlight");
+
+        }
 
     }
 
 
-    function closeOverlay(){
+    function hidePopup(){
 
-        overlay.classList.remove("show");
+        popup.classList.remove("show");
+
+
+        var btn = getMenuButton();
+
+        if(btn){
+
+            btn.classList.remove("struggle-highlight");
+
+        }
+
 
         resetIdleTimer();
 
@@ -147,17 +246,18 @@
        ONLY TRIGGER WHEN THERE'S A QUESTION TO ANSWER
     ========================================================= */
 
-        function hasAnswerableContent(){
+    function hasAnswerableContent(){
 
         var answers =
             document.getElementById("answers");
 
 
-        var nextChallenge =
-            document.getElementById("nextChallengeOverlay");
-
-
-        if(nextChallenge && nextChallenge.classList.contains("show")){
+        if(
+            isVisible("nextChallengeOverlay") ||
+            isVisible("pauseOverlay") ||
+            isVisible("resultScreen") ||
+            isVisible("loseScreen")
+        ){
 
             return false;
 
@@ -166,7 +266,7 @@
 
         return !!(
             answers &&
-            answers.querySelector("button, input")
+            answers.querySelector("button:not(:disabled), input")
         );
 
     }
@@ -181,21 +281,32 @@
 
         clearTimeout(idleTimer);
 
-        idleTimer = setTimeout(openOverlay, IDLE_DELAY);
+        idleTimer = setTimeout(showPopup, IDLE_DELAY);
 
     }
 
 
-    function onAnyInteraction(){
+    function onAnyInteraction(event){
 
-        if(overlay.classList.contains("show")){
+        /* clicks inside the popup are handled by its own button */
+
+        if(popup.contains(event.target)){
 
             return;
 
         }
 
 
-        resetIdleTimer();
+        if(isShown()){
+
+            hidePopup();   /* also restarts the timer */
+
+        }
+        else{
+
+            resetIdleTimer();
+
+        }
 
     }
 
@@ -224,9 +335,9 @@
         var observer =
             new MutationObserver(function(){
 
-                if(overlay.classList.contains("show")){
+                if(isShown()){
 
-                    closeOverlay();
+                    hidePopup();
 
                 }
                 else{
@@ -256,9 +367,7 @@
 
     function init(){
 
-        overlay = createOverlay();
-
-        card = document.getElementById("struggleCard");
+        popup = createPopup();
 
 
         document.addEventListener("click", onAnyInteraction);
@@ -266,6 +375,17 @@
         document.addEventListener("keydown", onAnyInteraction);
 
         document.addEventListener("input", onAnyInteraction);
+
+
+        window.addEventListener("resize", function(){
+
+            if(isShown()){
+
+                positionPopup();
+
+            }
+
+        });
 
 
         watchAnswers();
