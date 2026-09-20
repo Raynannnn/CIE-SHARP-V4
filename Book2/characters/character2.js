@@ -365,7 +365,7 @@ continueButton.addEventListener(
         );
 
 
-        window.location.href =
+        location.href =
             "../book2.html";
 
     }
