@@ -30,11 +30,7 @@ var printCertificateButton =
 var downloadPdfButton =
     document.getElementById("downloadPdfButton");
 
-var printCertificateButton =
-    document.getElementById("printCertificateButton");
-
-
-
+    
 /* =========================
    DOWNLOAD AS PDF
 ========================= */

@@ -3538,6 +3538,9 @@ function finishBook(){
 
     updateScore();
 
+    document.getElementById("finalScore").textContent = score;
+    document.getElementById("finalEssence").textContent = essence;
+    localStorage.setItem("book9Unlocked", "true");
 
     localStorage.setItem(
         "book8Completed",

@@ -9,7 +9,7 @@
 
 const characters = {
 
-    gitei: {
+    GiTei: {
         name: "GiTei",
         role: "The Logic Witch",
         specialty: "Programming Logic & Problem-Solving",
@@ -20,7 +20,7 @@ const characters = {
         video: "videos/GiTei.mp4"
     },
 
-    achi: {
+    Achi: {
         name: "Achi",
         role: "The Data Witch",
         specialty: "C# Fundamentals & Data",
@@ -31,7 +31,7 @@ const characters = {
         video: "videos/Achi.mp4"
     },
 
-    leeserin: {
+    LeeSerin: {
         name: "LeeSerin",
         role: "The Codeweaver Witch",
         specialty: "C# Syntax & Structure",
@@ -42,7 +42,7 @@ const characters = {
         video: "videos/LeeSerin.mp4"
     },
 
-    cythera: {
+    Cythera: {
         name: "Cythera",
         role: "The Ember Witch",
         specialty: "Practice & Challenges",
@@ -53,7 +53,7 @@ const characters = {
         video: "videos/Cythera.mp4"
     },
 
-    zari: {
+    Zari: {
         name: "Zari",
         role: "The Logiccraft Witch",
         specialty: "Applications & Solutions",

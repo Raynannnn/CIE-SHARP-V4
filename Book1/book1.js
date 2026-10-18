@@ -3,7 +3,7 @@
 ========================= */
 
 var selectedCharacter =
-    localStorage.getItem("selectedCharacter") || "GiTei";
+    localStorage.getItem("cieSharpCharacter") || "GiTei";
 
 
 var characters = {
@@ -53,7 +53,7 @@ var characters = {
     },
 
 
-    bea: {
+    Cythera: {
 
         name: "Ember Witch",
 

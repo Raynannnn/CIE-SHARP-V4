@@ -273,7 +273,7 @@
                 shield: window.mindcraftShield === true,
 
                 character:
-                    localStorage.getItem("selectedCharacter") || "",
+                    localStorage.getItem("cieSharpCharacter") || "",
 
                 savedAt: Date.now()
 
@@ -352,7 +352,7 @@
 
         var sameWitch =
             (saved.character || "") ===
-            (localStorage.getItem("selectedCharacter") || "");
+            (localStorage.getItem("cieSharpCharacter") || "");
 
 
         COUNT_NAMES.forEach(function(name){

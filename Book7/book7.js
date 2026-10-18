@@ -1997,7 +1997,7 @@ document.getElementById(
     function(){
 
         location.href =
-            "/Main Menu/lesson.html";
+            "../MainMenu/lesson.html";
 
     }
 );
@@ -2008,7 +2008,7 @@ document.getElementById(
    SAVE BOOK VII PROGRESS
 ========================================================= */
 
-function saveProgress(){
+function saveBookProgress(){
 
     localStorage.setItem(
         "book7Completed",

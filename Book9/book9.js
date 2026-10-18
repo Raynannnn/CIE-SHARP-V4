@@ -4,7 +4,7 @@
 ===================================================== */
 
 var selectedCharacter =
-    localStorage.getItem("selectedCharacter") || "GiTei";
+    localStorage.getItem("cieSharpCharacter") || "GiTei";
 
 
 var characters = {
@@ -1369,81 +1369,24 @@ function startMusic(){
 ===================================================== */
 
 function showVictory(){
+    localStorage.setItem("book9Completed", "true");
+    localStorage.setItem("book9Score", score);
+    localStorage.setItem("book9Essence", essence);
 
-    document.getElementById(
-        "finalScore"
-    ).textContent =
-        score;
-
-
-    document.getElementById(
-        "finalEssence"
-    ).textContent =
-        essence;
-
-
-    resultScreen.classList.add(
-        "show"
-    );
-
-
-    battleMessage.textContent =
-        "THE NULL WITCH HAS FALLEN.";
-
-        function showVictory(){
-
-    /* SAVE COMPLETION FOR CERTIFICATE (added) */
-
-    localStorage.setItem(
-        "book9Completed",
-        "true"
-    );
-
-
-    if(
-        !localStorage.getItem(
-            "cieSharpCompletionDate"
-        )
-    ){
-
-        localStorage.setItem(
-            "cieSharpCompletionDate",
-            new Date().toLocaleDateString(
-                "en-US",
-                {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric"
-                }
-            )
-        );
-
+    if(!localStorage.getItem("cieSharpCompletionDate")){
+        localStorage.setItem("cieSharpCompletionDate",
+            new Date().toLocaleDateString("en-US",
+                {year:"numeric", month:"long", day:"numeric"}));
     }
 
 
-    document.getElementById(
-        "finalScore"
-    ).textContent =
-        score;
-
-
-    document.getElementById(
-        "finalEssence"
-    ).textContent =
-        essence;
-
-
-    resultScreen.classList.add(
-        "show"
-    );
-
-
-    battleMessage.textContent =
-        "THE NULL WITCH HAS FALLEN.";
-
+    document.getElementById("finalScore").textContent = score;
+    document.getElementById("finalEssence").textContent = essence;
+    resultScreen.classList.add("show");
+    battleMessage.textContent = "THE NULL WITCH HAS FALLEN.";
 }
 
-}
+
 
 
 /* =====================================================
