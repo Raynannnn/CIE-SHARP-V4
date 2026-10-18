@@ -1658,6 +1658,16 @@ document.getElementById("loseMenuButton").addEventListener(
 
 function finishGame(){
 
+/* HIDE ANSWER GUIDE WHEN GAME ENDS */
+var answerGuide = document.getElementById("answerGuideArrow");
+if(answerGuide){ answerGuide.classList.remove("show"); }
+
+var answerPanel = document.querySelector(".answer-panel");
+if(answerPanel){ answerPanel.classList.remove("answer-guide-highlight"); }
+
+var witchBadge = document.querySelector(".witch-guide-badge");
+if(witchBadge){ witchBadge.classList.remove("show"); }
+
     trialStatus.textContent =
         questions.length + " / " + questions.length;
 

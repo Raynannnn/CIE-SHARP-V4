@@ -530,6 +530,7 @@ Console.WriteLine("Adult")
    ELEMENTS
 ========================= */
 
+
 var questionNumber =
     document.getElementById("questionNumber");
 
@@ -1898,6 +1899,8 @@ document
 ========================= */
 
 function finishGame(){
+
+    
 
     trialStatus.textContent =
         questions.length +
